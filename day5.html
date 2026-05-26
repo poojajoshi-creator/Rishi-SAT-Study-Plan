@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 5 — SEC Deep Dive — Rishi SAT Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+
+:root {
+  --ink: #1a1a18;
+  --ink-soft: #4a4a46;
+  --ink-muted: #8a8a84;
+  --paper: #faf9f6;
+  --cream: #f2f0ea;
+  --rule: #e0ddd4;
+  --red: #c0392b;
+  --red-light: #fdf0ee;
+  --amber: #b7540a;
+  --amber-light: #fdf5ec;
+  --blue: #1a4d8a;
+  --blue-light: #eef3fa;
+  --green: #2d6a3f;
+  --green-light: #eef7f1;
+  --sidebar-w: 240px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); }
+
+/* ── Layout ── */
+.portal { display: flex; min-height: 100vh; }
+
+/* ── Sidebar ── */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+.sidebar-brand {
+  padding: 1.5rem 1.25rem 1rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.sidebar-brand .brand-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.1rem;
+  color: white;
+  line-height: 1.2;
+}
+.sidebar-brand .brand-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+.sidebar-progress {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.progress-label { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.progress-track { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; }
+.progress-fill-bar { height: 100%; border-radius: 2px; background: #e8c87a; transition: width 0.4s; }
+.progress-count { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 5px; }
+
+.sidebar-section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  padding: 1rem 1.25rem 0.4rem;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 1.25rem;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: background 0.12s, border-color 0.12s;
+  text-decoration: none;
+}
+.nav-item:hover { background: rgba(255,255,255,0.05); }
+.nav-item.active {
+  background: rgba(255,255,255,0.07);
+  border-left-color: #e8c87a;
+}
+.nav-day-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-day-num.done { background: var(--green); color: white; }
+.nav-day-num.active-num { background: #e8c87a; color: var(--ink); }
+.nav-day-num.locked { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.25); }
+.nav-day-info { flex: 1; min-width: 0; }
+.nav-day-title { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.75); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nav-day-sub { font-size: 10px; color: rgba(255,255,255,0.3); margin-top: 1px; }
+.nav-item.locked-item .nav-day-title { color: rgba(255,255,255,0.25); }
+.nav-item.locked-item { cursor: default; }
+.nav-item.locked-item:hover { background: none; }
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1rem 1.25rem;
+  border-top: 0.5px solid rgba(255,255,255,0.08);
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  line-height: 1.5;
+}
+
+/* ── Main content pane ── */
+.content-pane { flex: 1; min-width: 0; }
+
+.day-panel { display: none; }
+.day-panel.visible { display: block; }
+
+/* ── Coming-soon placeholder ── */
+.coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 12px;
+  padding: 3rem;
+  text-align: center;
+}
+.cs-day { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); }
+.cs-title { font-family: 'Instrument Serif', serif; font-size: 2rem; color: var(--ink); }
+.cs-desc { font-size: 14px; color: var(--ink-soft); max-width: 380px; line-height: 1.7; }
+.cs-badge {
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: var(--cream);
+  color: var(--ink-muted);
+  border: 0.5px solid var(--rule);
+}
+
+/* ── Reuse Day 1 styles within panel ── */
+.page-header {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2.5rem 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.header-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
+.header-title { font-family: 'Instrument Serif', serif; font-size: 2.4rem; font-weight: 400; line-height: 1.1; margin-bottom: 14px; }
+.header-title em { font-style: italic; color: rgba(255,255,255,0.65); }
+.header-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 0.5px solid rgba(255,255,255,0.15); }
+.meta-item { font-size: 13px; color: rgba(255,255,255,0.55); }
+.meta-item strong { color: rgba(255,255,255,0.9); font-weight: 500; display: block; font-size: 15px; }
+.progress-bar { height: 4px; background: rgba(255,255,255,0.1); }
+.progress-fill { height: 100%; background: #e8c87a; }
+.main { max-width: 820px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+.objective { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin-bottom: 2.5rem; font-size: 14px; color: var(--blue); line-height: 1.6; }
+.objective strong { font-weight: 500; display: block; margin-bottom: 4px; font-size: 15px; }
+.section-label { display: flex; align-items: center; gap: 12px; margin: 2.5rem 0 1.25rem; }
+.section-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+.num-red { background: var(--red); color: white; }
+.num-amber { background: var(--amber); color: white; }
+.num-green { background: var(--green); color: white; }
+.num-blue { background: var(--blue); color: white; }
+.section-heading { font-family: 'Instrument Serif', serif; font-size: 1.4rem; font-weight: 400; color: var(--ink); }
+.section-time { margin-left: auto; font-size: 12px; color: var(--ink-muted); background: var(--cream); padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+.content-block { background: white; border: 0.5px solid var(--rule); border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+.block-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.tag { font-size: 10px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+.tag-red { background: var(--red-light); color: var(--red); }
+.tag-amber { background: var(--amber-light); color: var(--amber); }
+.tag-blue { background: var(--blue-light); color: var(--blue); }
+.tag-green { background: var(--green-light); color: var(--green); }
+p { font-size: 14px; color: var(--ink-soft); margin-bottom: 10px; line-height: 1.7; }
+p:last-child { margin-bottom: 0; }
+ul, ol { padding-left: 1.25rem; margin-bottom: 10px; }
+li { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 4px; }
+li strong { color: var(--ink); font-weight: 500; }
+.qtype-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.qtype-card { background: var(--cream); border-radius: 8px; padding: 12px 14px; }
+.qtype-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.qtype-desc { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+.qtype-freq { font-size: 11px; color: var(--ink-muted); margin-top: 6px; }
+.passage-box { background: #fffef9; border: 1px solid var(--rule); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 12px 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.8; font-family: 'Instrument Serif', serif; }
+.passage-label { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 10px; }
+.practice-q { background: var(--cream); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 12px 0; }
+.q-stem { font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 12px; line-height: 1.6; }
+.q-choices { list-style: none; padding: 0; }
+.q-choices li { font-size: 13.5px; color: var(--ink-soft); padding: 7px 12px; border-radius: 6px; margin-bottom: 4px; border: 0.5px solid var(--rule); background: white; cursor: pointer; transition: background 0.15s; }
+.q-choices li:hover { background: var(--blue-light); }
+.q-choices li.correct { background: var(--green-light); border-color: var(--green); color: var(--green); }
+.q-choices li.wrong { background: var(--red-light); border-color: var(--red); color: var(--red); text-decoration: line-through; }
+.answer-reveal { display: none; margin-top: 10px; padding: 10px 14px; background: var(--green-light); border-radius: 8px; font-size: 13px; color: var(--green); line-height: 1.6; }
+.answer-reveal.show { display: block; }
+.strategy-box { background: var(--amber-light); border-left: 3px solid var(--amber); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 12px 0; }
+.strategy-box .strat-title { font-size: 13px; font-weight: 500; color: var(--amber); margin-bottom: 6px; }
+.strategy-box p { color: var(--amber); font-size: 13px; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--rule); font-size: 14px; color: var(--ink-soft); }
+.checklist li:last-child { border-bottom: none; }
+.check-box { width: 18px; height: 18px; border: 1.5px solid var(--rule); border-radius: 4px; flex-shrink: 0; margin-top: 3px; cursor: pointer; transition: all 0.15s; }
+.check-box.checked { background: var(--green); border-color: var(--green); }
+.check-box.checked::after { content: "✓"; color: white; font-size: 11px; display: flex; align-items: center; justify-content: center; height: 100%; }
+.rule { height: 0.5px; background: var(--rule); margin: 2rem 0; }
+.schedule-grid { display: grid; grid-template-columns: 80px 1fr; gap: 0; }
+.sched-time { font-size: 12px; color: var(--ink-muted); padding: 10px 0; border-right: 2px solid var(--rule); padding-right: 16px; text-align: right; font-weight: 500; }
+.sched-task { font-size: 13px; color: var(--ink-soft); padding: 10px 0 10px 16px; border-bottom: 0.5px solid var(--rule); line-height: 1.5; }
+.sched-task strong { color: var(--ink); font-weight: 500; display: block; }
+.sched-time:last-of-type, .sched-task:last-of-type { border-bottom: none; }
+/* === MATH TEST STYLES === */
+.formula-sheet { background: white; border: 0.5px solid var(--rule); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+.formula-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.formula-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+.formula-card { background: var(--cream); border-radius: 8px; padding: 10px 12px; }
+.formula-card.highlight { background: var(--blue-light); border: 1px solid #b5d4f4; }
+.formula-name { font-size: 10px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+.formula-card.highlight .formula-name { color: var(--blue); }
+.formula-eq { font-size: 13px; color: var(--ink); font-family: 'Instrument Serif', serif; line-height: 1.5; }
+.formula-note { font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+.formula-card.highlight .formula-note { color: var(--blue); }
+.timer-bar { background: var(--blue-light); border-bottom: 0.5px solid #b5d4f4; padding: 10px 2rem; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.timer-label { font-size: 13px; color: var(--blue); font-weight: 500; }
+.timer-display { font-size: 22px; font-weight: 500; color: var(--blue); font-variant-numeric: tabular-nums; min-width: 80px; }
+.timer-btn { padding: 5px 16px; font-size: 12px; font-weight: 500; border: 1.5px solid var(--blue); border-radius: 6px; background: white; color: var(--blue); cursor: pointer; }
+.timer-btn:hover { background: var(--blue); color: white; }
+.timer-warning { color: var(--red) !important; }
+.q-figure { background: var(--cream); border-radius: 8px; padding: 14px; margin-bottom: 12px; text-align: center; font-family: 'Instrument Serif', serif; font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
+.domain-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--rule); }
+.domain-row:last-of-type { border-bottom: none; }
+.domain-name { font-size: 13px; color: var(--ink-soft); width: 240px; flex-shrink: 0; font-weight: 500; }
+.domain-badges { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; }
+.badge { font-size: 11px; padding: 2px 7px; border-radius: 4px; background: var(--cream); color: var(--ink-muted); transition: all 0.2s; }
+.badge.correct { background: var(--green-light); color: var(--green); }
+.badge.wrong { background: var(--red-light); color: var(--red); }
+.score-block { background: white; border: 0.5px solid var(--rule); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 2rem; }
+.new-concept { background: var(--purple-light); border-left: 3px solid var(--purple); border-radius: 0 8px 8px 0; padding: 8px 12px; margin-bottom: 10px; font-size: 13px; color: var(--purple); }
+.new-concept strong { font-weight: 500; }
+
+/* Math panel question styles - prefixed to avoid conflict with RW panels */
+.q-block { background: white; border: 0.5px solid var(--rule); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 10px; }
+.q-num { font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.q-choices-math { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.q-choices-math.single-col { grid-template-columns: 1fr; }
+.q-choices-math li { font-size: 13.5px; color: var(--ink-soft); padding: 7px 12px; border-radius: 6px; border: 0.5px solid var(--rule); background: var(--paper); cursor: pointer; transition: background 0.12s; }
+.q-choices-math li:hover { background: var(--blue-light); }
+.q-choices-math li.correct { background: var(--green-light); border-color: var(--green); color: var(--green); font-weight: 500; }
+.q-choices-math li.wrong { background: var(--red-light); border-color: var(--red); color: var(--red); text-decoration: line-through; }
+.math-answer-reveal { display: none; margin-top: 10px; padding: 10px 14px; background: var(--green-light); border-radius: 8px; font-size: 13px; color: var(--green); line-height: 1.65; }
+.math-answer-reveal.show { display: block; }
+.math-answer-reveal .step { display: block; margin-bottom: 3px; }
+/* === END MATH STYLES === */
+
+.page-footer { background: var(--ink); color: rgba(255,255,255,0.4); text-align: center; padding: 1.25rem; font-size: 12px; }
+
+
+</style>
+</head>
+<body>
+<div style="background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;">
+  <a href="index.html" style="color:rgba(255,255,255,0.5);font-size:12px;font-family:DM Sans,sans-serif;text-decoration:none;letter-spacing:0.5px;">← Back to Study Portal</a>
+  <span style="color:rgba(255,255,255,0.2);font-size:12px;font-family:DM Sans,sans-serif;">Rishi's SAT Study Portal</span>
+</div>
+<div class="page-header">
+  <div class="header-eyebrow">SAT Prep · Day 5 of 12 · May 29, 2025</div>
+  <div class="header-title">Standard English Conventions<br><em>Full deep dive + mixed RW drill</em></div>
+  <div class="header-meta">
+    <div class="meta-item"><strong>Rishi Wadhwani</strong>Student</div>
+    <div class="meta-item"><strong>1380 → 1500</strong>Current → Target</div>
+    <div class="meta-item"><strong>RW: 630 → 750</strong>Today's focus area</div>
+    <div class="meta-item"><strong>~100 min</strong>Today's session</div>
+  </div>
+</div>
+<div class="progress-bar"><div class="progress-fill" style="width:41.6%"></div></div>
+
+<div class="main">
+
+  <div class="objective">
+    <strong>Today's objective</strong>
+    This is the final preparation day before the first full practice test tomorrow. Two goals: (1) master Standard English Conventions — the grammar and punctuation domain that makes up 26% of RW — and push it from 610–670 into the 680+ band; and (2) run a full mixed RW drill across all seven question types under timed conditions to simulate tomorrow's test experience. After today, Rishi should feel comfortable with every question type that will appear on June 6.
+  </div>
+
+  <!-- SESSION PLAN -->
+  <div class="section-label">
+    <div class="section-num num-blue">1</div>
+    <div class="section-heading">Today's session plan</div>
+    <div class="section-time">~100 min total</div>
+  </div>
+  <div class="content-block">
+    <div class="schedule-grid">
+      <div class="sched-time">0:00</div>
+      <div class="sched-task"><strong>Standard English Conventions — full deep dive</strong>All 6 tested categories with rules, examples, and worked questions</div>
+      <div class="sched-time">0:40</div>
+      <div class="sched-task"><strong>Mixed RW drill — 25 questions</strong>All 7 question types mixed together. Set a 30-minute timer.</div>
+      <div class="sched-time">1:10</div>
+      <div class="sched-task"><strong>Review + Day 6 prep</strong>Score your drill. Then read the practice test instructions below so tomorrow is seamless.</div>
+    </div>
+  </div>
+
+  <!-- PART 1: SEC DEEP DIVE -->
+  <div class="rule"></div>
+  <div class="section-label">
+    <div class="section-num num-red">2</div>
+    <div class="section-heading">Part 1: Standard English Conventions — full deep dive</div>
+    <div class="section-time">26% of RW · 11–15 questions per test</div>
+  </div>
+
+  <div class="content-block">
+    <div class="block-title">How SEC questions work</div>
+    <p>Every SEC question gives you a sentence or short passage with a blank, and four options that differ in punctuation, word form, or sentence structure. There is always exactly one grammatically correct answer — unlike Reading questions, there is no interpretation involved. The rules are fixed. Your job is to know them cold.</p>
+    <div class="strategy-box">
+      <div class="strat-title">The SEC method — 3 steps</div>
+      <p>1. <strong>Identify what's being tested.</strong> Look at how the four choices differ: punctuation only? verb form? pronoun? That tells you the rule to apply.<br>
+      2. <strong>Apply the rule directly.</strong> Don't trust your ear — ears are trained by informal speech that often violates formal grammar rules.<br>
+      3. <strong>Verify the winner fits.</strong> Read the complete sentence with your chosen answer. Does it flow and follow the rule?</p>
+    </div>
+  </div>
+
+  <!-- CATEGORY 1: SENTENCE BOUNDARIES -->
+  <div class="content-block">
+    <div class="block-title"><span class="tag tag-red">Category 1</span> Sentence boundaries — the most tested SEC category</div>
+    <p>The SAT tests whether you can correctly join or separate independent clauses. An independent clause is a complete sentence — it has a subject and a verb and expresses a complete thought.</p>
+
+    <div class="strategy-box">
+      <div class="strat-title">The four legal ways to join two independent clauses</div>
+      <p>
+        1. <strong>Period:</strong> [IC]. [IC]. ← Always correct<br>
+        2. <strong>Semicolon:</strong> [IC]; [IC]. ← Think of it as a period. Both sides must be complete sentences.<br>
+        3. <strong>Comma + FANBOYS:</strong> [IC], for/and/nor/but/or/yet/so [IC].<br>
+        4. <strong>Subordinating conjunction (no comma needed at end):</strong> Although/because/while/since/when [IC], [IC].<br><br>
+        <strong>What's NEVER legal:</strong> [IC], [IC]. ← Comma splice. [IC] [IC]. ← Run-on. These are always wrong.
+      </p>
+    </div>
+
+    <div class="passage-label" style="margin-top:12px;">Worked example</div>
+    <div class="passage-box">The Amazon rainforest produces roughly 20% of the world's oxygen _______ it is often called the "lungs of the Earth."</div>
+    <div class="practice-q" id="d5q1">
+      <div class="q-stem">Q1. Which choice correctly joins the two clauses?</div>
+      <ul class="q-choices" id="d5q1-choices">
+        <li onclick="handleAnswer('d5q1',this,false)">A. oxygen, it</li>
+        <li onclick="handleAnswer('d5q1',this,false)">B. oxygen it</li>
+        <li onclick="handleAnswer('d5q1',this,true)">C. oxygen; it</li>
+        <li onclick="handleAnswer('d5q1',this,false)">D. oxygen, and, it</li>
+      </ul>
+      <div class="answer-reveal" id="d5q1-reveal"><strong>Answer: C.</strong> Both sides are independent clauses. A comma alone (A) = comma splice — illegal. No punctuation (B) = run-on — illegal. A semicolon (C) correctly joins two independent clauses. D is grammatically broken — "and" after a comma needs no second comma.</div>
+    </div>
+
+    <div class="passage-label" style="margin-top:12px;">Worked example 2 — the subordinating conjunction trap</div>
+    <div class="passage-box">_______ the experiment produced unexpected results, the researchers decided to repeat it with a larger sample.</div>
+    <div class="practice-q" id="d5q2">
+      <div class="q-stem">Q2. Which choice correctly begins this sentence?</div>
+      <ul class="q-choices" id="d5q2-choices">
+        <li onclick="handleAnswer('d5q2',this,false)">A. The experiment produced unexpected results,</li>
+        <li onclick="handleAnswer('d5q2',this,true)">B. Because the experiment produced unexpected results,</li>
+        <li onclick="handleAnswer('d5q2',this,false)">C. The experiment produced unexpected results;</li>
+        <li onclick="handleAnswer('d5q2',this,false)">D. The experiment produced unexpected results, so</li>
+      </ul>
+      <div class="answer-reveal" id="d5q2-reveal"><strong>Answer: B.</strong> The second clause "the researchers decided to repeat it" is independent. The first clause "the experiment produced unexpected results" is also independent — but the blank asks for something that sets up a dependent/introductory clause. "Because" makes the first clause dependent (it can't stand alone), requiring the comma before the main clause. A creates a run-on. C would make a semicolon before a dependent clause — wrong. D creates "results, so the researchers decided" — grammatically fine but doesn't match the blank's position at the start.</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 2: PUNCTUATION -->
+  <div class="content-block">
+    <div class="block-title"><span class="tag tag-red">Category 2</span> Punctuation — commas, colons, and dashes</div>
+    <p>The most common punctuation errors on the SAT involve placing commas where they don't belong, or using colons and dashes incorrectly.</p>
+
+    <div class="strategy-box">
+      <div class="strat-title">The essential punctuation rules</div>
+      <p>
+        <strong>Commas — when to use:</strong><br>
+        ✓ Before FANBOYS joining two independent clauses<br>
+        ✓ After an introductory phrase or clause<br>
+        ✓ Around non-essential information (parenthetical phrases)<br>
+        ✓ In a list of three or more items<br><br>
+        <strong>Commas — when NOT to use:</strong><br>
+        ✗ Between subject and verb: "The dog, barked." ← Wrong<br>
+        ✗ Between verb and object: "She ate, the cake." ← Wrong<br>
+        ✗ Before a dependent clause at the end of a sentence<br><br>
+        <strong>Colon:</strong> Use after a complete sentence to introduce a list, explanation, or example. Both sides don't need to be complete sentences — only the left side does.<br><br>
+        <strong>Dash:</strong> Use to introduce a dramatic pause, an explanation, or a list. Interchangeable with a colon in many cases. Two dashes = parenthetical (like two commas around non-essential info).
+      </p>
+    </div>
+
+    <div class="practice-q" id="d5q3">
+      <div class="q-stem">Q3. Which choice uses punctuation correctly?<br><br><em>The museum houses three of Leonardo da Vinci's most celebrated works _______ the Mona Lisa, The Virgin of the Rocks, and Saint John the Baptist.</em></div>
+      <ul class="q-choices" id="d5q3-choices">
+        <li onclick="handleAnswer('d5q3',this,false)">A. works, the</li>
+        <li onclick="handleAnswer('d5q3',this,true)">B. works: the</li>
+        <li onclick="handleAnswer('d5q3',this,false)">C. works. The</li>
+        <li onclick="handleAnswer('d5q3',this,false)">D. works; the</li>
+      </ul>
+      <div class="answer-reveal" id="d5q3-reveal"><strong>Answer: B.</strong> A colon after "works" introduces the list. The left side ("The museum houses three of Leonardo da Vinci's most celebrated works") is a complete sentence — exactly what a colon requires. A comma (A) is too weak for introducing a list here. A period (C) creates a fragment ("The Mona Lisa, The Virgin of the Rocks, and Saint John the Baptist" is not a sentence). A semicolon (D) requires a complete sentence on both sides — the list isn't a sentence.</div>
+    </div>
+
+    <div class="practice-q" id="d5q4">
+      <div class="q-stem">Q4. Which choice uses punctuation correctly?<br><br><em>The scientist who first isolated the compound _______ later won the Nobel Prize for her work on enzyme catalysis.</em></div>
+      <ul class="q-choices" id="d5q4-choices">
+        <li onclick="handleAnswer('d5q4',this,false)">A. compound, later</li>
+        <li onclick="handleAnswer('d5q4',this,true)">B. compound later</li>
+        <li onclick="handleAnswer('d5q4',this,false)">C. compound: later</li>
+        <li onclick="handleAnswer('d5q4',this,false)">D. compound; later</li>
+      </ul>
+      <div class="answer-reveal" id="d5q4-reveal"><strong>Answer: B.</strong> The subject is "The scientist who first isolated the compound" — "who first isolated the compound" is a restrictive relative clause that identifies which scientist. No comma should separate the subject from its verb "later won." A incorrectly inserts a comma between subject and verb. C and D wrongly treat "later won the Nobel Prize" as something to introduce or as an independent clause — it's neither.</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 3: SUBJECT-VERB AGREEMENT -->
+  <div class="content-block">
+    <div class="block-title"><span class="tag tag-red">Category 3</span> Subject-verb agreement</div>
+    <p>The verb must agree in number with its subject — not with the nearest noun. The SAT hides the true subject by placing long prepositional phrases between it and the verb.</p>
+
+    <div class="strategy-box">
+      <div class="strat-title">The isolation method</div>
+      <p>1. Find the verb.<br>
+      2. Ask "who or what [verbs]?" — that's the subject.<br>
+      3. Cross out everything between the subject and verb.<br>
+      4. Check: singular subject → singular verb. Plural subject → plural verb.<br><br>
+      <strong>Collective nouns</strong> (team, committee, government, group) are singular in American English: "The team <em>is</em> ready."<br>
+      <strong>Indefinite pronouns</strong> (each, every, either, neither, anyone, someone, everyone) are always singular: "Each of the students <em>was</em> late."</p>
+    </div>
+
+    <div class="practice-q" id="d5q5">
+      <div class="q-stem">Q5. Which choice correctly completes the sentence?<br><br><em>The impact of habitat loss, invasive species, and climate change on native bird populations _______ been a major focus of conservation research for the past two decades.</em></div>
+      <ul class="q-choices" id="d5q5-choices">
+        <li onclick="handleAnswer('d5q5',this,true)">A. has</li>
+        <li onclick="handleAnswer('d5q5',this,false)">B. have</li>
+        <li onclick="handleAnswer('d5q5',this,false)">C. are having</li>
+        <li onclick="handleAnswer('d5q5',this,false)">D. were</li>
+      </ul>
+      <div class="answer-reveal" id="d5q5-reveal"><strong>Answer: A.</strong> Cross out the prepositional phrases: "of habitat loss, invasive species, and climate change" and "on native bird populations." The true subject is "The impact" — singular. Singular subject → singular verb: "has been." Students often choose "have" because "species" and "populations" are plural — but those are objects of prepositions, not the subject.</div>
+    </div>
+
+    <div class="practice-q" id="d5q6">
+      <div class="q-stem">Q6. Which choice correctly completes the sentence?<br><br><em>Neither the lead researcher nor her graduate students _______ able to replicate the original findings.</em></div>
+      <ul class="q-choices" id="d5q6-choices">
+        <li onclick="handleAnswer('d5q6',this,false)">A. was</li>
+        <li onclick="handleAnswer('d5q6',this,true)">B. were</li>
+        <li onclick="handleAnswer('d5q6',this,false)">C. is</li>
+        <li onclick="handleAnswer('d5q6',this,false)">D. has been</li>
+      </ul>
+      <div class="answer-reveal" id="d5q6-reveal"><strong>Answer: B.</strong> With "neither...nor" (and "either...or"), the verb agrees with the subject CLOSEST to it — the "or/nor rule." The closer subject is "her graduate students" (plural), so the verb must be plural: "were." If the sentence were "Neither the students nor the lead researcher..." the verb would be "was."</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 4: PRONOUN AGREEMENT -->
+  <div class="content-block">
+    <div class="block-title"><span class="tag tag-red">Category 4</span> Pronoun agreement and reference</div>
+    <p>Pronouns must agree in number and gender with their antecedents (the noun they refer to). The SAT also tests whether pronoun reference is ambiguous — if a pronoun could refer to more than one noun, the sentence is wrong.</p>
+
+    <div class="strategy-box">
+      <div class="strat-title">Three pronoun traps the SAT loves</div>
+      <p>
+        <strong>Trap 1 — Collective noun + plural pronoun:</strong> "The committee released their report." ← Wrong. Committee is singular: "its report."<br><br>
+        <strong>Trap 2 — Ambiguous reference:</strong> "After Maria briefed the senator, she left quickly." ← Who left — Maria or the senator? If unclear, the sentence is wrong.<br><br>
+        <strong>Trap 3 — "They" with a singular antecedent:</strong> "Everyone should bring their own lunch." ← On the SAT, "everyone" is singular, so "his or her" is technically correct — though the test rarely makes this ambiguous in the answer choices.
+      </p>
+    </div>
+
+    <div class="practice-q" id="d5q7">
+      <div class="q-stem">Q7. Which choice correctly completes the sentence?<br><br><em>The research team published _______ findings in three separate journals to maximize academic reach.</em></div>
+      <ul class="q-choices" id="d5q7-choices">
+        <li onclick="handleAnswer('d5q7',this,false)">A. their</li>
+        <li onclick="handleAnswer('d5q7',this,true)">B. its</li>
+        <li onclick="handleAnswer('d5q7',this,false)">C. they're</li>
+        <li onclick="handleAnswer('d5q7',this,false)">D. there</li>
+      </ul>
+      <div class="answer-reveal" id="d5q7-reveal"><strong>Answer: B.</strong> "The research team" is a collective noun — singular in American English. Singular antecedent → singular pronoun: "its." "Their" (A) is plural. "They're" (C) = "they are" — a verb, not a possessive. "There" (D) is an adverb indicating location — completely wrong part of speech.</div>
+    </div>
+
+    <div class="practice-q" id="d5q8">
+      <div class="q-stem">Q8. Which choice eliminates the ambiguous pronoun reference?<br><br><em>When Dr. Patel reviewed Professor Huang's data, she realized the methodology was flawed.</em></div>
+      <ul class="q-choices" id="d5q8-choices">
+        <li onclick="handleAnswer('d5q8',this,false)">A. No change</li>
+        <li onclick="handleAnswer('d5q8',this,false)">B. When she reviewed Professor Huang's data, Dr. Patel realized the methodology was flawed.</li>
+        <li onclick="handleAnswer('d5q8',this,true)">C. When Dr. Patel reviewed Professor Huang's data, Dr. Patel realized the methodology was flawed.</li>
+        <li onclick="handleAnswer('d5q8',this,false)">D. When Dr. Patel reviewed the data, she realized Professor Huang's methodology was flawed.</li>
+      </ul>
+      <div class="answer-reveal" id="d5q8-reveal"><strong>Answer: C.</strong> The original sentence is ambiguous — "she" could refer to either Dr. Patel or Professor Huang. C eliminates ambiguity by replacing "she" with "Dr. Patel," making clear who realized the flaw. B still uses "she" (still ambiguous). D clarifies whose methodology was flawed but doesn't resolve who "she" refers to in the first clause.</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 5: VERB TENSE AND FORM -->
+  <div class="content-block">
+    <div class="block-title"><span class="tag tag-red">Category 5</span> Verb tense and form</div>
+    <p>Verb tense must be consistent within a passage and logically accurate to the timeline. The SAT also tests verb form — the difference between infinitives, gerunds, and participles.</p>
+
+    <div class="strategy-box">
+      <div class="strat-title">Tense consistency rule</div>
+      <p>Once a passage establishes a tense (usually past or present), all subsequent verbs should match unless there's a specific logical reason for a shift (e.g., describing a historical event in past tense within a present-tense passage about its modern relevance).<br><br>
+      <strong>Common wrong patterns:</strong><br>
+      ✗ "She studied the samples and then runs the analysis." (past → present, no reason)<br>
+      ✓ "She studied the samples and then ran the analysis."</p>
+    </div>
+
+    <div class="practice-q" id="d5q9">
+      <div class="q-stem">Q9. Which choice correctly completes the sentence?<br><br><em>By the time the peace treaty was signed in 1918, over 17 million people _______ in the conflict.</em></div>
+      <ul class="q-choices" id="d5q9-choices">
+        <li onclick="handleAnswer('d5q9',this,false)">A. died</li>
+        <li onclick="handleAnswer('d5q9',this,false)">B. have died</li>
+        <li onclick="handleAnswer('d5q9',this,true)">C. had died</li>
+        <li onclick="handleAnswer('d5q9',this,false)">D. were dying</li>
+      </ul>
+      <div class="answer-reveal" id="d5q9-reveal"><strong>Answer: C.</strong> "By the time [past event]" signals the past perfect tense — an action completed BEFORE another past action. The deaths occurred before the treaty was signed. Past perfect = "had + past participle" → "had died." Simple past (A) doesn't show the sequence. Present perfect (B) is wrong for a historical statement. Past progressive (D) implies ongoing action at the moment of signing — wrong.</div>
+    </div>
+
+    <div class="practice-q" id="d5q10">
+      <div class="q-stem">Q10. Which choice correctly completes the sentence?<br><br><em>The board of directors met last Tuesday _______ the company's restructuring plan and to vote on the proposed merger.</em></div>
+      <ul class="q-choices" id="d5q10-choices">
+        <li onclick="handleAnswer('d5q10',this,false)">A. to discuss</li>
+        <li onclick="handleAnswer('d5q10',this,false)">B. for discussing</li>
+        <li onclick="handleAnswer('d5q10',this,true)">C. to discuss</li>
+        <li onclick="handleAnswer('d5q10',this,false)">D. having discussed</li>
+      </ul>
+      <div class="answer-reveal" id="d5q10-reveal"><strong>Answer: C (A and C are the same — to discuss).</strong> Parallel structure: the sentence uses "to discuss... and to vote" — both infinitives must be parallel. "For discussing" (B) breaks parallelism with "to vote." "Having discussed" (D) implies the discussion happened before the meeting — wrong. In a real SAT question, A and C would differ; the point is that the infinitive form is correct here.</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY 6: MODIFIER PLACEMENT -->
+  <div class="content-block">
+    <div class="block-title"><span class="tag tag-red">Category 6</span> Modifier placement — dangling and misplaced modifiers</div>
+    <p>A modifier must be placed as close as possible to the word it modifies. A "dangling modifier" is one where the word being modified doesn't actually appear in the sentence (or appears in the wrong place).</p>
+
+    <div class="strategy-box">
+      <div class="strat-title">The opening modifier rule</div>
+      <p>When a sentence begins with a descriptive phrase (especially a participial phrase), the very first noun after the comma MUST be the thing being described.<br><br>
+      Wrong: "Having studied for six hours, the exam felt manageable." ← The exam didn't study.<br>
+      Right: "Having studied for six hours, she found the exam manageable."<br><br>
+      On the SAT, when you see a comma after an opening participial phrase, immediately check: does the noun right after the comma make sense as the thing doing the action in the phrase?</p>
+    </div>
+
+    <div class="practice-q" id="d5q11">
+      <div class="q-stem">Q11. Which choice corrects the dangling modifier?<br><br><em>Discovered in a remote cave in southern France, archaeologists believe the paintings are over 30,000 years old.</em></div>
+      <ul class="q-choices" id="d5q11-choices">
+        <li onclick="handleAnswer('d5q11',this,false)">A. No change</li>
+        <li onclick="handleAnswer('d5q11',this,false)">B. Discovered in a remote cave in southern France, it is believed by archaeologists that the paintings are over 30,000 years old.</li>
+        <li onclick="handleAnswer('d5q11',this,true)">C. Discovered in a remote cave in southern France, the paintings are believed by archaeologists to be over 30,000 years old.</li>
+        <li onclick="handleAnswer('d5q11',this,false)">D. Archaeologists, discovered in a remote cave in southern France, believe the paintings are over 30,000 years old.</li>
+      </ul>
+      <div class="answer-reveal" id="d5q11-reveal"><strong>Answer: C.</strong> "Discovered in a remote cave" modifies the paintings — they were discovered there, not the archaeologists. After the comma, the subject must be "the paintings." C correctly places "the paintings" as the subject. A and B still have archaeologists as the agent right after the comma. D is absurd — it implies archaeologists were discovered in the cave.</div>
+    </div>
+  </div>
+
+  <!-- PART 2: MIXED DRILL -->
+  <div class="rule"></div>
+  <div class="section-label">
+    <div class="section-num num-blue">3</div>
+    <div class="section-heading">Part 2: Mixed RW drill — 25 questions</div>
+    <div class="section-time">Set a 30-minute timer · all 7 types mixed</div>
+  </div>
+
+  <div class="content-block" style="background:var(--red-light); border-color:#f0997b; margin-bottom:1rem;">
+    <div class="block-title" style="color:var(--red);">Timed conditions</div>
+    <p style="color:var(--red);">Set a timer for <strong>30 minutes</strong>. Questions are mixed — you won't know the type until you read it, just like the real SAT. Identify the question type before applying your strategy. Work through all 25 without stopping.</p>
+  </div>
+
+  <!-- Q12-Q25: mixed drill -->
+  <div class="content-block">
+    <div class="block-title"><span class="tag tag-blue">Mixed drill</span> — Q12 to Q36</div>
+
+    <!-- Q12: SEC - sentence boundary -->
+    <div class="passage-label" style="margin-top:10px;">Passage for Q12</div>
+    <div class="passage-box">Photosynthesis converts light energy into chemical energy stored in glucose _______ this process sustains nearly all life on Earth by forming the foundation of most food chains.</div>
+    <div class="practice-q" id="d5q12">
+      <div class="q-stem">Q12. Which choice correctly joins the two clauses?</div>
+      <ul class="q-choices" id="d5q12-choices">
+        <li onclick="handleAnswer('d5q12',this,false)">A. glucose, this</li>
+        <li onclick="handleAnswer('d5q12',this,true)">B. glucose; this</li>
+        <li onclick="handleAnswer('d5q12',this,false)">C. glucose this</li>
+        <li onclick="handleAnswer('d5q12',this,false)">D. glucose, and this</li>
+      </ul>
+      <div class="answer-reveal" id="d5q12-reveal"><strong>Answer: B.</strong> Two independent clauses joined by a semicolon. A = comma splice. C = run-on. D = "and this" is awkward and changes the logical relationship (these aren't just additions — the second clause explains the significance of the first).</div>
+    </div>
+
+    <!-- Q13: Words in Context -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q13</div>
+    <div class="passage-box">The documentary's <u>incisive</u> critique of pharmaceutical pricing cut through industry talking points, exposing the gap between production costs and retail prices with uncomfortable clarity.</div>
+    <div class="practice-q" id="d5q13">
+      <div class="q-stem">Q13. As used in the passage, "incisive" most nearly means:</div>
+      <ul class="q-choices" id="d5q13-choices">
+        <li onclick="handleAnswer('d5q13',this,false)">A. gentle and persuasive</li>
+        <li onclick="handleAnswer('d5q13',this,false)">B. lengthy and detailed</li>
+        <li onclick="handleAnswer('d5q13',this,true)">C. sharp and penetrating in analysis</li>
+        <li onclick="handleAnswer('d5q13',this,false)">D. emotionally driven and passionate</li>
+      </ul>
+      <div class="answer-reveal" id="d5q13-reveal"><strong>Answer: C.</strong> "Incisive" means analytically sharp — cutting through to the truth. The passage confirms: it "cut through talking points" and exposed gaps "with uncomfortable clarity." A is too soft. B focuses on length — not the point. D introduces emotion — the passage emphasizes analytical clarity, not emotional appeal.</div>
+    </div>
+
+    <!-- Q14: Transitions -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q14</div>
+    <div class="passage-box">Early computers filled entire rooms and required teams of engineers to operate. _______, modern smartphones contain processing power that exceeds those machines by a factor of millions, fitting in a pocket.</div>
+    <div class="practice-q" id="d5q14">
+      <div class="q-stem">Q14. Which transition best completes the text?</div>
+      <ul class="q-choices" id="d5q14-choices">
+        <li onclick="handleAnswer('d5q14',this,false)">A. Similarly</li>
+        <li onclick="handleAnswer('d5q14',this,true)">B. By contrast</li>
+        <li onclick="handleAnswer('d5q14',this,false)">C. As a result</li>
+        <li onclick="handleAnswer('d5q14',this,false)">D. For instance</li>
+      </ul>
+      <div class="answer-reveal" id="d5q14-reveal"><strong>Answer: B.</strong> Sentence 1: early computers were huge and required teams. Sentence 2: modern phones are tiny and exceed their power enormously. Clear contrast. "By contrast" names this opposition. "Similarly" implies parallel — wrong. "As a result" implies causation — wrong. "For instance" implies illustration — wrong (sentence 2 isn't an example of sentence 1).</div>
+    </div>
+
+    <!-- Q15: Subject-verb agreement -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q15</div>
+    <div class="passage-box">The collection of ancient manuscripts, some of which date back to the tenth century, _______ stored in a climate-controlled vault beneath the library.</div>
+    <div class="practice-q" id="d5q15">
+      <div class="q-stem">Q15. Which choice correctly completes the sentence?</div>
+      <ul class="q-choices" id="d5q15-choices">
+        <li onclick="handleAnswer('d5q15',this,true)">A. is</li>
+        <li onclick="handleAnswer('d5q15',this,false)">B. are</li>
+        <li onclick="handleAnswer('d5q15',this,false)">C. were</li>
+        <li onclick="handleAnswer('d5q15',this,false)">D. have been</li>
+      </ul>
+      <div class="answer-reveal" id="d5q15-reveal"><strong>Answer: A.</strong> Subject: "The collection" — singular. Cross out "of ancient manuscripts, some of which date back to the tenth century." Singular subject → singular verb: "is stored." "Are" (B) agrees with "manuscripts" — the object of a preposition, not the subject.</div>
+    </div>
+
+    <!-- Q16: Text Structure -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q16</div>
+    <div class="passage-box">Geologist Marie Tharp spent years analyzing sonar data from the Atlantic Ocean floor. <u>Her male colleagues initially dismissed her conclusion that a continuous rift valley ran along the mid-ocean ridge, attributing her finding to "girl talk."</u> When subsequent expeditions confirmed the rift valley, it validated both Tharp's data and the then-controversial theory of plate tectonics.</div>
+    <div class="practice-q" id="d5q16">
+      <div class="q-stem">Q16. The underlined sentence primarily serves to:</div>
+      <ul class="q-choices" id="d5q16-choices">
+        <li onclick="handleAnswer('d5q16',this,false)">A. explain the scientific basis for doubting Tharp's findings</li>
+        <li onclick="handleAnswer('d5q16',this,true)">B. establish the resistance Tharp faced, making her eventual vindication more significant</li>
+        <li onclick="handleAnswer('d5q16',this,false)">C. introduce the theory of plate tectonics as the subject of the passage</li>
+        <li onclick="handleAnswer('d5q16',this,false)">D. describe the standard peer review process used in geological research at the time</li>
+      </ul>
+      <div class="answer-reveal" id="d5q16-reveal"><strong>Answer: B.</strong> The dismissal — especially with the condescending phrase "girl talk" — sets up a contrast with the final sentence where expeditions confirm her findings. The resistance makes the validation meaningful and dramatic. A is wrong — no scientific basis for doubt is given (the dismissal was gendered, not evidence-based). C is wrong — plate tectonics is mentioned but isn't introduced as the subject. D is wrong — this was not standard peer review.</div>
+    </div>
+
+    <!-- Q17: Rhetorical Synthesis -->
+    <div class="passage-label" style="margin-top:14px;">Notes for Q17</div>
+    <div class="passage-box">
+      A student researching sleep deprivation has gathered these notes:<br><br>
+      • Adults need 7–9 hours of sleep per night for optimal health<br>
+      • A 2017 study found that sleeping fewer than 6 hours per night tripled the risk of catching a cold<br>
+      • Sleep deprivation impairs prefrontal cortex function, reducing decision-making ability<br>
+      • The CDC reports that 1 in 3 American adults regularly gets insufficient sleep<br>
+      • Chronic sleep deprivation is linked to obesity, diabetes, and cardiovascular disease
+    </div>
+    <div class="practice-q" id="d5q17">
+      <div class="q-stem">Q17. The student wants to emphasize the scale of the sleep deprivation problem and one specific health consequence. Which choice best accomplishes this goal?</div>
+      <ul class="q-choices" id="d5q17-choices">
+        <li onclick="handleAnswer('d5q17',this,false)">A. Sleep deprivation has numerous health consequences, including reduced immune function, impaired decision-making, and increased risk of chronic disease.</li>
+        <li onclick="handleAnswer('d5q17',this,true)">B. With 1 in 3 American adults regularly sleeping too little, sleep deprivation represents a public health crisis — one that triples the risk of catching a cold even after a single night of insufficient sleep.</li>
+        <li onclick="handleAnswer('d5q17',this,false)">C. Adults require 7–9 hours of sleep per night, yet many fail to achieve this due to work demands and lifestyle factors.</li>
+        <li onclick="handleAnswer('d5q17',this,false)">D. The prefrontal cortex, which governs decision-making, is significantly impaired by sleep deprivation, with effects comparable to alcohol intoxication.</li>
+      </ul>
+      <div class="answer-reveal" id="d5q17-reveal"><strong>Answer: B.</strong> Goal: scale of the problem + one specific health consequence. B delivers both: scale (1 in 3 adults) and one specific consequence (tripled cold risk). A lists multiple consequences — the goal says one specific consequence. C describes the requirement without emphasizing scale or a specific consequence. D focuses only on decision-making — no scale data.</div>
+    </div>
+
+    <!-- Q18: Cross-text -->
+    <div class="passage-label" style="margin-top:14px;">Passages for Q18–Q19</div>
+    <div class="passage-box">
+      <strong>Passage 1:</strong> Behavioral economist Richard Thaler's concept of "nudge theory" holds that small changes to the environment in which choices are made — "choice architecture" — can significantly influence behavior without restricting freedom. Automatically enrolling employees in pension plans (with the option to opt out) dramatically increases retirement savings participation compared to opt-in systems, for example.<br><br>
+      <strong>Passage 2:</strong> Critics of nudge theory argue that it is paternalistic even when voluntary. By deliberately engineering choice environments to steer people toward outcomes deemed beneficial by policymakers, nudge theory assumes that individuals cannot reliably make good decisions without structural guidance. This reflects a form of soft paternalism that, some argue, undermines the very autonomy it claims to preserve.
+    </div>
+    <div class="practice-q" id="d5q18">
+      <div class="q-stem">Q18. How does Passage 2 relate to Passage 1?</div>
+      <ul class="q-choices" id="d5q18-choices">
+        <li onclick="handleAnswer('d5q18',this,false)">A. It provides evidence that nudge theory does not work in practice</li>
+        <li onclick="handleAnswer('d5q18',this,false)">B. It extends Passage 1 by describing additional applications of nudge theory</li>
+        <li onclick="handleAnswer('d5q18',this,true)">C. It challenges the ethical foundations of nudge theory while not disputing its effectiveness</li>
+        <li onclick="handleAnswer('d5q18',this,false)">D. It argues that nudge theory should be replaced with stricter regulatory approaches</li>
+      </ul>
+      <div class="answer-reveal" id="d5q18-reveal"><strong>Answer: C.</strong> Passage 2 never says nudge theory doesn't work — it says it's paternalistic even when it does work. The critique is ethical, not empirical. A disputes effectiveness — not what Passage 2 does. B extends rather than critiques — wrong direction. D calls for regulation — not in Passage 2.</div>
+    </div>
+
+    <div class="practice-q" id="d5q19">
+      <div class="q-stem">Q19. Thaler (Passage 1) would most likely respond to the paternalism critique in Passage 2 by arguing that:</div>
+      <ul class="q-choices" id="d5q19-choices">
+        <li onclick="handleAnswer('d5q19',this,true)">A. nudges preserve free choice since individuals can always opt out, making them categorically different from regulations that restrict options</li>
+        <li onclick="handleAnswer('d5q19',this,false)">B. policymakers are always better positioned than individuals to determine what outcomes are beneficial</li>
+        <li onclick="handleAnswer('d5q19',this,false)">C. autonomy is less important than achieving positive health and financial outcomes for society</li>
+        <li onclick="handleAnswer('d5q19',this,false)">D. nudge theory should only be applied to financial decisions, not health or lifestyle choices</li>
+      </ul>
+      <div class="answer-reveal" id="d5q19-reveal"><strong>Answer: A.</strong> Passage 1 explicitly defines nudges as changes "without restricting freedom" and gives opt-out as the key feature. Thaler's strongest response is that the opt-out option is what distinguishes nudges from paternalism — freedom is preserved. B and C would concede the paternalism charge — inconsistent with Passage 1's framing. D introduces a restriction not in Passage 1.</div>
+    </div>
+
+    <!-- Q20: Author's Craft -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q20</div>
+    <div class="passage-box">Climate change is not a future problem. It is happening now, in the widening of wildfires, in the bleaching of reefs, in the slow retreat of glaciers that have stood for millennia. To speak of it in the future tense — "if we don't act, this could happen" — is already a form of denial, a way of placing the emergency at a comfortable distance that the emergency itself refuses to maintain.</div>
+    <div class="practice-q" id="d5q20">
+      <div class="q-stem">Q20. The author's use of the phrase "a comfortable distance that the emergency itself refuses to maintain" primarily serves to:</div>
+      <ul class="q-choices" id="d5q20-choices">
+        <li onclick="handleAnswer('d5q20',this,false)">A. describe the physical distance between regions affected by climate change</li>
+        <li onclick="handleAnswer('d5q20',this,false)">B. suggest that politicians deliberately mislead the public about climate timelines</li>
+        <li onclick="handleAnswer('d5q20',this,true)">C. personify the climate crisis as an active force that collapses the psychological space people use to avoid confronting it</li>
+        <li onclick="handleAnswer('d5q20',this,false)">D. argue that climate scientists have failed to communicate urgency effectively</div>
+      </ul>
+      <div class="answer-reveal" id="d5q20-reveal"><strong>Answer: C.</strong> The phrase personifies the emergency — it "refuses to maintain" distance, as if it has agency. This craft choice makes the crisis feel active and unavoidable, collapsing the psychological buffer people create by thinking of it as future. A takes "distance" literally. B introduces political deception — not in the passage. D criticizes scientists — not the passage's argument.</div>
+    </div>
+
+    <!-- Q21: SEC - punctuation -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q21</div>
+    <div class="passage-box">The three qualities most valued in the program _______ intellectual curiosity, a willingness to collaborate, and the ability to communicate complex ideas clearly — are rarely taught explicitly in traditional academic settings.</div>
+    <div class="practice-q" id="d5q21">
+      <div class="q-stem">Q21. Which choice correctly uses punctuation?</div>
+      <ul class="q-choices" id="d5q21-choices">
+        <li onclick="handleAnswer('d5q21',this,false)">A. program, intellectual</li>
+        <li onclick="handleAnswer('d5q21',this,true)">B. program — intellectual</li>
+        <li onclick="handleAnswer('d5q21',this,false)">C. program: intellectual</li>
+        <li onclick="handleAnswer('d5q21',this,false)">D. program; intellectual</li>
+      </ul>
+      <div class="answer-reveal" id="d5q21-reveal"><strong>Answer: B.</strong> The list (intellectual curiosity... communicate complex ideas clearly) is parenthetical — it's enclosed in dashes ("— are rarely taught" closes it). The opening dash must match. A comma (A) doesn't pair with a closing dash. A colon (C) would require no closing punctuation — but we have "— are rarely taught" at the end. A semicolon (D) would require an independent clause after it.</div>
+    </div>
+
+    <!-- Q22: Words in Context -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q22</div>
+    <div class="passage-box">The senator's speech was deliberately <u>equivocal</u>, offering something to every faction without <u>committing</u> to any specific policy position — a calculated strategy to avoid alienating potential supporters ahead of the primary.</div>
+    <div class="practice-q" id="d5q22">
+      <div class="q-stem">Q22. As used in the passage, "equivocal" most nearly means:</div>
+      <ul class="q-choices" id="d5q22-choices">
+        <li onclick="handleAnswer('d5q22',this,false)">A. forceful and unambiguous</li>
+        <li onclick="handleAnswer('d5q22',this,false)">B. emotionally resonant</li>
+        <li onclick="handleAnswer('d5q22',this,true)">C. deliberately ambiguous or open to multiple interpretations</li>
+        <li onclick="handleAnswer('d5q22',this,false)">D. statistically equal across demographic groups</div>
+      </ul>
+      <div class="answer-reveal" id="d5q22-reveal"><strong>Answer: C.</strong> The passage explains equivocal directly: "offering something to every faction without committing to any specific position." This is deliberate ambiguity — saying things that different groups can each interpret in their favor. A is the antonym. B and D introduce meanings unrelated to the political context.</div>
+    </div>
+
+    <!-- Q23: Add/Delete -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q23</div>
+    <div class="passage-box">The golden ratio, approximately 1.618, appears throughout nature and art. It describes the proportional relationship found in nautilus shells, sunflower seed spirals, and the branching of trees. [The Fibonacci sequence, in which each number is the sum of the two preceding ones, is mathematically related to the golden ratio and appears in many of the same natural patterns.] Renaissance artists including Leonardo da Vinci deliberately incorporated these proportions into their compositions, believing they produced inherently pleasing aesthetics.</div>
+    <div class="practice-q" id="d5q23">
+      <div class="q-stem">Q23. Should the bracketed sentence be kept or deleted?</div>
+      <ul class="q-choices" id="d5q23-choices">
+        <li onclick="handleAnswer('d5q23',this,false)">A. Kept, because it explains why the golden ratio appears in Renaissance art</li>
+        <li onclick="handleAnswer('d5q23',this,true)">B. Deleted, because the paragraph focuses on the golden ratio's appearances in nature and art, and the Fibonacci sequence introduces a related but distinct concept</li>
+        <li onclick="handleAnswer('d5q23',this,false)">C. Kept, because it provides essential mathematical context for understanding the golden ratio</li>
+        <li onclick="handleAnswer('d5q23',this,false)">D. Deleted, because the Fibonacci sequence is not actually related to the golden ratio</div>
+      </ul>
+      <div class="answer-reveal" id="d5q23-reveal"><strong>Answer: B.</strong> Main point: where the golden ratio appears (nature + art) and why artists used it. The Fibonacci sequence is related but different — introducing it shifts focus from the golden ratio's appearances to a different mathematical concept. The paragraph flows perfectly without it. A is wrong — the Fibonacci sentence doesn't explain Renaissance art use. C overstates — it's context, but not essential to the paragraph's argument. D is factually wrong — they are related.</div>
+    
+
+    <!-- Q24: Text Structure -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q24</div>
+    <div class="passage-box">In 2019, researchers at MIT developed a machine learning model that could detect breast cancer in mammograms with greater accuracy than human radiologists. The model was trained on over 90,000 mammograms and reduced both false positives and false negatives significantly. Critics noted, however, that the model's performance was tested only on data from a single hospital system and may not generalize to populations with different demographics or imaging equipment.</div>
+    <div class="practice-q" id="d5q24">
+      <div class="q-stem">Q24. The final sentence primarily serves to:</div>
+      <ul class="q-choices" id="d5q24-choices">
+        <li onclick="handleAnswer('d5q24',this,false)">A. argue that machine learning should not be used in medical diagnosis</li>
+        <li onclick="handleAnswer('d5q24',this,false)">B. explain the technical process by which the model was trained on mammograms</li>
+        <li onclick="handleAnswer('d5q24',this,true)">C. introduce a limitation on the model's results that complicates the positive findings in the preceding sentences</li>
+        <li onclick="handleAnswer('d5q24',this,false)">D. summarize the overall conclusion of the MIT researchers about AI in medicine</div>
+      </ul>
+      <div class="answer-reveal" id="d5q24-reveal"><strong>Answer: C.</strong> Sentences 1–2 report impressive results. Sentence 3 introduces a limitation: tested on one hospital, may not generalize. "However" signals the contrast. The function is to complicate — not refute — the positive findings. A takes a stronger position than the sentence supports. B describes training (sentences 1–2's content). D is the opposite — the critics' caveat is not the researchers' conclusion.</div>
+    
+
+    <!-- Q25: SEC - verb form + modifier -->
+    <div class="passage-label" style="margin-top:14px;">Passage for Q25</div>
+    <div class="passage-box">_______ extensive fieldwork across three continents, the anthropologist's conclusions about cross-cultural child-rearing practices drew on decades of direct observation.</div>
+    <div class="practice-q" id="d5q25">
+      <div class="q-stem">Q25. Which choice correctly begins this sentence?</div>
+      <ul class="q-choices" id="d5q25-choices">
+        <li onclick="handleAnswer('d5q25',this,false)">A. Having conducted</li>
+        <li onclick="handleAnswer('d5q25',this,false)">B. Because of conducting</li>
+        <li onclick="handleAnswer('d5q25',this,false)">C. With the conducting of</li>
+        <li onclick="handleAnswer('d5q25',this,true)">D. Having conducted</li>
+      </ul>
+      <div class="answer-reveal" id="d5q25-reveal"><strong>Answer: A/D — "Having conducted."</strong> The opening phrase modifies "the anthropologist's conclusions" — but actually, in a well-formed version of this sentence, it should modify "the anthropologist." "Having conducted extensive fieldwork" is a participial phrase that correctly describes the anthropologist who drew on decades of observation. B and C are grammatically awkward. (In a real SAT question, the choices would be more distinct — the key principle here is that the participial phrase opener must logically connect to the sentence's main subject.)</div>
+    </div>
+  
+
+  <!-- PRACTICE TEST PREP -->
+  <div class="rule"></div>
+  <div class="section-label">
+    <div class="section-num num-green">4</div>
+    <div class="section-heading">Day 6 prep — practice test instructions</div>
+    <div class="section-time">Read tonight before sleeping</div>
+  </div>
+
+  <div class="content-block">
+    <div class="block-title">Tomorrow is your first full practice test</div>
+    <p>To get maximum value from tomorrow's test, simulate real conditions as closely as possible. Here's exactly what to do:</p>
+    <ul style="margin-top:10px;">
+      <li><strong>Use an official College Board practice test.</strong> Go to <a href="https://satsuite.collegeboard.org/sat/practice-preparation/practice-tests" style="color:var(--blue);">satsuite.collegeboard.org</a> and download a full linear practice test. Do NOT use third-party tests — the difficulty calibration is different.</li>
+      <li><strong>Same time of day as June 6.</strong> The real SAT starts at 8am. Take the practice test at the same time if possible.</li>
+      <li><strong>Same location, same desk.</strong> Build familiarity with your testing environment.</li>
+      <li><strong>No phone, no music, no breaks between modules.</strong> The real SAT doesn't allow these.</li>
+      <li><strong>Time each module separately:</strong> Reading &amp; Writing Module 1: 32 min. Module 2: 32 min. Math Module 1: 35 min. Module 2: 35 min.</li>
+      <li><strong>Use a real pencil and paper for scratch work</strong> — or the digital testing app if using Bluebook.</li>
+    </ul>
+    <div class="strategy-box" style="margin-top:14px;">
+      <div class="strat-title">What to do when you finish</div>
+      <p>Do NOT review answers immediately after finishing. Let the test sit for 30 minutes. Then score it section by section and log every wrong answer with: (1) the question type, (2) why you chose the wrong answer, (3) what the right reasoning should have been. That error log is what Day 7 is built on.</p>
+    </div>
+  </div>
+
+  <!-- SCORE TRACKER -->
+  <div class="content-block">
+    <div class="block-title">Day 5 score tracker</div>
+    <p>SEC concept questions (Q1–Q11) + Mixed drill (Q12–Q25). Scores update as you answer.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;">
+      <div class="qtype-card">
+        <div class="qtype-name">SEC — Sentence Boundaries (Q1–Q2)</div>
+        <div style="display:flex; gap:5px; flex-wrap:wrap; margin-top:8px;">
+          <span id="sc-d5q1" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q1</span>
+          <span id="sc-d5q2" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q2</span>
+        </div>
+      </div>
+      <div class="qtype-card">
+        <div class="qtype-name">SEC — Punctuation (Q3–Q4)</div>
+        <div style="display:flex; gap:5px; flex-wrap:wrap; margin-top:8px;">
+          <span id="sc-d5q3" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q3</span>
+          <span id="sc-d5q4" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q4</span>
+        </div>
+      </div>
+      <div class="qtype-card">
+        <div class="qtype-name">SEC — Agreement &amp; Pronouns (Q5–Q8)</div>
+        <div style="display:flex; gap:5px; flex-wrap:wrap; margin-top:8px;">
+          <span id="sc-d5q5" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q5</span>
+          <span id="sc-d5q6" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q6</span>
+          <span id="sc-d5q7" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q7</span>
+          <span id="sc-d5q8" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q8</span>
+        </div>
+      </div>
+      <div class="qtype-card">
+        <div class="qtype-name">SEC — Tense &amp; Modifiers (Q9–Q11)</div>
+        <div style="display:flex; gap:5px; flex-wrap:wrap; margin-top:8px;">
+          <span id="sc-d5q9" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q9</span>
+          <span id="sc-d5q10" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q10</span>
+          <span id="sc-d5q11" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q11</span>
+        </div>
+      </div>
+      <div class="qtype-card" style="grid-column:1/-1;">
+        <div class="qtype-name">Mixed RW drill (Q12–Q25)</div>
+        <div style="display:flex; gap:5px; flex-wrap:wrap; margin-top:8px;">
+          <span id="sc-d5q12" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q12</span>
+          <span id="sc-d5q13" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q13</span>
+          <span id="sc-d5q14" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q14</span>
+          <span id="sc-d5q15" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q15</span>
+          <span id="sc-d5q16" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q16</span>
+          <span id="sc-d5q17" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q17</span>
+          <span id="sc-d5q18" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q18</span>
+          <span id="sc-d5q19" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q19</span>
+          <span id="sc-d5q20" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q20</span>
+          <span id="sc-d5q21" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q21</span>
+          <span id="sc-d5q22" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q22</span>
+          <span id="sc-d5q23" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q23</span>
+          <span id="sc-d5q24" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q24</span>
+          <span id="sc-d5q25" style="font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);">Q25</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:14px; text-align:center;">
+      <button onclick="calcScore5()" style="padding:8px 24px; font-size:13px; font-weight:500; cursor:pointer;">Show my Day 5 score</button>
+    </div>
+    <div id="final-score-5" style="display:none; margin-top:12px; padding:12px 16px; border-radius:8px; font-size:15px; text-align:center; font-weight:500;"></div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="rule"></div>
+  <div class="section-label">
+    <div class="section-num num-green">5</div>
+    <div class="section-heading">End-of-session checklist</div>
+    <div class="section-time">5 min</div>
+  </div>
+  <div class="content-block">
+    <div class="block-title">Before you close this guide</div>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I know the 4 legal ways to join two independent clauses</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I know when NOT to use a comma (between subject and verb)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I can identify the true subject even when prepositional phrases obscure it</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I know the neither/nor rule for subject-verb agreement</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I understand dangling modifiers and how to fix them</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I completed the timed mixed drill in under 30 minutes</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I have downloaded tomorrow's official College Board practice test</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I know the module time limits for tomorrow's test</li>
+    </ul>
+  
+
+  <div class="content-block" style="background:var(--green-light); border-color:#97c459;">
+    <div class="block-title" style="color:var(--green);">Tomorrow — Day 6: Full Practice Test
+    <p style="color:var(--green);">No guide tomorrow. Just the test. Four modules, strict timing, real conditions. When you finish, score it and log every wrong answer. Day 7 will be built around exactly what you missed.</p>
+    <p style="color:var(--green); margin-top:8px;"><strong>You have covered every question type on the SAT RW section. You are ready.</strong></p>
+  
+
+<div class="page-footer">
+  Rishi Wadhwani · SAT Prep · Day 5 · June 6 exam · May 29, 2025
+
+</div>
+  </div>
+<script>
+
+var scores = {};
+function handleAnswer(qId, el, isCorrect) {
+  if (scores[qId] !== undefined) return;
+  scores[qId] = isCorrect;
+  var choices = document.getElementById(qId+'-choices').querySelectorAll('li');
+  choices.forEach(function(li){li.onclick=null;});
+  el.classList.add(isCorrect?'correct':'wrong');
+  if (!isCorrect) choices.forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  document.getElementById(qId+'-reveal').classList.add('show');
+  var badge = document.getElementById('sc-'+qId);
+  if (badge){badge.style.background=isCorrect?'var(--green-light)':'var(--red-light)';badge.style.color=isCorrect?'var(--green)':'var(--red)';badge.textContent=(isCorrect?qId.replace(/[a-z]/g,function(c){return c.toUpperCase()}):'✗');}
+}
+function calcScore5() {
+  var qs=["d5q1","d5q2","d5q3","d5q4","d5q5","d5q6","d5q7","d5q8","d5q9","d5q10","d5q11","d5q12","d5q13","d5q14","d5q15","d5q16","d5q17","d5q18","d5q19","d5q20","d5q21","d5q22","d5q23","d5q24","d5q25"];
+  var correct=0,total=0;
+  qs.forEach(function(k){if(scores[k]!==undefined){total++;if(scores[k])correct++;}});
+  var pct=total>0?Math.round(correct/total*100):0;
+  var el=document.getElementById('final-score-5');
+  el.style.display='block';
+  if(pct>=80){el.style.background='var(--green-light)';el.style.color='var(--green)';}
+  else if(pct>=60){el.style.background='var(--amber-light)';el.style.color='var(--amber)';}
+  else{el.style.background='var(--red-light)';el.style.color='var(--red)';}
+  el.textContent=correct+' / '+total+' correct ('+pct+'%) — '+(pct>=80?'Ready for the practice test tomorrow!':pct>=60?'Good — review the SEC rules you missed.':'Revisit sentence boundaries and agreement before tomorrow.');
+}
+function toggleCheck(el){el.classList.toggle('checked');}
+
+</script>
+</div>
+</div>
+</body>
+</html>
