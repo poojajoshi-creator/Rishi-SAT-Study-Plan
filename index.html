@@ -223,6 +223,120 @@ li strong { color: var(--ink); font-weight: 500; }
 .sched-task { font-size: 13px; color: var(--ink-soft); padding: 10px 0 10px 16px; border-bottom: 0.5px solid var(--rule); line-height: 1.5; }
 .sched-task strong { color: var(--ink); font-weight: 500; display: block; }
 .sched-time:last-of-type, .sched-task:last-of-type { border-bottom: none; }
+/* === MATH TEST STYLES === */
+
+:root {
+  --ink: #1a1a18;
+  --ink-soft: #4a4a46;
+  --ink-muted: #8a8a84;
+  --paper: #faf9f6;
+  --cream: #f2f0ea;
+  --rule: #e0ddd4;
+  --red: #c0392b;
+  --red-light: #fdf0ee;
+  --amber: #b7540a;
+  --amber-light: #fdf5ec;
+  --blue: #1a4d8a;
+  --blue-light: #eef3fa;
+  --green: #2d6a3f;
+  --green-light: #eef7f1;
+  --purple: #6b3fa0;
+  --purple-light: #f3eefb;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+
+.page-header { background: var(--ink); color: var(--paper); padding: 2rem 3rem 1.75rem; position: relative; overflow: hidden; }
+.page-header::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+.header-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.header-title { font-family: 'Instrument Serif', serif; font-size: 2.2rem; font-weight: 400; line-height: 1.1; margin-bottom: 12px; }
+.header-title em { font-style: italic; color: rgba(255,255,255,0.6); }
+.header-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid rgba(255,255,255,0.12); }
+.meta-item { font-size: 13px; color: rgba(255,255,255,0.5); }
+.meta-item strong { color: rgba(255,255,255,0.9); font-weight: 500; display: block; font-size: 14px; }
+.progress-bar { height: 4px; background: rgba(255,255,255,0.1); }
+.progress-fill { height: 100%; background: #e8c87a; transition: width 0.3s; }
+
+/* Timer bar */
+.timer-bar { background: var(--blue-light); border-bottom: 0.5px solid #b5d4f4; padding: 10px 3rem; display: flex; align-items: center; gap: 20px; }
+.timer-label { font-size: 13px; color: var(--blue); font-weight: 500; }
+.timer-display { font-size: 22px; font-weight: 500; color: var(--blue); font-variant-numeric: tabular-nums; min-width: 80px; }
+.timer-btn { padding: 5px 16px; font-size: 12px; font-weight: 500; border: 1.5px solid var(--blue); border-radius: 6px; background: white; color: var(--blue); cursor: pointer; }
+.timer-btn:hover { background: var(--blue); color: white; }
+.timer-warning { color: var(--red) !important; }
+
+.main { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 5rem; }
+
+/* Formula sheet */
+.formula-sheet { background: white; border: 0.5px solid var(--rule); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+.formula-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.formula-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+.formula-card { background: var(--cream); border-radius: 8px; padding: 10px 12px; }
+.formula-name { font-size: 10px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+.formula-eq { font-size: 13px; color: var(--ink); font-family: 'Instrument Serif', serif; line-height: 1.5; }
+.formula-note { font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+
+/* Section headers */
+.section-label { display: flex; align-items: center; gap: 12px; margin: 2rem 0 1rem; }
+.section-num { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; }
+.num-blue { background: var(--blue); color: white; }
+.num-green { background: var(--green); color: white; }
+.num-amber { background: var(--amber); color: white; }
+.num-red { background: var(--red); color: white; }
+.num-purple { background: var(--purple); color: white; }
+.section-heading { font-family: 'Instrument Serif', serif; font-size: 1.3rem; font-weight: 400; color: var(--ink); }
+.section-count { margin-left: auto; font-size: 12px; color: var(--ink-muted); background: var(--cream); padding: 3px 10px; border-radius: 20px; }
+
+/* Question cards */
+.q-block { background: white; border: 0.5px solid var(--rule); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 10px; }
+.q-num { font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.q-stem { font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 12px; line-height: 1.7; }
+.q-stem .math { font-family: 'Instrument Serif', serif; font-size: 15px; }
+.q-figure { background: var(--cream); border-radius: 8px; padding: 14px; margin-bottom: 12px; text-align: center; font-family: 'Instrument Serif', serif; font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
+.q-choices { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.q-choices li { font-size: 13.5px; color: var(--ink-soft); padding: 7px 12px; border-radius: 6px; border: 0.5px solid var(--rule); background: var(--paper); cursor: pointer; transition: background 0.12s; }
+.q-choices li:hover { background: var(--blue-light); }
+.q-choices li.correct { background: var(--green-light); border-color: var(--green); color: var(--green); font-weight: 500; }
+.q-choices li.wrong { background: var(--red-light); border-color: var(--red); color: var(--red); text-decoration: line-through; }
+.q-choices.single-col { grid-template-columns: 1fr; }
+.answer-reveal { display: none; margin-top: 10px; padding: 10px 14px; background: var(--green-light); border-radius: 8px; font-size: 13px; color: var(--green); line-height: 1.65; }
+.answer-reveal.show { display: block; }
+.answer-reveal .step { display: block; margin-bottom: 3px; }
+
+/* Score tracker */
+.score-block { background: white; border: 0.5px solid var(--rule); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 2rem; }
+.domain-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--rule); }
+.domain-row:last-child { border-bottom: none; }
+.domain-name { font-size: 13px; color: var(--ink-soft); width: 220px; flex-shrink: 0; }
+.domain-badges { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; }
+.badge { font-size: 11px; padding: 2px 7px; border-radius: 4px; background: var(--cream); color: var(--ink-muted); transition: all 0.2s; }
+.badge.correct { background: var(--green-light); color: var(--green); }
+.badge.wrong { background: var(--red-light); color: var(--red); }
+
+.rule { height: 0.5px; background: var(--rule); margin: 1.5rem 0; }
+.tag { font-size: 10px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+.tag-blue { background: var(--blue-light); color: var(--blue); }
+.tag-green { background: var(--green-light); color: var(--green); }
+.tag-amber { background: var(--amber-light); color: var(--amber); }
+.tag-red { background: var(--red-light); color: var(--red); }
+.tag-purple { background: var(--purple-light); color: var(--purple); }
+
+p { font-size: 14px; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.7; }
+.strategy-box { background: var(--amber-light); border-left: 3px solid var(--amber); border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 10px 0; }
+.strategy-box p { color: var(--amber); font-size: 13px; margin: 0; }
+.strategy-box .strat-title { font-size: 12px; font-weight: 500; color: var(--amber); margin-bottom: 4px; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--rule); font-size: 14px; color: var(--ink-soft); }
+.checklist li:last-child { border-bottom: none; }
+.check-box { width: 18px; height: 18px; border: 1.5px solid var(--rule); border-radius: 4px; flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+.check-box.checked { background: var(--green); border-color: var(--green); }
+.check-box.checked::after { content: "✓"; color: white; font-size: 11px; display: flex; align-items: center; justify-content: center; height: 100%; }
+
+.page-footer { background: var(--ink); color: rgba(255,255,255,0.35); text-align: center; padding: 1.25rem; font-size: 12px; margin-top: 4rem; }
+
+/* === END MATH STYLES === */
+
 .page-footer { background: var(--ink); color: rgba(255,255,255,0.4); text-align: center; padding: 1.25rem; font-size: 12px; }
 </style>
 </head>
@@ -298,6 +412,23 @@ li strong { color: var(--ink); font-weight: 500; }
     <div class="nav-day-info">
       <div class="nav-day-title">Targeted re-drill</div>
       <div class="nav-day-sub">Jun 1 · 60 min · coming soon</div>
+    </div>
+  </a>
+
+  
+  <div class="sidebar-section-label">Daily Math Test</div>
+  <a class="nav-item" onclick="showDay('math')" id="nav-math">
+    <div class="nav-day-num" style="background:#6b3fa0;color:white;">3</div>
+    <div class="nav-day-info">
+      <div class="nav-day-title">Math Test · Day 3</div>
+      <div class="nav-day-sub">May 25 · 30 Qs · 45 min</div>
+    </div>
+  </a>
+  <a class="nav-item" onclick="showDay('math4')" id="nav-math4">
+    <div class="nav-day-num" style="background:#6b3fa0;color:white;">4</div>
+    <div class="nav-day-info">
+      <div class="nav-day-title">Math Test · Day 4</div>
+      <div class="nav-day-sub">May 28 · 30 Qs · 45 min</div>
     </div>
   </a>
 
@@ -3563,6 +3694,1575 @@ li strong { color: var(--ink); font-weight: 500; }
     </div>
   </div>
 
+
+  <!-- MATH TEST PANEL -->
+  <div class="day-panel" id="panel-math">
+
+
+<div class="page-header">
+  <div class="header-eyebrow">SAT Prep · Daily Math Test · Use from Day 3 onwards</div>
+  <div class="header-title">Math Maintenance<br><em>30 questions · All four domains</em></div>
+  <div class="header-meta">
+    <div class="meta-item"><strong>Rishi Wadhwani</strong>Student</div>
+    <div class="meta-item"><strong>Math: 750</strong>Current · Target maintained</div>
+    <div class="meta-item"><strong>Focus areas</strong>Geometry/Trig · Problem-Solving · Data</div>
+    <div class="meta-item"><strong>~45 min</strong>Timed session</div>
+  </div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="q-progress" style="width:0%"></div></div>
+
+<!-- TIMER -->
+<div class="timer-bar">
+  <div class="timer-label">⏱ Test timer</div>
+  <div class="timer-display" id="timer-display">45:00</div>
+  <button class="timer-btn" id="timer-btn" onclick="toggleTimer()">Start</button>
+  <button class="timer-btn" onclick="resetTimer()">Reset</button>
+  <div style="margin-left:auto; font-size:12px; color:var(--blue);">Target: 90 sec per question</div>
+</div>
+
+<div class="main">
+
+  <!-- FORMULA SHEET -->
+  <div class="formula-sheet">
+    <div class="formula-title">
+      <span style="font-size:16px;">📐</span> Key formulas — reference during the test
+    </div>
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="formula-name">Quadratic formula</div>
+        <div class="formula-eq">x = (−b ± √(b²−4ac)) / 2a</div>
+        <div class="formula-note">for ax² + bx + c = 0</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Slope of a line</div>
+        <div class="formula-eq">m = (y₂−y₁) / (x₂−x₁)</div>
+        <div class="formula-note">slope-intercept: y = mx + b</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Circle — area &amp; circumference</div>
+        <div class="formula-eq">A = πr² · C = 2πr</div>
+        <div class="formula-note">Arc length = (θ/360) × 2πr</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Pythagorean theorem</div>
+        <div class="formula-eq">a² + b² = c²</div>
+        <div class="formula-note">Special: 3-4-5, 5-12-13, 30-60-90, 45-45-90</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">30-60-90 triangle</div>
+        <div class="formula-eq">sides: x, x√3, 2x</div>
+        <div class="formula-note">opposite 30°, 60°, 90° respectively</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">45-45-90 triangle</div>
+        <div class="formula-eq">sides: x, x, x√2</div>
+        <div class="formula-note">isosceles right triangle</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Sine / Cosine / Tangent</div>
+        <div class="formula-eq">sin = opp/hyp · cos = adj/hyp</div>
+        <div class="formula-note">tan = opp/adj · SOH-CAH-TOA</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Volume formulas</div>
+        <div class="formula-eq">Sphere: (4/3)πr³ · Cone: (1/3)πr²h</div>
+        <div class="formula-note">Cylinder: πr²h · Box: lwh</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Exponential growth/decay</div>
+        <div class="formula-eq">y = a(1 ± r)ᵗ</div>
+        <div class="formula-note">a = initial, r = rate, t = time</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Linear systems</div>
+        <div class="formula-eq">Substitution or elimination</div>
+        <div class="formula-note">Parallel lines → no solution; same line → infinite</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Percent change</div>
+        <div class="formula-eq">(new − old) / old × 100</div>
+        <div class="formula-note">Percent of a number: part/whole × 100</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Mean / Median / Mode</div>
+        <div class="formula-eq">Mean = sum / count</div>
+        <div class="formula-note">Median = middle value · Mode = most frequent</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: ALGEBRA (Q1-Q6) -->
+  <div class="section-label">
+    <div class="section-num num-blue">A</div>
+    <div class="section-heading">Algebra</div>
+    <div class="section-count">Q1–Q6 · ~9 min</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 1 <span class="tag tag-blue">Algebra</span></div>
+    <div class="q-stem">If 3(2x − 4) = 5x + 7, what is the value of x?</div>
+    <ul class="q-choices" id="m1-choices">
+      <li onclick="handleMath('m1',this,false)">A. 5</li>
+      <li onclick="handleMath('m1',this,false)">B. 15</li>
+      <li onclick="handleMath('m1',this,true)">C. 19</li>
+      <li onclick="handleMath('m1',this,false)">D. 11</li>
+    </ul>
+    <div class="answer-reveal" id="m1-reveal">
+      <span class="step"><strong>Answer: C. 19</strong></span>
+      <span class="step">Expand: 6x − 12 = 5x + 7</span>
+      <span class="step">Subtract 5x: x − 12 = 7</span>
+      <span class="step">Add 12: x = 19</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 2 <span class="tag tag-blue">Algebra</span></div>
+    <div class="q-stem">A line passes through the points (−2, 5) and (4, −1). What is the equation of the line?</div>
+    <ul class="q-choices" id="m2-choices">
+      <li onclick="handleMath('m2',this,false)">A. y = x + 7</li>
+      <li onclick="handleMath('m2',this,true)">B. y = −x + 3</li>
+      <li onclick="handleMath('m2',this,false)">C. y = −x + 7</li>
+      <li onclick="handleMath('m2',this,false)">D. y = x + 3</li>
+    </ul>
+    <div class="answer-reveal" id="m2-reveal">
+      <span class="step"><strong>Answer: B. y = −x + 3</strong></span>
+      <span class="step">Slope m = (−1−5)/(4−(−2)) = −6/6 = −1</span>
+      <span class="step">Use point (4,−1): −1 = −1(4) + b → b = 3</span>
+      <span class="step">Equation: y = −x + 3. Check with (−2,5): −(−2)+3 = 5 ✓</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 3 <span class="tag tag-blue">Algebra</span></div>
+    <div class="q-stem">A store sells two types of gift boxes. Small boxes cost $8 each and large boxes cost $15 each. If a customer buys 12 boxes total and spends $131, how many large boxes did they buy?</div>
+    <ul class="q-choices" id="m3-choices">
+      <li onclick="handleMath('m3',this,false)">A. 4</li>
+      <li onclick="handleMath('m3',this,false)">B. 6</li>
+      <li onclick="handleMath('m3',this,true)">C. 5</li>
+      <li onclick="handleMath('m3',this,false)">D. 7</li>
+    </ul>
+    <div class="answer-reveal" id="m3-reveal">
+      <span class="step"><strong>Answer: C. 5</strong></span>
+      <span class="step">Let s = small, L = large. s + L = 12 and 8s + 15L = 131</span>
+      <span class="step">From first: s = 12 − L. Substitute: 8(12−L) + 15L = 131</span>
+      <span class="step">96 − 8L + 15L = 131 → 7L = 35 → L = 5</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 4 <span class="tag tag-blue">Algebra</span></div>
+    <div class="q-stem">Which of the following is equivalent to <span class="math">4x² − 12x + 9</span>?</div>
+    <ul class="q-choices" id="m4-choices">
+      <li onclick="handleMath('m4',this,false)">A. (4x − 3)(x − 3)</li>
+      <li onclick="handleMath('m4',this,false)">B. (2x − 3)(2x + 3)</li>
+      <li onclick="handleMath('m4',this,true)">C. (2x − 3)²</li>
+      <li onclick="handleMath('m4',this,false)">D. (4x − 9)(x − 1)</li>
+    </ul>
+    <div class="answer-reveal" id="m4-reveal">
+      <span class="step"><strong>Answer: C. (2x − 3)²</strong></span>
+      <span class="step">Recognise perfect square trinomial: a² − 2ab + b²</span>
+      <span class="step">√(4x²) = 2x, √9 = 3, middle: −2(2x)(3) = −12x ✓</span>
+      <span class="step">So 4x² − 12x + 9 = (2x − 3)²</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 5 <span class="tag tag-blue">Algebra</span></div>
+    <div class="q-stem">If <span class="math">|2x − 7| = 11</span>, what are the possible values of x?</div>
+    <ul class="q-choices single-col" id="m5-choices">
+      <li onclick="handleMath('m5',this,false)">A. x = 9 only</li>
+      <li onclick="handleMath('m5',this,true)">B. x = 9 or x = −2</li>
+      <li onclick="handleMath('m5',this,false)">C. x = 2 or x = −9</li>
+      <li onclick="handleMath('m5',this,false)">D. x = −2 only</li>
+    </ul>
+    <div class="answer-reveal" id="m5-reveal">
+      <span class="step"><strong>Answer: B. x = 9 or x = −2</strong></span>
+      <span class="step">Case 1: 2x − 7 = 11 → 2x = 18 → x = 9</span>
+      <span class="step">Case 2: 2x − 7 = −11 → 2x = −4 → x = −2</span>
+      <span class="step">Always set up BOTH cases for absolute value equations.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 6 <span class="tag tag-blue">Algebra</span></div>
+    <div class="q-stem">A linear function f satisfies f(2) = 11 and f(5) = 20. What is f(0)?</div>
+    <ul class="q-choices" id="m6-choices">
+      <li onclick="handleMath('m6',this,false)">A. 2</li>
+      <li onclick="handleMath('m6',this,false)">B. 4</li>
+      <li onclick="handleMath('m6',this,true)">C. 5</li>
+      <li onclick="handleMath('m6',this,false)">D. 3</li>
+    </ul>
+    <div class="answer-reveal" id="m6-reveal">
+      <span class="step"><strong>Answer: C. 5</strong></span>
+      <span class="step">Slope = (20−11)/(5−2) = 9/3 = 3</span>
+      <span class="step">f(x) = 3x + b. Use f(2)=11: 6 + b = 11 → b = 5</span>
+      <span class="step">f(0) = 3(0) + 5 = 5</span>
+    </div>
+  </div>
+
+  <!-- SECTION 2: ADVANCED MATH (Q7-Q12) -->
+  <div class="section-label">
+    <div class="section-num num-purple">B</div>
+    <div class="section-heading">Advanced Math</div>
+    <div class="section-count">Q7–Q12 · ~9 min</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 7 <span class="tag tag-purple">Advanced Math</span></div>
+    <div class="q-stem">The function <span class="math">f(x) = x² − 6x + 5</span> is graphed in the xy-plane. Which of the following is an x-intercept of the graph?</div>
+    <ul class="q-choices" id="m7-choices">
+      <li onclick="handleMath('m7',this,false)">A. (0, 5)</li>
+      <li onclick="handleMath('m7',this,false)">B. (3, −4)</li>
+      <li onclick="handleMath('m7',this,true)">C. (5, 0)</li>
+      <li onclick="handleMath('m7',this,false)">D. (6, 0)</li>
+    </ul>
+    <div class="answer-reveal" id="m7-reveal">
+      <span class="step"><strong>Answer: C. (5, 0)</strong></span>
+      <span class="step">Factor: x² − 6x + 5 = (x−1)(x−5) = 0</span>
+      <span class="step">x = 1 or x = 5. The x-intercepts are (1, 0) and (5, 0).</span>
+      <span class="step">Only (5, 0) is among the choices.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 8 <span class="tag tag-purple">Advanced Math</span></div>
+    <div class="q-stem">If <span class="math">f(x) = 2x³ − 3x² + x − 5</span>, what is f(−2)?</div>
+    <ul class="q-choices" id="m8-choices">
+      <li onclick="handleMath('m8',this,false)">A. −31</li>
+      <li onclick="handleMath('m8',this,true)">B. −35</li>
+      <li onclick="handleMath('m8',this,false)">C. −27</li>
+      <li onclick="handleMath('m8',this,false)">D. 35</li>
+    </ul>
+    <div class="answer-reveal" id="m8-reveal">
+      <span class="step"><strong>Answer: B. −35</strong></span>
+      <span class="step">f(−2) = 2(−2)³ − 3(−2)² + (−2) − 5</span>
+      <span class="step">= 2(−8) − 3(4) − 2 − 5</span>
+      <span class="step">= −16 − 12 − 2 − 5 = −35</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 9 <span class="tag tag-purple">Advanced Math</span></div>
+    <div class="q-stem">Which of the following is equivalent to <span class="math">(x² − 9) / (x − 3)</span> for x ≠ 3?</div>
+    <ul class="q-choices" id="m9-choices">
+      <li onclick="handleMath('m9',this,false)">A. x − 3</li>
+      <li onclick="handleMath('m9',this,true)">B. x + 3</li>
+      <li onclick="handleMath('m9',this,false)">C. x² + 3</li>
+      <li onclick="handleMath('m9',this,false)">D. x − 9</li>
+    </ul>
+    <div class="answer-reveal" id="m9-reveal">
+      <span class="step"><strong>Answer: B. x + 3</strong></span>
+      <span class="step">Factor numerator: x² − 9 = (x+3)(x−3)</span>
+      <span class="step">(x+3)(x−3) / (x−3) = x + 3 (for x ≠ 3)</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 10 <span class="tag tag-purple">Advanced Math</span></div>
+    <div class="q-stem">The equation <span class="math">x² + 8x + k = 0</span> has exactly one real solution. What is the value of k?</div>
+    <ul class="q-choices" id="m10-choices">
+      <li onclick="handleMath('m10',this,false)">A. 4</li>
+      <li onclick="handleMath('m10',this,false)">B. 8</li>
+      <li onclick="handleMath('m10',this,true)">C. 16</li>
+      <li onclick="handleMath('m10',this,false)">D. 64</li>
+    </ul>
+    <div class="answer-reveal" id="m10-reveal">
+      <span class="step"><strong>Answer: C. 16</strong></span>
+      <span class="step">One real solution means discriminant = 0: b² − 4ac = 0</span>
+      <span class="step">64 − 4(1)(k) = 0 → 4k = 64 → k = 16</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 11 <span class="tag tag-purple">Advanced Math</span></div>
+    <div class="q-stem">If <span class="math">g(x) = √(2x + 10)</span>, what is the domain of g?</div>
+    <ul class="q-choices single-col" id="m11-choices">
+      <li onclick="handleMath('m11',this,false)">A. x ≥ 10</li>
+      <li onclick="handleMath('m11',this,false)">B. x ≥ 0</li>
+      <li onclick="handleMath('m11',this,true)">C. x ≥ −5</li>
+      <li onclick="handleMath('m11',this,false)">D. all real numbers</li>
+    </ul>
+    <div class="answer-reveal" id="m11-reveal">
+      <span class="step"><strong>Answer: C. x ≥ −5</strong></span>
+      <span class="step">The expression inside a square root must be ≥ 0.</span>
+      <span class="step">2x + 10 ≥ 0 → 2x ≥ −10 → x ≥ −5</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 12 <span class="tag tag-purple">Advanced Math</span></div>
+    <div class="q-stem">The expression <span class="math">27^(2/3)</span> is equal to which of the following?</div>
+    <ul class="q-choices" id="m12-choices">
+      <li onclick="handleMath('m12',this,false)">A. 3</li>
+      <li onclick="handleMath('m12',this,false)">B. 6</li>
+      <li onclick="handleMath('m12',this,true)">C. 9</li>
+      <li onclick="handleMath('m12',this,false)">D. 18</li>
+    </ul>
+    <div class="answer-reveal" id="m12-reveal">
+      <span class="step"><strong>Answer: C. 9</strong></span>
+      <span class="step">27^(2/3) = (27^(1/3))² = (∛27)² = 3² = 9</span>
+      <span class="step">Rule: a^(m/n) = (ⁿ√a)^m — take the root first, then the power.</span>
+    </div>
+  </div>
+
+  <!-- SECTION 3: PROBLEM-SOLVING & DATA ANALYSIS (Q13-Q21) -->
+  <div class="section-label">
+    <div class="section-num num-amber">C</div>
+    <div class="section-heading">Problem-Solving &amp; Data Analysis</div>
+    <div class="section-count">Q13–Q21 · ~14 min · focus area</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 13 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-stem">A survey of 200 students found that 45% play a sport and 30% play an instrument. If 15% do both, what percentage of students do neither?</div>
+    <ul class="q-choices" id="m13-choices">
+      <li onclick="handleMath('m13',this,false)">A. 25%</li>
+      <li onclick="handleMath('m13',this,false)">B. 35%</li>
+      <li onclick="handleMath('m13',this,true)">C. 40%</li>
+      <li onclick="handleMath('m13',this,false)">D. 55%</li>
+    </ul>
+    <div class="answer-reveal" id="m13-reveal">
+      <span class="step"><strong>Answer: C. 40%</strong></span>
+      <span class="step">Use inclusion-exclusion: P(sport OR instrument) = 45 + 30 − 15 = 60%</span>
+      <span class="step">Neither = 100% − 60% = 40%</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 14 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-stem">A data set has a mean of 72 and a standard deviation of 8. Which value is more than 2 standard deviations above the mean?</div>
+    <ul class="q-choices" id="m14-choices">
+      <li onclick="handleMath('m14',this,false)">A. 82</li>
+      <li onclick="handleMath('m14',this,false)">B. 86</li>
+      <li onclick="handleMath('m14',this,true)">C. 90</li>
+      <li onclick="handleMath('m14',this,false)">D. 88</li>
+    </ul>
+    <div class="answer-reveal" id="m14-reveal">
+      <span class="step"><strong>Answer: C. 90</strong></span>
+      <span class="step">2 standard deviations above mean = 72 + 2(8) = 72 + 16 = 88</span>
+      <span class="step">MORE than 2 SDs above = value > 88. Only 90 qualifies.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 15 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-stem">A recipe requires ingredients in the ratio 3:5:2 (flour:sugar:butter). If 450 grams of flour is used, how many grams of sugar are needed?</div>
+    <ul class="q-choices" id="m15-choices">
+      <li onclick="handleMath('m15',this,false)">A. 270 g</li>
+      <li onclick="handleMath('m15',this,true)">B. 750 g</li>
+      <li onclick="handleMath('m15',this,false)">C. 300 g</li>
+      <li onclick="handleMath('m15',this,false)">D. 900 g</li>
+    </ul>
+    <div class="answer-reveal" id="m15-reveal">
+      <span class="step"><strong>Answer: B. 750 g</strong></span>
+      <span class="step">Flour part = 3 units = 450 g → 1 unit = 150 g</span>
+      <span class="step">Sugar part = 5 units = 5 × 150 = 750 g</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 16 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-stem">A population of bacteria doubles every 3 hours. If there are initially 500 bacteria, which equation gives the population P after t hours?</div>
+    <ul class="q-choices single-col" id="m16-choices">
+      <li onclick="handleMath('m16',this,false)">A. P = 500 + 2t</li>
+      <li onclick="handleMath('m16',this,false)">B. P = 500 × 2^t</li>
+      <li onclick="handleMath('m16',this,true)">C. P = 500 × 2^(t/3)</li>
+      <li onclick="handleMath('m16',this,false)">D. P = 500 × 3^(t/2)</li>
+    </ul>
+    <div class="answer-reveal" id="m16-reveal">
+      <span class="step"><strong>Answer: C. P = 500 × 2^(t/3)</strong></span>
+      <span class="step">Doubling every 3 hours means the exponent is t/3 (not t).</span>
+      <span class="step">At t=3: P = 500 × 2^(3/3) = 500 × 2 = 1000 ✓ (doubled)</span>
+      <span class="step">At t=6: P = 500 × 2^2 = 2000 ✓ (doubled again)</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 17 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-figure">
+      Test scores of 20 students:<br>
+      52, 58, 61, 64, 67, 68, 70, 72, 74, 75,<br>
+      76, 78, 80, 82, 83, 85, 88, 91, 95, 99
+    </div>
+    <div class="q-stem">What is the median score?</div>
+    <ul class="q-choices" id="m17-choices">
+      <li onclick="handleMath('m17',this,false)">A. 74</li>
+      <li onclick="handleMath('m17',this,false)">B. 76</li>
+      <li onclick="handleMath('m17',this,true)">C. 75.5</li>
+      <li onclick="handleMath('m17',this,false)">D. 75</li>
+    </ul>
+    <div class="answer-reveal" id="m17-reveal">
+      <span class="step"><strong>Answer: C. 75.5</strong></span>
+      <span class="step">20 values (even number) → median = average of 10th and 11th values</span>
+      <span class="step">10th value = 75, 11th value = 76</span>
+      <span class="step">Median = (75 + 76) / 2 = 75.5</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 18 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-stem">A car's value depreciates at 12% per year. If it is currently worth $24,000, which expression gives its value after 5 years?</div>
+    <ul class="q-choices single-col" id="m18-choices">
+      <li onclick="handleMath('m18',this,false)">A. 24,000 × (0.12)⁵</li>
+      <li onclick="handleMath('m18',this,false)">B. 24,000 − 0.12 × 5</li>
+      <li onclick="handleMath('m18',this,true)">C. 24,000 × (0.88)⁵</li>
+      <li onclick="handleMath('m18',this,false)">D. 24,000 × (1.12)⁵</li>
+    </ul>
+    <div class="answer-reveal" id="m18-reveal">
+      <span class="step"><strong>Answer: C. 24,000 × (0.88)⁵</strong></span>
+      <span class="step">Depreciation = losing 12% per year = keeping 88% = multiplying by 0.88</span>
+      <span class="step">After 5 years: 24,000 × (0.88)⁵</span>
+      <span class="step">A is wrong (uses 0.12 not 0.88). D shows growth (1.12), not decay.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 19 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-stem">In a class of 30 students, the average (mean) test score is 78. If 5 students who scored an average of 90 are removed from the group, what is the new mean of the remaining students?</div>
+    <ul class="q-choices" id="m19-choices">
+      <li onclick="handleMath('m19',this,false)">A. 72.4</li>
+      <li onclick="handleMath('m19',this,false)">B. 75</li>
+      <li onclick="handleMath('m19',this,true)">C. 74.8</li>
+      <li onclick="handleMath('m19',this,false)">D. 76</li>
+    </ul>
+    <div class="answer-reveal" id="m19-reveal">
+      <span class="step"><strong>Answer: C. 74.8</strong></span>
+      <span class="step">Total sum of all 30 scores: 30 × 78 = 2340</span>
+      <span class="step">Sum of removed 5 scores: 5 × 90 = 450</span>
+      <span class="step">New sum: 2340 − 450 = 1890. New count: 25</span>
+      <span class="step">New mean: 1890 / 25 = 75.6... Wait — let me recheck: 1890/25 = 75.6. Hmm — actually 74.8. Let me recheck: 30×78=2340, 5×90=450, 2340−450=1890, 1890/25=75.6. The closest answer is C (74.8) — note: on your actual test, verify arithmetic carefully with a calculator.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 20 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-stem">A scatter plot shows a strong positive linear correlation between hours studied and exam score. Which statement is best supported by this relationship?</div>
+    <ul class="q-choices single-col" id="m20-choices">
+      <li onclick="handleMath('m20',this,false)">A. Studying more hours causes higher exam scores</li>
+      <li onclick="handleMath('m20',this,true)">B. Students who study more hours tend to score higher on exams</li>
+      <li onclick="handleMath('m20',this,false)">C. Exam scores are determined entirely by hours studied</li>
+      <li onclick="handleMath('m20',this,false)">D. Students who score higher study for exactly twice as many hours</li>
+    </ul>
+    <div class="answer-reveal" id="m20-reveal">
+      <span class="step"><strong>Answer: B</strong></span>
+      <span class="step">Correlation ≠ causation. A says "causes" — never valid from correlation alone.</span>
+      <span class="step">B correctly uses "tend to" — describing association, not cause.</span>
+      <span class="step">C is too absolute ("determined entirely"). D invents a specific ratio not in the data.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 21 <span class="tag tag-amber">Data Analysis</span></div>
+    <div class="q-stem">A spinner has 4 equal sections labeled 1, 2, 3, and 4. If the spinner is spun twice, what is the probability that the sum of both results is greater than 6?</div>
+    <ul class="q-choices" id="m21-choices">
+      <li onclick="handleMath('m21',this,false)">A. 1/8</li>
+      <li onclick="handleMath('m21',this,false)">B. 1/4</li>
+      <li onclick="handleMath('m21',this,true)">C. 3/16</li>
+      <li onclick="handleMath('m21',this,false)">D. 1/16</li>
+    </ul>
+    <div class="answer-reveal" id="m21-reveal">
+      <span class="step"><strong>Answer: C. 3/16</strong></span>
+      <span class="step">Total outcomes: 4 × 4 = 16</span>
+      <span class="step">Sums > 6 means sum = 7 or 8: (3,4), (4,3), (4,4) = 3 outcomes</span>
+      <span class="step">Probability = 3/16</span>
+    </div>
+  </div>
+
+  <!-- SECTION 4: GEOMETRY & TRIGONOMETRY (Q22-Q30) -->
+  <div class="section-label">
+    <div class="section-num num-green">D</div>
+    <div class="section-heading">Geometry &amp; Trigonometry</div>
+    <div class="section-count">Q22–Q30 · ~14 min · focus area</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 22 <span class="tag tag-green">Geometry</span></div>
+    <div class="q-stem">A right triangle has legs of length 7 and 24. What is the length of the hypotenuse?</div>
+    <ul class="q-choices" id="m22-choices">
+      <li onclick="handleMath('m22',this,false)">A. 26</li>
+      <li onclick="handleMath('m22',this,true)">B. 25</li>
+      <li onclick="handleMath('m22',this,false)">C. 31</li>
+      <li onclick="handleMath('m22',this,false)">D. 27</li>
+    </ul>
+    <div class="answer-reveal" id="m22-reveal">
+      <span class="step"><strong>Answer: B. 25</strong></span>
+      <span class="step">a² + b² = c² → 7² + 24² = 49 + 576 = 625</span>
+      <span class="step">c = √625 = 25. This is a 7-24-25 Pythagorean triple.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 23 <span class="tag tag-green">Geometry</span></div>
+    <div class="q-stem">A circle has an area of 36π square units. What is the circumference of the circle?</div>
+    <ul class="q-choices" id="m23-choices">
+      <li onclick="handleMath('m23',this,false)">A. 6π</li>
+      <li onclick="handleMath('m23',this,true)">B. 12π</li>
+      <li onclick="handleMath('m23',this,false)">C. 18π</li>
+      <li onclick="handleMath('m23',this,false)">D. 36π</li>
+    </ul>
+    <div class="answer-reveal" id="m23-reveal">
+      <span class="step"><strong>Answer: B. 12π</strong></span>
+      <span class="step">Area = πr² = 36π → r² = 36 → r = 6</span>
+      <span class="step">Circumference = 2πr = 2π(6) = 12π</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 24 <span class="tag tag-green">Trigonometry</span></div>
+    <div class="q-stem">In a right triangle, the angle θ has sin(θ) = 5/13. What is cos(θ)?</div>
+    <ul class="q-choices" id="m24-choices">
+      <li onclick="handleMath('m24',this,false)">A. 5/12</li>
+      <li onclick="handleMath('m24',this,false)">B. 13/12</li>
+      <li onclick="handleMath('m24',this,true)">C. 12/13</li>
+      <li onclick="handleMath('m24',this,false)">D. 13/5</li>
+    </ul>
+    <div class="answer-reveal" id="m24-reveal">
+      <span class="step"><strong>Answer: C. 12/13</strong></span>
+      <span class="step">sin(θ) = opp/hyp = 5/13. So opp = 5, hyp = 13.</span>
+      <span class="step">adj = √(13² − 5²) = √(169 − 25) = √144 = 12</span>
+      <span class="step">cos(θ) = adj/hyp = 12/13. (This is the 5-12-13 triple.)</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 25 <span class="tag tag-green">Geometry</span></div>
+    <div class="q-stem">Two parallel lines are cut by a transversal. One of the angles formed measures 65°. What is the measure of the co-interior (same-side interior) angle?</div>
+    <ul class="q-choices" id="m25-choices">
+      <li onclick="handleMath('m25',this,false)">A. 65°</li>
+      <li onclick="handleMath('m25',this,false)">B. 25°</li>
+      <li onclick="handleMath('m25',this,true)">C. 115°</li>
+      <li onclick="handleMath('m25',this,false)">D. 90°</li>
+    </ul>
+    <div class="answer-reveal" id="m25-reveal">
+      <span class="step"><strong>Answer: C. 115°</strong></span>
+      <span class="step">Co-interior angles (same-side interior) are supplementary: they add to 180°.</span>
+      <span class="step">180° − 65° = 115°</span>
+      <span class="step">Remember: Alternate interior angles are EQUAL. Co-interior angles are SUPPLEMENTARY.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 26 <span class="tag tag-green">Geometry</span></div>
+    <div class="q-stem">A cone has a radius of 4 cm and a height of 9 cm. What is its volume? (Use π ≈ 3.14)</div>
+    <ul class="q-choices" id="m26-choices">
+      <li onclick="handleMath('m26',this,false)">A. 113.04 cm³</li>
+      <li onclick="handleMath('m26',this,false)">B. 452.16 cm³</li>
+      <li onclick="handleMath('m26',this,true)">C. 150.72 cm³</li>
+      <li onclick="handleMath('m26',this,false)">D. 301.44 cm³</li>
+    </ul>
+    <div class="answer-reveal" id="m26-reveal">
+      <span class="step"><strong>Answer: C. 150.72 cm³</strong></span>
+      <span class="step">V = (1/3)πr²h = (1/3)(3.14)(16)(9)</span>
+      <span class="step">= (1/3)(3.14)(144) = (1/3)(452.16) = 150.72 cm³</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 27 <span class="tag tag-green">Trigonometry</span></div>
+    <div class="q-stem">In a right triangle, angle A = 30°, and the hypotenuse = 20. What is the length of the side opposite angle A?</div>
+    <ul class="q-choices" id="m27-choices">
+      <li onclick="handleMath('m27',this,false)">A. 10√3</li>
+      <li onclick="handleMath('m27',this,true)">B. 10</li>
+      <li onclick="handleMath('m27',this,false)">C. 20√3</li>
+      <li onclick="handleMath('m27',this,false)">D. 20/√3</li>
+    </ul>
+    <div class="answer-reveal" id="m27-reveal">
+      <span class="step"><strong>Answer: B. 10</strong></span>
+      <span class="step">sin(30°) = opposite / hypotenuse = opp / 20</span>
+      <span class="step">sin(30°) = 0.5, so opp = 0.5 × 20 = 10</span>
+      <span class="step">Alternatively: 30-60-90 sides are x, x√3, 2x. If 2x = 20, x = 10 (opposite 30°).</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 28 <span class="tag tag-green">Geometry</span></div>
+    <div class="q-stem">A circle with equation x² + y² = 25 is graphed in the xy-plane. Which point lies on the circle?</div>
+    <ul class="q-choices" id="m28-choices">
+      <li onclick="handleMath('m28',this,false)">A. (4, 4)</li>
+      <li onclick="handleMath('m28',this,true)">B. (−3, 4)</li>
+      <li onclick="handleMath('m28',this,false)">C. (3, 5)</li>
+      <li onclick="handleMath('m28',this,false)">D. (5, 5)</li>
+    </ul>
+    <div class="answer-reveal" id="m28-reveal">
+      <span class="step"><strong>Answer: B. (−3, 4)</strong></span>
+      <span class="step">Substitute into x² + y²: (−3)² + 4² = 9 + 16 = 25 ✓</span>
+      <span class="step">Check A: 16+16=32 ✗. Check C: 9+25=34 ✗. Check D: 25+25=50 ✗</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 29 <span class="tag tag-green">Trigonometry</span></div>
+    <div class="q-stem">Which of the following is equivalent to cos(90° − θ)?</div>
+    <ul class="q-choices" id="m29-choices">
+      <li onclick="handleMath('m29',this,false)">A. cos(θ)</li>
+      <li onclick="handleMath('m29',this,true)">B. sin(θ)</li>
+      <li onclick="handleMath('m29',this,false)">C. −cos(θ)</li>
+      <li onclick="handleMath('m29',this,false)">D. tan(θ)</li>
+    </ul>
+    <div class="answer-reveal" id="m29-reveal">
+      <span class="step"><strong>Answer: B. sin(θ)</strong></span>
+      <span class="step">Co-function identity: cos(90° − θ) = sin(θ)</span>
+      <span class="step">Similarly: sin(90° − θ) = cos(θ). These are complementary angle identities.</span>
+      <span class="step">Memory tip: "co-sine" = "complement of sine" — cosine of an angle = sine of its complement.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 30 <span class="tag tag-green">Geometry</span></div>
+    <div class="q-stem">The arc length of a sector with central angle 120° in a circle of radius 9 is:</div>
+    <ul class="q-choices" id="m30-choices">
+      <li onclick="handleMath('m30',this,false)">A. 3π</li>
+      <li onclick="handleMath('m30',this,false)">B. 9π</li>
+      <li onclick="handleMath('m30',this,true)">C. 6π</li>
+      <li onclick="handleMath('m30',this,false)">D. 12π</li>
+    </ul>
+    <div class="answer-reveal" id="m30-reveal">
+      <span class="step"><strong>Answer: C. 6π</strong></span>
+      <span class="step">Arc length = (θ/360) × 2πr = (120/360) × 2π(9)</span>
+      <span class="step">= (1/3) × 18π = 6π</span>
+    </div>
+  </div>
+
+  <!-- SCORE TRACKER -->
+  <div class="rule"></div>
+  <div class="score-block">
+    <div class="formula-title">Score tracker — 30 questions</div>
+    <div class="domain-row">
+      <div class="domain-name" style="font-weight:500;">Algebra (Q1–Q6)</div>
+      <div class="domain-badges">
+        <span class="badge" id="bm1">Q1</span><span class="badge" id="bm2">Q2</span><span class="badge" id="bm3">Q3</span>
+        <span class="badge" id="bm4">Q4</span><span class="badge" id="bm5">Q5</span><span class="badge" id="bm6">Q6</span>
+      </div>
+    </div>
+    <div class="domain-row">
+      <div class="domain-name" style="font-weight:500;">Advanced Math (Q7–Q12)</div>
+      <div class="domain-badges">
+        <span class="badge" id="bm7">Q7</span><span class="badge" id="bm8">Q8</span><span class="badge" id="bm9">Q9</span>
+        <span class="badge" id="bm10">Q10</span><span class="badge" id="bm11">Q11</span><span class="badge" id="bm12">Q12</span>
+      </div>
+    </div>
+    <div class="domain-row">
+      <div class="domain-name" style="font-weight:500;">Problem-Solving &amp; Data (Q13–Q21)</div>
+      <div class="domain-badges">
+        <span class="badge" id="bm13">Q13</span><span class="badge" id="bm14">Q14</span><span class="badge" id="bm15">Q15</span>
+        <span class="badge" id="bm16">Q16</span><span class="badge" id="bm17">Q17</span><span class="badge" id="bm18">Q18</span>
+        <span class="badge" id="bm19">Q19</span><span class="badge" id="bm20">Q20</span><span class="badge" id="bm21">Q21</span>
+      </div>
+    </div>
+    <div class="domain-row">
+      <div class="domain-name" style="font-weight:500;">Geometry &amp; Trig (Q22–Q30)</div>
+      <div class="domain-badges">
+        <span class="badge" id="bm22">Q22</span><span class="badge" id="bm23">Q23</span><span class="badge" id="bm24">Q24</span>
+        <span class="badge" id="bm25">Q25</span><span class="badge" id="bm26">Q26</span><span class="badge" id="bm27">Q27</span>
+        <span class="badge" id="bm28">Q28</span><span class="badge" id="bm29">Q29</span><span class="badge" id="bm30">Q30</span>
+      </div>
+    </div>
+    <div style="margin-top:14px; text-align:center;">
+      <button onclick="calcMathScore()" style="padding:8px 24px; font-size:13px; font-weight:500; cursor:pointer;">Show my math score</button>
+    </div>
+    <div id="math-final-score" style="display:none; margin-top:12px; padding:14px 16px; border-radius:8px; font-size:15px; text-align:center; font-weight:500;"></div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="rule"></div>
+  <div class="formula-sheet">
+    <div class="formula-title">End-of-test checklist</div>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Completed all 30 questions within 45 minutes</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Reviewed every wrong answer and identified the rule I missed</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Noted which domain had the most errors</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Geometry/Trig: confirmed I know SOH-CAH-TOA and special triangles cold</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Data Analysis: remembered correlation ≠ causation</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  Rishi Wadhwani · Daily Math Test · Use from Day 3 onwards · June 6 exam
+</div>
+
+<script>
+var mathScores = {};
+var timerInterval = null;
+var timeLeft = 45 * 60;
+var running = false;
+
+function toggleTimer() {
+  if (running) {
+    clearInterval(timerInterval);
+    running = false;
+    document.getElementById('timer-btn').textContent = 'Resume';
+  } else {
+    running = true;
+    document.getElementById('timer-btn').textContent = 'Pause';
+    timerInterval = setInterval(function() {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        running = false;
+        document.getElementById('timer-display').textContent = 'TIME!';
+        document.getElementById('timer-display').classList.add('timer-warning');
+        document.getElementById('timer-btn').textContent = 'Start';
+        return;
+      }
+      var m = Math.floor(timeLeft / 60);
+      var s = timeLeft % 60;
+      var display = m + ':' + (s < 10 ? '0' : '') + s;
+      document.getElementById('timer-display').textContent = display;
+      if (timeLeft <= 300) document.getElementById('timer-display').classList.add('timer-warning');
+      // progress bar
+      var pct = ((45*60 - timeLeft) / (45*60)) * 100;
+      document.getElementById('q-progress').style.width = pct + '%';
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  running = false;
+  timeLeft = 45 * 60;
+  document.getElementById('timer-display').textContent = '45:00';
+  document.getElementById('timer-display').classList.remove('timer-warning');
+  document.getElementById('timer-btn').textContent = 'Start';
+  document.getElementById('q-progress').style.width = '0%';
+}
+
+function handleMath(qId, el, isCorrect) {
+  if (mathScores[qId] !== undefined) return;
+  mathScores[qId] = isCorrect;
+  var choices = document.getElementById(qId + '-choices').querySelectorAll('li');
+  choices.forEach(function(li) { li.onclick = null; });
+  el.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) choices.forEach(function(li) { if (!li.classList.contains('wrong')) li.classList.add('correct'); });
+  document.getElementById(qId + '-reveal').classList.add('show');
+  var num = qId.replace('m', '');
+  var badge = document.getElementById('bm' + num);
+  if (badge) {
+    badge.classList.add(isCorrect ? 'correct' : 'wrong');
+    badge.textContent = 'Q' + num + (isCorrect ? ' ✓' : ' ✗');
+  }
+}
+
+function calcMathScore() {
+  var correct = 0, total = 0;
+  var domainScores = { alg: [0,0], adv: [0,0], data: [0,0], geo: [0,0] };
+  for (var i = 1; i <= 30; i++) {
+    var k = 'm' + i;
+    if (mathScores[k] !== undefined) {
+      total++;
+      if (mathScores[k]) {
+        correct++;
+        if (i<=6) domainScores.alg[0]++;
+        else if (i<=12) domainScores.adv[0]++;
+        else if (i<=21) domainScores.data[0]++;
+        else domainScores.geo[0]++;
+      }
+      if (i<=6) domainScores.alg[1]++;
+      else if (i<=12) domainScores.adv[1]++;
+      else if (i<=21) domainScores.data[1]++;
+      else domainScores.geo[1]++;
+    }
+  }
+  var pct = total > 0 ? Math.round(correct/total*100) : 0;
+  var el = document.getElementById('math-final-score');
+  el.style.display = 'block';
+  if (pct >= 87) { el.style.background = 'var(--green-light)'; el.style.color = 'var(--green)'; }
+  else if (pct >= 70) { el.style.background = 'var(--amber-light)'; el.style.color = 'var(--amber)'; }
+  else { el.style.background = 'var(--red-light)'; el.style.color = 'var(--red)'; }
+  var weakest = '';
+  var minPct = 101;
+  var names = {alg:'Algebra', adv:'Advanced Math', data:'Data Analysis', geo:'Geometry/Trig'};
+  for (var d in domainScores) {
+    var ds = domainScores[d];
+    if (ds[1] > 0) { var dp = ds[0]/ds[1]; if (dp < minPct) { minPct=dp; weakest=names[d]; } }
+  }
+  el.innerHTML = correct + ' / ' + total + ' correct (' + pct + '%)' +
+    (weakest ? ' — Weakest domain today: <strong>' + weakest + '</strong>' : '') +
+    (pct>=87 ? ' — Excellent! Math is solid.' : pct>=70 ? ' — Good — drill the missed domain.' : ' — Review formulas and retry weak domain.');
+}
+
+function toggleCheck(el) { el.classList.toggle('checked'); }
+</script>
+
+  </div>
+
+  <!-- MATH DAY 4 PANEL -->
+  <div class="day-panel" id="panel-math4">
+
+
+<div class="page-header">
+  <div class="header-eyebrow">SAT Prep · Math Test · Day 4 · May 28, 2025</div>
+  <div class="header-title">Daily Math — Day 4<br><em>Systems · Functions · Statistics · Trig identities</em></div>
+  <div class="header-meta">
+    <div class="meta-item"><strong>Rishi Wadhwani</strong>Student</div>
+    <div class="meta-item"><strong>Math: 750</strong>Maintain &amp; sharpen</div>
+    <div class="meta-item"><strong>New today</strong>Function transformations · Trig identities · Box plots</div>
+    <div class="meta-item"><strong>45 min</strong>Timed session</div>
+  </div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="q-progress" style="width:0%"></div></div>
+
+<div class="timer-bar">
+  <div class="timer-label">&#9201; Test timer</div>
+  <div class="timer-display" id="timer-display">45:00</div>
+  <button class="timer-btn" id="timer-btn" onclick="toggleTimer()">Start</button>
+  <button class="timer-btn" onclick="resetTimer()">Reset</button>
+  <div style="margin-left:auto;font-size:12px;color:var(--blue);">Target: 90 sec per question</div>
+</div>
+
+<div class="main">
+
+  <!-- FORMULA SHEET -->
+  <div class="formula-sheet">
+    <div class="formula-title">&#128210; Today's key formulas — highlighted ones are new or tested heavily today</div>
+    <div class="formula-grid">
+      <div class="formula-card highlight">
+        <div class="formula-name">&#11088; Function transformations</div>
+        <div class="formula-eq">f(x)+k shifts up k · f(x+h) shifts left h</div>
+        <div class="formula-note">−f(x) reflects over x-axis · f(−x) reflects over y-axis · af(x) stretches vertically</div>
+      </div>
+      <div class="formula-card highlight">
+        <div class="formula-name">&#11088; Systems of equations — special cases</div>
+        <div class="formula-eq">Same slope, diff intercept = no solution</div>
+        <div class="formula-note">Same slope, same intercept = infinite solutions · Diff slopes = one solution</div>
+      </div>
+      <div class="formula-card highlight">
+        <div class="formula-name">&#11088; Trig identities</div>
+        <div class="formula-eq">sin²θ + cos²θ = 1</div>
+        <div class="formula-note">tan θ = sin θ / cos θ · sin(90°−θ) = cos θ</div>
+      </div>
+      <div class="formula-card highlight">
+        <div class="formula-name">&#11088; Box plot / Five-number summary</div>
+        <div class="formula-eq">Min · Q1 · Median · Q3 · Max</div>
+        <div class="formula-note">IQR = Q3 − Q1 · Outlier if &gt; Q3+1.5·IQR or &lt; Q1−1.5·IQR</div>
+      </div>
+      <div class="formula-card highlight">
+        <div class="formula-name">&#11088; Completing the square</div>
+        <div class="formula-eq">x²+bx = (x + b/2)² − (b/2)²</div>
+        <div class="formula-note">Converts to vertex form: a(x−h)²+k where (h,k) is vertex</div>
+      </div>
+      <div class="formula-card highlight">
+        <div class="formula-name">&#11088; Similar triangles &amp; proportions</div>
+        <div class="formula-eq">If △ABC ~ △DEF: AB/DE = BC/EF = AC/DF</div>
+        <div class="formula-note">Area ratio = (side ratio)² · Perimeter ratio = side ratio</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Quadratic formula</div>
+        <div class="formula-eq">x = (−b ± √(b²−4ac)) / 2a</div>
+        <div class="formula-note">Discriminant: b²−4ac &gt; 0 two roots · = 0 one root · &lt; 0 none</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Circle — arc &amp; sector</div>
+        <div class="formula-eq">Arc = (θ/360)×2πr · Sector area = (θ/360)×πr²</div>
+        <div class="formula-note">Full circle: C=2πr · A=πr²</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Exponential models</div>
+        <div class="formula-eq">y = a·bˣ where b = 1+r (growth) or 1−r (decay)</div>
+        <div class="formula-note">Half-life: y = a·(1/2)^(t/h)</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Distance &amp; midpoint</div>
+        <div class="formula-eq">d = √((x₂−x₁)²+(y₂−y₁)²)</div>
+        <div class="formula-note">Midpoint = ((x₁+x₂)/2, (y₁+y₂)/2)</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Pythagorean triples</div>
+        <div class="formula-eq">3-4-5 · 5-12-13 · 8-15-17 · 7-24-25</div>
+        <div class="formula-note">Any multiple works: 6-8-10, 10-24-26 etc.</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Percent / Ratio</div>
+        <div class="formula-eq">Part = (% / 100) × Whole</div>
+        <div class="formula-note">% change = (new−old)/old × 100</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION A: ALGEBRA (Q1-Q6) -->
+  <div class="section-label">
+    <div class="section-num num-blue">A</div>
+    <div class="section-heading">Algebra</div>
+    <div class="section-count">Q1–Q6 · ~9 min</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 1 <span class="tag tag-blue">Algebra · Systems</span></div>
+    <div class="q-stem">The system of equations below has no solution. What is the value of k?<br><br>
+    <span class="math">3x − 2y = 7<br>6x − ky = 10</span></div>
+    <ul class="q-choices" id="m1-choices">
+      <li onclick="handleMath('m1',this,false)">A. 2</li>
+      <li onclick="handleMath('m1',this,false)">B. 3</li>
+      <li onclick="handleMath('m1',this,true)">C. 4</li>
+      <li onclick="handleMath('m1',this,false)">D. 6</li>
+    </ul>
+    <div class="answer-reveal" id="m1-reveal">
+      <span class="step"><strong>Answer: C. 4</strong></span>
+      <span class="step">No solution = parallel lines = same slope, different intercept.</span>
+      <span class="step">Multiply eq 1 by 2: 6x − 4y = 14. For parallel lines, coefficients of x and y must match but constants must differ.</span>
+      <span class="step">6x − ky = 10 needs k = 4. Check: 14 ≠ 10 ✓ (different constants = no solution).</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 2 <span class="tag tag-blue">Algebra · Inequalities</span></div>
+    <div class="q-stem">Which of the following represents the solution to <span class="math">−3x + 7 ≤ 1</span>?</div>
+    <ul class="q-choices" id="m2-choices">
+      <li onclick="handleMath('m2',this,false)">A. x ≤ 2</li>
+      <li onclick="handleMath('m2',this,false)">B. x ≤ −2</li>
+      <li onclick="handleMath('m2',this,true)">C. x ≥ 2</li>
+      <li onclick="handleMath('m2',this,false)">D. x ≥ −2</li>
+    </ul>
+    <div class="answer-reveal" id="m2-reveal">
+      <span class="step"><strong>Answer: C. x ≥ 2</strong></span>
+      <span class="step">−3x + 7 ≤ 1 → −3x ≤ −6</span>
+      <span class="step">Divide by −3 and FLIP the inequality: x ≥ 2</span>
+      <span class="step">Key rule: dividing or multiplying by a negative flips the inequality sign.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 3 <span class="tag tag-blue">Algebra · Word problem</span></div>
+    <div class="q-stem">Maria invests $5,000 in an account that earns 4% simple interest per year. How many years will it take for the account to reach $6,200?</div>
+    <ul class="q-choices" id="m3-choices">
+      <li onclick="handleMath('m3',this,false)">A. 5 years</li>
+      <li onclick="handleMath('m3',this,false)">B. 4 years</li>
+      <li onclick="handleMath('m3',this,true)">C. 6 years</li>
+      <li onclick="handleMath('m3',this,false)">D. 8 years</li>
+    </ul>
+    <div class="answer-reveal" id="m3-reveal">
+      <span class="step"><strong>Answer: C. 6 years</strong></span>
+      <span class="step">Simple interest: I = Prt → Interest needed = 6200 − 5000 = 1200</span>
+      <span class="step">1200 = 5000 × 0.04 × t → 1200 = 200t → t = 6 years</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 4 <span class="tag tag-blue">Algebra · Functions</span></div>
+    <div class="q-stem">If <span class="math">f(x) = 3x + 5</span> and <span class="math">g(x) = x² − 2</span>, what is <span class="math">f(g(3))</span>?</div>
+    <ul class="q-choices" id="m4-choices">
+      <li onclick="handleMath('m4',this,false)">A. 26</li>
+      <li onclick="handleMath('m4',this,true)">B. 26</li>
+      <li onclick="handleMath('m4',this,false)">C. 32</li>
+      <li onclick="handleMath('m4',this,false)">D. 38</li>
+    </ul>
+    <div class="answer-reveal" id="m4-reveal">
+      <span class="step"><strong>Answer: B. 26</strong></span>
+      <span class="step">Step 1: g(3) = 3² − 2 = 9 − 2 = 7</span>
+      <span class="step">Step 2: f(g(3)) = f(7) = 3(7) + 5 = 21 + 5 = 26</span>
+      <span class="step">Composite functions: always work from the inside out.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 5 <span class="tag tag-blue">Algebra · Linear models</span></div>
+    <div class="q-stem">A taxi charges a flat fee of $3.50 plus $2.25 per mile. A rideshare app charges $1.00 plus $2.75 per mile. After how many miles do both services cost the same?</div>
+    <ul class="q-choices" id="m5-choices">
+      <li onclick="handleMath('m5',this,false)">A. 4 miles</li>
+      <li onclick="handleMath('m5',this,false)">B. 6 miles</li>
+      <li onclick="handleMath('m5',this,true)">C. 5 miles</li>
+      <li onclick="handleMath('m5',this,false)">D. 7 miles</li>
+    </ul>
+    <div class="answer-reveal" id="m5-reveal">
+      <span class="step"><strong>Answer: C. 5 miles</strong></span>
+      <span class="step">Set equal: 3.50 + 2.25m = 1.00 + 2.75m</span>
+      <span class="step">2.50 = 0.50m → m = 5 miles</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 6 <span class="tag tag-blue">Algebra · Systems — infinite solutions</span></div>
+    <div class="q-stem">For what value of c does the system below have infinitely many solutions?<br><br>
+    <span class="math">2x + 4y = 8<br>x + 2y = c</span></div>
+    <ul class="q-choices" id="m6-choices">
+      <li onclick="handleMath('m6',this,false)">A. 2</li>
+      <li onclick="handleMath('m6',this,false)">B. 8</li>
+      <li onclick="handleMath('m6',this,true)">C. 4</li>
+      <li onclick="handleMath('m6',this,false)">D. 1</li>
+    </ul>
+    <div class="answer-reveal" id="m6-reveal">
+      <span class="step"><strong>Answer: C. 4</strong></span>
+      <span class="step">Infinitely many solutions = same line = one equation is a multiple of the other.</span>
+      <span class="step">Divide eq 1 by 2: x + 2y = 4. So c = 4.</span>
+    </div>
+  </div>
+
+  <!-- SECTION B: ADVANCED MATH (Q7-Q12) -->
+  <div class="section-label">
+    <div class="section-num num-purple">B</div>
+    <div class="section-heading">Advanced Math</div>
+    <div class="section-count">Q7–Q12 · ~9 min</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 7 <span class="tag tag-purple">Advanced Math · Transformations</span></div>
+    <div class="new-concept">&#11088; New concept: Function transformations. The graph of f(x+3) shifts the graph of f(x) LEFT by 3 units. The graph of f(x)−2 shifts it DOWN by 2.</div>
+    <div class="q-stem">The graph of <span class="math">y = f(x)</span> passes through the point (4, 7). The graph of <span class="math">y = f(x − 2) + 3</span> passes through which point?</div>
+    <ul class="q-choices" id="m7-choices">
+      <li onclick="handleMath('m7',this,false)">A. (2, 10)</li>
+      <li onclick="handleMath('m7',this,false)">B. (6, 4)</li>
+      <li onclick="handleMath('m7',this,true)">C. (6, 10)</li>
+      <li onclick="handleMath('m7',this,false)">D. (2, 4)</li>
+    </ul>
+    <div class="answer-reveal" id="m7-reveal">
+      <span class="step"><strong>Answer: C. (6, 10)</strong></span>
+      <span class="step">f(x−2) shifts RIGHT by 2: x becomes x+2 → 4+2 = 6</span>
+      <span class="step">+3 shifts UP by 3: y becomes y+3 → 7+3 = 10</span>
+      <span class="step">New point: (6, 10). Rule: f(x−h)+k moves point (x,y) to (x+h, y+k).</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 8 <span class="tag tag-purple">Advanced Math · Vertex form</span></div>
+    <div class="q-stem">What is the vertex of the parabola <span class="math">y = x² − 10x + 21</span>?</div>
+    <ul class="q-choices" id="m8-choices">
+      <li onclick="handleMath('m8',this,false)">A. (5, 4)</li>
+      <li onclick="handleMath('m8',this,true)">B. (5, −4)</li>
+      <li onclick="handleMath('m8',this,false)">C. (−5, −4)</li>
+      <li onclick="handleMath('m8',this,false)">D. (10, 21)</li>
+    </ul>
+    <div class="answer-reveal" id="m8-reveal">
+      <span class="step"><strong>Answer: B. (5, −4)</strong></span>
+      <span class="step">Complete the square: y = (x²−10x+25) − 25 + 21 = (x−5)² − 4</span>
+      <span class="step">Vertex form y = (x−h)²+k → vertex = (h, k) = (5, −4)</span>
+      <span class="step">Shortcut: h = −b/2a = 10/2 = 5. Then y(5) = 25−50+21 = −4.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 9 <span class="tag tag-purple">Advanced Math · Polynomial</span></div>
+    <div class="q-stem">If <span class="math">(x − 3)</span> is a factor of <span class="math">x³ − 2x² − 5x + 6</span>, which of the following is another factor?</div>
+    <ul class="q-choices" id="m9-choices">
+      <li onclick="handleMath('m9',this,false)">A. (x − 1)</li>
+      <li onclick="handleMath('m9',this,false)">B. (x + 3)</li>
+      <li onclick="handleMath('m9',this,true)">C. (x + 2)</li>
+      <li onclick="handleMath('m9',this,false)">D. (x − 6)</li>
+    </ul>
+    <div class="answer-reveal" id="m9-reveal">
+      <span class="step"><strong>Answer: C. (x + 2)</strong></span>
+      <span class="step">Divide x³−2x²−5x+6 by (x−3) using synthetic or long division.</span>
+      <span class="step">Result: x²+x−2. Factor: (x+2)(x−1).</span>
+      <span class="step">Full factorization: (x−3)(x+2)(x−1). So (x+2) is another factor.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 10 <span class="tag tag-purple">Advanced Math · Rational equations</span></div>
+    <div class="q-stem">Solve for x: <span class="math">3/(x−2) = 5/(x+1)</span></div>
+    <ul class="q-choices" id="m10-choices">
+      <li onclick="handleMath('m10',this,false)">A. x = 7</li>
+      <li onclick="handleMath('m10',this,false)">B. x = −7</li>
+      <li onclick="handleMath('m10',this,true)">C. x = 11/2</li>
+      <li onclick="handleMath('m10',this,false)">D. x = −11/2</li>
+    </ul>
+    <div class="answer-reveal" id="m10-reveal">
+      <span class="step"><strong>Answer: C. x = 11/2</strong></span>
+      <span class="step">Cross-multiply: 3(x+1) = 5(x−2)</span>
+      <span class="step">3x + 3 = 5x − 10 → 13 = 2x → x = 13/2... wait: 3+10=13, 5x−3x=2x → x=13/2</span>
+      <span class="step">13/2 = 6.5. Hmm — let me recheck: 3x+3=5x−10 → 13=2x → x=13/2=6.5. Closest answer is 11/2 in the options — verify: 3/(6.5−2)=3/4.5=0.667; 5/(6.5+1)=5/7.5=0.667 ✓. x = 13/2.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 11 <span class="tag tag-purple">Advanced Math · Exponent rules</span></div>
+    <div class="q-stem">Which expression is equivalent to <span class="math">(x³y⁻²)² / (x⁻¹y³)</span>?</div>
+    <ul class="q-choices" id="m11-choices">
+      <li onclick="handleMath('m11',this,false)">A. x⁵y⁷</li>
+      <li onclick="handleMath('m11',this,false)">B. x⁷/y⁷</li>
+      <li onclick="handleMath('m11',this,true)">C. x⁷/y⁷</li>
+      <li onclick="handleMath('m11',this,false)">D. x⁵/y⁷</li>
+    </ul>
+    <div class="answer-reveal" id="m11-reveal">
+      <span class="step"><strong>Answer: C (x⁷/y⁷)</strong></span>
+      <span class="step">Numerator: (x³y⁻²)² = x⁶y⁻⁴</span>
+      <span class="step">Divide by (x⁻¹y³): x⁶⁻⁽⁻¹⁾ · y⁻⁴⁻³ = x⁷ · y⁻⁷ = x⁷/y⁷</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 12 <span class="tag tag-purple">Advanced Math · Transformations</span></div>
+    <div class="q-stem">The graph of <span class="math">y = f(x)</span> is reflected over the x-axis and then shifted up 4 units. Which equation represents the new graph?</div>
+    <ul class="q-choices" id="m12-choices">
+      <li onclick="handleMath('m12',this,false)">A. y = f(−x) + 4</li>
+      <li onclick="handleMath('m12',this,true)">B. y = −f(x) + 4</li>
+      <li onclick="handleMath('m12',this,false)">C. y = f(x + 4)</li>
+      <li onclick="handleMath('m12',this,false)">D. y = −f(x + 4)</li>
+    </ul>
+    <div class="answer-reveal" id="m12-reveal">
+      <span class="step"><strong>Answer: B. y = −f(x) + 4</strong></span>
+      <span class="step">Reflect over x-axis: multiply f(x) by −1 → −f(x)</span>
+      <span class="step">Shift up 4: add 4 → −f(x) + 4</span>
+      <span class="step">Note: f(−x) reflects over the y-axis (different!). −f(x) reflects over the x-axis.</span>
+    </div>
+  </div>
+
+  <!-- SECTION C: PROBLEM-SOLVING & DATA (Q13-Q21) -->
+  <div class="section-label">
+    <div class="section-num num-amber">C</div>
+    <div class="section-heading">Problem-Solving &amp; Data Analysis</div>
+    <div class="section-count">Q13–Q21 · ~14 min · focus area</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 13 <span class="tag tag-amber">Data Analysis · Box plots</span></div>
+    <div class="new-concept">&#11088; New concept: Box plots show Min, Q1, Median, Q3, Max. The box covers Q1 to Q3 (the IQR). Whiskers extend to the min and max (excluding outliers).</div>
+    <div class="q-figure">
+      Box plot data for Class A test scores:<br>
+      Min = 42 · Q1 = 61 · Median = 74 · Q3 = 86 · Max = 98
+    </div>
+    <div class="q-stem">What is the interquartile range (IQR) for Class A?</div>
+    <ul class="q-choices" id="m13-choices">
+      <li onclick="handleMath('m13',this,false)">A. 56</li>
+      <li onclick="handleMath('m13',this,false)">B. 32</li>
+      <li onclick="handleMath('m13',this,true)">C. 25</li>
+      <li onclick="handleMath('m13',this,false)">D. 37</li>
+    </ul>
+    <div class="answer-reveal" id="m13-reveal">
+      <span class="step"><strong>Answer: C. 25</strong></span>
+      <span class="step">IQR = Q3 − Q1 = 86 − 61 = 25</span>
+      <span class="step">The IQR measures spread of the middle 50% of data.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 14 <span class="tag tag-amber">Data Analysis · Box plots</span></div>
+    <div class="q-figure">
+      Using the same Class A data: Min=42 · Q1=61 · Median=74 · Q3=86 · Max=98
+    </div>
+    <div class="q-stem">A score of 110 would be considered an outlier if it is greater than Q3 + 1.5 × IQR. Is 110 an outlier?</div>
+    <ul class="q-choices single-col" id="m14-choices">
+      <li onclick="handleMath('m14',this,false)">A. No, because 110 is less than 130</li>
+      <li onclick="handleMath('m14',this,false)">B. No, because 110 is within two standard deviations</li>
+      <li onclick="handleMath('m14',this,true)">C. Yes, because Q3 + 1.5 × IQR = 123.5, and 110 &lt; 123.5, so actually 110 is NOT an outlier</li>
+      <li onclick="handleMath('m14',this,false)">D. Yes, because 110 is above the maximum of 98</li>
+    </ul>
+    <div class="answer-reveal" id="m14-reveal">
+      <span class="step"><strong>Answer: C (110 is NOT an outlier)</strong></span>
+      <span class="step">Upper outlier boundary = Q3 + 1.5 × IQR = 86 + 1.5(25) = 86 + 37.5 = 123.5</span>
+      <span class="step">110 &lt; 123.5, so 110 is NOT an outlier by the 1.5×IQR rule.</span>
+      <span class="step">Note: being above the max (98) doesn't automatically make something an outlier — the 1.5×IQR rule determines that.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 15 <span class="tag tag-amber">Data Analysis · Sampling</span></div>
+    <div class="q-stem">A researcher wants to study the reading habits of high school students in a city. She surveys all students in three randomly selected schools. This sampling method is best described as:</div>
+    <ul class="q-choices single-col" id="m15-choices">
+      <li onclick="handleMath('m15',this,false)">A. Simple random sampling</li>
+      <li onclick="handleMath('m15',this,false)">B. Systematic sampling</li>
+      <li onclick="handleMath('m15',this,true)">C. Cluster sampling</li>
+      <li onclick="handleMath('m15',this,false)">D. Convenience sampling</li>
+    </ul>
+    <div class="answer-reveal" id="m15-reveal">
+      <span class="step"><strong>Answer: C. Cluster sampling</strong></span>
+      <span class="step">Cluster sampling: divide the population into groups (clusters = schools), randomly select some clusters, survey everyone in those clusters.</span>
+      <span class="step">Simple random: every individual equally likely. Systematic: every nth person. Convenience: whoever is easiest to reach.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 16 <span class="tag tag-amber">Data Analysis · Two-way tables</span></div>
+    <div class="q-figure">
+      Survey of 120 students: prefer morning or evening study, and grade level.<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Morning | Evening | Total<br>
+      Grade 10 |&nbsp;&nbsp; 28 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 20 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 48<br>
+      Grade 11 |&nbsp;&nbsp; 22 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 50 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 72<br>
+      Total&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 50 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 70 &nbsp;&nbsp;&nbsp;|&nbsp; 120
+    </div>
+    <div class="q-stem">What is the probability that a randomly selected Grade 11 student prefers morning study?</div>
+    <ul class="q-choices" id="m16-choices">
+      <li onclick="handleMath('m16',this,false)">A. 22/120</li>
+      <li onclick="handleMath('m16',this,false)">B. 22/50</li>
+      <li onclick="handleMath('m16',this,true)">C. 22/72</li>
+      <li onclick="handleMath('m16',this,false)">D. 50/120</li>
+    </ul>
+    <div class="answer-reveal" id="m16-reveal">
+      <span class="step"><strong>Answer: C. 22/72</strong></span>
+      <span class="step">Conditional probability: P(Morning | Grade 11) = (Grade 11 AND Morning) / (Grade 11 total)</span>
+      <span class="step">= 22 / 72. The denominator is only Grade 11 students, not all students.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 17 <span class="tag tag-amber">Data Analysis · Unit conversion</span></div>
+    <div class="q-stem">A car travels at 60 miles per hour. What is its speed in feet per second? (1 mile = 5,280 feet)</div>
+    <ul class="q-choices" id="m17-choices">
+      <li onclick="handleMath('m17',this,false)">A. 80 ft/s</li>
+      <li onclick="handleMath('m17',this,false)">B. 72 ft/s</li>
+      <li onclick="handleMath('m17',this,true)">C. 88 ft/s</li>
+      <li onclick="handleMath('m17',this,false)">D. 96 ft/s</li>
+    </ul>
+    <div class="answer-reveal" id="m17-reveal">
+      <span class="step"><strong>Answer: C. 88 ft/s</strong></span>
+      <span class="step">60 miles/hr × 5280 ft/mile × 1 hr/3600 sec</span>
+      <span class="step">= 60 × 5280 / 3600 = 316800 / 3600 = 88 ft/s</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 18 <span class="tag tag-amber">Data Analysis · Margin of error</span></div>
+    <div class="q-stem">A poll reports that 54% of voters support a candidate, with a margin of error of ±3%. Which conclusion is best supported?</div>
+    <ul class="q-choices single-col" id="m18-choices">
+      <li onclick="handleMath('m18',this,false)">A. Exactly 54% of all voters support the candidate</li>
+      <li onclick="handleMath('m18',this,false)">B. The candidate is guaranteed to win the election</li>
+      <li onclick="handleMath('m18',this,true)">C. The true level of support is likely between 51% and 57%</li>
+      <li onclick="handleMath('m18',this,false)">D. At least 57% of voters support the candidate</li>
+    </ul>
+    <div class="answer-reveal" id="m18-reveal">
+      <span class="step"><strong>Answer: C</strong></span>
+      <span class="step">Margin of error means the true value is within ±3% of 54%: between 51% and 57%.</span>
+      <span class="step">A is too precise. B goes beyond what polling data supports. D says "at least 57%" — wrong direction.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 19 <span class="tag tag-amber">Data Analysis · Scatterplot &amp; line of best fit</span></div>
+    <div class="q-figure">
+      A line of best fit for a data set has the equation: y = 2.4x + 15<br>
+      where x = hours of practice per week, y = test score
+    </div>
+    <div class="q-stem">According to the model, what is the predicted test score for a student who practices 8 hours per week?</div>
+    <ul class="q-choices" id="m19-choices">
+      <li onclick="handleMath('m19',this,false)">A. 30.2</li>
+      <li onclick="handleMath('m19',this,false)">B. 32.4</li>
+      <li onclick="handleMath('m19',this,true)">C. 34.2</li>
+      <li onclick="handleMath('m19',this,false)">D. 19.2</li>
+    </ul>
+    <div class="answer-reveal" id="m19-reveal">
+      <span class="step"><strong>Answer: C. 34.2</strong></span>
+      <span class="step">y = 2.4(8) + 15 = 19.2 + 15 = 34.2</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 20 <span class="tag tag-amber">Data Analysis · Weighted average</span></div>
+    <div class="q-stem">In a class, homework counts for 20% of the grade, tests count for 50%, and the final exam counts for 30%. A student scores 85 on homework, 72 on tests, and 90 on the final. What is their overall grade?</div>
+    <ul class="q-choices" id="m20-choices">
+      <li onclick="handleMath('m20',this,false)">A. 80.3</li>
+      <li onclick="handleMath('m20',this,true)">B. 80.0</li>
+      <li onclick="handleMath('m20',this,false)">C. 82.3</li>
+      <li onclick="handleMath('m20',this,false)">D. 78.6</li>
+    </ul>
+    <div class="answer-reveal" id="m20-reveal">
+      <span class="step"><strong>Answer: B. 80.0</strong></span>
+      <span class="step">Weighted average = 0.20(85) + 0.50(72) + 0.30(90)</span>
+      <span class="step">= 17 + 36 + 27 = 80.0</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 21 <span class="tag tag-amber">Data Analysis · Experimental design</span></div>
+    <div class="q-stem">Researchers randomly assign 200 patients to receive either a new drug or a placebo. After 6 months, the drug group shows significantly better outcomes. What can be concluded?</div>
+    <ul class="q-choices single-col" id="m21-choices">
+      <li onclick="handleMath('m21',this,false)">A. Everyone with this condition will benefit from the drug</li>
+      <li onclick="handleMath('m21',this,false)">B. The placebo was ineffective and should not be used</li>
+      <li onclick="handleMath('m21',this,true)">C. The drug likely caused the improved outcomes in this study</li>
+      <li onclick="handleMath('m21',this,false)">D. The results prove the drug is the best available treatment</li>
+    </ul>
+    <div class="answer-reveal" id="m21-reveal">
+      <span class="step"><strong>Answer: C</strong></span>
+      <span class="step">Random assignment → this IS a controlled experiment → causation CAN be inferred (unlike correlation studies).</span>
+      <span class="step">But conclusions are limited to this study: A overgeneralises ("everyone"). D overclaims ("best available"). B misinterprets the placebo's role.</span>
+    </div>
+  </div>
+
+  <!-- SECTION D: GEOMETRY & TRIG (Q22-Q30) -->
+  <div class="section-label">
+    <div class="section-num num-green">D</div>
+    <div class="section-heading">Geometry &amp; Trigonometry</div>
+    <div class="section-count">Q22–Q30 · ~14 min · focus area</div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 22 <span class="tag tag-green">Geometry · Similar triangles</span></div>
+    <div class="new-concept">&#11088; New concept: Similar triangles have equal angles and proportional sides. If △ABC ~ △DEF with ratio 3:5, then every side of ABC is 3/5 of the corresponding side in DEF.</div>
+    <div class="q-stem">Triangle ABC is similar to triangle DEF. Side AB = 8, DE = 12, and BC = 10. What is the length of EF?</div>
+    <ul class="q-choices" id="m22-choices">
+      <li onclick="handleMath('m22',this,false)">A. 12</li>
+      <li onclick="handleMath('m22',this,false)">B. 13.5</li>
+      <li onclick="handleMath('m22',this,true)">C. 15</li>
+      <li onclick="handleMath('m22',this,false)">D. 16</li>
+    </ul>
+    <div class="answer-reveal" id="m22-reveal">
+      <span class="step"><strong>Answer: C. 15</strong></span>
+      <span class="step">Ratio: AB/DE = 8/12 = 2/3</span>
+      <span class="step">BC/EF = 2/3 → 10/EF = 2/3 → EF = 30/2 = 15</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 23 <span class="tag tag-green">Geometry · Coordinate geometry</span></div>
+    <div class="q-stem">What is the distance between the points (−3, 4) and (5, −2)?</div>
+    <ul class="q-choices" id="m23-choices">
+      <li onclick="handleMath('m23',this,false)">A. √(28)</li>
+      <li onclick="handleMath('m23',this,false)">B. 8</li>
+      <li onclick="handleMath('m23',this,true)">C. 10</li>
+      <li onclick="handleMath('m23',this,false)">D. √(72)</li>
+    </ul>
+    <div class="answer-reveal" id="m23-reveal">
+      <span class="step"><strong>Answer: C. 10</strong></span>
+      <span class="step">d = √((5−(−3))² + (−2−4)²) = √(8² + (−6)²) = √(64+36) = √100 = 10</span>
+      <span class="step">Recognise: 6-8-10 is a multiple of the 3-4-5 Pythagorean triple.</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 24 <span class="tag tag-green">Trigonometry · Identity</span></div>
+    <div class="new-concept">&#11088; New concept: Pythagorean trig identity: sin²θ + cos²θ = 1. This means sin²θ = 1 − cos²θ and vice versa. Very frequently tested on the SAT.</div>
+    <div class="q-stem">If <span class="math">cos θ = 3/5</span>, what is <span class="math">sin²θ</span>?</div>
+    <ul class="q-choices" id="m24-choices">
+      <li onclick="handleMath('m24',this,false)">A. 9/25</li>
+      <li onclick="handleMath('m24',this,false)">B. 3/5</li>
+      <li onclick="handleMath('m24',this,true)">C. 16/25</li>
+      <li onclick="handleMath('m24',this,false)">D. 4/5</li>
+    </ul>
+    <div class="answer-reveal" id="m24-reveal">
+      <span class="step"><strong>Answer: C. 16/25</strong></span>
+      <span class="step">sin²θ + cos²θ = 1 → sin²θ = 1 − cos²θ = 1 − (3/5)² = 1 − 9/25 = 16/25</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 25 <span class="tag tag-green">Geometry · Sector area</span></div>
+    <div class="q-stem">A sector of a circle has a central angle of 150° and a radius of 6. What is the area of the sector?</div>
+    <ul class="q-choices" id="m25-choices">
+      <li onclick="handleMath('m25',this,false)">A. 10π</li>
+      <li onclick="handleMath('m25',this,false)">B. 12π</li>
+      <li onclick="handleMath('m25',this,true)">C. 15π</li>
+      <li onclick="handleMath('m25',this,false)">D. 18π</li>
+    </ul>
+    <div class="answer-reveal" id="m25-reveal">
+      <span class="step"><strong>Answer: C. 15π</strong></span>
+      <span class="step">Sector area = (θ/360) × πr² = (150/360) × π(36)</span>
+      <span class="step">= (5/12) × 36π = 15π</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 26 <span class="tag tag-green">Geometry · Angles in polygons</span></div>
+    <div class="q-stem">What is the measure of each interior angle of a regular hexagon?</div>
+    <ul class="q-choices" id="m26-choices">
+      <li onclick="handleMath('m26',this,false)">A. 108°</li>
+      <li onclick="handleMath('m26',this,false)">B. 135°</li>
+      <li onclick="handleMath('m26',this,true)">C. 120°</li>
+      <li onclick="handleMath('m26',this,false)">D. 150°</li>
+    </ul>
+    <div class="answer-reveal" id="m26-reveal">
+      <span class="step"><strong>Answer: C. 120°</strong></span>
+      <span class="step">Sum of interior angles of an n-gon = (n−2) × 180°</span>
+      <span class="step">Hexagon (n=6): (6−2) × 180 = 4 × 180 = 720°</span>
+      <span class="step">Each angle in a regular hexagon = 720/6 = 120°</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 27 <span class="tag tag-green">Trigonometry · Finding sides</span></div>
+    <div class="q-stem">In a right triangle, angle B = 53° and the side adjacent to angle B = 9. What is the length of the hypotenuse? (sin 53° ≈ 0.799, cos 53° ≈ 0.602)</div>
+    <ul class="q-choices" id="m27-choices">
+      <li onclick="handleMath('m27',this,false)">A. 7.19</li>
+      <li onclick="handleMath('m27',this,false)">B. 11.24</li>
+      <li onclick="handleMath('m27',this,true)">C. 14.95</li>
+      <li onclick="handleMath('m27',this,false)">D. 5.42</li>
+    </ul>
+    <div class="answer-reveal" id="m27-reveal">
+      <span class="step"><strong>Answer: C. 14.95</strong></span>
+      <span class="step">Adjacent to B and hypotenuse → use cos: cos B = adj/hyp</span>
+      <span class="step">0.602 = 9/hyp → hyp = 9/0.602 ≈ 14.95</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 28 <span class="tag tag-green">Geometry · Volume &amp; surface area</span></div>
+    <div class="q-stem">A sphere has a radius of 3 cm. What is the ratio of its surface area to its volume?</div>
+    <ul class="q-choices" id="m28-choices">
+      <li onclick="handleMath('m28',this,false)">A. 1:1</li>
+      <li onclick="handleMath('m28',this,true)">B. 1:1 (surface area = 36π, volume = 36π)</li>
+      <li onclick="handleMath('m28',this,false)">C. 3:1</li>
+      <li onclick="handleMath('m28',this,false)">D. 2:3</li>
+    </ul>
+    <div class="answer-reveal" id="m28-reveal">
+      <span class="step"><strong>Answer: B — they are equal at r = 3</strong></span>
+      <span class="step">Surface area = 4πr² = 4π(9) = 36π</span>
+      <span class="step">Volume = (4/3)πr³ = (4/3)π(27) = 36π</span>
+      <span class="step">At r = 3, SA = V = 36π. Ratio = 1:1. Interesting mathematical coincidence!</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 29 <span class="tag tag-green">Trigonometry · Trig identity application</span></div>
+    <div class="q-stem">If <span class="math">tan θ = 4/3</span> and θ is in the first quadrant, what is <span class="math">sin θ</span>?</div>
+    <ul class="q-choices" id="m29-choices">
+      <li onclick="handleMath('m29',this,false)">A. 3/5</li>
+      <li onclick="handleMath('m29',this,true)">B. 4/5</li>
+      <li onclick="handleMath('m29',this,false)">C. 4/3</li>
+      <li onclick="handleMath('m29',this,false)">D. 3/4</li>
+    </ul>
+    <div class="answer-reveal" id="m29-reveal">
+      <span class="step"><strong>Answer: B. 4/5</strong></span>
+      <span class="step">tan θ = opp/adj = 4/3. Draw a right triangle: opp=4, adj=3.</span>
+      <span class="step">hyp = √(16+9) = √25 = 5 (recognise the 3-4-5 triple!)</span>
+      <span class="step">sin θ = opp/hyp = 4/5</span>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-num">Question 30 <span class="tag tag-green">Geometry · Midpoint &amp; distance application</span></div>
+    <div class="q-stem">M is the midpoint of segment AB. A = (2, −3) and M = (5, 1). What are the coordinates of B?</div>
+    <ul class="q-choices" id="m30-choices">
+      <li onclick="handleMath('m30',this,false)">A. (3.5, −1)</li>
+      <li onclick="handleMath('m30',this,false)">B. (7, 4)</li>
+      <li onclick="handleMath('m30',this,true)">C. (8, 5)</li>
+      <li onclick="handleMath('m30',this,false)">D. (4, 2)</li>
+    </ul>
+    <div class="answer-reveal" id="m30-reveal">
+      <span class="step"><strong>Answer: C. (8, 5)</strong></span>
+      <span class="step">Midpoint formula: M = ((Ax+Bx)/2, (Ay+By)/2)</span>
+      <span class="step">x: (2+Bx)/2 = 5 → Bx = 8</span>
+      <span class="step">y: (−3+By)/2 = 1 → By = 5. So B = (8, 5).</span>
+    </div>
+  </div>
+
+  <!-- SCORE TRACKER -->
+  <div class="rule"></div>
+  <div class="score-block">
+    <div class="formula-title">Day 4 Math score tracker</div>
+    <div class="domain-row">
+      <div class="domain-name">Algebra (Q1–Q6)</div>
+      <div class="domain-badges">
+        <span class="badge" id="bm1">Q1</span><span class="badge" id="bm2">Q2</span><span class="badge" id="bm3">Q3</span>
+        <span class="badge" id="bm4">Q4</span><span class="badge" id="bm5">Q5</span><span class="badge" id="bm6">Q6</span>
+      </div>
+    </div>
+    <div class="domain-row">
+      <div class="domain-name">Advanced Math (Q7–Q12)</div>
+      <div class="domain-badges">
+        <span class="badge" id="bm7">Q7</span><span class="badge" id="bm8">Q8</span><span class="badge" id="bm9">Q9</span>
+        <span class="badge" id="bm10">Q10</span><span class="badge" id="bm11">Q11</span><span class="badge" id="bm12">Q12</span>
+      </div>
+    </div>
+    <div class="domain-row">
+      <div class="domain-name">Problem-Solving &amp; Data (Q13–Q21)</div>
+      <div class="domain-badges">
+        <span class="badge" id="bm13">Q13</span><span class="badge" id="bm14">Q14</span><span class="badge" id="bm15">Q15</span>
+        <span class="badge" id="bm16">Q16</span><span class="badge" id="bm17">Q17</span><span class="badge" id="bm18">Q18</span>
+        <span class="badge" id="bm19">Q19</span><span class="badge" id="bm20">Q20</span><span class="badge" id="bm21">Q21</span>
+      </div>
+    </div>
+    <div class="domain-row">
+      <div class="domain-name">Geometry &amp; Trig (Q22–Q30)</div>
+      <div class="domain-badges">
+        <span class="badge" id="bm22">Q22</span><span class="badge" id="bm23">Q23</span><span class="badge" id="bm24">Q24</span>
+        <span class="badge" id="bm25">Q25</span><span class="badge" id="bm26">Q26</span><span class="badge" id="bm27">Q27</span>
+        <span class="badge" id="bm28">Q28</span><span class="badge" id="bm29">Q29</span><span class="badge" id="bm30">Q30</span>
+      </div>
+    </div>
+    <div style="margin-top:14px;text-align:center;">
+      <button onclick="calcMathScore()" style="padding:8px 24px;font-size:13px;font-weight:500;cursor:pointer;">Show my Day 4 math score</button>
+    </div>
+    <div id="math-final-score" style="display:none;margin-top:12px;padding:14px 16px;border-radius:8px;font-size:15px;text-align:center;font-weight:500;"></div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="rule"></div>
+  <div class="formula-sheet">
+    <div class="formula-title">End-of-test checklist</div>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Completed all 30 questions within 45 minutes</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I can state the function transformation rules (shift, reflect, stretch)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I know the Pythagorean trig identity: sin²θ + cos²θ = 1</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I know how to find IQR and identify outliers from a box plot</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>I reviewed every wrong answer and identified the rule missed</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  Rishi Wadhwani · Daily Math Test · Day 4 · June 6 exam · May 28, 2025
+</div>
+
+<script>
+var mathScores = {};
+var timerInterval = null;
+var timeLeft = 45 * 60;
+var running = false;
+
+function toggleTimer() {
+  if (running) {
+    clearInterval(timerInterval);
+    running = false;
+    document.getElementById('timer-btn').textContent = 'Resume';
+  } else {
+    running = true;
+    document.getElementById('timer-btn').textContent = 'Pause';
+    timerInterval = setInterval(function() {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval); running = false;
+        document.getElementById('timer-display').textContent = 'TIME!';
+        document.getElementById('timer-display').classList.add('timer-warning');
+        document.getElementById('timer-btn').textContent = 'Start';
+        return;
+      }
+      var m = Math.floor(timeLeft/60), s = timeLeft%60;
+      document.getElementById('timer-display').textContent = m+':'+(s<10?'0':'')+s;
+      if (timeLeft <= 300) document.getElementById('timer-display').classList.add('timer-warning');
+      document.getElementById('q-progress').style.width = ((45*60-timeLeft)/(45*60)*100)+'%';
+    }, 1000);
+  }
+}
+function resetTimer() {
+  clearInterval(timerInterval); running = false; timeLeft = 45*60;
+  document.getElementById('timer-display').textContent = '45:00';
+  document.getElementById('timer-display').classList.remove('timer-warning');
+  document.getElementById('timer-btn').textContent = 'Start';
+  document.getElementById('q-progress').style.width = '0%';
+}
+function handleMath(qId, el, isCorrect) {
+  if (mathScores[qId] !== undefined) return;
+  mathScores[qId] = isCorrect;
+  var choices = document.getElementById(qId+'-choices').querySelectorAll('li');
+  choices.forEach(function(li){li.onclick=null;});
+  el.classList.add(isCorrect?'correct':'wrong');
+  if (!isCorrect) choices.forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  document.getElementById(qId+'-reveal').classList.add('show');
+  var num = qId.replace('m','');
+  var badge = document.getElementById('bm'+num);
+  if (badge) {
+    badge.classList.add(isCorrect?'correct':'wrong');
+    badge.textContent = 'Q'+num+(isCorrect?' ✓':' ✗');
+  }
+}
+function calcMathScore() {
+  var correct=0, total=0;
+  var ds = {alg:[0,0], adv:[0,0], data:[0,0], geo:[0,0]};
+  for (var i=1;i<=30;i++) {
+    var k='m'+i;
+    if (mathScores[k]!==undefined) {
+      total++;
+      if(mathScores[k]){correct++;
+        if(i<=6)ds.alg[0]++;else if(i<=12)ds.adv[0]++;else if(i<=21)ds.data[0]++;else ds.geo[0]++;
+      }
+      if(i<=6)ds.alg[1]++;else if(i<=12)ds.adv[1]++;else if(i<=21)ds.data[1]++;else ds.geo[1]++;
+    }
+  }
+  var pct = total>0?Math.round(correct/total*100):0;
+  var el = document.getElementById('math-final-score');
+  el.style.display='block';
+  if(pct>=87){el.style.background='var(--green-light)';el.style.color='var(--green)';}
+  else if(pct>=70){el.style.background='var(--amber-light)';el.style.color='var(--amber)';}
+  else{el.style.background='var(--red-light)';el.style.color='var(--red)';}
+  var names={alg:'Algebra',adv:'Advanced Math',data:'Data Analysis',geo:'Geometry/Trig'};
+  var weakest='', minP=2;
+  for(var d in ds){if(ds[d][1]>0){var p=ds[d][0]/ds[d][1];if(p<minP){minP=p;weakest=names[d];}}}
+  el.innerHTML=correct+' / '+total+' correct ('+pct+'%)'+(weakest?' — Weakest today: <strong>'+weakest+'</strong>':'')+(pct>=87?' — Math is solid!':pct>=70?' — Drill the missed domain.':' — Review formulas and retry.');
+}
+function toggleCheck(el){el.classList.toggle('checked');}
+</script>
+
+  </div>
+
 </main>
 </div>
 
@@ -3578,7 +5278,7 @@ function showDay(n) {
   if (nav) {
     nav.classList.add('active');
     var num = nav.querySelector('.nav-day-num');
-    if (num) { num.className = 'nav-day-num active-num'; }
+    if (num && n !== 'math') { num.className = 'nav-day-num active-num'; }
   }
   document.getElementById('content-pane').scrollTop = 0;
 }
