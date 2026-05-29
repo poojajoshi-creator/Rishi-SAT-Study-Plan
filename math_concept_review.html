@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Concept Review — Rishi SAT Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:2.5rem 3rem 2rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-eye{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:10px;}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:2.8rem;line-height:1.05;margin-bottom:10px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-sub{font-size:13px;color:rgba(255,255,255,0.42);max-width:600px;line-height:1.65;}
+.hdr-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.5rem;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(107,63,160,0.35);color:#c8a8f0;}
+
+/* Tab nav */
+.tab-nav{display:flex;background:white;border-bottom:2px solid var(--rule);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.tab-btn{flex:1;padding:13px 6px;font-size:12.5px;font-weight:500;font-family:'DM Sans',sans-serif;border:none;background:none;cursor:pointer;color:var(--ink-muted);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.15s;}
+.tab-btn:hover{background:var(--cream);color:var(--ink);}
+.tab-btn.active{color:var(--purple);border-bottom-color:var(--purple);}
+
+/* Panels */
+.panel{display:none;max-width:940px;margin:0 auto;padding:2rem 2rem 5rem;}
+.panel.active{display:block;}
+
+/* Alerts */
+.alert{border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:13px;line-height:1.65;}
+.alert b{font-weight:500;}
+.alert.purple{background:var(--purple-light);color:var(--purple);}
+.alert.blue{background:var(--blue-light);color:var(--blue);}
+.alert.green{background:var(--green-light);color:var(--green);}
+.alert.amber{background:var(--amber-light);color:var(--amber);}
+.alert.red{background:var(--red-light);color:var(--red);}
+.alert.gold{background:var(--gold-light);color:var(--gold);}
+
+/* Section headers */
+.sec-hdr{display:flex;align-items:center;gap:12px;margin:2.25rem 0 1.1rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.sec-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.sec-title{font-family:'Instrument Serif',serif;font-size:1.4rem;font-weight:400;}
+.sec-badge{margin-left:auto;font-size:11px;color:var(--ink-muted);background:var(--cream);padding:3px 10px;border-radius:20px;white-space:nowrap;font-weight:500;}
+
+/* Strategy box */
+.strat{border-radius:0 10px 10px 0;padding:1rem 1.25rem;margin-bottom:1rem;font-size:13px;line-height:1.7;}
+.strat b{font-weight:500;}
+.strat-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+.strat.blue{background:var(--blue-light);border-left:3px solid var(--blue);}.strat.blue .strat-title{color:var(--blue);}
+.strat.purple{background:var(--purple-light);border-left:3px solid var(--purple);}.strat.purple .strat-title{color:var(--purple);}
+.strat.green{background:var(--green-light);border-left:3px solid var(--green);}.strat.green .strat-title{color:var(--green);}
+.strat.amber{background:var(--amber-light);border-left:3px solid var(--amber);}.strat.amber .strat-title{color:var(--amber);}
+.strat.red{background:var(--red-light);border-left:3px solid var(--red);}.strat.red .strat-title{color:var(--red);}
+.strat.gold{background:var(--gold-light);border-left:3px solid var(--gold);}.strat.gold .strat-title{color:var(--gold);}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.grid.one{grid-template-columns:1fr;}
+.grid.three{grid-template-columns:1fr 1fr 1fr;}
+.card{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.1rem 1.3rem;border-left:3px solid var(--rule);}
+.card.blue{border-left-color:var(--blue);}
+.card.purple{border-left-color:var(--purple);}
+.card.amber{border-left-color:var(--amber);}
+.card.green{border-left-color:var(--green);}
+.card.red{border-left-color:var(--red);}
+.card.gold{border-left-color:var(--gold);}
+.card-lbl{font-size:10px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:5px;}
+.card-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:7px;}
+.card-body{font-size:13px;color:var(--ink-soft);line-height:1.75;}
+.card-body b{color:var(--ink);font-weight:500;}
+.trap{background:var(--red-light);border-radius:5px;padding:6px 10px;margin-top:8px;font-size:12px;color:var(--red);line-height:1.5;}
+.trap::before{content:'⚠ Trap: ';font-weight:500;}
+.eg{background:var(--cream);border-radius:5px;padding:8px 10px;margin-top:8px;font-size:12.5px;color:var(--ink-soft);line-height:1.6;font-family:'Instrument Serif',serif;}
+
+/* Formula table */
+.ftable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem;background:white;border-radius:10px;overflow:hidden;border:0.5px solid var(--rule);}
+.ftable th{background:var(--cream);padding:7px 12px;text-align:left;font-weight:500;font-size:10px;letter-spacing:0.7px;text-transform:uppercase;color:var(--ink-muted);}
+.ftable td{padding:8px 12px;border-bottom:0.5px solid var(--rule);vertical-align:top;line-height:1.6;}
+.ftable td:first-child{font-weight:500;color:var(--ink);width:30%;}
+.ftable td:last-child{color:var(--ink-soft);font-size:12.5px;}
+.ftable tr:last-child td{border-bottom:none;}
+
+/* Quick ref table */
+.qrtable{width:100%;border-collapse:collapse;font-size:12.5px;background:white;border-radius:10px;overflow:hidden;border:0.5px solid var(--rule);margin-bottom:1rem;}
+.qrtable th{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 12px;text-align:left;font-size:11px;font-weight:500;letter-spacing:0.5px;}
+.qrtable td{padding:7px 12px;border-bottom:0.5px solid var(--rule);vertical-align:top;color:var(--ink-soft);line-height:1.55;}
+.qrtable td:first-child{font-weight:500;color:var(--ink);width:28%;font-family:'Instrument Serif',serif;font-size:13px;}
+.qrtable td.formula{font-family:'Instrument Serif',serif;font-size:13px;color:var(--ink);}
+.qrtable tr:last-child td{border-bottom:none;}
+.qrtable tr:hover td{background:var(--cream);}
+
+/* Highlight row */
+.qrtable tr.hi td{background:var(--blue-light);}
+.qrtable tr.hi td:first-child{color:var(--blue);}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;font-family:'DM Sans',sans-serif;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;font-family:'DM Sans',sans-serif;}
+
+/* Progress tracker */
+.progress-card{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.1rem 1.3rem;margin-bottom:10px;}
+.progress-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.progress-title{font-size:13px;font-weight:500;color:var(--ink);}
+.check-items{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.ci{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);padding:5px 0;cursor:pointer;}
+.ci input[type=checkbox]{accent-color:var(--green);width:15px;height:15px;flex-shrink:0;cursor:pointer;}
+.ci.done{color:var(--green);}
+
+@media(max-width:640px){
+  .grid,.grid.three{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2rem;}
+  .tab-btn{font-size:10px;padding:10px 3px;}
+}
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="index.html">← Back to Study Portal</a>
+  <span>Math Concept Review · All topics · SAT Prep</span>
+</div>
+
+<div class="hdr">
+  <div class="hdr-eye">SAT Prep · Math Concept Review · All 4 Domains</div>
+  <div class="hdr-title">Mathematics<br><em>Complete Reference Guide</em></div>
+  <div class="hdr-sub">Every formula, every rule, every trap — organised by domain. Read this before any math test or the practice SAT. Use the tabs to jump between domains.</div>
+  <div class="hdr-chips">
+    <span class="chip">Rishi Wadhwani</span>
+    <span class="chip">Current Math: 750</span>
+    <span class="chip hi">Target: 800</span>
+    <span class="chip">30 questions · 45 min per test</span>
+    <span class="chip">4 domains · no domain is optional</span>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="show('algebra')">📊 Algebra</button>
+  <button class="tab-btn" onclick="show('advanced')">🔢 Advanced Math</button>
+  <button class="tab-btn" onclick="show('data')">📈 Data Analysis</button>
+  <button class="tab-btn" onclick="show('geometry')">📐 Geometry &amp; Trig</button>
+  <button class="tab-btn" onclick="show('strategy')">⚡ Test Strategy</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ALGEBRA
+══════════════════════════════════════════════ -->
+<div class="panel active" id="tab-algebra">
+
+<div class="alert blue" style="margin-top:1.5rem;">
+  <b>Algebra is ~35% of the Math section</b> — the single biggest domain. Linear equations, systems, inequalities, and functions appear in almost every test. These are the questions you should get right every time.
+</div>
+
+<!-- LINEAR EQUATIONS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--blue-light);">📏</div>
+  <div class="sec-title">Linear Equations &amp; Graphs</div>
+  <div class="sec-badge">~6–8 questions</div>
+</div>
+
+<table class="qrtable">
+  <thead><tr><th>Concept</th><th>Formula / Rule</th><th>Notes &amp; traps</th></tr></thead>
+  <tbody>
+    <tr><td>Slope-intercept form</td><td class="formula">y = mx + b</td><td>m = slope (rise/run), b = y-intercept. Most useful for graphing and reading equations directly.</td></tr>
+    <tr><td>Standard form</td><td class="formula">Ax + By = C</td><td>Slope = −A/B. Useful for systems. x-intercept: set y=0. y-intercept: set x=0.</td></tr>
+    <tr><td>Point-slope form</td><td class="formula">y − y₁ = m(x − x₁)</td><td>Use when you have a point and a slope. Fastest setup for writing the equation of a line.</td></tr>
+    <tr><td>Slope from two points</td><td class="formula">m = (y₂ − y₁) / (x₂ − x₁)</td><td>Always subtract in the same order: second minus first. A common error is mixing up numerator and denominator.</td></tr>
+    <tr class="hi"><td>Perpendicular slope</td><td class="formula">m⊥ = −1/m</td><td>Negative reciprocal. If original slope is 3/5, perpendicular is −5/3.</td></tr>
+    <tr><td>Parallel slope</td><td class="formula">Same slope, different intercept</td><td>Parallel lines never intersect → 0 solutions. Same slope AND intercept → same line → ∞ solutions.</td></tr>
+    <tr><td>x-intercept</td><td class="formula">Set y = 0, solve for x</td><td>Easy to confuse with y-intercept. x-intercept is where the line crosses the x-axis (y=0).</td></tr>
+  </tbody>
+</table>
+
+<div class="grid">
+  <div class="card blue">
+    <div class="card-lbl">Systems of equations</div>
+    <div class="card-title">Solutions at a glance</div>
+    <div class="card-body">
+      For a₁x+b₁y=c₁ and a₂x+b₂y=c₂:<br><br>
+      <b>One solution:</b> different slopes (lines cross)<br>
+      <b>No solution:</b> a₁/a₂ = b₁/b₂ ≠ c₁/c₂ (parallel lines)<br>
+      <b>Infinite solutions:</b> a₁/a₂ = b₁/b₂ = c₁/c₂ (same line)<br><br>
+      Methods: substitution (isolate one variable) or elimination (add/subtract equations to cancel a variable).
+    </div>
+    <div class="trap">Multiplying an equation to make coefficients match, then forgetting to multiply the constant on the right side too.</div>
+  </div>
+  <div class="card blue">
+    <div class="card-lbl">Linear word problems</div>
+    <div class="card-title">Setup strategy</div>
+    <div class="card-body">
+      <b>Step 1:</b> Define variables explicitly before writing anything.<br>
+      <b>Step 2:</b> Write one equation per constraint in the problem.<br>
+      <b>Step 3:</b> Solve. <b>Step 4:</b> Check — does the answer make sense?<br><br>
+      <b>Rate × Time = Distance</b><br>
+      <b>Rate × Time = Work done</b><br>
+      <b>Simple interest:</b> I = Prt<br>
+      <b>% change:</b> (new − old) / old × 100
+    </div>
+    <div class="trap">Setting up the equation for the wrong quantity — reread what the question actually asks for at the end.</div>
+  </div>
+</div>
+
+<!-- INEQUALITIES -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--blue-light);">⚖️</div>
+  <div class="sec-title">Inequalities &amp; Absolute Value</div>
+</div>
+
+<div class="grid">
+  <div class="card blue">
+    <div class="card-lbl">Inequalities</div>
+    <div class="card-title">The sign flip rule</div>
+    <div class="card-body">
+      <b>Flip the inequality sign</b> when multiplying or dividing both sides by a negative number.<br><br>
+      −3x + 7 ≤ 1 → −3x ≤ −6 → x ≥ 2 (sign flipped when dividing by −3)<br><br>
+      Graphing: open circle = strict (&lt; or &gt;), closed circle = inclusive (≤ or ≥).
+    </div>
+    <div class="trap">Forgetting to flip the sign when dividing by a negative — the #1 inequality error.</div>
+  </div>
+  <div class="card blue">
+    <div class="card-lbl">Absolute value</div>
+    <div class="card-title">Always two cases</div>
+    <div class="card-body">
+      <b>|ax + b| = c</b> gives two equations:<br>
+      ax + b = c &nbsp;&nbsp;AND&nbsp;&nbsp; ax + b = −c<br><br>
+      <b>|x| &lt; a</b> → −a &lt; x &lt; a (AND)<br>
+      <b>|x| &gt; a</b> → x &lt; −a OR x &gt; a<br><br>
+      Distance on number line: |a − b| = distance between a and b.
+    </div>
+    <div class="trap">Setting up only one case for an absolute value equation instead of two.</div>
+  </div>
+</div>
+
+<!-- FUNCTIONS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--blue-light);">f(x)</div>
+  <div class="sec-title">Functions</div>
+</div>
+
+<table class="qrtable">
+  <thead><tr><th>Transformation</th><th>Effect on graph</th><th>Key trap</th></tr></thead>
+  <tbody>
+    <tr><td>f(x) + k</td><td class="formula">Shifts UP by k</td><td>Positive k = up. Negative k = down.</td></tr>
+    <tr class="hi"><td>f(x + h)</td><td class="formula">Shifts LEFT by h</td><td>This is the most frequently missed. f(x+3) shifts LEFT 3 — because you need x+3=0, so x=−3.</td></tr>
+    <tr><td>f(x − h)</td><td class="formula">Shifts RIGHT by h</td><td>f(x−3) shifts right 3. Think: x−3=0 gives x=3.</td></tr>
+    <tr><td>−f(x)</td><td class="formula">Reflects over x-axis</td><td>All y-values negate. Minimum becomes maximum and vice versa.</td></tr>
+    <tr><td>f(−x)</td><td class="formula">Reflects over y-axis</td><td>All x-values negate. Even functions satisfy f(−x)=f(x).</td></tr>
+    <tr><td>a·f(x), a&gt;1</td><td class="formula">Vertical stretch</td><td>Multiplies all y-values by a. Steeper/taller graph.</td></tr>
+    <tr><td>a·f(x), 0&lt;a&lt;1</td><td class="formula">Vertical compression</td><td>Shrinks the graph toward the x-axis.</td></tr>
+  </tbody>
+</table>
+
+<div class="grid">
+  <div class="card blue">
+    <div class="card-lbl">Composite functions</div>
+    <div class="card-title">Inside out, always</div>
+    <div class="card-body">
+      <b>f(g(x)):</b> apply g first, then apply f to the result.<br><br>
+      f(g(3)): Step 1 → calculate g(3). Step 2 → use that answer as the input to f.<br><br>
+      Never apply f first. The inner function always runs first regardless of which letter comes first alphabetically.
+    </div>
+    <div class="trap">Applying f first in f(g(x)) instead of g first.</div>
+  </div>
+  <div class="card blue">
+    <div class="card-lbl">Inverse functions</div>
+    <div class="card-title">Swap and solve</div>
+    <div class="card-body">
+      To find f⁻¹(x): replace f(x) with y, then swap x and y, then solve for y.<br><br>
+      f(x) = 3x−1 → y = 3x−1 → x = 3y−1 → y = (x+1)/3<br>
+      So f⁻¹(x) = (x+1)/3<br><br>
+      <b>f(f⁻¹(x)) = x</b> always.<br>
+      Domain of f⁻¹ = Range of f.
+    </div>
+    <div class="eg">f(f⁻¹(8)) = 8 always (they cancel). f⁻¹(f(8)) = 8 always.</div>
+  </div>
+</div>
+
+</div><!-- end algebra -->
+
+<!-- ══════════════════════════════════════════════
+     ADVANCED MATH
+══════════════════════════════════════════════ -->
+<div class="panel" id="tab-advanced">
+
+<div class="alert purple" style="margin-top:1.5rem;">
+  <b>Advanced Math is ~35% of the section</b> — tied with Algebra for the largest share. Quadratics appear in almost every test in multiple forms. Know how to move between standard, vertex, and factored forms instantly.
+</div>
+
+<!-- QUADRATICS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--purple-light);">∩</div>
+  <div class="sec-title">Quadratic Equations</div>
+  <div class="sec-badge">~4–6 questions</div>
+</div>
+
+<div class="grid three">
+  <div class="card purple">
+    <div class="card-lbl">Standard form</div>
+    <div class="card-title">ax² + bx + c = 0</div>
+    <div class="card-body">
+      Use when: factoring, quadratic formula, finding discriminant.<br><br>
+      <b>Quadratic formula:</b><br>
+      x = (−b ± √(b²−4ac)) / 2a<br><br>
+      <b>Sum of roots</b> = −b/a<br>
+      <b>Product of roots</b> = c/a<br><br>
+      <b>Axis of symmetry:</b> x = −b/2a
+    </div>
+    <div class="trap">In the quadratic formula, the entire expression 2a is in the denominator — not just a.</div>
+  </div>
+  <div class="card purple">
+    <div class="card-lbl">Vertex form</div>
+    <div class="card-title">a(x − h)² + k</div>
+    <div class="card-body">
+      Use when: vertex, axis of symmetry, max/min.<br><br>
+      <b>Vertex</b> = (h, k)<br>
+      <b>Axis of symmetry</b> = x = h<br><br>
+      a &gt; 0 → opens up, minimum at vertex<br>
+      a &lt; 0 → opens down, maximum at vertex<br><br>
+      <b>Complete the square:</b> x²+bx = (x+b/2)² − (b/2)²
+    </div>
+    <div class="trap">In a(x−h)²+k, the vertex is (h, k) not (−h, k). The sign flips: (x−3)² has vertex x=3.</div>
+  </div>
+  <div class="card purple">
+    <div class="card-lbl">Factored form</div>
+    <div class="card-title">a(x − r₁)(x − r₂)</div>
+    <div class="card-body">
+      Use when: roots/zeros, x-intercepts.<br><br>
+      Roots at x = r₁ and x = r₂<br><br>
+      <b>Special products:</b><br>
+      a²−b² = (a+b)(a−b)<br>
+      a²+2ab+b² = (a+b)²<br>
+      a²−2ab+b² = (a−b)²<br><br>
+      Vertex x-coord = midpoint of roots: (r₁+r₂)/2
+    </div>
+    <div class="eg">x²−5x+6 = (x−2)(x−3). Roots: x=2 and x=3. Vertex at x=2.5.</div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card purple">
+    <div class="card-lbl">Discriminant</div>
+    <div class="card-title">b² − 4ac tells you everything</div>
+    <div class="card-body">
+      <b>&gt; 0:</b> two distinct real roots (line intersects parabola twice)<br>
+      <b>= 0:</b> exactly one real root — tangent (repeated root)<br>
+      <b>&lt; 0:</b> no real roots (never crosses x-axis)<br><br>
+      One solution → discriminant = 0 → b²−4ac = 0 → solve for the unknown.<br><br>
+      <b>SAT question type:</b> "For what value of k does kx²+bx+c = 0 have exactly one solution?"
+    </div>
+    <div class="eg">kx²−8x+4=0: one solution → 64−16k=0 → k=4.</div>
+  </div>
+  <div class="card purple">
+    <div class="card-lbl">Parabola symmetry</div>
+    <div class="card-title">The symmetry shortcut</div>
+    <div class="card-body">
+      A parabola is symmetric about its axis x = −b/2a.<br><br>
+      If f(k) = f(k+d), then k and k+d are equidistant from the axis. The midpoint of k and k+d equals the axis.<br><br>
+      (k + k+d)/2 = −b/2a → solve for k<br><br>
+      This avoids expanding and setting equal — much faster.
+    </div>
+    <div class="trap">Trying to solve f(k)=f(k+d) by expanding — use the symmetry shortcut instead.</div>
+  </div>
+</div>
+
+<!-- POLYNOMIALS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--purple-light);">𝑝(x)</div>
+  <div class="sec-title">Polynomials &amp; Rational Functions</div>
+</div>
+
+<div class="grid">
+  <div class="card purple">
+    <div class="card-lbl">Factor theorem</div>
+    <div class="card-title">Roots and factors</div>
+    <div class="card-body">
+      If p(a) = 0, then <b>(x−a) is a factor</b> of p(x).<br><br>
+      To find the third root of a cubic with two known roots: the constant term = (−1)³ × a × b × c (product of roots with sign adjustment based on leading coefficient).<br><br>
+      Use polynomial long division or synthetic division to factor out a known root.
+    </div>
+    <div class="eg">p(x) = x³+ax²+bx−8 with roots 1 and −2. Product of roots = 8/1 = 8. Third root: 8 / (1×(−2)) = −4. Wait: product = (c/a) with sign, so product = −8/1=−8 → 1×(−2)×r = −8 → r=−4.</div>
+  </div>
+  <div class="card purple">
+    <div class="card-lbl">Rational functions — holes vs asymptotes</div>
+    <div class="card-title">The crucial distinction</div>
+    <div class="card-body">
+      <b>Vertical asymptote:</b> denominator = 0 and the factor does NOT cancel<br>
+      <b>Hole (removable discontinuity):</b> the same factor appears in numerator AND denominator — it cancels, but the value is still excluded from the domain<br><br>
+      (x²−4)/(x−2) = (x+2)(x−2)/(x−2) = x+2, but <b>x≠2</b>. There is a hole at x=2, not an asymptote.
+    </div>
+    <div class="trap">Cancelling a factor and assuming x=2 is now allowed. The restriction survives simplification.</div>
+  </div>
+</div>
+
+<!-- EXPONENTS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--purple-light);">xⁿ</div>
+  <div class="sec-title">Exponents, Radicals &amp; Exponential Models</div>
+</div>
+
+<table class="qrtable">
+  <thead><tr><th>Rule</th><th>Formula</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>Product rule</td><td class="formula">aᵐ × aⁿ = aᵐ⁺ⁿ</td><td>x³ × x⁵ = x⁸</td></tr>
+    <tr><td>Quotient rule</td><td class="formula">aᵐ / aⁿ = aᵐ⁻ⁿ</td><td>x⁷ / x³ = x⁴</td></tr>
+    <tr><td>Power rule</td><td class="formula">(aᵐ)ⁿ = aᵐⁿ</td><td>(x²)³ = x⁶</td></tr>
+    <tr><td>Zero exponent</td><td class="formula">a⁰ = 1</td><td>Any nonzero base to power 0 = 1</td></tr>
+    <tr><td>Negative exponent</td><td class="formula">a⁻ⁿ = 1/aⁿ</td><td>x⁻³ = 1/x³</td></tr>
+    <tr class="hi"><td>Fractional exponent</td><td class="formula">a^(m/n) = (ⁿ√a)ᵐ</td><td>27^(2/3) = (∛27)² = 3² = 9. Take root FIRST, then power.</td></tr>
+    <tr><td>Exponential growth</td><td class="formula">y = a · bˣ, b = 1+r</td><td>8% annual growth: y = a(1.08)ˣ</td></tr>
+    <tr><td>Exponential decay</td><td class="formula">y = a · bˣ, b = 1−r</td><td>12% annual decay: y = a(0.88)ˣ</td></tr>
+    <tr class="hi"><td>Half-life</td><td class="formula">y = a · (½)^(t/h)</td><td>Half-life 12 yrs: y = a(½)^(t/12). At t=48: (½)⁴ = 1/16.</td></tr>
+    <tr><td>Doubling time</td><td class="formula">y = a · 2^(t/d)</td><td>Doubles every 5 years: y = a·2^(t/5). NOT a·2ᵗ.</td></tr>
+  </tbody>
+</table>
+
+<div class="strat purple">
+  <div class="strat-title">The exponent structure trap — most common advanced math error</div>
+  If a quantity <b>doubles every 3 years</b>, the model is y = a·2^(t/3), NOT y = a·2ᵗ. The denominator in the exponent controls the rate. Always check: does the exponent equal 1 when t equals the stated period? If doubling every 3 years, at t=3: 2^(3/3) = 2¹ = 2 ✓. At t=3 with wrong model: 2³ = 8 ✗.
+</div>
+
+<!-- FUNCTIONAL EQUATIONS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--purple-light);">g(n)</div>
+  <div class="sec-title">Functional Equations &amp; Recursive Patterns</div>
+</div>
+
+<div class="grid">
+  <div class="card purple">
+    <div class="card-lbl">Functional equations</div>
+    <div class="card-title">Chaining the rule</div>
+    <div class="card-body">
+      If g(2x) = 4·g(x): doubling x multiplies the output by 4.<br><br>
+      g(3) = 5 → g(6) = 4·g(3) = 20 → g(12) = 4·g(6) = 80<br><br>
+      Always build step by step. Don't try to jump multiple steps at once — chain each application of the rule.
+    </div>
+    <div class="trap">Trying to calculate g(12) directly from g(3) in one step instead of chaining through g(6).</div>
+  </div>
+  <div class="card purple">
+    <div class="card-lbl">Systems with unknowns in coefficients</div>
+    <div class="card-title">No solution / infinite solutions setup</div>
+    <div class="card-body">
+      "The system has no solution" → parallel lines → same slope, different intercept.<br><br>
+      Multiply one equation by k to match the other's coefficients, then check what value of the unknown satisfies the slope match but not the intercept match.<br><br>
+      "The system has infinite solutions" → same equation → ALL ratios equal.
+    </div>
+    <div class="eg">3x−2y=7 and 6x−ky=10. No solution: coefficients must match → k=4. Check: 14≠10 ✓ (no solution confirmed).</div>
+  </div>
+</div>
+
+</div><!-- end advanced -->
+
+<!-- ══════════════════════════════════════════════
+     DATA ANALYSIS
+══════════════════════════════════════════════ -->
+<div class="panel" id="tab-data">
+
+<div class="alert amber" style="margin-top:1.5rem;">
+  <b>Data Analysis is ~15% of the section</b> — smaller in quantity but high in trap density. The conceptual questions (correlation vs causation, standard deviation, margin of error) are either fully correct or fully wrong — there's no partial credit for half-understanding them.
+</div>
+
+<!-- STATISTICS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--amber-light);">📊</div>
+  <div class="sec-title">Descriptive Statistics</div>
+</div>
+
+<table class="qrtable">
+  <thead><tr><th>Measure</th><th>Definition</th><th>Key traps</th></tr></thead>
+  <tbody>
+    <tr><td>Mean</td><td>Sum of all values ÷ count</td><td>Sensitive to outliers. A single extreme value can dramatically shift the mean.</td></tr>
+    <tr><td>Median</td><td>Middle value (odd n) or average of two middle values (even n)</td><td>Resistant to outliers. If n is even, average the two middle values.</td></tr>
+    <tr><td>Mode</td><td>Most frequently occurring value</td><td>A data set can have 0, 1, or multiple modes. Not affected by outliers.</td></tr>
+    <tr class="hi"><td>Standard Deviation</td><td>Measures spread (variability) around the mean</td><td><b>Adding a constant</b> to all values → mean changes, SD unchanged. <b>Multiplying</b> by k → both mean and SD multiply by k.</td></tr>
+    <tr><td>Range</td><td>Max − Min</td><td>Highly sensitive to outliers — one extreme value changes it completely.</td></tr>
+    <tr><td>IQR</td><td>Q3 − Q1</td><td>Measures spread of middle 50%. Resistant to outliers.</td></tr>
+    <tr class="hi"><td>Outlier rule</td><td>Value is outlier if: &gt; Q3 + 1.5×IQR or &lt; Q1 − 1.5×IQR</td><td>Being above the maximum does NOT automatically make something an outlier — you must apply the 1.5×IQR rule.</td></tr>
+    <tr><td>Weighted average</td><td>Σ(value × weight) / Σ(weights)</td><td>When groups have different sizes, you cannot just average the group means.</td></tr>
+  </tbody>
+</table>
+
+<div class="grid">
+  <div class="card amber">
+    <div class="card-lbl">Standard deviation — the key insight</div>
+    <div class="card-title">What changes it, what doesn't</div>
+    <div class="card-body">
+      SD measures <em>spread</em>. It is not affected by shifting the entire dataset up or down.<br><br>
+      <b>Adding 5 to every value:</b> mean goes up 5, SD stays the same<br>
+      <b>Multiplying every value by 2:</b> mean doubles, SD doubles<br>
+      <b>Both operations:</b> multiply by 2 then add 5 → SD multiplied by 2 only<br><br>
+      Think of it this way: adding a constant moves everyone equally — the gaps between values don't change.
+    </div>
+    <div class="trap">Adding 5 to the standard deviation when a constant is added to all values.</div>
+  </div>
+  <div class="card amber">
+    <div class="card-lbl">Box plots</div>
+    <div class="card-title">Five-number summary</div>
+    <div class="card-body">
+      Five numbers: <b>Min · Q1 · Median · Q3 · Max</b><br><br>
+      The box spans Q1 to Q3 (the IQR). The line inside the box is the median. Whiskers extend to min and max.<br><br>
+      <b>Skewed right:</b> median closer to Q1, long right whisker<br>
+      <b>Skewed left:</b> median closer to Q3, long left whisker<br>
+      <b>Symmetric:</b> median in the middle of the box
+    </div>
+    <div class="eg">Min=42, Q1=61, Median=74, Q3=86, Max=98. IQR=25. Upper outlier boundary: 86+1.5(25)=123.5.</div>
+  </div>
+</div>
+
+<!-- CORRELATION & CAUSATION -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--amber-light);">🔗</div>
+  <div class="sec-title">Correlation, Causation &amp; Study Design</div>
+</div>
+
+<div class="strat red">
+  <div class="strat-title">The most-tested conceptual trap in all of data analysis</div>
+  <b>Correlation ≠ causation.</b> No matter how strong the correlation (r = 0.99), an observational study cannot establish causation. Only a <b>controlled experiment with random assignment</b> permits a causal conclusion. Lurking variables — unmeasured third factors — may drive both variables simultaneously.
+</div>
+
+<div class="grid">
+  <div class="card amber">
+    <div class="card-lbl">Study types</div>
+    <div class="card-title">What each can conclude</div>
+    <div class="card-body">
+      <b>Observational study</b> (survey, existing data): can show association/correlation only. NEVER causation.<br><br>
+      <b>Controlled experiment with random assignment:</b> can conclude causation — randomisation balances lurking variables across groups.<br><br>
+      <b>Key signal words:</b> "randomly assigned" → causation allowed. "Surveyed" / "observed" / "found that" → correlation only.
+    </div>
+    <div class="trap">Reading "strong correlation" and concluding that one variable CAUSES the other.</div>
+  </div>
+  <div class="card amber">
+    <div class="card-lbl">Sampling &amp; margin of error</div>
+    <div class="card-title">Generalising results</div>
+    <div class="card-body">
+      <b>Random sample</b> → results can be generalised to the population<br>
+      <b>Convenience sample</b> → results cannot be generalised<br><br>
+      <b>Margin of error (MOE):</b> represents uncertainty in the estimate.<br>
+      If poll says 54% ± 4%, the true value is likely between 50% and 58%.<br><br>
+      <b>MOE ∝ 1/√n</b><br>
+      Sample ×4 → MOE ÷2 (halves)<br>
+      Sample ×9 → MOE ÷3 (thirds)
+    </div>
+    <div class="trap">Dividing MOE by 4 when sample quadruples — it should be divided by √4 = 2.</div>
+  </div>
+</div>
+
+<!-- PROBABILITY -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--amber-light);">🎲</div>
+  <div class="sec-title">Probability</div>
+</div>
+
+<div class="grid">
+  <div class="card amber">
+    <div class="card-lbl">Core probability rules</div>
+    <div class="card-title">Formulas</div>
+    <div class="card-body">
+      <b>P(A and B)</b> = P(A) × P(B) [if independent]<br>
+      <b>P(A or B)</b> = P(A) + P(B) − P(A and B)<br>
+      <b>P(A or B)</b> = P(A) + P(B) [if mutually exclusive]<br><br>
+      <b>Conditional probability:</b><br>
+      P(A|B) = P(A and B) / P(B)<br><br>
+      Two-way table: P(A|B) uses B's total as denominator, not grand total.
+    </div>
+    <div class="trap">Using the grand total as the denominator for a conditional probability question. Always check: "given that...?" → use that group's total.</div>
+  </div>
+  <div class="card amber">
+    <div class="card-lbl">With vs without replacement</div>
+    <div class="card-title">The denominator changes</div>
+    <div class="card-body">
+      <b>WITH replacement:</b> each draw is independent — same denominator each time.<br>
+      5 red of 10: P(red) = 5/10 both times. P(both red) = (5/10)² = 1/4<br><br>
+      <b>WITHOUT replacement:</b> denominator decreases after each draw.<br>
+      P(1st red) = 5/10. P(2nd red | 1st red) = 4/9.<br>
+      P(both red) = 5/10 × 4/9 = 20/90 = 2/9
+    </div>
+    <div class="trap">Using the same denominator for both draws in a without-replacement problem.</div>
+  </div>
+</div>
+
+<!-- SCATTERPLOTS & MODELS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--amber-light);">📉</div>
+  <div class="sec-title">Scatterplots, Lines of Best Fit &amp; Models</div>
+</div>
+
+<div class="grid">
+  <div class="card amber">
+    <div class="card-lbl">Line of best fit</div>
+    <div class="card-title">Interpreting the equation</div>
+    <div class="card-body">
+      y = mx + b where x = predictor, y = predicted outcome<br><br>
+      <b>Slope (m):</b> for each 1-unit increase in x, y changes by m<br>
+      <b>Intercept (b):</b> predicted value of y when x = 0<br><br>
+      To predict: substitute x into the equation. To find x for a given y: substitute y and solve.<br><br>
+      Note: predictions beyond the range of the data (extrapolation) are unreliable.
+    </div>
+    <div class="trap">Confusing the slope with the intercept when reading the equation.</div>
+  </div>
+  <div class="card amber">
+    <div class="card-lbl">Percentages, ratios &amp; unit conversion</div>
+    <div class="card-title">Unit analysis</div>
+    <div class="card-body">
+      Set up unit conversions as fractions that cancel:<br>
+      60 mi/hr × 5280 ft/mi × 1 hr/3600 s = <b>88 ft/s</b><br><br>
+      <b>Compound percent change:</b> two successive 10% increases ≠ 20%. It's (1.1)(1.1) = 1.21 = 21% total.<br><br>
+      <b>Part/whole ratio:</b> if ratio of A:B = 3:5, then A = 3/8 of total and B = 5/8 of total.
+    </div>
+    <div class="trap">Adding successive percentage changes instead of multiplying the growth factors.</div>
+  </div>
+</div>
+
+</div><!-- end data -->
+
+<!-- ══════════════════════════════════════════════
+     GEOMETRY & TRIG
+══════════════════════════════════════════════ -->
+<div class="panel" id="tab-geometry">
+
+<div class="alert green" style="margin-top:1.5rem;">
+  <b>Geometry &amp; Trig is ~15% of the section.</b> Formula recall is critical here — the SAT provides a reference sheet, but knowing the formulas instantly saves time. Pay special attention to the trig quadrant signs and the completing-the-square technique for circle equations.
+</div>
+
+<!-- TRIANGLES -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--green-light);">△</div>
+  <div class="sec-title">Triangles</div>
+</div>
+
+<table class="qrtable">
+  <thead><tr><th>Concept</th><th>Formula / Rule</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Pythagorean theorem</td><td class="formula">a² + b² = c²</td><td>c is always the hypotenuse (side opposite the right angle).</td></tr>
+    <tr class="hi"><td>Pythagorean triples</td><td class="formula">3-4-5 · 5-12-13 · 8-15-17 · 7-24-25</td><td>Any multiple works: 6-8-10, 10-24-26, 15-36-39. Recognising these saves significant time.</td></tr>
+    <tr><td>30-60-90 triangle</td><td class="formula">Sides: x, x√3, 2x</td><td>Short leg opposite 30°, long leg opposite 60°, hypotenuse opposite 90°.</td></tr>
+    <tr><td>45-45-90 triangle</td><td class="formula">Sides: x, x, x√2</td><td>Both legs equal. Hypotenuse = leg × √2. Diagonal of a square of side x = x√2.</td></tr>
+    <tr><td>Triangle angle sum</td><td class="formula">A + B + C = 180°</td><td>Exterior angle = sum of the two non-adjacent interior angles.</td></tr>
+    <tr class="hi"><td>Side-angle relationship</td><td class="formula">Larger angle → longer opposite side</td><td>Use to order sides without calculation. Equally: shorter side → smaller opposite angle.</td></tr>
+    <tr><td>Similar triangles</td><td class="formula">Corresponding sides proportional</td><td>Side ratio = k → perimeter ratio = k, area ratio = k². If similar triangles have sides in ratio 2:3, areas are in ratio 4:9.</td></tr>
+    <tr><td>Area of triangle</td><td class="formula">A = ½ × base × height</td><td>Height must be perpendicular to the base. For a right triangle, the two legs are the base and height.</td></tr>
+  </tbody>
+</table>
+
+<!-- CIRCLES -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--green-light);">○</div>
+  <div class="sec-title">Circles</div>
+</div>
+
+<div class="grid">
+  <div class="card green">
+    <div class="card-lbl">All circle formulas</div>
+    <div class="card-title">Know all of these cold</div>
+    <div class="card-body">
+      <b>Area:</b> A = πr²<br>
+      <b>Circumference:</b> C = 2πr<br>
+      <b>Arc length:</b> (θ/360) × 2πr<br>
+      <b>Sector area:</b> (θ/360) × πr²<br><br>
+      All of these use <b>radius</b>, not diameter. If given diameter d, then r = d/2.
+    </div>
+    <div class="trap">Using the diameter in the formula instead of the radius. Always halve the diameter first.</div>
+  </div>
+  <div class="card green">
+    <div class="card-lbl">Circle equation — complete the square</div>
+    <div class="card-title">Standard form: (x−h)²+(y−k)²=r²</div>
+    <div class="card-body">
+      Centre = (h, k). Radius = √(right side).<br><br>
+      From general form x²+y²+Dx+Ey=F:<br>
+      Group x terms and y terms. Add (D/2)² and (E/2)² to BOTH sides.<br><br>
+      <b>x²−6x+y²+8y=11:</b><br>
+      Add 9 and 16 to both sides:<br>
+      (x−3)²+(y+4)²=36 → centre (3,−4), r=6
+    </div>
+    <div class="trap">Adding (D/2)² to the left side but forgetting to add it to the right side too.</div>
+  </div>
+</div>
+
+<!-- COORDINATE GEOMETRY -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--green-light);">📍</div>
+  <div class="sec-title">Coordinate Geometry</div>
+</div>
+
+<table class="qrtable">
+  <thead><tr><th>Concept</th><th>Formula</th><th>Key notes</th></tr></thead>
+  <tbody>
+    <tr><td>Distance formula</td><td class="formula">d = √((x₂−x₁)² + (y₂−y₁)²)</td><td>Pythagorean theorem in disguise. Recognise Pythagorean triples to simplify: points (−3,4) to (5,−2) → Δx=8, Δy=6 → distance=10 (6-8-10 triple).</td></tr>
+    <tr><td>Midpoint formula</td><td class="formula">M = ((x₁+x₂)/2, (y₁+y₂)/2)</td><td>Average the x-coordinates, average the y-coordinates. To find the other endpoint given midpoint: double and subtract the known point.</td></tr>
+    <tr class="hi"><td>Finding endpoint from midpoint</td><td class="formula">B = (2Mx−Ax, 2My−Ay)</td><td>If A=(1,2) and M=(5,1): B=( 2×5−1, 2×1−2 )=(9,0). Always verify by rechecking the midpoint.</td></tr>
+    <tr><td>Median of a triangle</td><td>Line from vertex to midpoint of opposite side</td><td>Find midpoint of the base, then calculate distance from the opposite vertex to that midpoint.</td></tr>
+  </tbody>
+</table>
+
+<!-- TRIGONOMETRY -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--green-light);">sin</div>
+  <div class="sec-title">Trigonometry</div>
+</div>
+
+<div class="grid">
+  <div class="card green">
+    <div class="card-lbl">SOH-CAH-TOA</div>
+    <div class="card-title">The foundation</div>
+    <div class="card-body">
+      <b>sin θ</b> = opposite / hypotenuse<br>
+      <b>cos θ</b> = adjacent / hypotenuse<br>
+      <b>tan θ</b> = opposite / adjacent = sin θ / cos θ<br><br>
+      To find a side: multiply the trig ratio by the hypotenuse (or divide).<br><br>
+      Given tan θ = 4/3: opp=4, adj=3, hyp=5 (3-4-5 triple). sin θ = 4/5, cos θ = 3/5.
+    </div>
+    <div class="eg">Angle B=53°, adj=9. cos 53°≈0.602. hyp = 9/0.602 ≈ 14.95.</div>
+  </div>
+  <div class="card green">
+    <div class="card-lbl">Quadrant signs — MUST memorise</div>
+    <div class="card-title">ASTC — All Students Take Calculus</div>
+    <div class="card-body">
+      <b>QI (0°–90°):</b> All positive (sin+, cos+, tan+)<br>
+      <b>QII (90°–180°):</b> Sin positive only<br>
+      <b>QIII (180°–270°):</b> Tan positive only<br>
+      <b>QIV (270°–360°):</b> Cos positive only<br><br>
+      If θ is in QII and sin θ = 3/5: adj is NEGATIVE (−4), so cos θ = −4/5 and tan θ = −3/4.
+    </div>
+    <div class="trap">Getting the right ratio magnitude but the wrong sign because the quadrant was ignored.</div>
+  </div>
+  <div class="card green">
+    <div class="card-lbl">Key trig identities</div>
+    <div class="card-title">Tested on every exam</div>
+    <div class="card-body">
+      <b>Pythagorean identity:</b> sin²θ + cos²θ = 1<br>
+      Therefore: sin²θ = 1 − cos²θ and cos²θ = 1 − sin²θ<br><br>
+      <b>Co-function identities:</b><br>
+      sin(90°−θ) = cos θ<br>
+      cos(90°−θ) = sin θ<br><br>
+      <b>Supplementary angle:</b> sin(180°−θ) = sin θ
+    </div>
+    <div class="eg">sin²θ/(1−cos²θ) = sin²θ/sin²θ = 1. Always simplify using sin²θ+cos²θ=1 first.</div>
+  </div>
+  <div class="card green">
+    <div class="card-lbl">Side ordering in triangles</div>
+    <div class="card-title">Angles control sides</div>
+    <div class="card-body">
+      In any triangle: <b>the largest angle is opposite the longest side</b>.<br><br>
+      To order sides: find all three angles first. Then assign: smallest angle → shortest opposite side, etc.<br><br>
+      If A=35°, B=80°, then C=65°. Order of angles: A&lt;C&lt;B. So sides: a&lt;c&lt;b.
+    </div>
+    <div class="trap">Confusing which side is opposite which angle — side a is opposite angle A (not adjacent to it).</div>
+  </div>
+</div>
+
+<!-- 3D & VOLUME -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--green-light);">🧊</div>
+  <div class="sec-title">Volume &amp; 3D Geometry</div>
+</div>
+
+<table class="qrtable">
+  <thead><tr><th>Shape</th><th>Volume</th><th>Surface area / notes</th></tr></thead>
+  <tbody>
+    <tr><td>Rectangular box</td><td class="formula">V = l × w × h</td><td>SA = 2(lw + lh + wh). Diagonal of a box = √(l²+w²+h²).</td></tr>
+    <tr><td>Cylinder</td><td class="formula">V = πr²h</td><td>Lateral SA = 2πrh. Total SA = 2πr² + 2πrh.</td></tr>
+    <tr><td>Cone</td><td class="formula">V = ⅓πr²h</td><td>One-third of the cylinder with the same base and height.</td></tr>
+    <tr class="hi"><td>Sphere</td><td class="formula">V = ⁴⁄₃πr³</td><td>SA = 4πr². At r=3: V = 36π and SA = 36π (they're equal — interesting coincidence).</td></tr>
+    <tr><td>Pyramid</td><td class="formula">V = ⅓ × base area × height</td><td>One-third of the prism with the same base and height.</td></tr>
+    <tr class="hi"><td>Scale factor k</td><td class="formula">Lengths × k, Areas × k², Volumes × k³</td><td>Two similar cones with side ratio 1:2 have volume ratio 1:8. Always cube the linear scale factor for volume.</td></tr>
+    <tr><td>Frustum</td><td>Full cone − small cone</td><td>Small cone radius scales by same ratio as height. If half the height is removed from top, small cone has half the radius.</td></tr>
+  </tbody>
+</table>
+
+<!-- ANGLES & POLYGONS -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--green-light);">∠</div>
+  <div class="sec-title">Angles, Polygons &amp; Parallel Lines</div>
+</div>
+
+<div class="grid">
+  <div class="card green">
+    <div class="card-lbl">Polygon angle formulas</div>
+    <div class="card-title">Sum and each interior angle</div>
+    <div class="card-body">
+      <b>Sum of interior angles</b> of n-gon = (n−2) × 180°<br><br>
+      Triangle: 180° · Quadrilateral: 360° · Pentagon: 540°<br>
+      Hexagon: 720° · Octagon: 1080°<br><br>
+      <b>Each interior angle</b> of a regular n-gon = (n−2)×180° / n<br><br>
+      <b>Each exterior angle</b> of any regular n-gon = 360° / n
+    </div>
+    <div class="eg">Regular hexagon: each interior = 720/6 = 120°. Each exterior = 360/6 = 60°.</div>
+  </div>
+  <div class="card green">
+    <div class="card-lbl">Parallel lines &amp; transversals</div>
+    <div class="card-title">Angle relationships</div>
+    <div class="card-body">
+      When a transversal crosses parallel lines:<br><br>
+      <b>Alternate interior angles:</b> equal (Z-shape)<br>
+      <b>Corresponding angles:</b> equal (F-shape)<br>
+      <b>Co-interior / same-side interior:</b> supplementary (= 180°)<br><br>
+      <b>Vertical angles:</b> always equal (any two intersecting lines)<br>
+      <b>Supplementary angles:</b> sum to 180°<br>
+      <b>Complementary angles:</b> sum to 90°
+    </div>
+    <div class="trap">Confusing alternate interior (equal) with co-interior (supplementary) angles.</div>
+  </div>
+</div>
+
+</div><!-- end geometry -->
+
+<!-- ══════════════════════════════════════════════
+     TEST STRATEGY
+══════════════════════════════════════════════ -->
+<div class="panel" id="tab-strategy">
+
+<div class="alert gold" style="margin-top:1.5rem;">
+  <b>Your math score is already strong at 750.</b> The difference between 750 and 800 is almost entirely about avoiding careless errors and trap answers — not about learning new content. This tab is about execution, not knowledge.
+</div>
+
+<!-- APPROACH -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--gold-light);">🎯</div>
+  <div class="sec-title">Question approach — every question</div>
+</div>
+
+<div class="strat gold">
+  <div class="strat-title">The 4-step method that prevents most errors</div>
+  <b>1. Read the question twice.</b> What exactly is being asked? (Not what you think it's asking.) <b>2. Identify the concept being tested.</b> Is this a systems question? A trig identity? A quadratic? <b>3. Work the problem.</b> Write every step — no mental arithmetic on multi-step problems. <b>4. Verify the answer.</b> Does it make sense? Plug it back in. Check units.
+</div>
+
+<div class="grid">
+  <div class="card gold">
+    <div class="card-lbl">Common trap types</div>
+    <div class="card-title">The SAT's favourite tricks</div>
+    <div class="card-body">
+      <b>Off-by-one:</b> "how many years until less than 40%?" — check year 4 AND year 5, not just one.<br><br>
+      <b>Wrong quantity:</b> answer asks for y but you solved for x.<br><br>
+      <b>Missing constraint:</b> absolute value has two solutions; only pick the one that fits all conditions.<br><br>
+      <b>The halfway answer:</b> for multi-step problems, one choice is always the answer to step 1 — not the final answer.<br><br>
+      <b>"Cannot be determined":</b> if you get different answers with different valid assumptions, this is correct.
+    </div>
+  </div>
+  <div class="card gold">
+    <div class="card-lbl">Strategies for hard questions</div>
+    <div class="card-title">When the algebra looks messy</div>
+    <div class="card-body">
+      <b>Plug in the answers:</b> for "which value satisfies this equation," try the choices directly — fastest method.<br><br>
+      <b>Plug in numbers:</b> for abstract algebra questions, assign a specific value to variables and test which answer choice works.<br><br>
+      <b>Draw it:</b> geometry questions — always sketch. Label what you know. You often see the solution.<br><br>
+      <b>Look for patterns:</b> ugly numbers often hide a Pythagorean triple or a factoring shortcut.
+    </div>
+  </div>
+</div>
+
+<!-- PACING -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--gold-light);">⏱</div>
+  <div class="sec-title">Pacing &amp; Time Management</div>
+</div>
+
+<div class="grid">
+  <div class="card gold">
+    <div class="card-lbl">No-calculator module</div>
+    <div class="card-title">35 min · 22 questions · 95 sec each</div>
+    <div class="card-body">
+      Questions are roughly in order of difficulty — don't spend 3 minutes on question 3.<br><br>
+      <b>Target:</b> 60 sec on Q1–Q10, up to 120 sec on Q15–Q22.<br><br>
+      Write every arithmetic step. Multi-step mental calculations are where avoidable errors happen.<br><br>
+      Grid-in answer negative or impossibly large? Stop and reread the question — you've misread something.
+    </div>
+  </div>
+  <div class="card gold">
+    <div class="card-lbl">Calculator module</div>
+    <div class="card-title">35 min · 22 questions · 95 sec each</div>
+    <div class="card-body">
+      Harder conceptual questions — harder means more multi-step, not just bigger numbers.<br><br>
+      <b>Use calculator to verify arithmetic</b>, not to substitute for thinking.<br><br>
+      <b>Graphing strategy:</b> for quadratics and function questions, graph it. The vertex, roots, and intersections are immediately visible.<br><br>
+      <b>Don't rush the final 5 questions.</b> These are the hardest — they deserve the most careful reading.
+    </div>
+  </div>
+</div>
+
+<!-- SELF-ASSESSMENT -->
+<div class="sec-hdr">
+  <div class="sec-icon" style="background:var(--gold-light);">📋</div>
+  <div class="sec-title">Domain self-assessment</div>
+</div>
+
+<p style="margin-bottom:14px;color:var(--ink-soft);">Check off every concept you can recall without looking at the reference above. This tells you where to focus before the next test.</p>
+
+<div class="progress-card">
+  <div class="progress-header"><div class="progress-title">📊 Algebra</div></div>
+  <div class="check-items">
+    <label class="ci"><input type="checkbox"> Slope-intercept and point-slope forms</label>
+    <label class="ci"><input type="checkbox"> Perpendicular slope (negative reciprocal)</label>
+    <label class="ci"><input type="checkbox"> Systems: no solution vs infinite solutions</label>
+    <label class="ci"><input type="checkbox"> Flip inequality when dividing by negative</label>
+    <label class="ci"><input type="checkbox"> Absolute value: both cases</label>
+    <label class="ci"><input type="checkbox"> Function transformations (esp. f(x+h) = LEFT)</label>
+    <label class="ci"><input type="checkbox"> Composite functions: inside out</label>
+    <label class="ci"><input type="checkbox"> Inverse functions: swap x and y</label>
+  </div>
+</div>
+
+<div class="progress-card">
+  <div class="progress-header"><div class="progress-title">🔢 Advanced Math</div></div>
+  <div class="check-items">
+    <label class="ci"><input type="checkbox"> 3 forms of quadratics and when to use each</label>
+    <label class="ci"><input type="checkbox"> Quadratic formula and discriminant</label>
+    <label class="ci"><input type="checkbox"> Completing the square</label>
+    <label class="ci"><input type="checkbox"> Factoring: difference of squares, perfect square</label>
+    <label class="ci"><input type="checkbox"> Factor theorem: p(a)=0 → (x−a) is a factor</label>
+    <label class="ci"><input type="checkbox"> Hole vs asymptote (domain restriction after cancellation)</label>
+    <label class="ci"><input type="checkbox"> Fractional exponents: take root first</label>
+    <label class="ci"><input type="checkbox"> Exponential models: exponent structure (t/d not t)</label>
+  </div>
+</div>
+
+<div class="progress-card">
+  <div class="progress-header"><div class="progress-title">📈 Data Analysis</div></div>
+  <div class="check-items">
+    <label class="ci"><input type="checkbox"> Adding constant → SD unchanged</label>
+    <label class="ci"><input type="checkbox"> Multiplying by k → SD multiplied by k</label>
+    <label class="ci"><input type="checkbox"> IQR and outlier rule (1.5×IQR)</label>
+    <label class="ci"><input type="checkbox"> Correlation ≠ causation (observational studies)</label>
+    <label class="ci"><input type="checkbox"> Random assignment → causation allowed</label>
+    <label class="ci"><input type="checkbox"> MOE ∝ 1/√n (quadruple sample = halve MOE)</label>
+    <label class="ci"><input type="checkbox"> Without replacement: denominator decreases</label>
+    <label class="ci"><input type="checkbox"> Conditional probability: use subgroup total</label>
+  </div>
+</div>
+
+<div class="progress-card">
+  <div class="progress-header"><div class="progress-title">📐 Geometry &amp; Trig</div></div>
+  <div class="check-items">
+    <label class="ci"><input type="checkbox"> Pythagorean triples: 3-4-5, 5-12-13, 8-15-17</label>
+    <label class="ci"><input type="checkbox"> 30-60-90 and 45-45-90 side ratios</label>
+    <label class="ci"><input type="checkbox"> Similar triangles: area ratio = (side ratio)²</label>
+    <label class="ci"><input type="checkbox"> Circle: arc length and sector area formulas</label>
+    <label class="ci"><input type="checkbox"> Complete the square to get circle standard form</label>
+    <label class="ci"><input type="checkbox"> SOH-CAH-TOA</label>
+    <label class="ci"><input type="checkbox"> ASTC quadrant signs</label>
+    <label class="ci"><input type="checkbox"> Pythagorean identity: sin²θ + cos²θ = 1</label>
+    <label class="ci"><input type="checkbox"> Volume scale: k³ for similar 3D shapes</label>
+    <label class="ci"><input type="checkbox"> Sum of interior angles: (n−2) × 180°</label>
+  </div>
+</div>
+
+<div class="rule"></div>
+<div class="alert green">
+  <b>If you can tick every box above without looking at the reference tabs, you are ready for 800-level math questions.</b> The few you can't tick — those are the tabs to re-read right now. Target: full checklist before the practice test.
+</div>
+
+</div><!-- end strategy -->
+
+<script>
+function show(name) {
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+  var tabs = ['algebra','advanced','data','geometry','strategy'];
+  var i = tabs.indexOf(name);
+  document.querySelectorAll('.tab-btn')[i].classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
