@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Test Day 5 — Rishi SAT Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;--amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;--green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;font-family:'DM Sans',sans-serif;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;font-family:'DM Sans',sans-serif;}
+.page-header{background:var(--ink);color:var(--paper);padding:2rem 3rem 1.75rem;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.04);}
+.header-eyebrow{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+.header-title{font-family:'Instrument Serif',serif;font-size:2.2rem;font-weight:400;line-height:1.1;margin-bottom:12px;}
+.header-title em{font-style:italic;color:rgba(255,255,255,0.6);}
+.header-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:0.5px solid rgba(255,255,255,0.12);}
+.meta-item{font-size:13px;color:rgba(255,255,255,0.5);}
+.meta-item strong{color:rgba(255,255,255,0.9);font-weight:500;display:block;font-size:14px;}
+.progress-bar{height:4px;background:rgba(255,255,255,0.1);}
+.progress-fill{height:100%;background:#e8c87a;transition:width 0.3s;}
+.timer-bar{background:var(--blue-light);border-bottom:0.5px solid #b5d4f4;padding:10px 2rem;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.timer-label{font-size:13px;color:var(--blue);font-weight:500;}
+.timer-display{font-size:22px;font-weight:500;color:var(--blue);font-variant-numeric:tabular-nums;min-width:80px;}
+.timer-btn{padding:5px 14px;font-size:12px;font-weight:500;border:1.5px solid var(--blue);border-radius:6px;background:white;color:var(--blue);cursor:pointer;}
+.timer-btn:hover{background:var(--blue);color:white;}
+.timer-warning{color:var(--red)!important;}
+.main{max-width:860px;margin:0 auto;padding:2rem 2rem 5rem;}
+.ref-sheet{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2rem;}
+.ref-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:12px;}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;}
+.ref-card{background:var(--cream);border-radius:8px;padding:10px 12px;}
+.ref-name{font-size:10px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:4px;}
+.ref-body{font-size:12px;color:var(--ink-soft);line-height:1.5;}
+.section-label{display:flex;align-items:center;gap:12px;margin:2rem 0 1rem;}
+.section-num{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;}
+.num-red{background:var(--red);color:white;}.num-amber{background:var(--amber);color:white;}
+.num-blue{background:var(--blue);color:white;}.num-green{background:var(--green);color:white;}
+.num-purple{background:var(--purple);color:white;}
+.section-heading{font-family:'Instrument Serif',serif;font-size:1.3rem;font-weight:400;}
+.section-count{margin-left:auto;font-size:12px;color:var(--ink-muted);background:var(--cream);padding:3px 10px;border-radius:20px;}
+.q-block{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:10px;}
+.q-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;}
+.q-stem{font-size:14px;color:var(--ink);font-weight:500;margin-bottom:12px;line-height:1.7;}
+.passage-box{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.8;}
+.passage-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:8px;}
+.notes-box{background:var(--cream);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-size:13px;color:var(--ink-soft);line-height:1.7;}
+.q-choices{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.q-choices.single-col{grid-template-columns:1fr;}
+.q-choices li{font-size:13.5px;color:var(--ink-soft);padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);background:var(--paper);cursor:pointer;transition:background 0.12s;}
+.q-choices li:hover{background:var(--blue-light);}
+.q-choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.q-choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.answer-reveal{display:none;margin-top:10px;padding:10px 14px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green);line-height:1.65;}
+.answer-reveal.show{display:block;}
+.tag{font-size:10px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-left:4px;}
+.tag-red{background:var(--red-light);color:var(--red);}
+.tag-amber{background:var(--amber-light);color:var(--amber);}
+.tag-blue{background:var(--blue-light);color:var(--blue);}
+.tag-green{background:var(--green-light);color:var(--green);}
+.tag-purple{background:var(--purple-light);color:var(--purple);}
+.score-block{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.25rem 1.5rem;margin-top:2rem;}
+.domain-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--rule);}
+.domain-row:last-of-type{border-bottom:none;}
+.domain-name{font-size:13px;color:var(--ink-soft);width:260px;flex-shrink:0;font-weight:500;}
+.domain-badges{display:flex;gap:5px;flex-wrap:wrap;flex:1;}
+.badge{font-size:11px;padding:2px 7px;border-radius:4px;background:var(--cream);color:var(--ink-muted);transition:all 0.2s;}
+.badge.correct{background:var(--green-light);color:var(--green);}
+.badge.wrong{background:var(--red-light);color:var(--red);}
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+.checklist{list-style:none;padding:0;}
+.checklist li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--rule);font-size:14px;color:var(--ink-soft);}
+.checklist li:last-child{border-bottom:none;}
+.check-box{width:18px;height:18px;border:1.5px solid var(--rule);border-radius:4px;flex-shrink:0;margin-top:2px;cursor:pointer;}
+.check-box.checked{background:var(--green);border-color:var(--green);}
+.check-box.checked::after{content:"✓";color:white;font-size:11px;display:flex;align-items:center;justify-content:center;height:100%;}
+.page-footer{background:var(--ink);color:rgba(255,255,255,0.35);text-align:center;padding:1.25rem;font-size:12px;margin-top:3rem;}
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="index.html">← Back to Study Portal</a>
+  <span>English Test · Day 5 · Full review · Harder passages</span>
+</div>
+
+<div class="page-header">
+  <div class="header-eyebrow">SAT Prep · English Test · Day 5 · May 29, 2025</div>
+  <div class="header-title">Reading &amp; Writing — Day 5<br><em>30 questions · Harder passages · Full concept review</em></div>
+  <div class="header-meta">
+    <div class="meta-item"><strong>Rishi Wadhwani</strong>Student</div>
+    <div class="meta-item"><strong>RW: 630 → 750</strong>Final push</div>
+    <div class="meta-item"><strong>Harder than Day 4</strong>Longer passages · Subtler traps · Mixed question types per passage</div>
+    <div class="meta-item"><strong>35 min</strong>Timed · 70 sec per question</div>
+  </div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="q-progress" style="width:0%"></div></div>
+
+<div class="timer-bar">
+  <div class="timer-label">⏱ Timer</div>
+  <div class="timer-display" id="timer-display">35:00</div>
+  <button class="timer-btn" id="timer-btn" onclick="toggleTimer()">Start</button>
+  <button class="timer-btn" onclick="resetTimer()">Reset timer</button>
+  <button class="timer-btn" onclick="resetAll()" style="background:#c0392b;border-color:#c0392b;color:white;">Reset all answers</button>
+  <div style="margin-left:auto;font-size:12px;color:var(--blue);font-weight:500;">🔥 Toughest test yet — every wrong answer has a trap explanation</div>
+</div>
+
+<div class="main">
+
+<div class="ref-sheet">
+  <div class="ref-title">⚡ Trap-busting reminders — the mistakes that cost points</div>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <div class="ref-name">Words in Context trap</div>
+      <div class="ref-body">Never pick the most common meaning. The SAT always chooses a word used unusually. Substitute YOUR word first.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-name">Text Structure trap</div>
+      <div class="ref-body">Answers that describe WHAT a sentence says are always wrong. Correct answers describe WHY it's there (its function).</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-name">Cross-Text trap</div>
+      <div class="ref-body">Answers that are too strong ("completely refutes," "fully agrees") are almost always wrong. Look for precise calibration.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-name">Transitions trap</div>
+      <div class="ref-body">Don't pick what "sounds right." Classify the relationship FIRST. Concession ≠ contrast. Addition ≠ example.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-name">Synthesis trap</div>
+      <div class="ref-body">Accurate facts from the notes ≠ correct answer. Only the answer that accomplishes the stated GOAL is correct.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-name">Add/Delete trap</div>
+      <div class="ref-body">"Interesting and related to the topic" ≠ keep. Ask: does it serve THIS paragraph's specific main point?</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-name">SEC trap</div>
+      <div class="ref-body">Never trust your ear. Identify what's being tested. Apply the rule. Spoken English violates written grammar constantly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION A: WORDS IN CONTEXT Q1-Q6 -->
+<div class="section-label">
+  <div class="section-num num-red">A</div>
+  <div class="section-heading">Words in Context</div>
+  <div class="section-count">Q1–Q6 · Harder vocabulary</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q1 <span class="tag tag-red">Words in Context</span></div>
+  <div class="passage-box">The treaty's language was deliberately <u>ambiguous</u> — neither side wanted to commit to specific obligations that might later prove politically untenable, and so both parties agreed to terms vague enough to be interpreted in mutually convenient ways.</div>
+  <div class="q-stem">As used in the passage, "ambiguous" most nearly means:</div>
+  <ul class="q-choices" id="f1-choices">
+    <li data-reset-onclick="handleAnswer('f1',this,false)" onclick="handleAnswer('f1',this,false)">A. diplomatically worded</li>
+    <li data-reset-onclick="handleAnswer('f1',this,false)" onclick="handleAnswer('f1',this,false)">B. legally binding</li>
+    <li data-reset-onclick="handleAnswer('f1',this,true)" onclick="handleAnswer('f1',this,true)">C. open to more than one interpretation</li>
+    <li data-reset-onclick="handleAnswer('f1',this,false)" onclick="handleAnswer('f1',this,false)">D. carefully negotiated over a long period</li>
+  </ul>
+  <div class="answer-reveal" id="f1-reveal"><strong>Answer: C.</strong> "Vague enough to be interpreted in mutually convenient ways" defines ambiguity precisely — multiple valid readings. A and D describe process, not meaning. B is the opposite of what the parties wanted (they avoided binding commitments).</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q2 <span class="tag tag-red">Words in Context</span></div>
+  <div class="passage-box">For all his scholarly <u>acumen</u>, the professor struggled to communicate his ideas to general audiences — his lectures were celebrated by specialists but bewildering to undergraduates.</div>
+  <div class="q-stem">As used in the passage, "acumen" most nearly means:</div>
+  <ul class="q-choices" id="f2-choices">
+    <li data-reset-onclick="handleAnswer('f2',this,false)" onclick="handleAnswer('f2',this,false)">A. reputation or fame</li>
+    <li data-reset-onclick="handleAnswer('f2',this,true)" onclick="handleAnswer('f2',this,true)">B. sharpness of mind and insight</li>
+    <li data-reset-onclick="handleAnswer('f2',this,false)" onclick="handleAnswer('f2',this,false)">C. dedication to research</li>
+    <li data-reset-onclick="handleAnswer('f2',this,false)" onclick="handleAnswer('f2',this,false)">D. breadth of published work</li>
+  </ul>
+  <div class="answer-reveal" id="f2-reveal"><strong>Answer: B.</strong> "Acumen" means keen intellect or insight. The contrast ("for all his... he struggled") shows the professor has deep intellectual ability but lacks communication skill. A (reputation) and D (published work) are external measures; C (dedication) is about effort, not sharpness.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q3 <span class="tag tag-red">Words in Context</span></div>
+  <div class="passage-box">The startup's early growth was <u>meteoric</u>, but investors who had watched similar companies implode warned that such rapid ascents often precede equally dramatic collapses.</div>
+  <div class="q-stem">As used in the passage, "meteoric" most nearly means:</div>
+  <ul class="q-choices" id="f3-choices">
+    <li data-reset-onclick="handleAnswer('f3',this,false)" onclick="handleAnswer('f3',this,false)">A. driven by astronomical investment</li>
+    <li data-reset-onclick="handleAnswer('f3',this,false)" onclick="handleAnswer('f3',this,false)">B. unpredictable and erratic</li>
+    <li data-reset-onclick="handleAnswer('f3',this,true)" onclick="handleAnswer('f3',this,true)">C. impressively rapid and dramatic</li>
+    <li data-reset-onclick="handleAnswer('f3',this,false)" onclick="handleAnswer('f3',this,false)">D. scientifically measurable</li>
+  </ul>
+  <div class="answer-reveal" id="f3-reveal"><strong>Answer: C.</strong> "Rapid ascents" in context maps to meteoric meaning swift and spectacular. The investors' warning about "dramatic collapses" reinforces the speed and drama of the rise. A plays on the literal "meteor" — a trap. B (erratic) describes a different quality not supported by the passage. D is irrelevant.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q4 <span class="tag tag-red">Words in Context</span></div>
+  <div class="passage-box">The committee's findings were <u>inconclusive</u> — the data pointed in conflicting directions, and the researchers acknowledged that any policy recommendation made on such grounds would be premature.</div>
+  <div class="q-stem">As used in the passage, "inconclusive" most nearly means:</div>
+  <ul class="q-choices" id="f4-choices">
+    <li data-reset-onclick="handleAnswer('f4',this,false)" onclick="handleAnswer('f4',this,false)">A. deliberately withheld from publication</li>
+    <li data-reset-onclick="handleAnswer('f4',this,false)" onclick="handleAnswer('f4',this,false)">B. contradicted by other research teams</li>
+    <li data-reset-onclick="handleAnswer('f4',this,true)" onclick="handleAnswer('f4',this,true)">C. failing to produce a clear or definitive result</li>
+    <li data-reset-onclick="handleAnswer('f4',this,false)" onclick="handleAnswer('f4',this,false)">D. limited in scope due to small sample size</li>
+  </ul>
+  <div class="answer-reveal" id="f4-reveal"><strong>Answer: C.</strong> "Data pointed in conflicting directions" and "any policy recommendation would be premature" both signal that no firm conclusion can be drawn. "Inconclusive" means not settling the matter. A introduces withholding — not mentioned. B implies external contradiction. D introduces sample size — not stated.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q5 <span class="tag tag-red">Words in Context</span></div>
+  <div class="passage-box">Though praised by critics, the novel sold poorly — a fate its author <u>attributed</u> to a cover design that failed to convey the book's tone and a marketing campaign aimed at entirely the wrong readership.</div>
+  <div class="q-stem">As used in the passage, "attributed" most nearly means:</div>
+  <ul class="q-choices" id="f5-choices">
+    <li data-reset-onclick="handleAnswer('f5',this,false)" onclick="handleAnswer('f5',this,false)">A. complained about publicly</li>
+    <li data-reset-onclick="handleAnswer('f5',this,false)" onclick="handleAnswer('f5',this,false)">B. accepted without protest</li>
+    <li data-reset-onclick="handleAnswer('f5',this,true)" onclick="handleAnswer('f5',this,true)">C. regarded as caused by specific factors</li>
+    <li data-reset-onclick="handleAnswer('f5',this,false)" onclick="handleAnswer('f5',this,false)">D. researched and documented in writing</li>
+  </ul>
+  <div class="answer-reveal" id="f5-reveal"><strong>Answer: C.</strong> "Attributed to" means assigned as a cause — the author believed the poor cover and wrong-target marketing caused the poor sales. A implies public complaint; the passage says nothing about public statements. B implies passive acceptance — the author clearly has an opinion. D is unrelated.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q6 <span class="tag tag-red">Words in Context</span></div>
+  <div class="passage-box">The administration's position on the issue remained <u>equivocal</u> throughout the campaign: officials neither endorsed the proposal outright nor rejected it, leaving supporters and opponents alike uncertain about where the government actually stood.</div>
+  <div class="q-stem">As used in the passage, "equivocal" most nearly means:</div>
+  <ul class="q-choices" id="f6-choices">
+    <li data-reset-onclick="handleAnswer('f6',this,false)" onclick="handleAnswer('f6',this,false)">A. strongly opposed but diplomatically expressed</li>
+    <li data-reset-onclick="handleAnswer('f6',this,false)" onclick="handleAnswer('f6',this,false)">B. frequently changing over time</li>
+    <li data-reset-onclick="handleAnswer('f6',this,true)" onclick="handleAnswer('f6',this,true)">C. deliberately unclear, open to multiple interpretations</div>
+    <li data-reset-onclick="handleAnswer('f6',this,false)" onclick="handleAnswer('f6',this,false)">D. balanced and carefully reasoned on both sides</li>
+  </ul>
+  <div class="answer-reveal" id="f6-reveal"><strong>Answer: C.</strong> "Neither endorsed nor rejected" and "uncertain about where the government stood" both define equivocal — intentionally vague. A implies a hidden position (opposed) — not stated. B (changing) implies movement over time; the passage implies a static ambiguity. D (balanced reasoning) is a positive spin equivocal doesn't carry.</div>
+</div>
+
+<!-- SECTION B: TEXT STRUCTURE Q7-Q12 -->
+<div class="section-label">
+  <div class="section-num num-red">B</div>
+  <div class="section-heading">Text Structure &amp; Purpose</div>
+  <div class="section-count">Q7–Q12 · Harder passages</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q7 <span class="tag tag-red">Text Structure</span></div>
+  <div class="passage-box">Nineteenth-century geologist Charles Lyell argued that the Earth's features were shaped not by sudden catastrophic events but by slow, continuous processes operating over immense timescales — a principle he called uniformitarianism. <u>His argument required, as a logical prerequisite, that the Earth be far older than the six thousand years then accepted by many religious authorities — a conclusion that placed him in immediate conflict with prevailing theological interpretations of natural history.</u> Darwin, who read Lyell carefully, drew on this expanded temporal framework when developing his theory of evolution by natural selection.</div>
+  <div class="q-stem">The underlined sentence primarily serves to:</div>
+  <ul class="q-choices single-col" id="f7-choices">
+    <li data-reset-onclick="handleAnswer('f7',this,false)" onclick="handleAnswer('f7',this,false)">A. explain how Lyell calculated the age of the Earth</li>
+    <li data-reset-onclick="handleAnswer('f7',this,true)" onclick="handleAnswer('f7',this,true)">B. show that uniformitarianism's implications extended beyond geology into a broader intellectual and religious controversy</li>
+    <li data-reset-onclick="handleAnswer('f7',this,false)" onclick="handleAnswer('f7',this,false)">C. introduce the theological arguments against Lyell's work as the passage's main subject</li>
+    <li data-reset-onclick="handleAnswer('f7',this,false)" onclick="handleAnswer('f7',this,false)">D. establish that Darwin rejected religious interpretations of natural history</li>
+  </ul>
+  <div class="answer-reveal" id="f7-reveal"><strong>Answer: B.</strong> The sentence extends uniformitarianism's reach beyond geology — it required an ancient Earth, which conflicted with theology. This shows the broader stakes of Lyell's geological argument. A is wrong — Lyell didn't calculate a specific age. C misidentifies the main subject (theology is context, not the focus). D goes to the next sentence and overstates Darwin's position.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q8 <span class="tag tag-red">Text Structure</span></div>
+  <div class="passage-box">Much of what is called "traditional" food culture is in fact a product of relatively recent history. The tomato, now central to Italian cuisine, arrived in Europe from the Americas only in the sixteenth century and was regarded with suspicion for decades before being widely adopted. The potato, synonymous with Irish identity, similarly arrived from South America in the same era. Even the spice blends associated with Indian cooking are in part products of colonial-era trade networks that reshaped ingredient availability across the subcontinent. What cultures experience as timeless culinary heritage is, more often than not, the accumulated result of centuries of exchange, migration, and improvisation.</div>
+  <div class="q-stem">The primary purpose of the examples in this passage (tomato, potato, Indian spices) is to:</div>
+  <ul class="q-choices single-col" id="f8-choices">
+    <li data-reset-onclick="handleAnswer('f8',this,false)" onclick="handleAnswer('f8',this,false)">A. argue that European cuisine is superior because of its diversity of influences</li>
+    <li data-reset-onclick="handleAnswer('f8',this,true)" onclick="handleAnswer('f8',this,true)">B. illustrate with concrete cases that foods considered culturally native often have foreign origins, supporting the passage's claim that "tradition" is historically recent</li>
+    <li data-reset-onclick="handleAnswer('f8',this,false)" onclick="handleAnswer('f8',this,false)">C. trace the historical development of global trade routes</li>
+    <li data-reset-onclick="handleAnswer('f8',this,false)" onclick="handleAnswer('f8',this,false)">D. demonstrate that colonialism had a uniformly positive effect on food culture worldwide</li>
+  </ul>
+  <div class="answer-reveal" id="f8-reveal"><strong>Answer: B.</strong> Each example (tomato=Italian, potato=Irish, spices=Indian) shows a food assumed to be native that actually came from elsewhere — directly illustrating the opening claim that "traditional" food is often recent and foreign in origin. A introduces a superiority argument the passage doesn't make. C (trade routes) is background, not the point. D is an unwarranted and unsupported value judgment.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q9 <span class="tag tag-red">Text Structure</span></div>
+  <div class="passage-box">Neuroscientists have long debated whether the brain is better understood as a prediction machine or as a stimulus-response organ. The prediction view holds that the brain is constantly generating forward models of expected sensory input, updating these models when reality diverges from expectation. [The vestibular system, located in the inner ear, plays a crucial role in maintaining balance and spatial orientation.] The stimulus-response view, by contrast, holds that cognition is fundamentally reactive — the brain processes incoming data and generates outputs in response. Neither framework fully accounts for the complexity of conscious experience.</div>
+  <div class="q-stem">Should the bracketed sentence be kept or deleted?</div>
+  <ul class="q-choices single-col" id="f9-choices">
+    <li data-reset-onclick="handleAnswer('f9',this,false)" onclick="handleAnswer('f9',this,false)">A. Kept, because the vestibular system is relevant to understanding brain function</li>
+    <li data-reset-onclick="handleAnswer('f9',this,false)" onclick="handleAnswer('f9',this,false)">B. Kept, because it provides an example of the prediction model at work</li>
+    <li data-reset-onclick="handleAnswer('f9',this,true)" onclick="handleAnswer('f9',this,true)">C. Deleted, because the paragraph concerns theoretical frameworks for understanding cognition, and the vestibular system detail is unrelated to either framework being discussed</li>
+    <li data-reset-onclick="handleAnswer('f9',this,false)" onclick="handleAnswer('f9',this,false)">D. Deleted, because the passage argues that the vestibular system supports the stimulus-response view</li>
+  </ul>
+  <div class="answer-reveal" id="f9-reveal"><strong>Answer: C.</strong> The paragraph's sole topic is the prediction vs. stimulus-response debate. The vestibular system is a real neurological structure related to balance — true, related to neuroscience broadly, but irrelevant to either theoretical framework being discussed. A is the "interesting and related" trap — relevant to neuroscience ≠ relevant to this paragraph. B is false — no such connection is made. D invents an argument not in the passage.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q10 <span class="tag tag-red">Text Structure</span></div>
+  <div class="passage-box">The history of artificial sweeteners is a history of unintended consequences. Saccharin, discovered accidentally in 1879 when a chemist forgot to wash his hands before eating, was promoted as a health product before concerns about cancer risk emerged. Cyclamate was banned in the United States in 1969 based on animal studies that were later questioned. Aspartame has been the subject of thousands of studies — and thousands of conflicting conclusions. <u>Each new sweetener has arrived with promises of being the definitive solution to sugar's harms, and each has eventually generated its own controversies.</u></div>
+  <div class="q-stem">The underlined sentence primarily serves to:</div>
+  <ul class="q-choices single-col" id="f10-choices">
+    <li data-reset-onclick="handleAnswer('f10',this,false)" onclick="handleAnswer('f10',this,false)">A. introduce a new argument about the dangers of artificial sweeteners</li>
+    <li data-reset-onclick="handleAnswer('f10',this,false)" onclick="handleAnswer('f10',this,false)">B. provide a counterargument to the specific examples that precede it</li>
+    <li data-reset-onclick="handleAnswer('f10',this,true)" onclick="handleAnswer('f10',this,true)">C. draw a generalizing conclusion that unifies the specific examples into a recurring pattern</li>
+    <li data-reset-onclick="handleAnswer('f10',this,false)" onclick="handleAnswer('f10',this,false)">D. transition to a discussion of future alternatives to artificial sweeteners</li>
+  </ul>
+  <div class="answer-reveal" id="f10-reveal"><strong>Answer: C.</strong> After three specific examples (saccharin, cyclamate, aspartame), the underlined sentence steps back and identifies the pattern: every sweetener promises to solve sugar's problems, every sweetener creates new problems. It's a generalizing synthesis — the conclusion that the examples collectively demonstrate. A is wrong (no new argument). B is wrong (it reinforces, not counters). D is wrong (nothing follows).</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q11 <span class="tag tag-red">Text Structure</span></div>
+  <div class="passage-box">In 2003, the Human Genome Project announced the completion of the first full sequence of the human genome — a scientific milestone decades in the making. Optimists predicted that within a generation, the genetic roots of most diseases would be identified and targeted therapies developed. Two decades later, the picture is more complicated. While genomics has transformed our understanding of rare genetic disorders, the common diseases that cause the most mortality — heart disease, type 2 diabetes, most cancers — have proven to have complex, polygenic causes involving thousands of genetic variants, each contributing a tiny fraction of overall risk.</div>
+  <div class="q-stem">The overall structure of this passage is best described as:</div>
+  <ul class="q-choices single-col" id="f11-choices">
+    <li data-reset-onclick="handleAnswer('f11',this,false)" onclick="handleAnswer('f11',this,false)">A. a scientific achievement, followed by an explanation of the methods used to reach it</li>
+    <li data-reset-onclick="handleAnswer('f11',this,false)" onclick="handleAnswer('f11',this,false)">B. two competing scientific theories with equal evidence on each side</li>
+    <li data-reset-onclick="handleAnswer('f11',this,true)" onclick="handleAnswer('f11',this,true)">C. a landmark achievement, the optimistic predictions it generated, and a more nuanced assessment of its actual impact two decades later</li>
+    <li data-reset-onclick="handleAnswer('f11',this,false)" onclick="handleAnswer('f11',this,false)">D. a historical narrative tracing the development of genetics from Mendel to the present</li>
+  </ul>
+  <div class="answer-reveal" id="f11-reveal"><strong>Answer: C.</strong> Three-part structure: milestone (Human Genome Project) → optimism (within a generation) → reality check (more complicated; rare diseases yes, common diseases no). C captures all three parts accurately. A (methods) is not discussed. B presents competing theories — the passage doesn't do this; it contrasts expectation with reality. D traces a long history — the passage covers only 2003 to present.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q12 <span class="tag tag-red">Text Structure</span></div>
+  <div class="passage-box">A student wants to add the following sentence to the passage in Question 11: "CRISPR-Cas9 gene editing technology, developed in the early 2010s, represents a more targeted approach to genetic intervention than the broad genomic mapping achieved by the Human Genome Project." Where would the sentence best fit?</div>
+  <ul class="q-choices single-col" id="f12-choices">
+    <li data-reset-onclick="handleAnswer('f12',this,false)" onclick="handleAnswer('f12',this,false)">A. Before the first sentence, to introduce the topic of genetic technology</li>
+    <li data-reset-onclick="handleAnswer('f12',this,false)" onclick="handleAnswer('f12',this,false)">B. After the second sentence, to show what the optimists were hoping for</li>
+    <li data-reset-onclick="handleAnswer('f12',this,false)" onclick="handleAnswer('f12',this,false)">C. After the third sentence ("Two decades later, the picture is more complicated"), to introduce a new development that addresses the genome project's limitations</li>
+    <li data-reset-onclick="handleAnswer('f12',this,true)" onclick="handleAnswer('f12',this,true)">D. The sentence should not be added — it introduces CRISPR as a new topic that the passage does not develop, and would disrupt the passage's focus on assessing the Human Genome Project's actual legacy</li>
+  </ul>
+  <div class="answer-reveal" id="f12-reveal"><strong>Answer: D.</strong> The passage is specifically about the Human Genome Project's legacy — what it achieved and what it didn't. Adding CRISPR introduces a new technology that would need its own development; dropped in mid-passage, it becomes a non-sequitur. C is tempting — it seems logical to mention CRISPR after admitting HGP's limitations — but the passage ends with a diagnosis of complexity, not a pivot to solutions. The new sentence would require follow-through the passage doesn't provide.</div>
+</div>
+
+<!-- SECTION C: CROSS-TEXT Q13-Q17 -->
+<div class="section-label">
+  <div class="section-num num-red">C</div>
+  <div class="section-heading">Cross-Text Connections</div>
+  <div class="section-count">Q13–Q17 · Subtle relationship types</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q13–Q15 <span class="tag tag-red">Cross-Text</span></div>
+  <div class="passage-label">Passages for Q13–Q15</div>
+  <div class="passage-box"><strong>Passage 1:</strong> Philosopher Peter Singer's effective altruism framework argues that individuals with surplus wealth have a moral obligation to donate to causes that do the most measurable good per dollar. On Singer's view, geographic proximity and personal connection are morally irrelevant — suffering anywhere in the world carries equal moral weight, and efficient charity should be directed toward wherever it saves the most lives at the lowest cost.<br><br><strong>Passage 2:</strong> Effective altruism, despite its mathematical elegance, has been criticized for applying market logic to ethics in ways that distort moral reasoning. Critics argue that by reducing moral worth to measurable outcomes, the framework systematically undervalues causes that are difficult to quantify — mental health, political empowerment, cultural preservation — and overvalues those with tractable metrics. The result is a moral calculus that is rigorous in its arithmetic but impoverished in its conception of human flourishing.</div>
+
+  <div class="q-stem" style="margin-top:12px;">Q13. The relationship between Passage 1 and Passage 2 is best described as:</div>
+  <ul class="q-choices single-col" id="f13-choices">
+    <li data-reset-onclick="handleAnswer('f13',this,false)" onclick="handleAnswer('f13',this,false)">A. Passage 2 provides evidence that effective altruism does not actually save lives efficiently</li>
+    <li data-reset-onclick="handleAnswer('f13',this,false)" onclick="handleAnswer('f13',this,false)">B. Passage 2 argues that Singer's framework is mathematically flawed</li>
+    <li data-reset-onclick="handleAnswer('f13',this,true)" onclick="handleAnswer('f13',this,true)">C. Passage 2 accepts the framework's internal logic while challenging its underlying conception of what makes something morally valuable</li>
+    <li data-reset-onclick="handleAnswer('f13',this,false)" onclick="handleAnswer('f13',this,false)">D. Passage 2 directly contradicts Passage 1's claim that geographic proximity is morally irrelevant</li>
+  </ul>
+  <div class="answer-reveal" id="f13-reveal"><strong>Answer: C.</strong> Passage 2 calls the framework "mathematically elegant" — it doesn't dispute the arithmetic. The critique is philosophical: the framework's conception of moral value (what's worth caring about) is too narrow because it excludes unquantifiable goods. A disputes effectiveness — Passage 2 doesn't. B attacks the math — Passage 2 praises the math. D addresses geographic proximity — Passage 2 doesn't focus on this point from Passage 1.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q14 <span class="tag tag-red">Cross-Text</span></div>
+  <div class="q-stem">Singer (Passage 1) would most likely respond to Passage 2's concern about unquantifiable causes by arguing that:</div>
+  <ul class="q-choices single-col" id="f14-choices">
+    <li data-reset-onclick="handleAnswer('f14',this,false)" onclick="handleAnswer('f14',this,false)">A. Mental health, political empowerment, and cultural preservation are not legitimate moral concerns</li>
+    <li data-reset-onclick="handleAnswer('f14',this,false)" onclick="handleAnswer('f14',this,false)">B. Only causes with measurable outcomes deserve moral attention</li>
+    <li data-reset-onclick="handleAnswer('f14',this,true)" onclick="handleAnswer('f14',this,true)">C. The difficulty of measuring an outcome is a practical challenge, not a reason to abandon the principle that scarce charitable resources should be directed toward the greatest demonstrable impact</li>
+    <li data-reset-onclick="handleAnswer('f14',this,false)" onclick="handleAnswer('f14',this,false)">D. Geographic proximity should determine which causes receive charitable funding</li>
+  </ul>
+  <div class="answer-reveal" id="f14-reveal"><strong>Answer: C.</strong> Singer's framework (Passage 1) is built on maximizing measurable good. His most defensible response to the quantification critique is not to dismiss unquantifiable causes (A, B are too dismissive and go beyond what Passage 1 claims) but to say that difficulty of measurement is a practical problem — the principle of directing resources to maximum impact still holds. D contradicts Passage 1 directly (proximity is morally irrelevant).</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q15 <span class="tag tag-red">Cross-Text</span></div>
+  <div class="q-stem">Which of the following claims would both authors most likely accept?</div>
+  <ul class="q-choices single-col" id="f15-choices">
+    <li data-reset-onclick="handleAnswer('f15',this,false)" onclick="handleAnswer('f15',this,false)">A. Maximizing measurable outcomes is the correct approach to charitable giving</li>
+    <li data-reset-onclick="handleAnswer('f15',this,false)" onclick="handleAnswer('f15',this,false)">B. Mental health initiatives deserve more charitable funding than disease prevention</li>
+    <li data-reset-onclick="handleAnswer('f15',this,true)" onclick="handleAnswer('f15',this,true)">C. How individuals and institutions allocate resources for doing good is a question that deserves rigorous ethical analysis</li>
+    <li data-reset-onclick="handleAnswer('f15',this,false)" onclick="handleAnswer('f15',this,false)">D. Traditional conceptions of charity are more effective than data-driven approaches</li>
+  </ul>
+  <div class="answer-reveal" id="f15-reveal"><strong>Answer: C.</strong> Both passages take the ethics of charitable giving extremely seriously — Passage 1 through a systematic framework, Passage 2 through a philosophical critique of that framework. Both agree the question matters and deserves careful thought. A is only Passage 1's view. B is only Passage 2's implied preference. D is contradicted by Passage 1 and not supported by Passage 2 either.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q16–Q17 <span class="tag tag-red">Cross-Text</span></div>
+  <div class="passage-label">Passages for Q16–Q17</div>
+  <div class="passage-box"><strong>Passage 1:</strong> The proliferation of streaming platforms has been an unqualified boon for documentary filmmaking. With traditional broadcast gatekeepers largely bypassed, filmmakers can now secure funding and distribution for subjects that would never have passed a network's commercial viability test — obscure historical events, niche scientific topics, marginalized communities. The result has been an explosion of documentary diversity that enriches public discourse.<br><br><strong>Passage 2:</strong> The streaming documentary boom has produced quantity but not necessarily quality. Platforms incentivize fast production cycles and sensationalized subject matter — true crime above all — that maximize engagement metrics rather than journalistic rigour. Meanwhile, the collapse of editorial gatekeeping has made it easier to distribute documentaries with factual errors, misleading framing, or outright misinformation. More documentaries does not automatically mean better-informed audiences.</div>
+
+  <div class="q-stem" style="margin-top:12px;">Q16. How does Passage 2 relate to the argument in Passage 1?</div>
+  <ul class="q-choices single-col" id="f16-choices">
+    <li data-reset-onclick="handleAnswer('f16',this,false)" onclick="handleAnswer('f16',this,false)">A. It provides additional evidence that streaming has benefited documentary filmmaking</li>
+    <li data-reset-onclick="handleAnswer('f16',this,false)" onclick="handleAnswer('f16',this,false)">B. It argues that traditional broadcast networks should return to controlling documentary distribution</li>
+    <li data-reset-onclick="handleAnswer('f16',this,true)" onclick="handleAnswer('f16',this,true)">C. It accepts that streaming has increased documentary volume but challenges whether that volume translates into the enrichment of public discourse that Passage 1 claims</li>
+    <li data-reset-onclick="handleAnswer('f16',this,false)" onclick="handleAnswer('f16',this,false)">D. It directly contradicts Passage 1's claim that streaming platforms have bypassed traditional gatekeepers</li>
+  </ul>
+  <div class="answer-reveal" id="f16-reveal"><strong>Answer: C.</strong> Passage 2 doesn't dispute that there are more documentaries ("quantity"). It disputes the conclusion — more documentaries ≠ enriched public discourse, because quality and accuracy have suffered. This is a precise complication: accept the premise (more docs), challenge the conclusion (enriched discourse). A supports Passage 1 — Passage 2 doesn't. B calls for the return of gatekeepers — Passage 2 diagnoses the problem but doesn't explicitly recommend this. D disputes a factual claim Passage 2 actually accepts.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q17 <span class="tag tag-red">Cross-Text</span></div>
+  <div class="q-stem">The author of Passage 1 would most likely respond to Passage 2's point about misinformation by:</div>
+  <ul class="q-choices single-col" id="f17-choices">
+    <li data-reset-onclick="handleAnswer('f17',this,false)" onclick="handleAnswer('f17',this,false)">A. Arguing that traditional broadcast networks also distributed documentaries with factual errors</li>
+    <li data-reset-onclick="handleAnswer('f17',this,true)" onclick="handleAnswer('f17',this,true)">B. Conceding that misinformation is a genuine risk, while maintaining that expanded access to diverse subjects still represents a net gain for public discourse compared to the narrow range approved by traditional gatekeepers</li>
+    <li data-reset-onclick="handleAnswer('f17',this,false)" onclick="handleAnswer('f17',this,false)">C. Claiming that audiences are fully capable of distinguishing accurate documentaries from misleading ones without editorial oversight</li>
+    <li data-reset-onclick="handleAnswer('f17',this,false)" onclick="handleAnswer('f17',this,false)">D. Arguing that journalistic rigour is less important than creative freedom in documentary filmmaking</li>
+  </ul>
+  <div class="answer-reveal" id="f17-reveal"><strong>Answer: B.</strong> Passage 1 celebrates the removal of gatekeepers and the resulting diversity. The most consistent response to misinformation concerns is to acknowledge the risk (concession) while defending the overall framework: diverse access still beats narrow gatekeeping. A introduces a claim about traditional networks not made in Passage 1. C makes a claim about audience capability not in Passage 1. D dismisses journalistic rigour — Passage 1 doesn't do this; it simply doesn't mention it.</div>
+</div>
+
+<!-- SECTION D: EXPRESSION OF IDEAS Q18-Q24 -->
+<div class="section-label">
+  <div class="section-num num-amber">D</div>
+  <div class="section-heading">Expression of Ideas</div>
+  <div class="section-count">Q18–Q24 · Harder traps</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q18 <span class="tag tag-amber">Transitions</span></div>
+  <div class="passage-box">Antibiotic resistance is driven in part by the widespread prescription of antibiotics for viral infections against which they are entirely ineffective. _______, the practice persists because patients often expect antibiotics when they visit a doctor, and physicians face pressure to satisfy patient expectations even when doing so is medically counterproductive.</div>
+  <div class="q-stem">Which transition best completes the text?</div>
+  <ul class="q-choices" id="f18-choices">
+    <li data-reset-onclick="handleAnswer('f18',this,false)" onclick="handleAnswer('f18',this,false)">A. Consequently</li>
+    <li data-reset-onclick="handleAnswer('f18',this,false)" onclick="handleAnswer('f18',this,false)">B. Similarly</li>
+    <li data-reset-onclick="handleAnswer('f18',this,true)" onclick="handleAnswer('f18',this,true)">C. Nevertheless</li>
+    <li data-reset-onclick="handleAnswer('f18',this,false)" onclick="handleAnswer('f18',this,false)">D. For example</li>
+  </ul>
+  <div class="answer-reveal" id="f18-reveal"><strong>Answer: C.</strong> Sentence 1: prescribing for viral infections is ineffective. Sentence 2: the practice continues anyway. The second sentence concedes this shouldn't happen but says it does — a contrast with an implied "despite knowing better." "Nevertheless" (despite this) captures the contrast between what should happen and what does. "Consequently" would mean the persistence results from the ineffectiveness — wrong. "Similarly" implies parallelism — wrong.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q19 <span class="tag tag-amber">Transitions</span></div>
+  <div class="passage-box">The philosopher argued that consciousness cannot be fully explained by physical brain states alone. _______, she pointed to the phenomenon of qualia — the subjective, first-person quality of experiences like seeing red or feeling pain — as evidence of something physical science cannot capture.</div>
+  <div class="q-stem">Which transition best completes the text?</div>
+  <ul class="q-choices" id="f19-choices">
+    <li data-reset-onclick="handleAnswer('f19',this,false)" onclick="handleAnswer('f19',this,false)">A. However</li>
+    <li data-reset-onclick="handleAnswer('f19',this,false)" onclick="handleAnswer('f19',this,false)">B. In contrast</li>
+    <li data-reset-onclick="handleAnswer('f19',this,true)" onclick="handleAnswer('f19',this,true)">C. To support this, she</li>
+    <li data-reset-onclick="handleAnswer('f19',this,false)" onclick="handleAnswer('f19',this,false)">D. Nevertheless</li>
+  </ul>
+  <div class="answer-reveal" id="f19-reveal"><strong>Answer: C.</strong> Sentence 1: consciousness can't be explained by brain states alone (claim). Sentence 2: qualia as evidence for this (support). This is claim → evidence/example. "To support this" names this relationship precisely. "However" and "In contrast" both signal opposition — wrong. "Nevertheless" signals concession — wrong. The relationship is reinforcement, not contrast.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q20 <span class="tag tag-amber">Transitions</span></div>
+  <div class="passage-box">Mandatory minimum sentencing laws were introduced in the 1980s with the stated goal of reducing crime by ensuring consistent, severe punishments for drug offenses. _______, decades of research have found no reliable evidence that mandatory minimums reduce crime rates, while documenting substantial evidence of racially disparate enforcement and prison overcrowding.</div>
+  <div class="q-stem">Which transition best completes the text?</div>
+  <ul class="q-choices" id="f20-choices">
+    <li data-reset-onclick="handleAnswer('f20',this,false)" onclick="handleAnswer('f20',this,false)">A. Furthermore</li>
+    <li data-reset-onclick="handleAnswer('f20',this,false)" onclick="handleAnswer('f20',this,false)">B. As a result</li>
+    <li data-reset-onclick="handleAnswer('f20',this,true)" onclick="handleAnswer('f20',this,true)">C. However</li>
+    <li data-reset-onclick="handleAnswer('f20',this,false)" onclick="handleAnswer('f20',this,false)">D. Specifically</li>
+  </ul>
+  <div class="answer-reveal" id="f20-reveal"><strong>Answer: C.</strong> Sentence 1: mandatory minimums intended to reduce crime. Sentence 2: research finds no evidence they reduce crime + harmful side effects. The second sentence directly contradicts the stated goal — contrast. "However" signals this. "Furthermore" (addition) is wrong — the second sentence doesn't add to the first, it opposes it. "As a result" is wrong — the research wasn't caused by the introduction of the laws (well, tangentially, but that's not the logical relationship being signalled).</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q21 <span class="tag tag-amber">Rhetorical Synthesis</span></div>
+  <div class="notes-box">A student researching ocean acidification has gathered these notes:<br>
+  • Ocean pH has dropped from 8.2 to 8.1 since the Industrial Revolution — a 26% increase in acidity<br>
+  • Oceans absorb approximately 30% of all CO₂ emitted by human activity<br>
+  • Acidification impairs the ability of shellfish, corals, and pteropods to form calcium carbonate shells<br>
+  • Pteropods (tiny sea snails) form the base of many marine food chains in polar regions<br>
+  • A 2023 study found pteropod shells are dissolving at rates not seen in 55 million years<br>
+  • Some researchers call ocean acidification "climate change's evil twin"</div>
+  <div class="q-stem">The student wants to explain the mechanism linking CO₂ emissions to the threat to marine food chains, using a specific example. Which choice best accomplishes this goal?</div>
+  <ul class="q-choices single-col" id="f21-choices">
+    <li data-reset-onclick="handleAnswer('f21',this,false)" onclick="handleAnswer('f21',this,false)">A. Ocean acidification, which some call "climate change's evil twin," poses a serious threat to marine ecosystems worldwide.</li>
+    <li data-reset-onclick="handleAnswer('f21',this,true)" onclick="handleAnswer('f21',this,true)">B. As oceans absorb CO₂ and become more acidic, the shells of pteropods — tiny snails that underpin polar marine food chains — begin to dissolve, threatening ecosystems from the bottom up.</li>
+    <li data-reset-onclick="handleAnswer('f21',this,false)" onclick="handleAnswer('f21',this,false)">C. Ocean pH has declined by 26% since the Industrial Revolution, affecting shellfish, corals, and pteropods that depend on calcium carbonate to form their shells.</li>
+    <li data-reset-onclick="handleAnswer('f21',this,false)" onclick="handleAnswer('f21',this,false)">D. A 2023 study found that pteropod shells are dissolving at rates not seen in 55 million years, a consequence of increasing ocean acidity caused by human carbon emissions.</li>
+  </ul>
+  <div class="answer-reveal" id="f21-reveal"><strong>Answer: B.</strong> Goal: mechanism (CO₂ → acidification) + specific example showing food chain threat. B chains the mechanism (oceans absorb CO₂ → more acidic) and gives the specific example (pteropods dissolving → food chain threatened). A gives the "evil twin" phrase but no mechanism or food chain link. C gives the pH change and lists affected species but doesn't explain the food chain consequence. D gives the study finding and attributes it to acidity/CO₂ but doesn't explain the mechanism or the food chain explicitly.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q22 <span class="tag tag-amber">Rhetorical Synthesis</span></div>
+  <div class="notes-box">A student researching the history of public libraries has gathered these notes:<br>
+  • The first free public library in the US opened in Peterborough, New Hampshire, in 1833<br>
+  • Andrew Carnegie funded the construction of 2,509 libraries between 1883 and 1929<br>
+  • Libraries provide internet access to approximately 14 million Americans who have no home internet<br>
+  • In 2022, US public libraries recorded over 1.3 billion in-person visits<br>
+  • Libraries offer services beyond books: job training, tax preparation assistance, social work referrals<br>
+  • A 2021 survey found 77% of Americans say public libraries contribute positively to their communities</div>
+  <div class="q-stem">The student wants to argue that public libraries serve a broader social function today than simply providing access to books, using two specific examples from the notes. Which choice best accomplishes this goal?</div>
+  <ul class="q-choices single-col" id="f22-choices">
+    <li data-reset-onclick="handleAnswer('f22',this,false)" onclick="handleAnswer('f22',this,false)">A. Public libraries have been a feature of American life since 1833, with Andrew Carnegie's philanthropy accelerating their spread across the country in the late nineteenth and early twentieth centuries.</li>
+    <li data-reset-onclick="handleAnswer('f22',this,true)" onclick="handleAnswer('f22',this,true)">B. Far beyond book lending, today's public libraries provide internet access to the 14 million Americans without home connections and offer job training, tax assistance, and social work referrals to communities in need.</li>
+    <li data-reset-onclick="handleAnswer('f22',this,false)" onclick="handleAnswer('f22',this,false)">C. With 1.3 billion in-person visits in 2022 and 77% of Americans viewing them positively, public libraries remain among the most widely used and trusted public institutions in the United States.</li>
+    <li data-reset-onclick="handleAnswer('f22',this,false)" onclick="handleAnswer('f22',this,false)">D. Public libraries have evolved significantly since the first one opened in New Hampshire in 1833, now offering services far beyond what their founders envisioned.</li>
+  </ul>
+  <div class="answer-reveal" id="f22-reveal"><strong>Answer: B.</strong> Goal: broader social function + TWO specific examples. B explicitly frames the "beyond books" argument and gives two concrete examples: internet access (14 million) and social services (job training, tax help, social work). A covers history — not current social function. C covers usage statistics and approval ratings — usage ≠ social function. D makes the general claim but names no specific examples.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q23 <span class="tag tag-amber">Add/Delete/Revise</span></div>
+  <div class="passage-box">The concept of "creative destruction," introduced by economist Joseph Schumpeter in 1942, describes how capitalism generates economic progress by continuously dismantling established industries and replacing them with new ones. The automobile industry destroyed the carriage industry; digital photography destroyed film photography; streaming services have devastated physical media retail. [Schumpeter was born in Moravia in 1883 and studied in Vienna before eventually emigrating to the United States, where he spent the final decades of his career at Harvard.] This process, Schumpeter argued, is not a failure of capitalism but its defining feature — the engine of long-run growth even as it creates short-term disruption for workers and firms caught in the transition.</div>
+  <div class="q-stem">Should the bracketed sentence be kept or deleted?</div>
+  <ul class="q-choices single-col" id="f23-choices">
+    <li data-reset-onclick="handleAnswer('f23',this,false)" onclick="handleAnswer('f23',this,false)">A. Kept, because knowing Schumpeter's background helps readers understand his perspective on capitalism</li>
+    <li data-reset-onclick="handleAnswer('f23',this,false)" onclick="handleAnswer('f23',this,false)">B. Kept, because it establishes Schumpeter's credentials as an economist</li>
+    <li data-reset-onclick="handleAnswer('f23',this,true)" onclick="handleAnswer('f23',this,true)">C. Deleted, because the paragraph focuses on the concept of creative destruction and its economic implications, not on Schumpeter's biography</li>
+    <li data-reset-onclick="handleAnswer('f23',this,false)" onclick="handleAnswer('f23',this,false)">D. Deleted, because Schumpeter's emigration to the United States is historically inaccurate</li>
+  </ul>
+  <div class="answer-reveal" id="f23-reveal"><strong>Answer: C.</strong> Main point: what creative destruction is, how it works (examples), and Schumpeter's interpretation of its role in capitalism. The biography (born in Moravia, studied in Vienna, emigrated to the US, Harvard) is factually true and interesting but serves none of these purposes. A is the "context helps" trap — biographical context ≠ conceptual understanding. B is the "credentials" trap — the passage already introduced him as the economist who coined the term; his birth city doesn't add credentials. D is factually wrong — Schumpeter did emigrate to the US and taught at Harvard.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q24 <span class="tag tag-amber">Add/Delete/Revise</span></div>
+  <div class="passage-box">Urban heat islands form when cities replace natural surfaces with heat-absorbing materials — asphalt, concrete, dark rooftops — while simultaneously reducing vegetation. This creates a feedback loop: hotter surfaces warm the air, increased air conditioning use generates additional waste heat, and reduced vegetation means less evaporative cooling. [A] The effect is particularly pronounced at night, when cities cool far more slowly than surrounding rural areas because buildings and pavement continue radiating stored heat long after sunset. [B] Cities can mitigate heat islands through green roofs, increased tree planting, and lighter-coloured paving materials. [C] The health consequences are significant: during heat waves, urban residents face mortality rates substantially higher than their rural counterparts. [D]</div>
+  <div class="q-stem">The student wants to add the following sentence: "Phoenix, Arizona, where average temperatures have risen by 4°F over the past 50 years, is frequently cited as one of the most severe urban heat island cases in the United States." Where would this sentence fit most logically?</div>
+  <ul class="q-choices" id="f24-choices">
+    <li data-reset-onclick="handleAnswer('f24',this,false)" onclick="handleAnswer('f24',this,false)">A. Position A</li>
+    <li data-reset-onclick="handleAnswer('f24',this,false)" onclick="handleAnswer('f24',this,false)">B. Position B</li>
+    <li data-reset-onclick="handleAnswer('f24',this,false)" onclick="handleAnswer('f24',this,false)">C. Position C</li>
+    <li data-reset-onclick="handleAnswer('f24',this,true)" onclick="handleAnswer('f24',this,true)">D. Position D</li>
+  </ul>
+  <div class="answer-reveal" id="f24-reveal"><strong>Answer: D.</strong> The new sentence illustrates severity — Phoenix as a severe case with a specific temperature rise. This fits best after the health consequences sentence (D), which establishes that the stakes are high (mortality). Phoenix's 4°F rise and "severe case" status illustrates the real-world scale of those health consequences. At A — too early, the mechanism hasn't been fully described yet. At B — the passage is about nighttime cooling specifically; Phoenix doesn't add to that point. At C — the focus shifts to solutions; Phoenix as a problem case interrupts.</div>
+</div>
+
+<!-- SECTION E: SEC Q25-Q30 -->
+<div class="section-label">
+  <div class="section-num num-green">E</div>
+  <div class="section-heading">Standard English Conventions</div>
+  <div class="section-count">Q25–Q30 · Harder patterns</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q25 <span class="tag tag-green">SEC · Punctuation</span></div>
+  <div class="passage-box">The study's most striking finding _______ that participants who slept fewer than six hours consistently underestimated their own cognitive impairment _______ has significant implications for workplace safety and public policy.</div>
+  <div class="q-stem">Which choice uses punctuation correctly?</div>
+  <ul class="q-choices single-col" id="f25-choices">
+    <li data-reset-onclick="handleAnswer('f25',this,false)" onclick="handleAnswer('f25',this,false)">A. finding, that participants who slept fewer than six hours consistently underestimated their own cognitive impairment, has</li>
+    <li data-reset-onclick="handleAnswer('f25',this,true)" onclick="handleAnswer('f25',this,true)">B. finding — that participants who slept fewer than six hours consistently underestimated their own cognitive impairment — has</li>
+    <li data-reset-onclick="handleAnswer('f25',this,false)" onclick="handleAnswer('f25',this,false)">C. finding; that participants who slept fewer than six hours consistently underestimated their own cognitive impairment; has</li>
+    <li data-reset-onclick="handleAnswer('f25',this,false)" onclick="handleAnswer('f25',this,false)">D. finding: that participants who slept fewer than six hours consistently underestimated their own cognitive impairment: has</li>
+  </ul>
+  <div class="answer-reveal" id="f25-reveal"><strong>Answer: B.</strong> The clause "that participants who slept fewer than six hours consistently underestimated their own cognitive impairment" is parenthetical — it elaborates on "finding." Parenthetical content between matching dashes is correct. A: commas around a clause beginning with "that" are generally wrong when the clause is a noun clause complement. C: semicolons require independent clauses on both sides — these aren't. D: two colons in one sentence is non-standard and the structure doesn't support it.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q26 <span class="tag tag-green">SEC · Agreement</span></div>
+  <div class="passage-box">Neither the published data nor the anecdotal evidence from clinicians _______ sufficient to justify changing the current treatment protocol at this time.</div>
+  <div class="q-stem">Which choice correctly completes the sentence?</div>
+  <ul class="q-choices" id="f26-choices">
+    <li data-reset-onclick="handleAnswer('f26',this,true)" onclick="handleAnswer('f26',this,true)">A. is</li>
+    <li data-reset-onclick="handleAnswer('f26',this,false)" onclick="handleAnswer('f26',this,false)">B. are</li>
+    <li data-reset-onclick="handleAnswer('f26',this,false)" onclick="handleAnswer('f26',this,false)">C. were</li>
+    <li data-reset-onclick="handleAnswer('f26',this,false)" onclick="handleAnswer('f26',this,false)">D. have been</li>
+  </ul>
+  <div class="answer-reveal" id="f26-reveal"><strong>Answer: A.</strong> "Neither...nor" rule: the verb agrees with the subject closest to it — "the anecdotal evidence from clinicians" (singular). Singular → "is." If it were "Neither the data nor the clinicians," the verb would be plural ("are") to agree with "clinicians." B agrees with "data" (the farther subject). C and D introduce wrong tense.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q27 <span class="tag tag-green">SEC · Sentence structure</span></div>
+  <div class="passage-box">The glacier had retreated more than two kilometers over the previous decade _______ a rate of loss that scientists described as unprecedented in recorded measurements for this region.</div>
+  <div class="q-stem">Which choice correctly completes the sentence?</div>
+  <ul class="q-choices" id="f27-choices">
+    <li data-reset-onclick="handleAnswer('f27',this,false)" onclick="handleAnswer('f27',this,false)">A. decade, and a rate</li>
+    <li data-reset-onclick="handleAnswer('f27',this,false)" onclick="handleAnswer('f27',this,false)">B. decade; a rate</li>
+    <li data-reset-onclick="handleAnswer('f27',this,true)" onclick="handleAnswer('f27',this,true)">C. decade — a rate</li>
+    <li data-reset-onclick="handleAnswer('f27',this,false)" onclick="handleAnswer('f27',this,false)">D. decade: a rate</li>
+  </ul>
+  <div class="answer-reveal" id="f27-reveal"><strong>Answer: C.</strong> "A rate of loss that scientists described as unprecedented" is an appositive that elaborates on the previous statement — it's a dramatic clarification. A dash is ideal for introducing an explanatory or emphatic elaboration mid-sentence. A comma + "and" joins independent clauses — but "a rate of loss" is not an independent clause. B: a semicolon requires an independent clause after it — "a rate of loss" is not one. D: a colon can introduce elaboration but works best when the elaboration completes or defines the preceding independent clause — here a dash is more natural and commonly tested.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q28 <span class="tag tag-green">SEC · Modifier</span></div>
+  <div class="passage-box">_______ more than four hundred paintings over a career spanning five decades, the retrospective exhibition celebrated Frida Kahlo's extraordinary output.</div>
+  <div class="q-stem">Which choice corrects the dangling modifier?</div>
+  <ul class="q-choices single-col" id="f28-choices">
+    <li data-reset-onclick="handleAnswer('f28',this,false)" onclick="handleAnswer('f28',this,false)">A. No change</li>
+    <li data-reset-onclick="handleAnswer('f28',this,false)" onclick="handleAnswer('f28',this,false)">B. Having produced more than four hundred paintings over a career spanning five decades, the retrospective exhibition celebrated Frida Kahlo's extraordinary output.</li>
+    <li data-reset-onclick="handleAnswer('f28',this,true)" onclick="handleAnswer('f28',this,true)">C. Having produced more than four hundred paintings over a career spanning five decades, Frida Kahlo was celebrated for her extraordinary output in a retrospective exhibition.</li>
+    <li data-reset-onclick="handleAnswer('f28',this,false)" onclick="handleAnswer('f28',this,false)">D. Frida Kahlo, having produced more than four hundred paintings over a career spanning five decades, and the retrospective exhibition celebrated her extraordinary output.</li>
+  </ul>
+  <div class="answer-reveal" id="f28-reveal"><strong>Answer: C.</strong> The opening modifier describes who produced the paintings — Frida Kahlo, not the retrospective exhibition. After the comma, the subject must be Frida Kahlo. C correctly makes Kahlo the subject. A and B both keep "the retrospective exhibition" as the subject — exhibitions don't produce paintings. D is grammatically broken — "Kahlo... and the retrospective exhibition celebrated" creates a faulty compound subject.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q29 <span class="tag tag-green">SEC · Pronoun reference</span></div>
+  <div class="passage-box">When the government announced the new regulations, the industry association immediately challenged them in court, arguing that they had been developed without adequate consultation with affected businesses and that they would impose costs disproportionate to any public benefit they might produce.</div>
+  <div class="q-stem">The use of "they" in the underlined sentence is potentially ambiguous because:</div>
+  <ul class="q-choices single-col" id="f29-choices">
+    <li data-reset-onclick="handleAnswer('f29',this,false)" onclick="handleAnswer('f29',this,false)">A. "They" is plural but both potential antecedents (government, industry association) are singular</li>
+    <li data-reset-onclick="handleAnswer('f29',this,false)" onclick="handleAnswer('f29',this,false)">B. "They" cannot refer to regulations because regulations are inanimate objects</li>
+    <li data-reset-onclick="handleAnswer('f29',this,true)" onclick="handleAnswer('f29',this,true)">C. Multiple uses of "they" in the sentence could refer to different antecedents — the regulations or the affected businesses — making the relationships unclear</li>
+    <li data-reset-onclick="handleAnswer('f29',this,false)" onclick="handleAnswer('f29',this,false)">D. The sentence uses "they" correctly throughout and contains no ambiguity</li>
+  </ul>
+  <div class="answer-reveal" id="f29-reveal"><strong>Answer: C.</strong> The sentence uses "they" four times: "challenged them" (regulations), "they had been developed" (regulations), "they would impose costs" (regulations), "they might produce" (regulations OR costs). While context makes most uses clear, the layered repetition creates confusion, particularly in the final clause. A is wrong — "the regulations" is the intended plural antecedent (plural noun). B is wrong — pronouns can refer to inanimate objects. D ignores the genuine confusion the repetition creates.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q30 <span class="tag tag-green">SEC · Parallelism</span></div>
+  <div class="passage-box">The report recommended that the agency should increase staffing levels, that it revise its data collection protocols, and _______ its oversight mandate to include previously unregulated sectors.</div>
+  <div class="q-stem">Which choice correctly completes the parallel structure?</div>
+  <ul class="q-choices single-col" id="f30-choices">
+    <li data-reset-onclick="handleAnswer('f30',this,false)" onclick="handleAnswer('f30',this,false)">A. that expanding</li>
+    <li data-reset-onclick="handleAnswer('f30',this,false)" onclick="handleAnswer('f30',this,false)">B. the expansion of</li>
+    <li data-reset-onclick="handleAnswer('f30',this,true)" onclick="handleAnswer('f30',this,true)">C. that it expand</li>
+    <li data-reset-onclick="handleAnswer('f30',this,false)" onclick="handleAnswer('f30',this,false)">D. to expand</li>
+  </ul>
+  <div class="answer-reveal" id="f30-reveal"><strong>Answer: C.</strong> Parallel structure: "that it should increase... that it revise... and that it expand." All three items in the series follow the same pattern: "that [subject] [verb]." C completes the third item consistently. A ("that expanding") breaks parallelism — gerund instead of verb. B ("the expansion of") abandons the "that" structure entirely. D ("to expand") is an infinitive that doesn't fit the established parallel structure.</div>
+</div>
+
+<!-- SCORE TRACKER -->
+<div class="rule"></div>
+<div class="score-block">
+  <div class="ref-title">English Day 5 — Score tracker</div>
+  <div class="domain-row">
+    <div class="domain-name">Words in Context (Q1–Q6)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bf1">Q1</span><span class="badge" id="bf2">Q2</span><span class="badge" id="bf3">Q3</span>
+      <span class="badge" id="bf4">Q4</span><span class="badge" id="bf5">Q5</span><span class="badge" id="bf6">Q6</span>
+    </div>
+  </div>
+  <div class="domain-row">
+    <div class="domain-name">Text Structure &amp; Purpose (Q7–Q12)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bf7">Q7</span><span class="badge" id="bf8">Q8</span><span class="badge" id="bf9">Q9</span>
+      <span class="badge" id="bf10">Q10</span><span class="badge" id="bf11">Q11</span><span class="badge" id="bf12">Q12</span>
+    </div>
+  </div>
+  <div class="domain-row">
+    <div class="domain-name">Cross-Text Connections (Q13–Q17)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bf13">Q13</span><span class="badge" id="bf14">Q14</span><span class="badge" id="bf15">Q15</span>
+      <span class="badge" id="bf16">Q16</span><span class="badge" id="bf17">Q17</span>
+    </div>
+  </div>
+  <div class="domain-row">
+    <div class="domain-name">Expression of Ideas (Q18–Q24)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bf18">Q18</span><span class="badge" id="bf19">Q19</span><span class="badge" id="bf20">Q20</span>
+      <span class="badge" id="bf21">Q21</span><span class="badge" id="bf22">Q22</span><span class="badge" id="bf23">Q23</span>
+      <span class="badge" id="bf24">Q24</span>
+    </div>
+  </div>
+  <div class="domain-row">
+    <div class="domain-name">Standard English Conventions (Q25–Q30)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bf25">Q25</span><span class="badge" id="bf26">Q26</span><span class="badge" id="bf27">Q27</span>
+      <span class="badge" id="bf28">Q28</span><span class="badge" id="bf29">Q29</span><span class="badge" id="bf30">Q30</span>
+    </div>
+  </div>
+  <div style="margin-top:14px;text-align:center;">
+    <button onclick="calcScore()" style="padding:8px 24px;font-size:13px;font-weight:500;cursor:pointer;">Show my score</button>
+  </div>
+  <div id="eng-final-score" style="display:none;margin-top:12px;padding:14px 16px;border-radius:8px;font-size:15px;text-align:center;font-weight:500;"></div>
+</div>
+
+<div class="rule"></div>
+<div class="ref-sheet">
+  <div class="ref-title">End-of-test checklist</div>
+  <ul class="checklist">
+    <li><div class="check-box" onclick="toggleCheck(this)"></div>Completed all 30 questions within 35 minutes</li>
+    <li><div class="check-box" onclick="toggleCheck(this)"></div>Did NOT pick the most common meaning on Words in Context questions</li>
+    <li><div class="check-box" onclick="toggleCheck(this)"></div>Named the relationship type before selecting any transition answer</li>
+    <li><div class="check-box" onclick="toggleCheck(this)"></div>Read the GOAL before looking at Synthesis answer choices</li>
+    <li><div class="check-box" onclick="toggleCheck(this)"></div>Identified what's being tested before answering each SEC question</li>
+    <li><div class="check-box" onclick="toggleCheck(this)"></div>Reviewed every wrong answer and understood the specific trap</li>
+    <li><div class="check-box" onclick="toggleCheck(this)"></div>Ready for the Practice Test tomorrow — every question type covered</li>
+  </ul>
+</div>
+
+<div class="page-footer">Rishi Wadhwani · English Test · Day 5 · Full review · June 6 exam</div>
+
+<script>
+var engScores = {};
+var timerInterval = null, timeLeft = 2100, running = false;
+
+function toggleTimer() {
+  if (running) {
+    clearInterval(timerInterval); running = false;
+    document.getElementById('timer-btn').textContent = 'Resume';
+  } else {
+    running = true;
+    document.getElementById('timer-btn').textContent = 'Pause';
+    timerInterval = setInterval(function() {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval); running = false;
+        document.getElementById('timer-display').textContent = 'TIME!';
+        document.getElementById('timer-display').style.color = 'var(--red)';
+        document.getElementById('timer-btn').textContent = 'Start';
+        return;
+      }
+      var m = Math.floor(timeLeft/60), s = timeLeft % 60;
+      document.getElementById('timer-display').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      if (timeLeft <= 300) document.getElementById('timer-display').style.color = 'var(--red)';
+      document.getElementById('q-progress').style.width = ((2100 - timeLeft) / 2100 * 100) + '%';
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval); running = false; timeLeft = 2100;
+  document.getElementById('timer-display').textContent = '35:00';
+  document.getElementById('timer-display').style.color = '';
+  document.getElementById('timer-btn').textContent = 'Start';
+  document.getElementById('q-progress').style.width = '0%';
+}
+
+function handleAnswer(qId, el, isCorrect) {
+  if (engScores[qId] !== undefined) return;
+  engScores[qId] = isCorrect;
+  var choices = document.getElementById(qId + '-choices').querySelectorAll('li');
+  choices.forEach(function(li) { li.onclick = null; });
+  el.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) choices.forEach(function(li) { if (!li.classList.contains('wrong')) li.classList.add('correct'); });
+  document.getElementById(qId + '-reveal').classList.add('show');
+  var num = qId.replace('f', '');
+  var badge = document.getElementById('bf' + num);
+  if (badge) { badge.classList.add(isCorrect ? 'correct' : 'wrong'); badge.textContent = 'Q' + num + (isCorrect ? ' ✓' : ' ✗'); }
+}
+
+function calcScore() {
+  var correct = 0, total = 0;
+  var ds = {wic:[0,0], ts:[0,0], ct:[0,0], eoi:[0,0], sec:[0,0]};
+  for (var i = 1; i <= 30; i++) {
+    var k = 'f' + i;
+    if (engScores[k] !== undefined) {
+      total++;
+      var cat = i<=6?'wic':i<=12?'ts':i<=17?'ct':i<=24?'eoi':'sec';
+      if (engScores[k]) { correct++; ds[cat][0]++; }
+      ds[cat][1]++;
+    }
+  }
+  var pct = total > 0 ? Math.round(correct / total * 100) : 0;
+  var el = document.getElementById('eng-final-score');
+  el.style.display = 'block';
+  if (pct >= 80) { el.style.background = 'var(--green-light)'; el.style.color = 'var(--green)'; }
+  else if (pct >= 60) { el.style.background = 'var(--amber-light)'; el.style.color = 'var(--amber)'; }
+  else { el.style.background = 'var(--red-light)'; el.style.color = 'var(--red)'; }
+  var names = {wic:'Words in Context', ts:'Text Structure', ct:'Cross-Text', eoi:'Expression of Ideas', sec:'SEC'};
+  var weakest = '', minP = 2;
+  for (var d in ds) { if (ds[d][1] > 0) { var p = ds[d][0]/ds[d][1]; if (p < minP) { minP = p; weakest = names[d]; } } }
+  el.innerHTML = correct + ' / ' + total + ' correct (' + pct + '%)' +
+    (weakest ? ' — Weakest area: <strong>' + weakest + '</strong>' : '') +
+    (pct >= 80 ? ' — Excellent! You\'re ready for the practice test.' :
+     pct >= 60 ? ' — Good — review your weakest area before tomorrow.' :
+     ' — Revisit the strategy guides before the practice test.');
+}
+
+function resetAll() {
+  resetTimer();
+  engScores = {};
+  document.getElementById('eng-final-score').style.display = 'none';
+  document.getElementById('eng-final-score').innerHTML = '';
+  document.querySelectorAll('.badge').forEach(function(b) { b.classList.remove('correct','wrong'); b.style.background=''; b.style.color=''; });
+  document.querySelectorAll('.answer-reveal').forEach(function(r) { r.classList.remove('show'); });
+  document.querySelectorAll('.q-choices li').forEach(function(li) {
+    li.classList.remove('correct','wrong');
+    var fn = li.getAttribute('data-reset-onclick');
+    if (fn) li.onclick = new Function(fn);
+  });
+  document.querySelectorAll('.check-box').forEach(function(el) { el.classList.remove('checked'); });
+}
+
+function toggleCheck(el) { el.classList.toggle('checked'); }
+</script>
+</body>
+</html>
