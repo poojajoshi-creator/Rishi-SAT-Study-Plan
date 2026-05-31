@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4: Author's Purpose — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar">
+  <a href="english_lessons.html">← All Lessons</a>
+  <span>Concept 4 of 27 · Author's Purpose</span>
+</div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a>
+  <a href="#strategy">Strategy</a>
+  <a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a>
+  <a href="#practice">Practice</a>
+  <a href="#summary">Summary</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 4 / 27</span><span class="hdr-domain">Craft &amp; Structure</span></div>
+  <div class="hdr-title">Author's<br><em>Purpose</em></div>
+  <div class="hdr-tagline">These questions ask why the author wrote the passage — or a specific section — not what it says, but what it is designed to accomplish.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 questions per module</span><span class="chip">Target: 60 sec</span><span class="chip hi">Rule: ask "what is the author trying to DO?"</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🎯</div><div class="section-title">What is Author's Purpose?</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Core definition</div>
+    <div class="def-body">
+      <p>Author's Purpose questions ask what the author intends to achieve by writing this passage or section. Common question stems:</p>
+      <p>• "The primary purpose of the passage is to..."<br>
+      • "The author mentions X primarily in order to..."<br>
+      • "The passage is primarily concerned with..."<br>
+      • "Why does the author include the detail about X?"</p>
+      <p>The answer describes an <b>authorial goal</b>, not the passage's content. "Inform readers about climate policy" is a purpose. "Explain that carbon taxes are efficient" is content.</p>
+    </div>
+  </div>
+  <div class="def-box green">
+    <div class="def-label">7 common authorial purposes</div>
+    <div class="def-body">
+      <p><b>1. Inform / explain</b> — present facts about a topic for a general audience. Neutral tone, no argument.</p>
+      <p><b>2. Argue / persuade</b> — advocate for a position using evidence and reasoning. Takes a side.</p>
+      <p><b>3. Analyse</b> — examine a subject closely to reveal how or why it works. More than inform — draws interpretive conclusions.</p>
+      <p><b>4. Compare</b> — examine similarities and/or differences between two things. May or may not take a side.</p>
+      <p><b>5. Challenge / critique</b> — question, undermine, or refute a prevailing view. Explicitly oppositional.</p>
+      <p><b>6. Describe / portray</b> — create a vivid picture of a person, place, or event. Common in literary passages.</p>
+      <p><b>7. Contextualise / situate</b> — place something in its historical, scientific, or cultural context to make it understandable.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">The strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Read the full passage and ask: "What is the author trying to DO?"</b> Not what does the author say — what is the author accomplishing? Is the author informing, arguing, analysing, critiquing?</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Check the tone.</b> Neutral/balanced tone → inform or compare. Strong evaluative language ("crucially," "mistakenly," "the evidence clearly shows") → argue or critique. Vivid sensory language → describe.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>State the purpose in your own words</b> using a verb: "The author is arguing that X," "The author is informing readers about Y," "The author is critiquing Z." Then match to choices.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><b>Eliminate choices that describe content</b> rather than purpose, or that misstate the author's position (arguing for something the author critiques, or saying the author is neutral when they clearly take a side).</div></div>
+  </div>
+</div>
+
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">The traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Content not purpose</div><div class="trap-body">"Explain that penicillin was discovered by Fleming" = content. "Trace the development of antibiotic medicine" = purpose. Always pick the verb that describes the author's action.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Overstating the argument</div><div class="trap-body">The author critiques ONE aspect of a policy. Wrong choice: "argue that the entire policy is misguided." Scope matters — match the purpose to the actual reach of the passage.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Neutral vs taking a side</div><div class="trap-body">A passage presenting two views may be balanced (compare) or may lean one way (critique one, advocate for the other). Read the conclusion — it usually reveals the author's position.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Specific detail questions</div><div class="trap-body">"Why does the author mention X?" — X almost always serves the larger argument. It illustrates, supports, or complicates the main claim. The answer connects X to the passage's overall purpose.</div></div>
+  </div>
+</div>
+
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+
+  <div class="example">
+    <div class="example-hdr">Example 1 — Argue vs Inform<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">Mandatory minimum sentencing laws have failed to achieve their stated goal of deterring drug crime. Decades of data consistently show that incarceration rates and drug use rates are uncorrelated: states with harsher sentencing have not recorded lower rates of drug offences than those with more lenient approaches. Moreover, these laws have imposed enormous costs — financial, social, and human — on communities that were already economically marginalised. The evidence is clear: mandatory minimums should be repealed and replaced with evidence-based sentencing guidelines that give judges the discretion to consider individual circumstances.</div>
+      <div class="thought"><div class="thought-title">💭 Thinking</div><div class="thought-body">Tone check: "failed," "evidence is clear," "should be repealed" — strong evaluative language. The author is not informing neutrally. Taking a position: mandatory minimums are bad and should be repealed. Purpose: <b>argue for the repeal of mandatory minimum sentencing.</b></div></div>
+      <div class="q-stem">The primary purpose of the passage is to:</div>
+      <ul class="choices" id="l4e1">
+        <li data-reset-onclick="pickEx('l4e1',this,false)" onclick="pickEx('l4e1',this,false)">A. inform readers about mandatory minimum sentencing laws and their history</li>
+        <li data-reset-onclick="pickEx('l4e1',this,false)" onclick="pickEx('l4e1',this,false)">B. compare mandatory minimum sentencing to evidence-based approaches</li>
+        <li data-reset-onclick="pickEx('l4e1',this,true)" onclick="pickEx('l4e1',this,true)">C. argue that mandatory minimum sentencing is ineffective and should be abolished</li>
+        <li data-reset-onclick="pickEx('l4e1',this,false)" onclick="pickEx('l4e1',this,false)">D. explain the financial costs of mass incarceration</li>
+      </ul>
+      <div class="explanation" id="l4e1-exp"><b>Answer: C.</b> The author takes a clear position (ineffective, should be repealed) and uses evidence to argue it. A (inform) is wrong — the author is not neutral. B (compare) is wrong — the comparison is in service of an argument, not the point itself. D (financial costs) describes one element, not the overall purpose.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 2 — Why does the author mention X?<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">Proponents of social media's democratising effects often point to the Arab Spring of 2010–2012 as evidence that platforms like Twitter and Facebook can empower citizens to challenge authoritarian regimes. The speed with which organisers coordinated protests across Tunisia, Egypt, and Libya appeared to validate this optimism. <u>Subsequent research, however, has complicated this narrative considerably: scholars have documented how the same platforms were used by governments to identify, surveil, and arrest activists — and how algorithmic amplification of outrage, rather than of deliberate political argument, may have contributed to the instability that followed regime change.</u></div>
+      <div class="q-stem">The author includes the underlined information primarily in order to:</div>
+      <ul class="choices" id="l4e2">
+        <li data-reset-onclick="pickEx('l4e2',this,false)" onclick="pickEx('l4e2',this,false)">A. explain why the Arab Spring ultimately failed</li>
+        <li data-reset-onclick="pickEx('l4e2',this,false)" onclick="pickEx('l4e2',this,false)">B. argue that social media companies should be regulated</li>
+        <li data-reset-onclick="pickEx('l4e2',this,true)" onclick="pickEx('l4e2',this,true)">C. complicate the optimistic view of social media by showing it also enabled surveillance and instability</li>
+        <li data-reset-onclick="pickEx('l4e2',this,false)" onclick="pickEx('l4e2',this,false)">D. provide evidence that the Arab Spring was primarily caused by algorithmic amplification</li>
+      </ul>
+      <div class="explanation" id="l4e2-exp"><b>Answer: C.</b> The passage first presents the optimistic view of social media. The underlined information begins with "however" — a complication. Its purpose is to undermine the optimistic narrative. A (why Arab Spring failed) overstates. B (regulation) — no such argument is made. D makes social media the primary cause — the passage says "may have contributed."</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 3 — Contextualise<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">When Marie Curie became the first person to win two Nobel Prizes, in 1903 and 1911, her achievement was treated by much of the scientific establishment as an anomaly rather than a model. The institutional structures of European science at the time systematically excluded women: they could not be full members of the French Academy of Sciences, could not hold professorships at most universities, and frequently had their contributions attributed to male colleagues. Understanding Curie's accomplishments requires situating them within these constraints — her achievements were not merely personal triumphs but acts of sustained intellectual resistance against institutional discrimination.</div>
+      <div class="q-stem">The primary purpose of the passage is to:</div>
+      <ul class="choices" id="l4e3">
+        <li data-reset-onclick="pickEx('l4e3',this,false)" onclick="pickEx('l4e3',this,false)">A. celebrate Marie Curie's scientific discoveries and their impact on chemistry and physics</li>
+        <li data-reset-onclick="pickEx('l4e3',this,false)" onclick="pickEx('l4e3',this,false)">B. argue that European scientific institutions should reform their membership policies</li>
+        <li data-reset-onclick="pickEx('l4e3',this,true)" onclick="pickEx('l4e3',this,true)">C. contextualise Curie's achievements within the institutional barriers she faced, reframing them as acts of resistance rather than mere personal success</li>
+        <li data-reset-onclick="pickEx('l4e3',this,false)" onclick="pickEx('l4e3',this,false)">D. compare Marie Curie's treatment by the scientific establishment to that of other female scientists</li>
+      </ul>
+      <div class="explanation" id="l4e3-exp"><b>Answer: C.</b> The passage places Curie's wins in context (institutional barriers) and reframes them (not anomaly but resistance). A celebrates her discoveries — the passage isn't about the science itself. B argues for reform — no such argument is made. D compares to other female scientists — none are mentioned.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 1</div>
+    <div class="passage">The Amazon rainforest covers approximately 5.5 million square kilometres across nine South American countries. It contains an estimated 390 billion trees representing around 16,000 species, and is home to at least 10% of all species on Earth. The Amazon basin produces about 20% of the world's oxygen and plays a critical role in regulating global climate through the water cycle. Deforestation has removed approximately 17% of the forest cover since the 1970s, with rates accelerating in recent decades.</div>
+    <div class="q-stem">The primary purpose of the passage is to:</div>
+    <ul class="choices" id="l4p1">
+      <li data-reset-onclick="pickEx('l4p1',this,false)" onclick="pickEx('l4p1',this,false)">A. argue that deforestation of the Amazon must be stopped immediately</li>
+      <li data-reset-onclick="pickEx('l4p1',this,true)" onclick="pickEx('l4p1',this,true)">B. inform readers about the scale, ecological importance, and current threats facing the Amazon</li>
+      <li data-reset-onclick="pickEx('l4p1',this,false)" onclick="pickEx('l4p1',this,false)">C. compare the Amazon to other major rainforests in terms of biodiversity</li>
+      <li data-reset-onclick="pickEx('l4p1',this,false)" onclick="pickEx('l4p1',this,false)">D. explain how the Amazon produces oxygen and regulates the climate</li>
+    </ul>
+    <div class="explanation" id="l4p1-exp"><b>B.</b> The passage is neutral in tone — it states facts about size, biodiversity, ecological role, and deforestation without taking a position or making an argument. A (argue) — there's no call to action. C (compare) — no comparison to other rainforests. D (explain oxygen/climate) — covers only one aspect, not the whole passage.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 2</div>
+    <div class="passage">Contemporary art museums have long struggled with the tension between accessibility and curatorial integrity. In recent years, many institutions have responded to declining attendance by introducing immersive, technology-driven exhibitions — interactive installations, augmented reality experiences, and algorithmically curated displays — that prioritise visitor engagement over scholarly depth. Critics argue that this approach commodifies art, transforming cultural institutions into entertainment venues. Defenders counter that engagement precedes appreciation, and that any means of drawing new audiences into contact with art is worthwhile. Both sides, however, risk obscuring the more fundamental question: what is a museum actually for?</div>
+    <div class="q-stem">The primary purpose of the passage is to:</div>
+    <ul class="choices" id="l4p2">
+      <li data-reset-onclick="pickEx('l4p2',this,false)" onclick="pickEx('l4p2',this,false)">A. argue that museums should prioritise scholarly depth over visitor engagement</li>
+      <li data-reset-onclick="pickEx('l4p2',this,false)" onclick="pickEx('l4p2',this,false)">B. explain the history of art museums and how their mission has changed over time</li>
+      <li data-reset-onclick="pickEx('l4p2',this,true)" onclick="pickEx('l4p2',this,true)">C. examine a debate about the purpose of art museums and suggest that both sides miss a deeper question</li>
+      <li data-reset-onclick="pickEx('l4p2',this,false)" onclick="pickEx('l4p2',this,false)">D. praise museums that have adopted technology-driven exhibitions as a model for the industry</li>
+    </ul>
+    <div class="explanation" id="l4p2-exp"><b>C.</b> The passage presents both sides without fully endorsing either, then raises a deeper question (what is a museum for). A sides with critics — the passage doesn't. D praises tech exhibitions — the passage is balanced. B (history) — no historical overview is provided.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 3</div>
+    <div class="passage">The widespread belief that humans use only 10% of their brains is a myth with no basis in neuroscientific evidence. Brain imaging studies consistently show that virtually all regions of the brain are active during the course of a normal day, and damage to any part of the brain — however small — reliably produces measurable deficits. The myth's persistence despite its falsity is itself scientifically interesting: it appears to have originated partly in misreadings of early neurological research and partly in the cultural appeal of the idea that most of human potential remains untapped.</div>
+    <div class="q-stem">The primary purpose of the passage is to:</div>
+    <ul class="choices" id="l4p3">
+      <li data-reset-onclick="pickEx('l4p3',this,false)" onclick="pickEx('l4p3',this,false)">A. explain how the human brain functions during a normal day</li>
+      <li data-reset-onclick="pickEx('l4p3',this,false)" onclick="pickEx('l4p3',this,false)">B. argue that neuroscience is poorly understood by the general public</li>
+      <li data-reset-onclick="pickEx('l4p3',this,true)" onclick="pickEx('l4p3',this,true)">C. debunk a persistent myth about brain usage and explain why it has endured</li>
+      <li data-reset-onclick="pickEx('l4p3',this,false)" onclick="pickEx('l4p3',this,false)">D. describe the history of early neurological research</li>
+    </ul>
+    <div class="explanation" id="l4p3-exp"><b>C.</b> Two moves: (1) debunk the 10% myth with evidence; (2) explain why the myth persists. A covers only part of the passage. B makes a broader argument about public understanding — not the focus. D (history of research) is mentioned briefly but isn't the main purpose.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 4 — Detail question</div>
+    <div class="passage">Algorithmic hiring tools — software that screens job applicants by analysing resumes, video interviews, and social media profiles — have been adopted by thousands of companies seeking to reduce both the time and subjectivity involved in recruitment. Advocates argue that algorithms, unlike human recruiters, are immune to the biases that have long distorted hiring decisions. <u>A landmark 2018 investigation found that Amazon had scrapped an AI hiring tool after discovering it systematically downgraded resumes that included the word "women's," as in "women's chess club" — a bias the system had learned from a decade of historically male-dominated hiring data.</u></div>
+    <div class="q-stem">The author includes the underlined information primarily in order to:</div>
+    <ul class="choices" id="l4p4">
+      <li data-reset-onclick="pickEx('l4p4',this,false)" onclick="pickEx('l4p4',this,false)">A. suggest that Amazon acted responsibly by scrapping the biased tool</li>
+      <li data-reset-onclick="pickEx('l4p4',this,false)" onclick="pickEx('l4p4',this,false)">B. explain how algorithmic hiring tools are built using historical data</li>
+      <li data-reset-onclick="pickEx('l4p4',this,true)" onclick="pickEx('l4p4',this,true)">C. provide concrete evidence that challenges the claim that algorithms are immune to bias</li>
+      <li data-reset-onclick="pickEx('l4p4',this,false)" onclick="pickEx('l4p4',this,false)">D. argue that all algorithmic hiring tools should be banned</li>
+    </ul>
+    <div class="explanation" id="l4p4-exp"><b>C.</b> The preceding sentence states that algorithms are "immune to biases." The Amazon example directly contradicts this — the algorithm was biased. Purpose: challenge the pro-algorithm claim with evidence. A (Amazon acted responsibly) — not the point. B (explain construction) — not the purpose. D (ban all tools) — not argued.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">In the decades following World War II, the United States invested heavily in suburban infrastructure — highways, single-family zoning, mortgage subsidies — in ways that were explicitly racially exclusionary. Federal mortgage programmes systematically denied loans to Black families seeking to move to newly built suburbs, while private developers and homeowners' associations used restrictive covenants to enforce segregation. These policies produced the racially stratified metropolitan geography that persists today. Recognising this history does not lead inevitably to any particular policy conclusion, but it is a necessary precondition for any honest assessment of why racial wealth gaps remain so persistent.</div>
+    <div class="q-stem">The primary purpose of the passage is to:</div>
+    <ul class="choices" id="l4p5">
+      <li data-reset-onclick="pickEx('l4p5',this,false)" onclick="pickEx('l4p5',this,false)">A. argue for specific reparations policies to address historical racial discrimination</li>
+      <li data-reset-onclick="pickEx('l4p5',this,false)" onclick="pickEx('l4p5',this,false)">B. describe suburban development in post-war America without taking a position</li>
+      <li data-reset-onclick="pickEx('l4p5',this,true)" onclick="pickEx('l4p5',this,true)">C. establish historical context for racial wealth gaps by documenting the racially exclusionary policies that shaped post-war suburban development</li>
+      <li data-reset-onclick="pickEx('l4p5',this,false)" onclick="pickEx('l4p5',this,false)">D. compare post-war US housing policy to housing policies in other countries</li>
+    </ul>
+    <div class="explanation" id="l4p5-exp"><b>C.</b> The passage contextualises (explains historical causes of present disparities) without advocating for any specific policy. A (reparations) — the author explicitly says the history doesn't lead to "any particular policy conclusion." B (no position) — the passage does take a position on the history being exclusionary, just not on what to do about it. D (compare to other countries) — no comparison.</div>
+  </div>
+</div>
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Author's Purpose — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The question</div><div class="summary-item-body">What is the author trying to <b>DO</b>? Not what do they say — what are they accomplishing?</div></div>
+      <div class="summary-item"><div class="summary-item-title">7 purposes</div><div class="summary-item-body">Inform · Argue/Persuade · Analyse · Compare · Challenge/Critique · Describe · Contextualise</div></div>
+      <div class="summary-item"><div class="summary-item-title">Tone check</div><div class="summary-item-body">Neutral = inform or compare. Strong evaluative language = argue or critique. Vivid sensory = describe.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 1</div><div class="summary-item-body">Content not purpose — "explain that X happened" describes content. "Argue that X should change" describes purpose.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 2</div><div class="summary-item-body">Scope — don't pick a purpose that goes further than the passage actually goes. Match the reach of the argument.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Detail questions</div><div class="summary-item-body">"Why does the author mention X?" — X almost always supports, illustrates, or complicates the main argument. Connect X to the bigger purpose.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="lesson-footer">
+  <a href="english_lesson_03.html" class="nav-arrow">← Lesson 3: Text Structure (Overall)</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 4 of 27</span>
+  <a href="english_lesson_05.html" class="nav-arrow">Next: Lesson 5: Cross-Text — Agree/Extend →</a>
+</div>
+<script>
+var answered = {};
+function pickEx(id, el, correct) {
+  if (answered[id]) return;
+  answered[id] = true;
+  var list = document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li) { li.onclick = null; });
+  el.classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) list.querySelectorAll('li').forEach(function(li) {
+    if (!li.classList.contains('wrong')) li.classList.add('correct');
+  });
+  var exp = document.getElementById(id + '-exp');
+  if (exp) exp.classList.add('show');
+}
+</script>
+</body>
+</html>

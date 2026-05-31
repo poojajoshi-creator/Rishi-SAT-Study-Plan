@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3: Text Structure — Overall Passage — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar">
+  <a href="english_lessons.html">← All Lessons</a>
+  <span>Concept 3 of 27 · Text Structure — Overall Passage</span>
+</div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a>
+  <a href="#strategy">Strategy</a>
+  <a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a>
+  <a href="#practice">Practice</a>
+  <a href="#summary">Summary card</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 3 / 27</span><span class="hdr-domain">Craft &amp; Structure</span></div>
+  <div class="hdr-title">Text Structure<br><em>Overall Passage</em></div>
+  <div class="hdr-tagline">These questions ask you to describe how an entire passage is organized — not what it argues, but the shape of the argument from beginning to end.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 questions per module</span><span class="chip">Target: 75 sec</span><span class="chip hi">Rule: map the moves, then match</span></div>
+</div>
+<div class="main">
+
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🗺</div><div class="section-title">What is Overall Text Structure?</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Core definition</div>
+    <div class="def-body">
+      <p>Overall structure questions ask: <b>"Which choice best describes the overall structure of the text?"</b> You need to identify the logical shape of the whole passage — the sequence of moves the author makes from first sentence to last.</p>
+      <p>Unlike Lesson 2 (single sentence function), here you're mapping the passage as a whole. Think of it like describing the blueprint of a building rather than what one room is used for.</p>
+    </div>
+  </div>
+  <div class="def-box green">
+    <div class="def-label">The 8 most common overall structures</div>
+    <div class="def-body">
+      <p><b>1. Claim → Evidence → Conclusion:</b> author asserts something, proves it with data or examples, then draws a takeaway.</p>
+      <p><b>2. Problem → Cause → Solution:</b> establishes a problem, explains why it exists, proposes a remedy.</p>
+      <p><b>3. Old view → Challenge → New view:</b> describes what was believed, introduces evidence that undermines it, presents the revised understanding.</p>
+      <p><b>4. Phenomenon → Explanation:</b> describes something observed, then explains the mechanism behind it.</p>
+      <p><b>5. Two positions → Comparison:</b> presents two views side by side, highlights similarities and/or differences.</p>
+      <p><b>6. Narrative → Generalisation:</b> tells a specific story or anecdote, then draws a broader lesson from it.</p>
+      <p><b>7. Question → Investigation → Answer:</b> poses a puzzle, works through the evidence, arrives at a conclusion.</p>
+      <p><b>8. Concession → Rebuttal:</b> acknowledges the opposing view, then argues against it.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">The strategy — Map then Match</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Read the whole passage.</b> Don't jump to the question. You cannot identify the overall structure without reading all of it.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Label each paragraph or major section in one word.</b> Write in the margin: "claim," "evidence," "objection," "rebuttal," "conclusion." This makes the structure visible.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>State the structure in your own words</b> before reading choices. "The passage introduces X, then gives Y as evidence, then concludes Z." Even a rough version helps.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><b>Match your structure to the choices.</b> The correct answer will describe all major sections in the right order. Eliminate any choice that: (a) describes only part of the passage, (b) gets the order wrong, or (c) describes content instead of structure.</div></div>
+  </div>
+</div>
+
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">The traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Partial structure</div><div class="trap-body">A choice that accurately describes the first half of the passage but ignores what happens in the second half. The correct answer must account for the whole passage.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Wrong order</div><div class="trap-body">The passage argues A then B then C. The wrong choice says A then C then B. The content is right but the sequence is wrong. Order matters.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Content not structure</div><div class="trap-body">"Argues that climate change is caused by human activity" describes the content. "Presents a claim and supports it with evidence" describes the structure. The question asks for structure.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Introducing ≠ Arguing</div><div class="trap-body">A passage that presents two views without taking a side has a different structure from one that argues for a position. Don't project an argument onto a neutral passage.</div></div>
+  </div>
+</div>
+
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+
+  <div class="example">
+    <div class="example-hdr">Example 1 — Old view → Challenge → New view<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">For much of the twentieth century, scientists believed that the human brain reached its full structural development by early adulthood and remained essentially fixed thereafter. This view of the brain as a static organ was so entrenched that researchers who suggested otherwise were frequently dismissed. Beginning in the 1990s, however, a series of studies using new neuroimaging techniques provided compelling evidence that the brain retains significant capacity for structural change — neuroplasticity — well into old age. Today, neuroplasticity is not merely accepted but has become a foundational concept in fields ranging from rehabilitation medicine to educational psychology.</div>
+      <div class="thought"><div class="thought-title">💭 Mapping the passage</div><div class="thought-body">Sentence 1–2: old view (brain is fixed). Sentence 3: challenge (new studies in 1990s). Sentence 4: new view established (neuroplasticity accepted). Structure: <b>old view → evidence challenges it → new view prevails.</b></div></div>
+      <div class="q-stem">Which choice best describes the overall structure of the text?</div>
+      <ul class="choices" id="l3e1">
+        <li data-reset-onclick="pickEx('l3e1',this,false)" onclick="pickEx('l3e1',this,false)">A. A scientific claim is introduced, supported with evidence, and then qualified</li>
+        <li data-reset-onclick="pickEx('l3e1',this,true)" onclick="pickEx('l3e1',this,true)">B. A long-held scientific view is described, challenged by new evidence, and replaced by a revised understanding</li>
+        <li data-reset-onclick="pickEx('l3e1',this,false)" onclick="pickEx('l3e1',this,false)">C. Two competing theories about the brain are compared, with one shown to be superior</li>
+        <li data-reset-onclick="pickEx('l3e1',this,false)" onclick="pickEx('l3e1',this,false)">D. A problem in neuroscience is identified, and a solution is proposed</li>
+      </ul>
+      <div class="explanation" id="l3e1-exp"><b>Answer: B.</b> All three phases are present: old view (fixed brain), challenge (neuroimaging studies), new view (neuroplasticity accepted). A is wrong — the passage isn't about supporting a claim, it's about replacing one. C is wrong — there's no ongoing competition; one view won. D introduces "problem/solution" framing not in the passage.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 2 — Phenomenon → Explanation<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">Starling murmurations — the fluid, shape-shifting aerial displays performed by thousands of birds moving in apparent unison — have fascinated observers for centuries. Recent research has revealed the mechanism behind this seemingly coordinated behaviour: each bird adjusts its position based only on the movements of its seven nearest neighbours, with no central controller directing the flock. The result is a form of collective intelligence that produces complex, adaptive patterns from simple local rules — a phenomenon that has inspired new approaches in robotics and distributed computing.</div>
+      <div class="thought"><div class="thought-title">💭 Mapping</div><div class="thought-body">Sentence 1: describes the phenomenon (murmurations). Sentence 2: explains the mechanism. Sentence 3: describes the consequences/applications. Structure: <b>describe a fascinating phenomenon → explain the mechanism → note broader significance.</b></div></div>
+      <div class="q-stem">Which choice best describes the overall structure of the text?</div>
+      <ul class="choices" id="l3e2">
+        <li data-reset-onclick="pickEx('l3e2',this,false)" onclick="pickEx('l3e2',this,false)">A. A scientific debate is introduced, key evidence is presented, and a conclusion is reached</li>
+        <li data-reset-onclick="pickEx('l3e2',this,false)" onclick="pickEx('l3e2',this,false)">B. A historical mystery is solved using modern technology</li>
+        <li data-reset-onclick="pickEx('l3e2',this,true)" onclick="pickEx('l3e2',this,true)">C. A striking natural phenomenon is described, its underlying mechanism is explained, and its broader implications are noted</li>
+        <li data-reset-onclick="pickEx('l3e2',this,false)" onclick="pickEx('l3e2',this,false)">D. Two approaches to studying animal behaviour are contrasted</li>
+      </ul>
+      <div class="explanation" id="l3e2-exp"><b>Answer: C.</b> Phenomenon (murmurations) → mechanism (7-neighbour rule) → broader implications (robotics, computing). A introduces a "debate" — there's no debate. B introduces "historical mystery" — not the framing used. D introduces contrast — there's no comparison.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 3 — Concession → Rebuttal<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">Critics of social media regulation often argue that any government intervention in online speech risks creating a chilling effect that suppresses legitimate discourse. There is real merit to this concern: history offers numerous examples of broadly written speech restrictions being applied far beyond their original intent. Nevertheless, the absence of any regulatory framework has allowed demonstrably harmful content — coordinated harassment campaigns, health misinformation, and election interference — to flourish at scale. The question, then, is not whether to regulate, but how to do so in ways that are narrowly targeted, transparently enforced, and subject to independent oversight.</div>
+      <div class="thought"><div class="thought-title">💭 Mapping</div><div class="thought-body">Sentence 1–2: concedes critics have a point (regulation risks chilling effect — and this is valid). Sentence 3: "Nevertheless" — rebuttal (no regulation has caused real harm). Sentence 4: reframes the question (not whether but how). Structure: <b>concede opposing view → rebuttal → reframe the real question.</b></div></div>
+      <div class="q-stem">Which choice best describes the overall structure of the text?</div>
+      <ul class="choices" id="l3e3">
+        <li data-reset-onclick="pickEx('l3e3',this,false)" onclick="pickEx('l3e3',this,false)">A. A problem is described, its causes are identified, and a solution is proposed</li>
+        <li data-reset-onclick="pickEx('l3e3',this,false)" onclick="pickEx('l3e3',this,false)">B. Two opposing positions on social media regulation are presented without a resolution</li>
+        <li data-reset-onclick="pickEx('l3e3',this,true)" onclick="pickEx('l3e3',this,true)">C. An opposing argument is acknowledged and granted partial validity, then challenged, and the terms of the debate are reframed</div>
+        <li data-reset-onclick="pickEx('l3e3',this,false)" onclick="pickEx('l3e3',this,false)">D. Historical evidence is used to argue against social media regulation</li>
+      </ul>
+      <div class="explanation" id="l3e3-exp"><b>Answer: C.</b> The passage concedes the critics' point (partial validity), rebuts with evidence of harm, then reframes (not whether but how). B is wrong — there IS a resolution (the reframe). D is wrong — historical evidence is used to support the critics' concern, not to oppose regulation.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 1</div>
+    <div class="passage">The antibiotic penicillin was discovered in 1928 when Alexander Fleming noticed that mould had contaminated one of his petri dishes and was killing the surrounding bacteria. Fleming recognised the significance of this observation but lacked the biochemical expertise to develop it further. It was not until the early 1940s that Howard Florey and Ernst Chain successfully isolated and purified penicillin, enabling its production at scale and its deployment in treating wounded soldiers during World War II. Fleming, Florey, and Chain shared the Nobel Prize in Physiology or Medicine in 1945.</div>
+    <div class="q-stem">Which choice best describes the overall structure of the text?</div>
+    <ul class="choices" id="l3p1">
+      <li data-reset-onclick="pickEx('l3p1',this,false)" onclick="pickEx('l3p1',this,false)">A. A scientific theory is proposed, tested, and confirmed</li>
+      <li data-reset-onclick="pickEx('l3p1',this,true)" onclick="pickEx('l3p1',this,true)">B. A discovery is described, the gap between discovery and development is explained, and the eventual outcome is noted</li>
+      <li data-reset-onclick="pickEx('l3p1',this,false)" onclick="pickEx('l3p1',this,false)">C. Two competing scientists are compared and one is shown to be more important</li>
+      <li data-reset-onclick="pickEx('l3p1',this,false)" onclick="pickEx('l3p1',this,false)">D. A problem in medicine is identified and solved</li>
+    </ul>
+    <div class="explanation" id="l3p1-exp"><b>B.</b> Fleming's discovery → gap (couldn't develop it) → Florey/Chain complete the work → Nobel Prize outcome. Not a competition (C), not a problem/solution (D — the problem isn't the focus), not a theory tested (A).</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 2</div>
+    <div class="passage">Proponents of universal basic income (UBI) argue that regular unconditional cash payments to all citizens would reduce poverty, simplify the welfare system, and provide economic security in an era of increasing automation. Opponents counter that UBI is prohibitively expensive, would reduce incentives to work, and fails to address the structural causes of inequality. Pilot programmes in Finland, Kenya, and Stockton, California have produced mixed results: recipients generally reported improved wellbeing, but effects on employment and long-term poverty varied significantly by context.</div>
+    <div class="q-stem">Which choice best describes the overall structure of the text?</div>
+    <ul class="choices" id="l3p2">
+      <li data-reset-onclick="pickEx('l3p2',this,false)" onclick="pickEx('l3p2',this,false)">A. A new economic policy is proposed and argued for persuasively</li>
+      <li data-reset-onclick="pickEx('l3p2',this,false)" onclick="pickEx('l3p2',this,false)">B. A flawed economic theory is critiqued and rejected</li>
+      <li data-reset-onclick="pickEx('l3p2',this,true)" onclick="pickEx('l3p2',this,true)">C. The arguments for and against a policy are presented, and empirical evidence that complicates both sides is introduced</li>
+      <li data-reset-onclick="pickEx('l3p2',this,false)" onclick="pickEx('l3p2',this,false)">D. Two competing economic philosophies are compared and one is recommended</li>
+    </ul>
+    <div class="explanation" id="l3p2-exp"><b>C.</b> Pro-UBI arguments → anti-UBI arguments → pilot evidence that's mixed (complicates both). A argues for one side — the passage is balanced. D recommends one — the passage doesn't. B rejects a theory — the passage presents both sides.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 3</div>
+    <div class="passage">The deep-sea anglerfish is one of the most extraordinary organisms on earth. Living at depths where sunlight never penetrates, it lures prey using a bioluminescent appendage that dangles from its head like a fishing rod — a structure produced by bacteria living in symbiosis with the fish. The light attracts smaller creatures, which the anglerfish then seizes with a jaw capable of expanding to swallow prey twice its own size. This remarkable combination of adaptations reflects millions of years of evolution in one of Earth's most challenging environments.</div>
+    <div class="q-stem">Which choice best describes the overall structure of the text?</div>
+    <ul class="choices" id="l3p3">
+      <li data-reset-onclick="pickEx('l3p3',this,false)" onclick="pickEx('l3p3',this,false)">A. A scientific mystery about deep-sea life is posed and then solved</li>
+      <li data-reset-onclick="pickEx('l3p3',this,false)" onclick="pickEx('l3p3',this,false)">B. Two deep-sea animals are compared to illustrate evolutionary adaptation</li>
+      <li data-reset-onclick="pickEx('l3p3',this,true)" onclick="pickEx('l3p3',this,true)">C. A remarkable organism is introduced, its adaptations are described in detail, and a broader conclusion about evolution is drawn</li>
+      <li data-reset-onclick="pickEx('l3p3',this,false)" onclick="pickEx('l3p3',this,false)">D. A problem faced by deep-sea organisms is described, and the anglerfish is presented as the solution</li>
+    </ul>
+    <div class="explanation" id="l3p3-exp"><b>C.</b> Introduce anglerfish → describe bioluminescence (mechanism) → describe jaw → draw evolutionary conclusion. A (mystery solved) — there's no mystery posed. B (two animals compared) — only one animal. D (problem/solution) — no problem is stated.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 4 — Hard</div>
+    <div class="passage">Jane Jacobs' 1961 work The Death and Life of Great American Cities remains one of the most influential books in urban planning. Writing against the dominant "urban renewal" movement of the mid-twentieth century — which favoured demolishing dense urban neighbourhoods and replacing them with modernist housing projects — Jacobs argued that such interventions destroyed the intricate social ecosystems that made cities liveable. Her observations drew on years of watching street life in her own Greenwich Village neighbourhood. Subsequent decades of evidence have largely vindicated her: many of the housing projects she criticised have since been demolished, replaced by the mixed-use, pedestrian-friendly development she advocated.</div>
+    <div class="q-stem">Which choice best describes the overall structure of the text?</div>
+    <ul class="choices" id="l3p4">
+      <li data-reset-onclick="pickEx('l3p4',this,false)" onclick="pickEx('l3p4',this,false)">A. A controversial argument is presented, its limitations are noted, and a compromise is offered</li>
+      <li data-reset-onclick="pickEx('l3p4',this,false)" onclick="pickEx('l3p4',this,false)">B. Two approaches to urban planning are compared and one is shown to be superior</li>
+      <li data-reset-onclick="pickEx('l3p4',this,true)" onclick="pickEx('l3p4',this,true)">C. An influential work is introduced, the argument it made against prevailing practice is explained, and its long-term vindication is described</li>
+      <li data-reset-onclick="pickEx('l3p4',this,false)" onclick="pickEx('l3p4',this,false)">D. A problem in urban planning is identified, and Jane Jacobs is presented as its cause</li>
+    </ul>
+    <div class="explanation" id="l3p4-exp"><b>C.</b> Introduce Jacobs' book → describe her argument against urban renewal → show subsequent vindication. B tempts because two approaches ARE compared, but the structure isn't a side-by-side comparison — it's a narrative of Jacobs making an argument and being proven right. A introduces compromise — there's none. D makes Jacobs the cause of a problem — opposite of what the passage says.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">Memory is often understood as a recording — a faithful archive of past experience that can be retrieved intact. This intuitive model, however, is fundamentally mistaken. Psychological research consistently shows that memory is reconstructive rather than reproductive: each time we recall an event, we partially rebuild it from fragmentary traces, influenced by subsequent experience, suggestion, and the expectations we bring to the act of remembering. Eyewitness testimony, once considered among the most reliable forms of legal evidence, has come under sustained scrutiny as researchers have documented the frequency and ease with which false memories can be implanted.</div>
+    <div class="q-stem">Which choice best describes the overall structure of the text?</div>
+    <ul class="choices" id="l3p5">
+      <li data-reset-onclick="pickEx('l3p5',this,false)" onclick="pickEx('l3p5',this,false)">A. A scientific theory about memory is introduced, supporting evidence is provided, and future research directions are identified</li>
+      <li data-reset-onclick="pickEx('l3p5',this,true)" onclick="pickEx('l3p5',this,true)">B. A common understanding of memory is stated, shown to be incorrect, and replaced with a more accurate account that has practical consequences</li>
+      <li data-reset-onclick="pickEx('l3p5',this,false)" onclick="pickEx('l3p5',this,false)">C. Two models of memory are compared and the strengths of each are evaluated</li>
+      <li data-reset-onclick="pickEx('l3p5',this,false)" onclick="pickEx('l3p5',this,false)">D. A legal problem with eyewitness testimony is identified and a psychological solution is proposed</li>
+    </ul>
+    <div class="explanation" id="l3p5-exp"><b>B.</b> Common understanding (memory as recording) → shown incorrect (reconstructive, not reproductive) → practical consequence (eyewitness reliability undermined). This is the old view → challenge → new view with application structure. A introduces "future research" — not present. C evaluates both sides — the passage sides clearly with the reconstructive view. D frames eyewitness testimony as the main topic — it's an application of the memory science, not the main subject.</div>
+  </div>
+</div>
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Text Structure (Overall) — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The method</div><div class="summary-item-body"><b>Map then Match.</b> Label each section first. State the structure in your words. Then find the choice that matches all sections in the right order.</div></div>
+      <div class="summary-item"><div class="summary-item-title">8 common structures</div><div class="summary-item-body">Claim→Evidence→Conclusion · Problem→Cause→Solution · Old view→Challenge→New view · Phenomenon→Explanation · Two positions→Comparison · Narrative→Generalisation · Question→Answer · Concession→Rebuttal</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 1</div><div class="summary-item-body"><b>Partial structure</b> — describes only half the passage. Correct answer must cover the whole passage.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 2</div><div class="summary-item-body"><b>Wrong order</b> — right elements, wrong sequence. The order of the structure description must match the order in the passage.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 3</div><div class="summary-item-body"><b>Content not structure</b> — describes what is argued, not how the argument is organized. Structure answers use words like "introduces," "challenges," "concludes."</div></div>
+      <div class="summary-item"><div class="summary-item-title">Key signal words</div><div class="summary-item-body">"However" / "Nevertheless" → challenge or rebuttal coming. "For example" → illustration. "Therefore" / "Thus" → conclusion. "Yet" → complication.</div></div>
+    </div>
+  </div>
+</div>
+<div class="lesson-footer">
+  <a href="english_lesson_02.html" class="nav-arrow">← Lesson 2: Text Structure (Single)</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 3 of 27</span>
+  <a href="english_lesson_04.html" class="nav-arrow">Next: Lesson 4: Author's Purpose →</a>
+</div>
+<script>
+var answered = {};
+function pickEx(id, el, correct) {
+  if (answered[id]) return;
+  answered[id] = true;
+  var list = document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li) { li.onclick = null; });
+  el.classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) list.querySelectorAll('li').forEach(function(li) {
+    if (!li.classList.contains('wrong')) li.classList.add('correct');
+  });
+  var exp = document.getElementById(id + '-exp');
+  if (exp) exp.classList.add('show');
+}
+</script>
+</body>
+</html>

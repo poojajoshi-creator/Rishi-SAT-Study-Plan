@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 7: Cross-Text — Perspective & Evidence — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 7 of 27 · Cross-Text: Perspective & Evidence</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 7 / 27</span><span class="hdr-domain">Craft &amp; Structure</span></div>
+  <div class="hdr-title">Cross-Text<br><em>Perspective &amp; Evidence</em></div>
+  <div class="hdr-tagline">The hardest cross-text question type. You must reason about what one author would say about the other's argument — or how one author's evidence supports or undermines the other's claim.</div>
+  <div class="hdr-chips"><span class="chip">Hardest cross-text type</span><span class="chip">Target: 90–120 sec</span><span class="chip hi">Key: only use what the text actually says</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔭</div><div class="section-title">What are Perspective &amp; Evidence questions?</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Two sub-types</div>
+    <div class="def-body">
+      <p><b>Perspective questions</b> ask what one author would think about the other author's argument. Common stems:<br>
+      • "Author 1 would most likely respond to Author 2's claim by arguing that..."<br>
+      • "Author 2 would most likely agree/disagree with which claim from Passage 1?"<br>
+      • "How would Author 1 view the argument made in Passage 2?"</p>
+      <p><b>Evidence questions</b> ask how evidence or findings from one passage relates to the claims in the other. Common stems:<br>
+      • "The findings described in Passage 2 would most likely be used to [support/challenge] the argument in Passage 1"<br>
+      • "Which finding from Passage 1 would Author 2 most likely cite as evidence for their own position?"</p>
+    </div>
+  </div>
+  <div class="def-box green">
+    <div class="def-label">Why these are hardest</div>
+    <div class="def-body">
+      <p>These questions require you to:<br>
+      1. Understand each author's actual position precisely<br>
+      2. Understand the specific claim or evidence in question<br>
+      3. Reason about how one would react to the other — without inventing reactions the text doesn't support</p>
+      <p>The most common error: picking answers that reflect what the author <em>might plausibly believe</em> based on general knowledge, rather than what the text actually supports. The only valid source is the text.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">The strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Write your two-sentence summary</b> as always. This is non-negotiable on these harder questions.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Identify the specific claim or evidence being asked about.</b> Read the question carefully — it often specifies a particular part of one passage ("the claim in sentence 3" or "the finding about X"). Locate and re-read that part.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>For perspective questions:</b> Ask "What is Author X's core position?" Then ask "Is the claim in question consistent with, or contrary to, that position?" The answer follows directly. Use only what the text supports.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><b>For evidence questions:</b> Identify what the evidence shows. Then ask "Does this support or undermine which author's claim?" The answer must connect the evidence to the appropriate claim with logical precision.</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><b>Eliminate answers that go beyond the text.</b> If an answer says Author 2 "would strongly support" something that P2 doesn't mention, eliminate it. If it attributes a view P2 doesn't hold, eliminate it.</div></div>
+  </div>
+</div>
+
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">The traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Plausible but unsupported</div><div class="trap-body">The author might plausibly hold a view — but doesn't state it. Plausible ≠ textually supported. Only pick views the author explicitly states or directly implies.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Overstating agreement or disagreement</div><div class="trap-body">"Author 2 would strongly endorse..." when P2 would only partially agree. Or "Author 1 would reject..." when P1 would only qualify. Match the intensity of the relationship.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Confusing which author is which</div><div class="trap-body">The question asks what Author 1 would say about Author 2's claim. A wrong answer describes what Author 2 says about Author 1's claim — the reverse. Read carefully.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Evidence strengthens the wrong side</div><div class="trap-body">A piece of evidence from P1 might appear to support P2's position — or actually does. Be precise: what exactly does the evidence show, and whose claim does that support?</div></div>
+  </div>
+</div>
+
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+
+  <div class="example">
+    <div class="example-hdr">Example 1 — Perspective question<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> Philosopher Peter Singer argues that affluent individuals have a moral obligation to donate a significant proportion of their income to effective charities — specifically, those that save the most lives per dollar donated. On Singer's view, allowing a child to die of a preventable disease when you could have prevented it by donating $100 is morally equivalent to allowing a child to drown in a shallow pond because you didn't want to muddy your clothes.<br><br>
+      <b>Passage 2:</b> Philosopher Samuel Scheffler argues that agent-relative obligations — duties that arise specifically from our particular relationships — are morally primary. Our duty to our own children, our friends, and our community members has a special moral weight that cannot be erased by calculating that the same resources would do more good elsewhere. A morality that asks us to treat strangers as equally morally demanding as our own children fails to capture something central to the human moral experience.</div>
+      <div class="thought"><div class="thought-title">💭 Thinking</div><div class="thought-body">P1 (Singer): distance and relationship are morally irrelevant — drowning child = dying child far away. P2 (Scheffler): agent-relative obligations have special moral weight — our own relationships matter more. These directly conflict on whether relationships change moral obligations.</div></div>
+      <div class="q-stem">Singer (Passage 1) would most likely respond to Scheffler's argument by claiming that:</div>
+      <ul class="choices" id="l7e1">
+        <li data-reset-onclick="pickEx('l7e1',this,false)" onclick="pickEx('l7e1',this,false)">A. Agent-relative obligations should take priority over obligations to strangers in all cases</li>
+        <li data-reset-onclick="pickEx('l7e1',this,false)" onclick="pickEx('l7e1',this,false)">B. Our duty to donate is limited to situations where we personally witness suffering</li>
+        <li data-reset-onclick="pickEx('l7e1',this,true)" onclick="pickEx('l7e1',this,true)">C. Special obligations to those we know do not justify ignoring preventable deaths among strangers when we have the means to prevent them</li>
+        <li data-reset-onclick="pickEx('l7e1',this,false)" onclick="pickEx('l7e1',this,false)">D. The human moral experience Scheffler describes is irrelevant to questions of effective altruism</div>
+      </ul>
+      <div class="explanation" id="l7e1-exp"><b>Answer: C.</b> Singer's pond analogy explicitly says geographic distance and relationship don't reduce moral obligation. His most consistent response to Scheffler: even if you have special duties to those close to you, this doesn't justify letting preventable deaths occur when you could help. A (agent-relative takes priority in all cases) — Singer explicitly opposes this. B (only when you witness it) — Singer's whole point is that physical distance is irrelevant. D (human moral experience irrelevant) — too dismissive; Singer doesn't make this argument in P1.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 2 — Evidence question<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> Economists who study the minimum wage have long debated whether increases harm employment. The traditional view holds that raising the minimum wage reduces the number of jobs available, as employers hire fewer workers when labour costs rise. This model predicts a negative relationship between minimum wage levels and employment.<br><br>
+      <b>Passage 2:</b> Economist Arindrajit Dube's analysis of counties on opposite sides of state borders — where minimum wages differ but local economies are otherwise nearly identical — finds no statistically significant negative employment effects from minimum wage increases. Dube argues that the traditional model underestimates employers' ability to absorb higher labour costs through reduced turnover and improved worker productivity.</div>
+      <div class="q-stem">The border county methodology described in Passage 2 would most likely be used to:</div>
+      <ul class="choices" id="l7e2">
+        <li data-reset-onclick="pickEx('l7e2',this,false)" onclick="pickEx('l7e2',this,false)">A. Support the traditional view described in Passage 1 by providing evidence that minimum wage increases reduce employment</li>
+        <li data-reset-onclick="pickEx('l7e2',this,true)" onclick="pickEx('l7e2',this,true)">B. Challenge the traditional view in Passage 1 by showing that minimum wage increases do not produce the negative employment effects the traditional model predicts</li>
+        <li data-reset-onclick="pickEx('l7e2',this,false)" onclick="pickEx('l7e2',this,false)">C. Confirm that the traditional model is correct by controlling for local economic conditions</li>
+        <li data-reset-onclick="pickEx('l7e2',this,false)" onclick="pickEx('l7e2',this,false)">D. Suggest that minimum wage policy should be set at the national rather than state level</div>
+      </ul>
+      <div class="explanation" id="l7e2-exp"><b>Answer: B.</b> Dube's methodology finds "no statistically significant negative employment effects" — the opposite of what the traditional model (P1) predicts. The border county study is evidence against P1's prediction. A (supports P1) — the opposite: Dube finds no negative effects. C (confirms traditional model) — wrong; Dube challenges it. D (national policy) — no such recommendation is made in either passage.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 3 — What would Author 2 cite?<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> Research on the "marshmallow test" — a classic experiment in which young children were offered one marshmallow immediately or two if they waited — initially suggested that the ability to delay gratification at age four predicted academic achievement, health, and financial outcomes decades later. Walter Mischel, who designed the experiment, concluded that self-control was a stable character trait with lifelong consequences.<br><br>
+      <b>Passage 2:</b> A 2018 replication of the marshmallow test with a larger and more socioeconomically diverse sample found that the predictive power of delayed gratification largely disappeared when family income and home environment were controlled for. Children from poorer families who grabbed the immediate marshmallow may have been making a rational calculation about the reliability of future promises — a calculation based on experience rather than a deficit of self-control.</div>
+      <div class="q-stem">Author 2 would most likely cite which aspect of Passage 1 as the strongest reason to question the original study's conclusions?</div>
+      <ul class="choices" id="l7e3">
+        <li data-reset-onclick="pickEx('l7e3',this,false)" onclick="pickEx('l7e3',this,false)">A. The age at which children were tested (four years old)</li>
+        <li data-reset-onclick="pickEx('l7e3',this,false)" onclick="pickEx('l7e3',this,false)">B. The use of marshmallows as the reward rather than a more meaningful incentive</li>
+        <li data-reset-onclick="pickEx('l7e3',this,true)" onclick="pickEx('l7e3',this,true)">C. The absence of controls for family income and socioeconomic background in the original study</li>
+        <li data-reset-onclick="pickEx('l7e3',this,false)" onclick="pickEx('l7e3',this,false)">D. The long time span between the original test and the follow-up measurements of adult outcomes</div>
+      </ul>
+      <div class="explanation" id="l7e3-exp"><b>Answer: C.</b> Author 2's entire argument rests on the finding that when socioeconomic factors are controlled for, the predictive power disappears. Author 2 would therefore point to the LACK of these controls in the original study as its critical flaw. A (age) — P2 doesn't question the age of testing. B (marshmallows) — P2 doesn't question the reward. D (time span) — P2 doesn't raise this methodological concern.</div>
+    </div>
+  
+
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 1</div>
+    <div class="passage"><b>Passage 1:</b> Conservationist E.O. Wilson argued that humanity should set aside half of the Earth's land and sea surface as nature preserves — a proposal he called "Half-Earth." He contended that this was the minimum threshold necessary to prevent a mass extinction event, as only large, interconnected reserves can sustain the biodiversity needed for ecosystem stability.<br><br>
+    <b>Passage 2:</b> Critics of the Half-Earth proposal argue that it fails to account for the billions of people whose livelihoods depend on access to land currently earmarked for conservation. Large-scale land preservation without the consent and partnership of Indigenous communities and rural populations has historically led to violent displacement and worsened inequality, a phenomenon scholars call "conservation violence."</div>
+    <div class="q-stem">Wilson (Passage 1) would most likely respond to the concern raised in Passage 2 by arguing that:</div>
+    <ul class="choices" id="l7p1">
+      <li data-reset-onclick="pickEx('l7p1',this,false)" onclick="pickEx('l7p1',this,false)">A. The historical displacement caused by conservation is an exaggeration</li>
+      <li data-reset-onclick="pickEx('l7p1',this,false)" onclick="pickEx('l7p1',this,false)">B. Indigenous communities do not have valid claims to the land in question</li>
+      <li data-reset-onclick="pickEx('l7p1',this,true)" onclick="pickEx('l7p1',this,true)">C. The ecological stakes — preventing mass extinction — are so severe that significant sacrifice is necessary, though implementation must be carefully managed</li>
+      <li data-reset-onclick="pickEx('l7p1',this,false)" onclick="pickEx('l7p1',this,false)">D. The Half-Earth proposal does not require removing people from any land currently inhabited</div>
+    </ul>
+    <div class="explanation" id="l7p1-exp"><b>C.</b> Wilson's core position: Half-Earth is the minimum to prevent mass extinction. He would not abandon the proposal based on social concerns — he would most likely accept that implementation is complex while maintaining that the ecological stakes justify the proposal. A (exaggeration) — not in P1. B (invalid claims) — P1 doesn't say this. D (no removal required) — P1 doesn't specify implementation details, so this is speculation beyond the text.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 2</div>
+    <div class="passage"><b>Passage 1:</b> Studies of identical twins raised in different environments have consistently found that genetic factors account for approximately 50% of the variance in IQ scores, suggesting a strong hereditary component to general intelligence.<br><br>
+    <b>Passage 2:</b> The heritability of IQ, while real, is often misunderstood. Heritability is a population-level statistic that depends entirely on the range of environments in the population studied. In a population where all children have access to excellent nutrition, healthcare, and education, heritability of IQ would likely be high — because environmental variation is minimal. But this tells us nothing about what would happen to IQ scores if we equalised environmental conditions for a more disadvantaged population.</div>
+    <div class="q-stem">Author 2 would most likely argue that the twin study findings in Passage 1:</div>
+    <ul class="choices" id="l7p2">
+      <li data-reset-onclick="pickEx('l7p2',this,false)" onclick="pickEx('l7p2',this,false)">A. Prove that IQ differences between groups are primarily genetic in origin</li>
+      <li data-reset-onclick="pickEx('l7p2',this,false)" onclick="pickEx('l7p2',this,false)">B. Are methodologically flawed and should be disregarded</li>
+      <li data-reset-onclick="pickEx('l7p2',this,true)" onclick="pickEx('l7p2',this,true)">C. Are real but commonly misinterpreted as showing more than they actually do about the role of genetics versus environment</li>
+      <li data-reset-onclick="pickEx('l7p2',this,false)" onclick="pickEx('l7p2',this,false)">D. Show that environmental interventions cannot improve IQ scores</div>
+    </ul>
+    <div class="explanation" id="l7p2-exp"><b>C.</b> P2 says heritability "while real, is often misunderstood." Author 2 accepts the finding but challenges its interpretation — the classic complication. A (proves group differences are genetic) — P2 explicitly warns against this interpretation. B (flawed, disregard) — P2 accepts the finding; it challenges the interpretation. D (environmental interventions can't work) — the opposite of what P2 implies.</div>
+  
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 3 — Hard</div>
+    <div class="passage"><b>Passage 1:</b> Urban economist Edward Glaeser argues that cities are humanity's greatest invention — concentrations of people that enable the face-to-face interactions that drive innovation, creativity, and economic growth. He cites studies showing that patents per capita increase with city size, and that incomes are consistently higher in denser urban areas.<br><br>
+    <b>Passage 2:</b> The productivity advantages of dense cities come at a cost that Glaeser's framework systematically underweights: the environmental footprint of urban infrastructure. Data centres, airports, and the material flows required to sustain urban populations produce carbon emissions that dwarf those of the rural areas cities have replaced. The innovation that cities generate has not yet produced solutions adequate to the environmental costs they impose.</div>
+    <div class="q-stem">Glaeser (Passage 1) would most likely respond to the environmental argument in Passage 2 by pointing out that:</div>
+    <ul class="choices" id="l7p3">
+      <li data-reset-onclick="pickEx('l7p3',this,false)" onclick="pickEx('l7p3',this,false)">A. Environmental costs are irrelevant to assessments of urban productivity</li>
+      <li data-reset-onclick="pickEx('l7p3',this,false)" onclick="pickEx('l7p3',this,false)">B. Rural areas produce more carbon emissions per capita than cities</li>
+      <li data-reset-onclick="pickEx('l7p3',this,false)" onclick="pickEx('l7p3',this,false)">C. Data centres and airports are not actually part of the urban economy</li>
+      <li data-reset-onclick="pickEx('l7p3',this,true)" onclick="pickEx('l7p3',this,true)">D. The innovation capacity of cities — which he has documented — is precisely what gives them the best chance of generating solutions to environmental challenges</div>
+    </ul>
+    <div class="explanation" id="l7p3-exp"><b>D.</b> Glaeser's core claim: cities drive innovation (patents, income). His most consistent response to "cities cause environmental problems": cities' very innovativeness is what produces solutions to those problems. This is the logical extension of his argument. A (environmental costs irrelevant) — too dismissive; Glaeser doesn't make this claim in P1. B (rural areas emit more) — an empirical claim P1 doesn't make. C (data centres not urban) — clearly false and not in P1.</div>
+  
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 4</div>
+    <div class="passage"><b>Passage 1:</b> Historian Robert Fogel's quantitative study of American slavery concluded that slave agriculture in the antebellum South was economically efficient — plantations using enslaved labour were more productive per worker than free northern farms. Fogel argued this undermined the then-common view that slavery was economically backward and would have collapsed without the Civil War.<br><br>
+    <b>Passage 2:</b> Fogel's methodology, while innovative, measured productivity only in terms of output per worker and ignored the full costs of the slave system: the violence required to maintain it, the suppression of mobility and economic agency that could have produced far greater innovation, and the long-term economic damage to the regions and populations that bore its costs. Efficiency, in this framework, is measured from the perspective of the enslaver alone.</div>
+    <div class="q-stem">Author 2's argument is primarily directed at which aspect of Fogel's methodology?</div>
+    <ul class="choices" id="l7p4">
+      <li data-reset-onclick="pickEx('l7p4',this,false)" onclick="pickEx('l7p4',this,false)">A. The use of quantitative methods to study historical phenomena</li>
+      <li data-reset-onclick="pickEx('l7p4',this,false)" onclick="pickEx('l7p4',this,false)">B. The comparison of southern plantations with northern farms</li>
+      <li data-reset-onclick="pickEx('l7p4',this,true)" onclick="pickEx('l7p4',this,true)">C. The definition of efficiency used, which counted only output per worker and excluded the costs borne by enslaved people and the broader economy</li>
+      <li data-reset-onclick="pickEx('l7p4',this,false)" onclick="pickEx('l7p4',this,false)">D. The conclusion that slavery would not have collapsed without the Civil War</div>
+    </ul>
+    <div class="explanation" id="l7p4-exp"><b>C.</b> P2's entire critique is about what Fogel's efficiency measure EXCLUDES: violence, suppression of agency, long-term damage. "Efficiency, measured from the perspective of the enslaver alone." The methodological critique is about the definition of efficiency. A (quantitative methods) — P2 calls them "innovative," it's not opposed to quant methods. B (comparing north and south) — P2 doesn't object to this. D (Civil War conclusion) — P2 doesn't address this claim.</div>
+  
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 5 — Evidence question</div>
+    <div class="passage"><b>Passage 1:</b> A study of 3,000 workers found that those who exercised regularly reported higher job satisfaction, lower rates of burnout, and better relationships with colleagues than sedentary workers. The study's authors concluded that employer wellness programmes encouraging physical activity would improve workplace productivity and retention.<br><br>
+    <b>Passage 2:</b> The relationship between lifestyle factors and workplace outcomes is complicated by self-selection: people who exercise regularly tend to have more favourable baseline characteristics — higher income, more flexible schedules, better health — that independently predict job satisfaction and retention. Without random assignment to exercise conditions, it is impossible to determine whether exercise causes the observed benefits or merely correlates with the characteristics of people who exercise.</div>
+    <div class="q-stem">The methodological concern raised in Passage 2 would most directly undermine which aspect of the Passage 1 study?</div>
+    <ul class="choices" id="l7p5">
+      <li data-reset-onclick="handleQ('l7p5',this,false)" onclick="handleQ('l7p5',this,false)">A. The finding that exercising workers reported higher job satisfaction</li>
+      <li data-reset-onclick="handleQ('l7p5',this,false)" onclick="handleQ('l7p5',this,false)">B. The size of the sample (3,000 workers)</li>
+      <li data-reset-onclick="handleQ('l7p5',this,true)" onclick="handleQ('l7p5',this,true)">C. The authors' conclusion that employer wellness programmes would improve productivity</li>
+      <li data-reset-onclick="handleQ('l7p5',this,false)" onclick="handleQ('l7p5',this,false)">D. The measurement of burnout and colleague relationships as outcomes</div>
+    </ul>
+    <div class="explanation" id="l7p5-exp"><b>Answer: C.</b> P2's concern: self-selection means exercise may correlate with, rather than cause, positive outcomes. This doesn't undermine the factual finding (A) — exercisers DO report higher satisfaction. It undermines the CAUSAL conclusion: "wellness programmes WOULD improve productivity." Without ruling out self-selection, you can't conclude that making people exercise would produce the same results as observed in self-selected exercisers. B (sample size) — P2 doesn't raise this. D (measurement) — P2 doesn't challenge what was measured.</div>
+  
+
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Cross-Text: Perspective &amp; Evidence — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">Perspective questions</div><div class="summary-item-body">What would Author X say about Author Y's claim? Use ONLY what the text supports. Start from Author X's core position, then reason logically.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Evidence questions</div><div class="summary-item-body">Identify what the evidence shows precisely. Then determine: does this support or undermine which author's claim? Connect evidence to the correct claim.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 1</div><div class="summary-item-body">Plausible but unsupported — the author might believe this, but doesn't say it. Only textually supported inferences are valid.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 2</div><div class="summary-item-body">Strength mismatch — "strongly endorse" when the text only allows "accept" or "partially agree." Match the intensity.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 3</div><div class="summary-item-body">Wrong direction — question asks what Author 1 thinks of Author 2. Wrong answer describes what Author 2 thinks of Author 1. Read carefully.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Self-selection trap</div><div class="summary-item-body">When P2 raises self-selection as a concern, it undermines P1's CAUSAL conclusions, not P1's descriptive findings. The facts may still be accurate — the inference from them is what's challenged.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_06.html" class="nav-arrow">← Lesson 6: Complicate/Contradict</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 7 of 27</span>
+  <a href="english_lesson_08.html" class="nav-arrow">Next: Lesson 8: Transitions — Contrast →</a>
+</div>
+<script>
+var answered = {};
+function pickEx(id, el, correct) {
+  if (answered[id]) return; answered[id] = true;
+  var list = document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li) { li.onclick = null; });
+  el.classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) list.querySelectorAll('li').forEach(function(li) {
+    if (!li.classList.contains('wrong')) li.classList.add('correct');
+  });
+  var exp = document.getElementById(id + '-exp');
+  if (exp) exp.classList.add('show');
+}
+function handleQ(id, el, correct) { pickEx(id, el, correct); }
+</script>
+</body>
+</html>

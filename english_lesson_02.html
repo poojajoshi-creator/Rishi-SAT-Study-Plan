@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2: Text Structure (Single Passage) — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="english_lessons.html">← All Lessons</a>
+  <span>Concept 2 of 27 · Text Structure — Single Passage</span>
+</div>
+
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a>
+  <a href="#sat">On the SAT</a>
+  <a href="#strategy">Strategy</a>
+  <a href="#functions">8 functions</a>
+  <a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a>
+  <a href="#practice">Practice</a>
+  <a href="#summary">Summary card</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept">
+    <span class="hdr-num">Concept 2 / 27</span>
+    <span class="hdr-domain">Craft &amp; Structure</span>
+  </div>
+  <div class="hdr-title">Text Structure<br><em>Single Passage</em></div>
+  <div class="hdr-tagline">Every sentence in a passage exists for a reason. These questions ask you to name that reason — its function — not describe what the sentence says.</div>
+  <div class="hdr-chips">
+    <span class="chip">~2–3 questions per module</span>
+    <span class="chip">Target: 60 sec per question</span>
+    <span class="chip hi">Rule: WHY not WHAT</span>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- WHAT IT IS -->
+<div class="section" id="what">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">🏗</div>
+    <div class="section-title">What is Text Structure?</div>
+    <div class="section-num-badge" style="background:var(--blue);">Step 1</div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-label">Core definition</div>
+    <div class="def-body">
+      <p>Text Structure questions ask about <b>why a sentence, example, or paragraph exists</b> within the passage — its purpose, its role, its function. They do NOT ask what the sentence says.</p>
+      <p>Think of a passage as a building. Each sentence is a structural component — a pillar, a bridge, a foundation stone. A Text Structure question asks: "What architectural role does this piece play?"</p>
+      <p>Two types of Text Structure questions appear on the SAT:<br>
+      <b>Type A:</b> "The underlined sentence primarily serves to..." (function of one sentence)<br>
+      <b>Type B:</b> "Which choice best describes the overall structure of the text?" (function of the whole passage)</p>
+      <p>This lesson covers <b>Type A</b>. Lesson 3 covers Type B.</p>
+    </div>
+  </div>
+
+  <div class="def-box green">
+    <div class="def-label">The fundamental insight</div>
+    <div class="def-body">
+      <p>Every sentence in a passage could have been replaced by a different sentence with the same information but a different function. A Text Structure question is testing whether you can see <b>the function</b> rather than the content.</p>
+      <p>Example: "The Eiffel Tower is 330 metres tall." This sentence could:<br>
+      • <b>Introduce</b> a passage about Paris landmarks<br>
+      • <b>Support</b> a claim that Paris dominates European skylines<br>
+      • <b>Contrast</b> with a statement about shorter buildings<br>
+      • <b>Illustrate</b> an abstract point about the scale of 19th-century engineering</p>
+      <p>The same sentence, four different functions. Your job is to identify which one applies in this passage.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT APPEARS -->
+<div class="section" id="sat">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--amber-light);">🎯</div>
+    <div class="section-title">How it appears on the SAT</div>
+    <div class="section-num-badge" style="background:var(--amber);">Step 2</div>
+  </div>
+
+  <div class="def-box amber">
+    <div class="def-label">Question stems you will see</div>
+    <div class="def-body">
+      <p>• "The underlined sentence primarily serves to..."<br>
+      • "The function of the third sentence is to..."<br>
+      • "In the text, the author mentions X primarily to..."<br>
+      • "Why does the author include the example of X?"</p>
+      <p>All of these are asking the same thing: <b>what job does this sentence do within the passage?</b></p>
+    </div>
+  </div>
+
+  <div class="def-box amber">
+    <div class="def-label">What the answer choices look like</div>
+    <div class="def-body">
+      <p>Correct answers describe <b>function using action verbs</b>:<br>
+      "provide evidence," "introduce a counterexample," "illustrate an abstract claim," "complicate the argument," "establish context for..."</p>
+      <p>Wrong answers describe <b>content</b>:<br>
+      "explain that the Eiffel Tower is 330 metres tall," "state that Paris has tall buildings," "describe the construction of the tower"</p>
+      <p>If an answer choice summarises what the sentence says rather than what it does, it is wrong.</p>
+    </div>
+  </div>
+</div>
+
+<!-- STRATEGY -->
+<div class="section" id="strategy">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--green-light);">⭐</div>
+    <div class="section-title">The strategy — WHY not WHAT</div>
+    <div class="section-num-badge" style="background:var(--green);">Step 3</div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body"><b>Read the whole passage first.</b> You cannot understand a sentence's function without understanding the passage it sits in. Identify the passage's main argument or topic in one sentence.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body"><b>Ask the deletion test:</b> "What would the passage lose if this sentence were removed?" This forces you to think about function. If the answer is "a concrete example," that's the function. If "evidence for the previous claim," that's the function.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body"><b>Name the function in your own words</b> before looking at choices. Use a verb: "this sentence SUPPORTS the claim above" or "this sentence INTRODUCES a complication."</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body"><b>Eliminate any choice that describes content instead of function.</b> If a choice starts with "explain that..." or "state that..." and then summarises the sentence, it's wrong.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body"><b>Check the relationship words.</b> Does the sentence start with "However," "For example," "In contrast," "Additionally"? These signal the function directly. "However" → contrast or complication. "For example" → illustration.</div>
+    </div>
+  </div>
+</div>
+
+<!-- THE 8 FUNCTIONS -->
+<div class="section" id="functions">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--purple-light);">📋</div>
+    <div class="section-title">The 8 sentence functions — learn these</div>
+    <div class="section-num-badge" style="background:var(--purple);">Step 4</div>
+  </div>
+
+  <p>Every sentence in an SAT passage plays one of these roles. Recognise the role and you can answer the question.</p>
+
+  <div class="def-box purple">
+    <div class="def-label">1 — Introduce</div>
+    <div class="def-body"><p>Sets up a topic, character, concept, or debate. Usually the first sentence of a passage or paragraph. Establishes what the passage is about. Answer choices use words like: "establishes," "introduces," "presents," "sets up."</p></div>
+  </div>
+  <div class="def-box purple">
+    <div class="def-label">2 — Support / provide evidence</div>
+    <div class="def-body"><p>Gives data, a fact, or an expert's finding that backs up the claim made in the previous sentence. The supported sentence makes an assertion; this sentence proves it. Look for: statistics, studies, direct quotes, specific facts. Answer choices: "provides evidence," "supports the claim," "corroborates."</p></div>
+  </div>
+  <div class="def-box purple">
+    <div class="def-label">3 — Illustrate</div>
+    <div class="def-body"><p>Gives a concrete, specific example of an abstract point made above. Different from support: illustration makes an idea tangible, support proves it true. Look for: "for example," "for instance," "as demonstrated by," specific cases or anecdotes. Answer choices: "illustrates," "demonstrates," "gives a concrete example of."</p></div>
+  </div>
+  <div class="def-box purple">
+    <div class="def-label">4 — Contrast</div>
+    <div class="def-body"><p>Introduces an opposing situation, finding, or view to create a comparison. Look for: "however," "in contrast," "whereas," "unlike," "on the other hand." Answer choices: "contrasts," "sets up a comparison," "highlights a difference."</p></div>
+  </div>
+  <div class="def-box purple">
+    <div class="def-label">5 — Complicate</div>
+    <div class="def-body"><p>Adds nuance to what came before without directly contradicting it. A "yes, but..." move. The previous claim is still valid — this sentence just makes it messier. Look for: "however," "yet," "although," "nevertheless." Answer choices: "complicates," "qualifies," "adds nuance to," "acknowledges a limitation."</p></div>
+  </div>
+  <div class="def-box purple">
+    <div class="def-label">6 — Conclude / synthesise</div>
+    <div class="def-body"><p>Draws together the points made earlier into a larger observation or takeaway. Often the final sentence of a passage or paragraph. Answer choices: "draws a conclusion," "synthesises," "generalises from the examples above."</p></div>
+  </div>
+  <div class="def-box purple">
+    <div class="def-label">7 — Provide background / context</div>
+    <div class="def-body"><p>Gives historical, scientific, or situational context that makes the main point understandable. It doesn't advance the argument — it sets the stage. Answer choices: "provides context," "establishes background," "explains the historical setting."</p></div>
+  </div>
+  <div class="def-box purple">
+    <div class="def-label">8 — Qualify / limit</div>
+    <div class="def-body"><p>Narrows or limits a broad claim by specifying conditions under which it applies. "This is true — but only when X." Answer choices: "qualifies," "limits the scope of," "specifies conditions under which."</p></div>
+  </div>
+</div>
+
+<!-- TRAPS -->
+<div class="section" id="traps">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--red-light);">⚠️</div>
+    <div class="section-title">The three traps</div>
+    <div class="section-num-badge" style="background:var(--red);">Step 5</div>
+  </div>
+
+  <div class="trap-grid">
+    <div class="trap-card">
+      <div class="trap-label">Trap 1</div>
+      <div class="trap-title">Content description</div>
+      <div class="trap-body">The answer accurately describes what the sentence says — but that's not what the question asks. It asks what the sentence DOES.</div>
+      <div class="trap-eg">Wrong: "explain that Darwin published On the Origin of Species in 1859." Right: "provide historical context for the debate about evolution."</div>
+    </div>
+    <div class="trap-card">
+      <div class="trap-label">Trap 2</div>
+      <div class="trap-title">Wrong function, right content</div>
+      <div class="trap-body">The answer names a real function (illustrate, support, contrast) but applies it to the wrong thing. "Illustrates the author's main argument" when it actually illustrates a sub-point.</div>
+      <div class="trap-eg">The sentence illustrates a specific example from the 1800s. Wrong answer: "illustrates the passage's overall thesis about scientific progress."</div>
+    </div>
+    <div class="trap-card">
+      <div class="trap-label">Trap 3</div>
+      <div class="trap-title">Complicate vs Contrast</div>
+      <div class="trap-body">These are different. Contrast sets up a comparison of two things. Complication adds nuance to ONE thing. Many students use them interchangeably — the SAT doesn't.</div>
+      <div class="trap-eg">Contrast: "Penguins cannot fly; eagles can." Complication: "Penguins cannot fly, though they are skilled swimmers — so the category of flightless birds is more complex than it appears."</div>
+    </div>
+    <div class="trap-card">
+      <div class="trap-label">Trap 4</div>
+      <div class="trap-title">Overstating the scope</div>
+      <div class="trap-body">Answers that say "introduces the passage's main argument" or "proves the author's overall thesis" when the sentence only does something small and local.</div>
+      <div class="trap-eg">A sentence giving one statistic doesn't "prove the thesis." It "provides evidence for the preceding claim."</div>
+    </div>
+  </div>
+</div>
+
+<!-- WORKED EXAMPLES -->
+<div class="section" id="examples">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">🔬</div>
+    <div class="section-title">Worked examples</div>
+    <div class="section-num-badge" style="background:var(--blue);">Step 6</div>
+  </div>
+
+  <!-- Ex 1 -->
+  <div class="example">
+    <div class="example-hdr">Example 1 — Illustration vs Support<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">Scientific consensus can shift dramatically over relatively short periods. <u>In the mid-twentieth century, the prevailing view held that stomach ulcers were caused by stress and diet; within two decades, Barry Marshall and Robin Warren had demonstrated that most ulcers result from bacterial infection — a finding that earned them the Nobel Prize in 2005.</u> What appears settled in science is often merely the most defensible position given current evidence.</div>
+      <div class="thought">
+        <div class="thought-title">💭 Thinking</div>
+        <div class="thought-body">Main claim: scientific consensus can shift dramatically. Deletion test: without the underlined sentence, we have a general claim with no evidence. With it, we have a specific historical case. Function: <b>illustrates the general claim with a concrete historical example.</b></div>
+      </div>
+      <div class="q-stem">The underlined sentence primarily serves to:</div>
+      <ul class="choices" id="ex1b">
+        <li data-reset-onclick="pickEx('ex1b',this,false)" onclick="pickEx('ex1b',this,false)">A. explain that Barry Marshall and Robin Warren won a Nobel Prize</li>
+        <li data-reset-onclick="pickEx('ex1b',this,true)" onclick="pickEx('ex1b',this,true)">B. illustrate the opening claim about scientific consensus with a specific historical case</li>
+        <li data-reset-onclick="pickEx('ex1b',this,false)" onclick="pickEx('ex1b',this,false)">C. provide evidence that bacteria are the primary cause of illness</li>
+        <li data-reset-onclick="pickEx('ex1b',this,false)" onclick="pickEx('ex1b',this,false)">D. contrast the mid-twentieth century view of medicine with modern understanding</li>
+      </ul>
+      <div class="explanation" id="ex1b-exp">
+        <b>Answer: B.</b> The sentence illustrates the opening claim with a concrete case. <br><br>
+        <span class="wrong-why">A describes content, not function — Trap 1. C overstates — the sentence isn't about bacteria as primary causes of illness generally. D is tempting because there IS a contrast within the sentence (old view vs new discovery), but the sentence's function relative to the PASSAGE is to illustrate the opening claim, not to set up a contrast.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 2 -->
+  <div class="example">
+    <div class="example-hdr">Example 2 — Complication<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">Remote work has been shown to increase productivity for many employees, with multiple studies documenting improvements in output and job satisfaction since its widespread adoption. <u>However, these gains have not been distributed evenly: workers in smaller living spaces, those with young children at home, and employees who rely on in-person collaboration have consistently reported lower productivity and higher stress levels under remote arrangements.</u></div>
+      <div class="thought">
+        <div class="thought-title">💭 Thinking</div>
+        <div class="thought-body">First sentence: remote work increases productivity (positive claim). Underlined sentence starts with "However" and qualifies: yes, but NOT for everyone. This doesn't contradict the first claim — it narrows it. Function: <b>complicates the first claim by showing it doesn't apply uniformly.</b></div>
+      </div>
+      <div class="q-stem">The underlined sentence primarily serves to:</div>
+      <ul class="choices" id="ex2b">
+        <li data-reset-onclick="pickEx('ex2b',this,false)" onclick="pickEx('ex2b',this,false)">A. contradict the claim that remote work increases productivity</li>
+        <li data-reset-onclick="pickEx('ex2b',this,false)" onclick="pickEx('ex2b',this,false)">B. explain why remote work should be restricted for certain employees</li>
+        <li data-reset-onclick="pickEx('ex2b',this,true)" onclick="pickEx('ex2b',this,true)">C. complicate the opening claim by showing that productivity gains from remote work are unevenly distributed</li>
+        <li data-reset-onclick="pickEx('ex2b',this,false)" onclick="pickEx('ex2b',this,false)">D. provide evidence that remote work is ineffective overall</li>
+      </ul>
+      <div class="explanation" id="ex2b-exp">
+        <b>Answer: C.</b> The sentence doesn't contradict — it qualifies. The opening claim is still true for many; this sentence shows it's not true for all. That's complication, not contradiction. <br><br>
+        <span class="wrong-why">A (contradict) is wrong because the sentence says "these gains have not been distributed evenly" — it accepts that gains exist. D (ineffective overall) makes a stronger claim than the text supports. B introduces a policy argument not present in the passage.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ex 3 -->
+  <div class="example">
+    <div class="example-hdr">Example 3 — Background context<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage"><u>Before the development of germ theory in the late nineteenth century, physicians had no reliable framework for understanding how infectious diseases spread.</u> It was against this backdrop of profound uncertainty that Joseph Lister introduced antiseptic surgical techniques — an innovation that would reduce post-operative mortality rates dramatically.</div>
+      <div class="thought">
+        <div class="thought-title">💭 Thinking</div>
+        <div class="thought-body">The passage is really about Lister's contribution. But the first sentence isn't about Lister — it's about the state of medicine BEFORE Lister. Function: <b>provides historical context that makes Lister's innovation understandable and significant.</b> Without knowing how bad things were before, the reader can't appreciate why Lister mattered.</div>
+      </div>
+      <div class="q-stem">The underlined sentence primarily serves to:</div>
+      <ul class="choices" id="ex3b">
+        <li data-reset-onclick="pickEx('ex3b',this,false)" onclick="pickEx('ex3b',this,false)">A. introduce the main argument about the importance of scientific progress</li>
+        <li data-reset-onclick="pickEx('ex3b',this,false)" onclick="pickEx('ex3b',this,false)">B. explain what germ theory is and how it was developed</li>
+        <li data-reset-onclick="pickEx('ex3b',this,true)" onclick="pickEx('ex3b',this,true)">C. establish the historical context that makes Lister's contribution significant</li>
+        <li data-reset-onclick="pickEx('ex3b',this,false)" onclick="pickEx('ex3b',this,false)">D. argue that pre-germ-theory medicine was dangerous</li>
+      </ul>
+      <div class="explanation" id="ex3b-exp">
+        <b>Answer: C.</b> The sentence sets the stage (profound uncertainty before Lister) so the reader can understand why Lister mattered. <br><br>
+        <span class="wrong-why">A overstates scope — the passage is specifically about Lister, not scientific progress generally. B describes content — the sentence doesn't explain germ theory, it says physicians lacked it. D implies an argument against pre-germ-theory medicine, but the sentence is neutral historical description.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRACTICE -->
+<div class="section" id="practice">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--gold-light);">✏️</div>
+    <div class="section-title">Practice — 5 questions</div>
+    <div class="section-num-badge" style="background:var(--gold);">Step 7</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 1</div>
+    <div class="passage">Urban beekeeping has become increasingly popular in cities worldwide. <u>A 2022 survey of municipal beekeepers in ten major cities found that urban honey yields have increased by an average of 34% over the past decade, driven largely by the expansion of pollinator-friendly planting programmes in public parks and private gardens.</u></div>
+    <div class="q-stem">The underlined sentence primarily serves to:</div>
+    <ul class="choices" id="pr1">
+      <li data-reset-onclick="pickEx('pr1',this,false)" onclick="pickEx('pr1',this,false)">A. explain why urban beekeeping has become popular</li>
+      <li data-reset-onclick="pickEx('pr1',this,true)" onclick="pickEx('pr1',this,true)">B. support the opening claim with specific data about the growth of urban beekeeping</li>
+      <li data-reset-onclick="pickEx('pr1',this,false)" onclick="pickEx('pr1',this,false)">C. argue that public parks should expand pollinator planting programmes</li>
+      <li data-reset-onclick="pickEx('pr1',this,false)" onclick="pickEx('pr1',this,false)">D. contrast the productivity of urban and rural beekeeping</li>
+    </ul>
+    <div class="explanation" id="pr1-exp"><b>B.</b> The opening sentence makes a claim (urban beekeeping is popular and growing). The underlined sentence provides specific data (34% increase, survey of 10 cities) to support it. A describes a reason for popularity — the sentence doesn't explain why. C makes a policy argument not in the text. D introduces a contrast not present.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 2</div>
+    <div class="passage">The English language absorbs vocabulary from other languages at an extraordinary rate. French, Latin, Norse, and Arabic have all contributed thousands of words to modern English. <u>The word "algebra," for example, comes from the Arabic "al-jabr," introduced to Europe through the translations of ninth-century scholar Muhammad ibn Musa al-Khwarizmi.</u></div>
+    <div class="q-stem">The underlined sentence primarily serves to:</div>
+    <ul class="choices" id="pr2">
+      <li data-reset-onclick="pickEx('pr2',this,false)" onclick="pickEx('pr2',this,false)">A. introduce a discussion of the history of mathematics</li>
+      <li data-reset-onclick="pickEx('pr2',this,false)" onclick="pickEx('pr2',this,false)">B. explain the origins of the word "algebra"</li>
+      <li data-reset-onclick="pickEx('pr2',this,true)" onclick="pickEx('pr2',this,true)">C. illustrate the preceding claim about Arabic's contribution to English with a specific example</li>
+      <li data-reset-onclick="pickEx('pr2',this,false)" onclick="pickEx('pr2',this,false)">D. provide evidence that Arabic is more influential than Latin on English vocabulary</li>
+    </ul>
+    <div class="explanation" id="pr2-exp"><b>C.</b> The sentence begins "for example" — always a signal of illustration. It gives one concrete instance of Arabic's contribution to English vocabulary. B describes content (what the sentence says) not function. D makes a comparative claim not supported by the passage.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 3</div>
+    <div class="passage">Conservation programmes that focus exclusively on charismatic megafauna — lions, elephants, tigers — have been criticised for neglecting less photogenic but ecologically critical species. <u>Dung beetles, for instance, process over 80% of mammalian waste in many African ecosystems; their decline would destabilise nutrient cycles that the entire ecosystem depends upon.</u> Effective conservation, researchers argue, must account for the full web of ecological relationships.</div>
+    <div class="q-stem">The underlined sentence primarily serves to:</div>
+    <ul class="choices" id="pr3">
+      <li data-reset-onclick="pickEx('pr3',this,false)" onclick="pickEx('pr3',this,false)">A. argue that dung beetles deserve more conservation funding than lions</li>
+      <li data-reset-onclick="pickEx('pr3',this,true)" onclick="pickEx('pr3',this,true)">B. illustrate the ecological importance of overlooked species by providing a specific example</li>
+      <li data-reset-onclick="pickEx('pr3',this,false)" onclick="pickEx('pr3',this,false)">C. contradict the first sentence's claim about conservation programmes</li>
+      <li data-reset-onclick="pickEx('pr3',this,false)" onclick="pickEx('pr3',this,false)">D. provide a transition to the final sentence's conclusion</li>
+    </ul>
+    <div class="explanation" id="pr3-exp"><b>B.</b> "For instance" signals illustration. The dung beetle example makes concrete the abstract point about ecologically critical but overlooked species. A makes a funding argument not in the text. C — the sentence doesn't contradict, it supports the criticism of megafauna-focused conservation.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 4</div>
+    <div class="passage">Machine learning systems have demonstrated remarkable accuracy in diagnosing certain medical conditions from imaging data. <u>However, researchers have found that many of these systems perform significantly worse when tested on images from patient populations that were underrepresented in the training data — a limitation that raises serious questions about their clinical reliability.</u></div>
+    <div class="q-stem">The underlined sentence primarily serves to:</div>
+    <ul class="choices" id="pr4">
+      <li data-reset-onclick="pickEx('pr4',this,false)" onclick="pickEx('pr4',this,false)">A. refute the claim that machine learning is accurate in medical diagnosis</li>
+      <li data-reset-onclick="pickEx('pr4',this,false)" onclick="pickEx('pr4',this,false)">B. explain how machine learning systems are trained</li>
+      <li data-reset-onclick="pickEx('pr4',this,true)" onclick="pickEx('pr4',this,true)">C. complicate the opening claim by revealing a significant limitation that affects clinical reliability</li>
+      <li data-reset-onclick="pickEx('pr4',this,false)" onclick="pickEx('pr4',this,false)">D. contrast machine learning with traditional diagnostic approaches</li>
+    </ul>
+    <div class="explanation" id="pr4-exp"><b>C.</b> The opening claim (remarkable accuracy) is not refuted — the systems ARE accurate on the populations they were trained on. The sentence adds nuance: accuracy breaks down on underrepresented groups. That's complication, not contradiction. A overstates. D introduces a comparison not in the passage.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">The photograph is often assumed to be a transparent record of reality — a mechanical trace of what was actually there. <u>Yet every photograph reflects choices: the angle of the camera, the moment of the shutter, the cropping in the darkroom, the caption written by an editor who may never have been at the scene.</u> To treat photographs as unmediated evidence is to misunderstand the medium entirely.</div>
+    <div class="q-stem">The underlined sentence primarily serves to:</div>
+    <ul class="choices" id="pr5">
+      <li data-reset-onclick="pickEx('pr5',this,false)" onclick="pickEx('pr5',this,false)">A. explain the technical process of developing a photograph</li>
+      <li data-reset-onclick="pickEx('pr5',this,false)" onclick="pickEx('pr5',this,false)">B. introduce the concept of documentary photography</li>
+      <li data-reset-onclick="pickEx('pr5',this,true)" onclick="pickEx('pr5',this,true)">C. challenge the assumption in the first sentence by demonstrating that photographs involve multiple layers of human decision-making</li>
+      <li data-reset-onclick="pickEx('pr5',this,false)" onclick="pickEx('pr5',this,false)">D. provide evidence that photographic captions are unreliable</li>
+    </ul>
+    <div class="explanation" id="pr5-exp"><b>C.</b> The first sentence states a common assumption (photographs = transparent record). "Yet" signals the challenge coming. The underlined sentence lists all the choices involved in making a photograph — directly challenging the "transparent record" assumption. A describes content. D focuses on one element (captions) and claims it's unreliable, which overstates.</div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="section" id="summary">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--gold-light);">📌</div>
+    <div class="section-title">Summary card</div>
+    <div class="section-num-badge" style="background:var(--gold);">Keep this</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-title">Text Structure (Single Passage) — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="summary-item-title">The core rule</div>
+        <div class="summary-item-body"><b>WHY not WHAT.</b> Every correct answer describes function. Every wrong answer describes content.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item-title">The deletion test</div>
+        <div class="summary-item-body">"What would the passage lose if this sentence were removed?" The answer to that question IS the function.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item-title">8 functions</div>
+        <div class="summary-item-body">Introduce · Support · Illustrate · Contrast · Complicate · Conclude · Background/Context · Qualify</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item-title">Signal words</div>
+        <div class="summary-item-body">"For example / for instance" → illustrate. "However / yet" → complicate or contrast. "Therefore / thus" → conclude.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item-title">Contrast vs Complicate</div>
+        <div class="summary-item-body"><b>Contrast</b> compares two things. <b>Complicate</b> adds nuance to ONE thing — it's a "yes, but..." move.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item-title">Trap to avoid</div>
+        <div class="summary-item-body">Any choice that starts "explain that X is Y" or "state that..." is describing content. Eliminate it immediately.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_01.html" class="nav-arrow">← Lesson 1: Words in Context</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 2 of 27</span>
+  <a href="english_lesson_03.html" class="nav-arrow">Next: Text Structure (Overall) →</a>
+</div>
+
+<script>
+var answered = {};
+function pickEx(id, el, correct) {
+  if (answered[id]) return;
+  answered[id] = true;
+  var list = document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li) { li.onclick = null; });
+  el.classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) list.querySelectorAll('li').forEach(function(li) {
+    if (!li.classList.contains('wrong')) li.classList.add('correct');
+  });
+  var exp = document.getElementById(id + '-exp');
+  if (exp) exp.classList.add('show');
+}
+</script>
+</body>
+</html>

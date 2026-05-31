@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 5: Cross-Text — Agree & Extend — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 5 of 27 · Cross-Text — Agree & Extend</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 5 / 27</span><span class="hdr-domain">Craft &amp; Structure</span></div>
+  <div class="hdr-title">Cross-Text<br><em>Agree &amp; Extend</em></div>
+  <div class="hdr-tagline">These questions give you two short passages on the same topic. The relationship here: the authors broadly agree, or one author builds further in the direction the other pointed.</div>
+  <div class="hdr-chips"><span class="chip">Part of ~3–4 cross-text questions</span><span class="chip">Target: 90 sec</span><span class="chip hi">Pre-step: write a sentence for each passage first</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🤝</div><div class="section-title">What is Agreement / Extension?</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Two relationship types covered here</div>
+    <div class="def-body">
+      <p><b>Agreement:</b> Both authors make the same or very similar claim — though they may use different evidence, examples, or framing. Neither contradicts the other. Both reach compatible conclusions.</p>
+      <p><b>Extension:</b> Passage 2 takes Passage 1's claim further in the same direction. Passage 1 says "X." Passage 2 says "X — and furthermore, Y." The second author doesn't challenge; they deepen or broaden.</p>
+      <p>These are the "positive relationship" types. The questions that test them typically ask: "Which claim would Author 2 most likely agree with?" or "How does Passage 2 relate to Passage 1?" or "Both authors would agree that..."</p>
+    </div>
+  </div>
+  <div class="def-box green">
+    <div class="def-label">Agreement vs Extension — the distinction</div>
+    <div class="def-body">
+      <p><b>Agreement:</b> P1 says "Exercise improves mental health." P2 says "Physical activity is beneficial for psychological wellbeing." Same claim, different phrasing, possibly different evidence. Neither adds scope.</p>
+      <p><b>Extension:</b> P1 says "Exercise improves mental health." P2 says "Exercise improves mental health — and specifically, aerobic exercise produces neurochemical changes that reduce anxiety at the cellular level." P2 accepts P1's claim and drills deeper into the mechanism.</p>
+      <p>The key test: does P2 say something P1 doesn't? If yes and it's compatible → extension. If no new scope → agreement.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">The strategy — two sentences before the question</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Read Passage 1. Write one sentence: "Author 1 argues that ___."</b> Be specific — what is the actual claim?</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Read Passage 2. Write one sentence: "Author 2 argues that ___."</b> Same specificity.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Compare your two sentences.</b> Do they point in the same direction? Where does P2 go further or deeper? That overlap and extension is what the correct answer will describe.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><b>For "both agree" questions:</b> the correct answer must be a claim that BOTH sentences support. It will usually be more general than either author's specific claim. Eliminate anything one passage contradicts.</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><b>For "what would Author 2 say about Author 1's claim" questions:</b> use only what Passage 2 actually says. Never infer beyond the text.</div></div>
+  </div>
+</div>
+
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">The traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Too strong a claim</div><div class="trap-body">Both authors might support "X is beneficial." Wrong answer: "Both would agree that X is the most important factor in Y." Neither passage says "most important." Avoid superlatives in the correct answer.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Only one passage supports it</div><div class="trap-body">For "both agree" questions, the correct answer must be supported by BOTH passages. A choice accurate for P1 but not mentioned or contradicted by P2 is wrong.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Inferring beyond the text</div><div class="trap-body">What would Author 2 "likely" think? Only what Passage 2 actually says. Don't project views the author might plausibly hold but didn't state.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Confusing extension with contradiction</div><div class="trap-body">P2 adds new information that P1 didn't include. A distractor might say P2 "challenges" P1 — but adding scope is not challenging. Extension is always compatible with the original claim.</div></div>
+  </div>
+</div>
+
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+
+  <div class="example">
+    <div class="example-hdr">Example 1 — Agreement<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> Sleep deprivation has well-documented effects on cognitive performance. Studies show that individuals sleeping fewer than six hours per night perform significantly worse on tasks requiring sustained attention, working memory, and executive function than those meeting recommended sleep guidelines. The impairment is comparable to that produced by moderate alcohol intoxication.<br><br>
+      <b>Passage 2:</b> The economic costs of insufficient sleep are substantial. Lost productivity, increased error rates, and higher rates of workplace accidents in sleep-deprived populations cost the US economy an estimated $411 billion per year, according to a RAND Corporation analysis. Addressing sleep deficits, researchers suggest, should be treated as a public health priority rather than a personal matter.</div>
+      <div class="thought"><div class="thought-title">💭 Two-sentence summary</div><div class="thought-body">P1: Sleep deprivation significantly impairs cognitive performance.<br>P2: Sleep deprivation has major economic costs and should be treated as a public health issue.<br>Overlap: both say sleep deprivation is a serious problem with significant consequences.</div></div>
+      <div class="q-stem">Both passages support which of the following conclusions?</div>
+      <ul class="choices" id="l5e1">
+        <li data-reset-onclick="pickEx('l5e1',this,false)" onclick="pickEx('l5e1',this,false)">A. Sleep deprivation is primarily a problem for people in demanding professional roles</li>
+        <li data-reset-onclick="pickEx('l5e1',this,true)" onclick="pickEx('l5e1',this,true)">B. Insufficient sleep has significant negative consequences that extend beyond the individual</li>
+        <li data-reset-onclick="pickEx('l5e1',this,false)" onclick="pickEx('l5e1',this,false)">C. Governments should mandate minimum sleep hours for workers</li>
+        <li data-reset-onclick="pickEx('l5e1',this,false)" onclick="pickEx('l5e1',this,false)">D. Alcohol and sleep deprivation have identical effects on the brain</li>
+      </ul>
+      <div class="explanation" id="l5e1-exp"><b>Answer: B.</b> P1 shows cognitive impairment (consequences beyond the individual sleeper). P2 shows economic/societal costs. Both support: sleep deprivation's consequences extend beyond the individual. A (professional roles) — neither passage specifies this. C (government mandate) — only P2 calls for public health action, and doesn't specify mandates. D (identical effects) — P1 says "comparable to," not "identical."</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 2 — Extension<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> Urban tree canopy coverage has been shown to reduce ambient temperatures in city neighbourhoods, with studies finding that areas with higher tree density are consistently cooler during heat events than comparable areas without vegetation.<br><br>
+      <b>Passage 2:</b> The benefits of urban trees extend well beyond temperature reduction. Research has documented improvements in air quality, stormwater management, and residents' mental health in high-canopy neighbourhoods. Notably, the mental health benefits — including reduced rates of anxiety and depression — appear to accrue even among residents who do not consciously engage with the green spaces, suggesting that passive exposure to vegetation affects wellbeing.</div>
+      <div class="thought"><div class="thought-title">💭 Two-sentence summary</div><div class="thought-body">P1: Urban trees reduce temperatures.<br>P2: Urban trees have many other benefits beyond temperature reduction (air quality, stormwater, mental health).<br>Relationship: P2 extends P1 — accepts the temperature finding and adds more scope.</div></div>
+      <div class="q-stem">How does Passage 2 relate to the argument in Passage 1?</div>
+      <ul class="choices" id="l5e2">
+        <li data-reset-onclick="pickEx('l5e2',this,false)" onclick="pickEx('l5e2',this,false)">A. It contradicts Passage 1 by showing that temperature reduction is not the primary benefit of urban trees</li>
+        <li data-reset-onclick="pickEx('l5e2',this,true)" onclick="pickEx('l5e2',this,true)">B. It extends Passage 1 by demonstrating that the benefits of urban trees are broader than temperature reduction alone</li>
+        <li data-reset-onclick="pickEx('l5e2',this,false)" onclick="pickEx('l5e2',this,false)">C. It qualifies Passage 1 by noting that tree canopy is only effective in certain types of urban environments</li>
+        <li data-reset-onclick="pickEx('l5e2',this,false)" onclick="pickEx('l5e2',this,false)">D. It challenges the methodology used in Passage 1's temperature studies</li>
+      </ul>
+      <div class="explanation" id="l5e2-exp"><b>Answer: B.</b> P2 explicitly says "benefits extend well beyond temperature reduction" — it accepts P1's finding and adds to it. A (contradicts) — wrong direction. C (qualifies) — P2 doesn't limit the findings, it expands them. D (challenges methodology) — no such challenge is made.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 3 — What would Author 2 say?<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> Economist Tyler Cowen argues that the internet has democratised access to cultural goods — music, art, literature — that were previously accessible only to those with the means and proximity to cultural institutions. For the first time in history, a teenager in rural Nebraska has access to the same catalogue of music as a resident of Manhattan.<br><br>
+      <b>Passage 2:</b> While the digital distribution of cultural goods has expanded access in certain respects, it has also concentrated economic power in the hands of platform intermediaries. Streaming services, for instance, control which artists gain visibility through algorithmic promotion, and the payment structures they impose mean that even widely streamed musicians earn a fraction of what physical record sales would have generated. The gains in access have come at the cost of economic power for creators.</div>
+      <div class="q-stem">Author 2 would most likely respond to Cowen's argument in Passage 1 by saying that:</div>
+      <ul class="choices" id="l5e3">
+        <li data-reset-onclick="pickEx('l5e3',this,false)" onclick="pickEx('l5e3',this,false)">A. Cowen is wrong that digital distribution has expanded access to cultural goods</li>
+        <li data-reset-onclick="pickEx('l5e3',this,false)" onclick="pickEx('l5e3',this,false)">B. The economic model of streaming is superior to physical record sales for artists</li>
+        <li data-reset-onclick="pickEx('l5e3',this,true)" onclick="pickEx('l5e3',this,true)">C. While expanded access is a real benefit, it has been accompanied by a loss of economic power for the creators whose work is being accessed</li>
+        <li data-reset-onclick="pickEx('l5e3',this,false)" onclick="pickEx('l5e3',this,false)">D. The democratisation of cultural access is not genuinely beneficial because rural audiences cannot appreciate art the same way urban audiences do</div>
+      </ul>
+      <div class="explanation" id="l5e3-exp"><b>Answer: C.</b> P2 starts with "while... has expanded access in certain respects" — it accepts Cowen's point. Then it adds: economic power went to platforms at the expense of creators. C captures both the concession (access is real) and the critique (economic cost). A says access wasn't expanded — P2 accepts that it was. B praises streaming — P2 criticises its payment model. D invents a claim about rural audiences that P2 never makes.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 1</div>
+    <div class="passage"><b>Passage 1:</b> Bilingual children consistently outperform monolingual peers on tasks measuring executive function — specifically, the ability to switch between tasks and to inhibit irrelevant information. Managing two languages appears to exercise cognitive control systems in ways that produce measurable benefits.<br><br>
+    <b>Passage 2:</b> The cognitive advantages of bilingualism may extend into old age. Longitudinal studies suggest that bilingual adults develop symptoms of Alzheimer's disease an average of 4–5 years later than monolingual adults with equivalent levels of education and socioeconomic status, leading researchers to hypothesise that managing two languages builds cognitive reserve that delays dementia onset.</div>
+    <div class="q-stem">Both passages support which of the following conclusions?</div>
+    <ul class="choices" id="l5p1">
+      <li data-reset-onclick="pickEx('l5p1',this,false)" onclick="pickEx('l5p1',this,false)">A. Bilingualism is primarily beneficial during childhood</li>
+      <li data-reset-onclick="pickEx('l5p1',this,false)" onclick="pickEx('l5p1',this,false)">B. All bilingual individuals will avoid developing Alzheimer's disease</li>
+      <li data-reset-onclick="pickEx('l5p1',this,true)" onclick="pickEx('l5p1',this,true)">C. Managing two languages produces cognitive benefits that extend across the lifespan</li>
+      <li data-reset-onclick="pickEx('l5p1',this,false)" onclick="pickEx('l5p1',this,false)">D. Monolingual individuals have inferior intelligence compared to bilingual individuals</li>
+    </ul>
+    <div class="explanation" id="l5p1-exp"><b>C.</b> P1: benefits in childhood (executive function). P2: benefits in old age (delayed dementia). Together: benefits span the lifespan. A (primarily childhood) — P2 explicitly extends to old age. B (all will avoid Alzheimer's) — too strong; P2 says delayed onset, not prevention. D (inferior intelligence) — neither passage makes this claim.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 2</div>
+    <div class="passage"><b>Passage 1:</b> Community gardens in urban areas provide residents with access to fresh produce that is often unavailable or unaffordable in food-insecure neighbourhoods. Several cities have documented significant reductions in food insecurity among households that participate in community gardening programmes.<br><br>
+    <b>Passage 2:</b> Beyond nutritional benefits, community gardens function as social infrastructure. Longitudinal studies of urban garden projects have found that participants report stronger feelings of community belonging, higher levels of social trust, and lower rates of social isolation compared to non-participants — effects that persist even when controlling for self-selection.</div>
+    <div class="q-stem">How does Passage 2 relate to the argument in Passage 1?</div>
+    <ul class="choices" id="l5p2">
+      <li data-reset-onclick="pickEx('l5p2',this,false)" onclick="pickEx('l5p2',this,false)">A. It contradicts Passage 1 by showing that the nutritional benefits of community gardens are overstated</li>
+      <li data-reset-onclick="pickEx('l5p2',true)" onclick="pickEx('l5p2',this,true)">B. It extends Passage 1 by identifying social benefits of community gardens beyond the nutritional ones Passage 1 describes</li>
+      <li data-reset-onclick="pickEx('l5p2',this,false)" onclick="pickEx('l5p2',this,false)">C. It qualifies Passage 1 by noting that community gardens only benefit participants, not the broader neighbourhood</li>
+      <li data-reset-onclick="pickEx('l5p2',this,false)" onclick="pickEx('l5p2',this,false)">D. It challenges the methodology of the studies cited in Passage 1</li>
+    </ul>
+    <div class="explanation" id="l5p2-exp"><b>B.</b> P2 begins "beyond nutritional benefits" — explicitly accepting P1's nutritional finding and extending to social benefits. A (contradicts) — P2 doesn't challenge the nutritional claim. C (only participants) — P2 says benefits are for participants, which doesn't limit P1's claims. D (challenges methodology) — no such challenge.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 3 — Hard</div>
+    <div class="passage"><b>Passage 1:</b> Philosopher Martha Nussbaum argues that the study of literature is essential to democratic citizenship because fiction uniquely cultivates the imaginative capacity to understand lives different from one's own — what she calls "narrative imagination." Citizens who cannot imagine the perspective of others, she argues, are poorly equipped to make just decisions about people whose circumstances they have never experienced.<br><br>
+    <b>Passage 2:</b> Empirical research has provided some support for Nussbaum's theoretical claims. Studies using randomised designs have found that reading literary fiction — as distinct from popular genre fiction or nonfiction — produces measurable short-term improvements in theory of mind: the ability to attribute mental states to others and to understand that others' beliefs and desires differ from one's own.</div>
+    <div class="q-stem">Author 2 would most likely characterise the relationship between the passages as:</div>
+    <ul class="choices" id="l5p3">
+      <li data-reset-onclick="pickEx('l5p3',this,false)" onclick="pickEx('l5p3',this,false)">A. Passage 2 refutes Nussbaum's claim by showing that genre fiction is equally effective</li>
+      <li data-reset-onclick="pickEx('l5p3',this,false)" onclick="pickEx('l5p3',this,false)">B. Passage 2 proves definitively that reading fiction makes people better democratic citizens</li>
+      <li data-reset-onclick="pickEx('l5p3',this,true)" onclick="pickEx('l5p3',this,true)">C. Passage 2 provides empirical evidence that partially supports Nussbaum's theoretical argument about fiction and perspective-taking</li>
+      <li data-reset-onclick="pickEx('l5p3',this,false)" onclick="pickEx('l5p3',this,false)">D. Passage 2 contradicts Nussbaum by showing that nonfiction is more effective than literary fiction</div>
+    </ul>
+    <div class="explanation" id="l5p3-exp"><b>C.</b> P2 says research provides "some support" for Nussbaum's "theoretical claims" — partial, empirical support. C matches exactly. A (genre fiction equally effective) — P2 says literary fiction works BETTER than genre. B (proves definitively) — too strong; P2 shows "short-term improvements" in theory of mind, not full democratic citizenship. D (nonfiction better) — the opposite of what P2 says.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 4</div>
+    <div class="passage"><b>Passage 1:</b> Access to green space in cities has been associated with lower rates of depression and anxiety among urban residents. Studies comparing neighbourhoods with high and low park availability have consistently found better mental health outcomes in greener areas, even after controlling for income and other demographic variables.<br><br>
+    <b>Passage 2:</b> The mental health benefits of urban green space appear to vary by the type of nature encountered. Research suggests that "blue spaces" — areas featuring water, such as rivers, lakes, and coastlines — produce stronger and faster mental health improvements than equivalent green spaces without water features. The sound and visual movement of water may engage stress-reduction pathways more effectively than static vegetation.</div>
+    <div class="q-stem">Both passages support which of the following?</div>
+    <ul class="choices" id="l5p4">
+      <li data-reset-onclick="pickEx('l5p4',this,false)" onclick="pickEx('l5p4',this,false)">A. All urban residents benefit equally from access to green space</li>
+      <li data-reset-onclick="pickEx('l5p4',this,false)" onclick="pickEx('l5p4',this,false)">B. Blue spaces are more effective than green spaces for mental health</li>
+      <li data-reset-onclick="pickEx('l5p4',this,true)" onclick="pickEx('l5p4',this,true)">C. Contact with natural environments in urban areas has mental health benefits</li>
+      <li data-reset-onclick="pickEx('l5p4',this,false)" onclick="pickEx('l5p4',this,false)">D. City planners should prioritise water features over parks in urban design</li>
+    </ul>
+    <div class="explanation" id="l5p4-exp"><b>C.</b> Both passages support that nature contact helps mental health — P1 via green space, P2 via blue spaces. C is the safe overlap. A (benefit equally) — neither passage says this. B (blue better than green) — this is P2's finding only, not supported by P1. D (policy recommendation) — neither passage explicitly recommends this policy.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage"><b>Passage 1:</b> Early childhood interventions — programmes that provide nutritional support, cognitive stimulation, and parental education to disadvantaged children under five — have shown significant long-term returns. Studies tracking participants into adulthood have found higher rates of graduation, employment, and health, and lower rates of incarceration, compared to control groups. The economist James Heckman estimates the return on such investments at $7–12 for every dollar spent.<br><br>
+    <b>Passage 2:</b> The evidence for early childhood investment is compelling, but the distribution of those investments matters enormously. Programmes targeted narrowly at the highest-risk families produce larger per-child returns than universal programmes, because the children who benefit most are those who would otherwise have the worst outcomes. A dollar spent on the most disadvantaged child has a greater effect on lifetime outcomes than the same dollar spent on a moderately disadvantaged one.</div>
+    <div class="q-stem">Author 2 would most likely respond to the evidence in Passage 1 by:</div>
+    <ul class="choices" id="l5p5">
+      <li data-reset-onclick="pickEx('l5p5',this,false)" onclick="pickEx('l5p5',this,false)">A. Arguing that Heckman's return estimates are exaggerated</li>
+      <li data-reset-onclick="pickEx('l5p5',this,false)" onclick="pickEx('l5p5',this,false)">B. Questioning whether early childhood programmes actually improve adult outcomes</li>
+      <li data-reset-onclick="pickEx('l5p5',this,true)" onclick="pickEx('l5p5',this,true)">C. Accepting the case for early childhood investment while adding that targeting the highest-risk children maximises the return on those investments</li>
+      <li data-reset-onclick="pickEx('l5p5',this,false)" onclick="pickEx('l5p5',this,false)">D. Arguing that universal programmes are superior to targeted ones because they reach more children</div>
+    </ul>
+    <div class="explanation" id="l5p5-exp"><b>C.</b> P2 opens "the evidence for early childhood investment is compelling" — accepts P1. Then adds: targeting the most disadvantaged maximises returns. C is the extension: agree with P1, then add targeting detail. A (exaggerated estimates) — P2 calls the evidence "compelling," not exaggerated. B (questions outcomes) — P2 accepts P1's conclusion. D (universal superior) — P2 argues the opposite: targeted beats universal per dollar.</div>
+  </div>
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Cross-Text: Agree &amp; Extend — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">Non-negotiable pre-step</div><div class="summary-item-body">Write one sentence for each passage before reading any question. "Author 1 argues ___. Author 2 argues ___." Without this, choices all seem plausible.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Agreement</div><div class="summary-item-body">Both authors reach compatible conclusions, possibly with different evidence or framing. Neither adds scope or challenges the other.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Extension</div><div class="summary-item-body">P2 accepts P1's claim AND adds new scope, depth, or application. "X — and furthermore, Y." Signal word often: "beyond," "moreover," "additionally."</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 1</div><div class="summary-item-body">Too strong — "proves definitively," "most important," "all." Neither passage usually makes such absolute claims.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 2</div><div class="summary-item-body">"Both agree" = must be supported by BOTH passages. Check each option against each passage individually.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 3</div><div class="summary-item-body">Never infer beyond the text. "Author 2 would likely think..." — use only what P2 explicitly says. What the author might plausibly believe is irrelevant.</div></div>
+    </div>
+  </div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_04.html" class="nav-arrow">← Lesson 4: Author's Purpose</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 5 of 27</span>
+  <a href="english_lesson_06.html" class="nav-arrow">Next: Lesson 6: Cross-Text — Complicate/Contradict →</a>
+</div>
+<script>
+var answered = {};
+function pickEx(id, el, correct) {
+  if (answered[id]) return; answered[id] = true;
+  var list = document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li) { li.onclick = null; });
+  el.classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) list.querySelectorAll('li').forEach(function(li) {
+    if (!li.classList.contains('wrong')) li.classList.add('correct');
+  });
+  var exp = document.getElementById(id + '-exp');
+  if (exp) exp.classList.add('show');
+}
+</script>
+</body>
+</html>

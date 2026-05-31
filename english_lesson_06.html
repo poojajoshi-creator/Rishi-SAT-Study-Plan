@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 6: Cross-Text — Complicate & Contradict — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 6 of 27 · Cross-Text — Complicate & Contradict</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 6 / 27</span><span class="hdr-domain">Craft &amp; Structure</span></div>
+  <div class="hdr-title">Cross-Text<br><em>Complicate &amp; Contradict</em></div>
+  <div class="hdr-tagline">The most common cross-text relationship on the SAT: Passage 2 pushes back against Passage 1 — either adding a caveat (complication) or directly disputing it (contradiction). The difference between these two is critical.</div>
+  <div class="hdr-chips"><span class="chip">Most common cross-text type</span><span class="chip">Target: 90 sec</span><span class="chip hi">Key: complication accepts the claim, contradiction rejects it</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">⚡</div><div class="section-title">Complicate vs Contradict — the crucial difference</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Contradiction</div>
+    <div class="def-body">
+      <p>P1 says: "X is true." P2 says: "X is false" or "X does not happen" or "the evidence does not support X."</p>
+      <p>Contradiction is a direct head-on disagreement. P2 does not accept P1's central claim. One of them must be wrong.</p>
+      <p>Example: P1 says "Charter schools outperform public schools." P2 says "Research consistently shows no significant performance difference between charter and public schools when controlling for student demographics."</p>
+    </div>
+  </div>
+  <div class="def-box amber">
+    <div class="def-label">Complication</div>
+    <div class="def-body">
+      <p>P1 says: "X is true." P2 says: "X is true in some cases — but not all, or not as simply as P1 suggests."</p>
+      <p>Complication is a "yes, but..." The core claim is accepted, but nuance, exceptions, or limitations are added. P2 never says P1 is wrong — only that reality is more complex.</p>
+      <p>Example: P1 says "Remote work increases productivity." P2 says "Remote work increases productivity for knowledge workers with dedicated home offices — but decreases it for those in crowded living situations or those who depend on in-person collaboration."</p>
+      <p>Note: P2 doesn't say remote work doesn't increase productivity. It says the effect is conditional.</p>
+    </div>
+  </div>
+  <div class="def-box green">
+    <div class="def-label">The test: does P2 accept the core claim?</div>
+    <div class="def-body">
+      <p>Ask: "After reading P2, is P1's central claim still standing?"<br>
+      <b>Yes, but with conditions/limitations/exceptions</b> → Complication<br>
+      <b>No — P2 says P1's claim doesn't hold up</b> → Contradiction</p>
+      <p>This is the most commonly missed distinction on the SAT. Students reach for "contradiction" when the relationship is actually complication — because complication still "sounds like" disagreement.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">The strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Summarise each passage in one sentence.</b> Essential pre-step every time.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Ask the core claim test:</b> "After reading P2, is P1's main claim still standing?" Yes with conditions = complication. No = contradiction.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Calibrate the strength of the relationship.</b> "Challenges" is weaker than "contradicts." "Adds nuance to" is weaker than "refutes." Pick the answer whose strength matches the actual relationship.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><b>Watch signal words:</b> "However, this finding does not hold when..." = complication. "Research has found no evidence that..." = contradiction.</div></div>
+  </div>
+</div>
+
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">The traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Calling complication a contradiction</div><div class="trap-body">P2 says "X is true in some cases but not all." Wrong answer: "P2 contradicts P1's claim." Right answer: "P2 complicates P1 by showing the effect is conditional." P1's claim still stands for some cases.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Strength mismatch</div><div class="trap-body">P2 gently questions P1. Wrong answer: "P2 definitively refutes P1." Right answer: "P2 challenges or questions P1." Match the force of P2's pushback to your answer.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Methodological critique ≠ contradiction</div><div class="trap-body">P2 says "P1's study had a small sample and no control group." This doesn't say P1's conclusion is wrong — it says P1 hasn't proven it yet. Methodological critique is its own relationship type (Lesson 7).</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Confusing concession with agreement</div><div class="trap-body">P2 starts "While P1 is correct that X..." — this is a concession before a "but." The passage's real position comes AFTER the "but." Don't read the concession as agreement.</div></div>
+  </div>
+</div>
+
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+
+  <div class="example">
+    <div class="example-hdr">Example 1 — Complication, not contradiction<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> Research consistently shows that increased tree canopy coverage reduces urban temperatures. Cities with more street trees record lower surface temperatures during heat events, and residents in high-canopy neighbourhoods report fewer heat-related health problems.<br><br>
+      <b>Passage 2:</b> While tree canopy does reduce urban temperatures in most contexts, researchers have found that in extremely dense urban canyons — streets flanked by tall buildings — tree canopy can paradoxically trap heat rather than releasing it, by blocking the nighttime sky-view angle that allows heat to radiate upward and dissipate. The temperature benefit of trees is therefore highly context-dependent.</div>
+      <div class="thought"><div class="thought-title">💭 Thinking</div><div class="thought-body">P1: trees reduce urban heat (general claim). P2: "While tree canopy does reduce urban temperatures in most contexts..." — concedes P1's claim — then: in dense urban canyons, it can trap heat. Core claim test: Is P1's claim still standing? Yes — but only in most contexts, not all. = <b>Complication</b>.</div></div>
+      <div class="q-stem">How does Passage 2 relate to the argument in Passage 1?</div>
+      <ul class="choices" id="l6e1">
+        <li data-reset-onclick="pickEx('l6e1',this,false)" onclick="pickEx('l6e1',this,false)">A. It contradicts Passage 1 by showing that trees are harmful in urban environments</li>
+        <li data-reset-onclick="pickEx('l6e1',this,true)" onclick="pickEx('l6e1',this,true)">B. It complicates Passage 1 by showing that the temperature benefit of trees is conditional and context-dependent</li>
+        <li data-reset-onclick="pickEx('l6e1',this,false)" onclick="pickEx('l6e1',this,false)">C. It extends Passage 1 by providing additional evidence that trees reduce heat</li>
+        <li data-reset-onclick="pickEx('l6e1',this,false)" onclick="pickEx('l6e1',this,false)">D. It agrees with Passage 1 while adding that other factors also affect urban temperature</li>
+      </ul>
+      <div class="explanation" id="l6e1-exp"><b>Answer: B.</b> P2 accepts the general finding but shows it doesn't hold in dense urban canyons — context dependency = complication. A (harmful in urban environments) — P2 says the problem is specific to dense canyons, not urban environments generally. C (extends) — P2 is pushing back, not adding support. D (agrees and adds factors) — P2 presents an exception to the rule, not additional supporting factors.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 2 — Contradiction<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> The widespread adoption of open-plan offices in the 2000s was premised on the belief that removing physical barriers between workers would enhance collaboration and creativity. Proponents argued that spontaneous interactions and overheard conversations would generate ideas that isolated offices could not.<br><br>
+      <b>Passage 2:</b> A decade of research on open-plan offices has produced a strikingly consistent finding: they reduce collaboration rather than increase it. Workers in open-plan offices spend significantly less time in face-to-face interaction and more time in electronic communication, apparently because the noise and lack of privacy lead employees to withdraw into headphones and email. The foundational premise of the open-plan movement appears to have been empirically wrong.</div>
+      <div class="thought"><div class="thought-title">💭 Thinking</div><div class="thought-body">P1: open-plan offices increase collaboration (the premise). P2: "reduce collaboration rather than increase it" and "the foundational premise... appears to have been empirically wrong." Core claim test: Is P1's claim still standing? No — P2 directly refutes it. = <b>Contradiction</b>.</div></div>
+      <div class="q-stem">How does Passage 2 relate to the argument in Passage 1?</div>
+      <ul class="choices" id="l6e2">
+        <li data-reset-onclick="pickEx('l6e2',this,false)" onclick="pickEx('l6e2',this,false)">A. It extends Passage 1 by explaining the mechanisms behind open-plan collaboration</li>
+        <li data-reset-onclick="pickEx('l6e2',this,false)" onclick="pickEx('l6e2',this,false)">B. It complicates Passage 1 by showing that open-plan offices work better in some industries than others</li>
+        <li data-reset-onclick="pickEx('l6e2',this,true)" onclick="pickEx('l6e2',this,true)">C. It directly contradicts the premise of Passage 1 by providing evidence that open-plan offices reduce rather than increase collaboration</li>
+        <li data-reset-onclick="pickEx('l6e2',this,false)" onclick="pickEx('l6e2',this,false)">D. It agrees that open-plan offices have benefits while questioning some of their costs</li>
+      </ul>
+      <div class="explanation" id="l6e2-exp"><b>Answer: C.</b> P2 says the foundational premise "was empirically wrong" — this is direct contradiction, not complication. B (complicates — some industries) — P2 makes no such conditional claim. D (agrees with benefits) — P2 finds no benefit. A (extends) — P2 is oppositional.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 3 — Distinguishing complication from contradiction<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage"><b>Passage 1:</b> Mindfulness meditation has been found in multiple studies to reduce perceived stress and improve wellbeing among practitioners. The effect appears robust across different populations and meditation styles, with even brief daily practice — as little as ten minutes — producing measurable benefits.<br><br>
+      <b>Passage 2:</b> The benefits of mindfulness are not universally positive. For a subset of practitioners — estimated at 8–14% in various studies — meditation produces adverse effects including increased anxiety, dissociation, and in some cases the re-emergence of trauma-related symptoms. Researchers have begun to map the individual characteristics, clinical histories, and meditation conditions most associated with these adverse outcomes, but a comprehensive predictive model remains elusive.</div>
+      <div class="q-stem">How does Passage 2 relate to the argument in Passage 1?</div>
+      <ul class="choices" id="l6e3">
+        <li data-reset-onclick="pickEx('l6e3',this,false)" onclick="pickEx('l6e3',this,false)">A. It contradicts Passage 1 by showing that mindfulness is harmful to practitioners</li>
+        <li data-reset-onclick="pickEx('l6e3',this,true)" onclick="pickEx('l6e3',this,true)">B. It complicates Passage 1's positive account of mindfulness by documenting adverse effects in a significant minority of practitioners</li>
+        <li data-reset-onclick="pickEx('l6e3',this,false)" onclick="pickEx('l6e3',this,false)">C. It agrees with Passage 1 while providing additional evidence that mindfulness reduces stress</li>
+        <li data-reset-onclick="pickEx('l6e3',this,false)" onclick="pickEx('l6e3',this,false)">D. It extends Passage 1 by identifying the types of meditation most beneficial for wellbeing</li>
+      </ul>
+      <div class="explanation" id="l6e3-exp"><b>Answer: B.</b> P2 doesn't say mindfulness is harmful overall — it says 8–14% have adverse effects. P1's claim (beneficial for practitioners generally) still stands for the other 86–92%. Core claim survives with a significant exception = complication. A (contradicts) — P2 would need to say the overall effect is negative or the claim is wrong. C (agrees and adds evidence) — P2 is presenting a problem, not additional support. D (extends, identifies meditation types) — P2 doesn't identify which types are most beneficial.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 1</div>
+    <div class="passage"><b>Passage 1:</b> Exposure to classical music during infancy has been claimed to enhance cognitive development, particularly spatial reasoning. The "Mozart Effect," as it came to be known, was widely promoted in the 1990s and influenced policy decisions in several US states, with governors proposing that all newborns receive classical music recordings.<br><br>
+    <b>Passage 2:</b> Subsequent rigorous replication attempts have found no evidence that passive exposure to classical music produces lasting cognitive benefits in infants or children. The original studies that gave rise to the Mozart Effect were conducted on college students, not infants, and showed only temporary improvements in spatial tasks immediately following music listening. Extrapolation to infant cognitive development was never empirically supported.</div>
+    <div class="q-stem">How does Passage 2 relate to the argument in Passage 1?</div>
+    <ul class="choices" id="l6p1">
+      <li data-reset-onclick="pickEx('l6p1',this,false)" onclick="pickEx('l6p1',this,false)">A. It extends Passage 1 by identifying the specific cognitive tasks most improved by classical music</li>
+      <li data-reset-onclick="pickEx('l6p1',this,false)" onclick="pickEx('l6p1',this,false)">B. It complicates Passage 1 by showing that the effect is stronger in infants than in adults</li>
+      <li data-reset-onclick="pickEx('l6p1',this,true)" onclick="pickEx('l6p1',this,true)">C. It contradicts the scientific basis for the claims in Passage 1 by showing that the Mozart Effect was never empirically supported for infants</li>
+      <li data-reset-onclick="pickEx('l6p1',this,false)" onclick="pickEx('l6p1',this,false)">D. It agrees that classical music benefits cognition while questioning the policy decisions it inspired</div>
+    </ul>
+    <div class="explanation" id="l6p1-exp"><b>C.</b> P2 says "no evidence" and the extrapolation to infants "was never empirically supported." This directly contradicts the claim that classical music benefits infant cognition. B (stronger in infants) — P2 says no evidence for infants at all. D (agrees cognition benefits) — P2 says no lasting cognitive benefits. A — P2 doesn't support classical music benefits.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 2</div>
+    <div class="passage"><b>Passage 1:</b> Antibiotic use in livestock farming contributes to the development of antibiotic-resistant bacteria that can transfer to humans through the food supply. Reducing agricultural antibiotic use should therefore be a public health priority.<br><br>
+    <b>Passage 2:</b> While resistance genes from agricultural settings do appear in human pathogens, the relative contribution of livestock antibiotic use to human antibiotic resistance — compared to antibiotic overuse in human medicine — remains hotly debated among researchers. Some models suggest agricultural use accounts for under 10% of human resistance burden, while others estimate it considerably higher. The causal pathway from farm to patient is more complex than advocates for agricultural restrictions often acknowledge.</div>
+    <div class="q-stem">How does Passage 2 relate to the argument in Passage 1?</div>
+    <ul class="choices" id="l6p2">
+      <li data-reset-onclick="pickEx('l6p2',this,false)" onclick="pickEx('l6p2',this,false)">A. It contradicts Passage 1 by showing that agricultural antibiotic use does not contribute to human resistance</li>
+      <li data-reset-onclick="pickEx('l6p2',this,true)" onclick="pickEx('l6p2',this,true)">B. It complicates Passage 1 by questioning the scale of agricultural antibiotic use's contribution to human resistance and the clarity of the causal pathway</li>
+      <li data-reset-onclick="pickEx('l6p2',this,false)" onclick="pickEx('l6p2',this,false)">C. It agrees with Passage 1 that agricultural antibiotic use is a public health emergency requiring immediate action</li>
+      <li data-reset-onclick="pickEx('l6p2',this,false)" onclick="pickEx('l6p2',this,false)">D. It extends Passage 1 by identifying the specific bacterial strains most affected by agricultural antibiotic use</div>
+    </ul>
+    <div class="explanation" id="l6p2-exp"><b>B.</b> P2 accepts that resistance genes transfer from farms to humans ("do appear in human pathogens") but questions the scale and causal clarity. Core claim (transfer happens) survives; the magnitude and pathway are disputed. A (doesn't contribute) — P2 accepts that it does; it questions how much. C (agrees) — P2 is pushing back on the certainty of P1's claim.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 3 — Hard</div>
+    <div class="passage"><b>Passage 1:</b> The introduction of wolves into Yellowstone National Park in 1995 produced a trophic cascade that transformed the ecosystem. By preying on elk, wolves reduced elk grazing pressure on riverbanks, allowing vegetation to recover. This stabilised riverbanks, which reduced erosion and changed the physical course of rivers — a process ecologists described as wolves literally changing the shape of rivers.<br><br>
+    <b>Passage 2:</b> The "landscape of fear" theory behind Yellowstone's trophic cascade has faced significant scrutiny. Follow-up studies using satellite imagery have found that vegetative recovery on riverbanks was far less extensive than originally reported, and that elk population reductions — caused by drought and hunting pressure as much as by wolves — are a more parsimonious explanation for observed changes. The romantic narrative of wolves reshaping rivers may overstate the evidence.</div>
+    <div class="q-stem">How does Passage 2 relate to the argument in Passage 1?</div>
+    <ul class="choices" id="l6p3">
+      <li data-reset-onclick="pickEx('l6p3',this,false)" onclick="pickEx('l6p3',this,false)">A. It extends Passage 1 by providing additional evidence for the trophic cascade theory</li>
+      <li data-reset-onclick="pickEx('l6p3',this,false)" onclick="pickEx('l6p3',this,false)">B. It agrees with Passage 1 that wolves had a positive effect on Yellowstone while adding nuance about the mechanism</li>
+      <li data-reset-onclick="pickEx('l6p3',this,true)" onclick="pickEx('l6p3',this,true)">C. It challenges the evidence and causal claims in Passage 1, suggesting the observed changes may have less dramatic causes</li>
+      <li data-reset-onclick="pickEx('l6p3',this,false)" onclick="pickEx('l6p3',this,false)">D. It contradicts Passage 1 by proving that wolves had no effect on the Yellowstone ecosystem</div>
+    </ul>
+    <div class="explanation" id="l6p3-exp"><b>C.</b> P2 says the narrative "may overstate the evidence" and offers alternative causes — this challenges P1 but doesn't definitively disprove it. D (proves no effect) — P2 is more cautious ("may overstate") — it suggests an alternative, not certainty. B (adds nuance about mechanism) — P2 is skeptical, not nuancing P1's mechanism. Note: C sits between complication and contradiction — the SAT often rewards the most accurate calibrated answer.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 4</div>
+    <div class="passage"><b>Passage 1:</b> Paid parental leave policies have been shown to improve infant health outcomes, reduce maternal depression, and increase breastfeeding rates. Countries with generous parental leave provisions consistently record better early childhood health metrics than those without.<br><br>
+    <b>Passage 2:</b> The benefits of parental leave are genuine, but they are not evenly distributed. In countries where leave entitlements are formally equal between parents but cultural norms heavily favour maternal caregiving, fathers rarely take their full entitlement, and the economic penalties associated with leave-taking fall disproportionately on women. Gender-neutral leave policies produce gender-equal outcomes only when accompanied by broader shifts in workplace culture and pay equity.</div>
+    <div class="q-stem">How does Passage 2 relate to Passage 1?</div>
+    <ul class="choices" id="l6p4">
+      <li data-reset-onclick="pickEx('l6p4',this,false)" onclick="pickEx('l6p4',this,false)">A. It contradicts Passage 1 by showing that parental leave has no health benefits</li>
+      <li data-reset-onclick="pickEx('l6p4',this,true)" onclick="pickEx('l6p4',this,true)">B. It complicates Passage 1 by showing that health benefits are genuine but implementation failures undermine the policy's equity goals</li>
+      <li data-reset-onclick="pickEx('l6p4',this,false)" onclick="pickEx('l6p4',this,false)">C. It extends Passage 1 by providing additional health data supporting parental leave</li>
+      <li data-reset-onclick="pickEx('l6p4',this,false)" onclick="pickEx('l6p4',this,false)">D. It agrees with Passage 1 and suggests that all countries should adopt the same parental leave policies</div>
+    </ul>
+    <div class="explanation" id="l6p4-exp"><b>B.</b> P2 opens "The benefits of parental leave are genuine" — accepts P1's health findings. Then: those benefits don't solve gender equity issues. P1's claim (health benefits) stands, but P2 adds a significant limitation. = complication. A (no health benefits) — P2 accepts the health benefits. C (extends with health data) — P2 is raising a problem, not adding support.</div>
+  </div>
+
+  <div class="practice-q">
+    <div class="pq-num">Practice 5 — Hard (complication vs contradiction)</div>
+    <div class="passage"><b>Passage 1:</b> Social media use has been linked to increased feelings of loneliness and social isolation among heavy users, with numerous cross-sectional studies finding negative correlations between time spent on platforms and self-reported wellbeing.<br><br>
+    <b>Passage 2:</b> The relationship between social media and wellbeing is more complex than the headline findings suggest. Longitudinal studies — which track individuals over time rather than comparing groups at one point — have produced far less consistent results, with some finding negative effects, others finding positive ones, and several finding effects that depend entirely on how platforms are used. Passive scrolling appears harmful; active communication appears neutral or beneficial. The effect of social media on wellbeing is not a single phenomenon but a family of phenomena requiring disaggregation by use type.</div>
+    <div class="q-stem">How does Passage 2 relate to Passage 1?</div>
+    <ul class="choices" id="l6p5">
+      <li data-reset-onclick="pickEx('l6p5',this,false)" onclick="pickEx('l6p5',this,false)">A. It contradicts Passage 1 by showing that social media improves wellbeing</li>
+      <li data-reset-onclick="pickEx('l6p5',this,false)" onclick="pickEx('l6p5',this,false)">B. It agrees with Passage 1 that social media is uniformly harmful</li>
+      <li data-reset-onclick="pickEx('l6p5',this,true)" onclick="pickEx('l6p5',this,true)">C. It complicates Passage 1 by showing that the relationship between social media and wellbeing is highly variable and depends on the type of use</li>
+      <li data-reset-onclick="pickEx('l6p5',this,false)" onclick="pickEx('l6p5',this,false)">D. It extends Passage 1 by providing additional cross-sectional data on the harms of social media</div>
+    </ul>
+    <div class="explanation" id="l6p5-exp"><b>C.</b> P2 says the relationship is "more complex" and disagrees with the uniform negative picture P1 presents — but doesn't say social media is good. It says the effect varies by use type. P1's claim (heavy use linked to isolation) may be true for passive scrolling, but not for active communication. = complication by disaggregation. A (contradicts — social media improves) — too strong. P2 says some uses are neutral or beneficial, not that the overall effect is positive. B (agrees, uniformly harmful) — P2 explicitly says it's not uniform.</div>
+  </div>
+</div>
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Cross-Text: Complicate &amp; Contradict — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The core test</div><div class="summary-item-body">After reading P2, is P1's central claim still standing? <b>Yes with conditions</b> → complication. <b>No</b> → contradiction.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Complication</div><div class="summary-item-body">"Yes, but..." P2 accepts the claim but adds exceptions, conditions, or limitations. P1's claim survives — just not universally.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Contradiction</div><div class="summary-item-body">P2 says the evidence doesn't support P1's claim, or finds the opposite result. P1's claim does not survive.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Calibration matters</div><div class="summary-item-body">"Challenges" ≠ "refutes." "Questions" ≠ "proves wrong." Match the strength of P2's pushback. Avoid superlatives in wrong answers.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap: concession</div><div class="summary-item-body">P2 starting with "While P1 is correct that X..." is a concession before a rebuttal. The position is what comes after "but" — read all the way through.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Signal words</div><div class="summary-item-body">Complication: "however, not all," "in some cases," "the effect varies," "this depends on." Contradiction: "no evidence that," "found the opposite," "this claim does not hold."
+    
+  
+
+</div>
+<div class="lesson-footer">
+  <a href="english_lesson_05.html" class="nav-arrow">← Lesson 5: Cross-Text — Agree/Extend</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 6 of 27</span>
+  <a href="english_lesson_07.html" class="nav-arrow">Next: Lesson 7: Cross-Text — Perspective & Evidence →</a>
+</div>
+<script>
+var answered = {};
+function pickEx(id, el, correct) {
+  if (answered[id]) return; answered[id] = true;
+  var list = document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li) { li.onclick = null; });
+  el.classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) list.querySelectorAll('li').forEach(function(li) {
+    if (!li.classList.contains('wrong')) li.classList.add('correct');
+  });
+  var exp = document.getElementById(id + '-exp');
+  if (exp) exp.classList.add('show');
+}
+</script>
+</body>
+</html>

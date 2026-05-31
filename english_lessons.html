@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Lessons — Rishi SAT Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+}
+.hub-main{max-width:960px;margin:0 auto;padding:2rem 2rem 5rem;}
+.domain-section{margin-bottom:2.5rem;}
+.domain-hdr{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:8px;border-bottom:2px solid var(--rule);}
+.domain-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.domain-name{font-family:"Instrument Serif",serif;font-size:1.2rem;font-weight:400;}
+.domain-count{margin-left:auto;font-size:12px;color:var(--ink-muted);background:var(--cream);padding:3px 10px;border-radius:20px;font-weight:500;}
+.lessons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+.lesson-card{border-radius:10px;padding:1rem 1.1rem;border:0.5px solid var(--rule);background:white;text-decoration:none;transition:all 0.15s;position:relative;}
+.lesson-card.ready{cursor:pointer;}
+.lesson-card.ready:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+.lesson-card.ready.blue{border-left:3px solid var(--blue);}
+.lesson-card.ready.green{border-left:3px solid var(--green);}
+.lesson-card.ready.purple{border-left:3px solid var(--purple);}
+.lesson-card.ready.amber{border-left:3px solid var(--amber);}
+.lesson-card.coming{opacity:0.5;background:var(--cream);border-left:3px solid var(--rule);}
+.lc-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:5px;letter-spacing:0.5px;}
+.lc-title{font-size:13.5px;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:8px;}
+.lc-status{font-size:11px;font-weight:500;}
+.ready-badge{color:var(--blue);}
+.coming-badge{color:var(--ink-muted);}
+.hub-alert{background:var(--blue-light);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.25rem;margin-bottom:2rem;font-size:13px;color:var(--blue);line-height:1.65;}
+.hub-alert b{font-weight:500;}
+.progress-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:2rem;}
+.ps-card{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem;text-align:center;}
+.ps-num{font-size:2rem;font-weight:500;margin-bottom:4px;}
+.ps-label{font-size:11px;color:var(--ink-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.5px;}
+@media(max-width:640px){.progress-summary{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="index.html">← Back to Study Portal</a>
+  <span>English — 27 Concept Lessons</span>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept">
+    <span class="hdr-num">SAT English</span>
+    <span class="hdr-domain">All concepts · Deep dive lessons</span>
+  </div>
+  <div class="hdr-title">27 English<br><em>Concept Lessons</em></div>
+  <div class="hdr-tagline">Every concept tested on the SAT Reading & Writing section — one complete lesson per concept. Each lesson explains what it is, how to recognise it, the exact strategy, the common traps, worked examples, and 5 practice questions.</div>
+  <div class="hdr-chips">
+    <span class="chip">4 domains</span>
+    <span class="chip">27 concepts</span>
+    <span class="chip hi">7 lessons available now</span>
+    <span class="chip">More added daily</span>
+  </div>
+</div>
+
+<div class="hub-main">
+
+<div class="hub-alert">
+  <b>How to use these lessons:</b> Work through them in order — each concept builds on the previous one. For each lesson: read once all the way through, then do the practice questions without looking back at the lesson. If you get a practice question wrong, re-read the relevant section, then retry. After completing all lessons in a domain, do one of the English test files to check retention.
+</div>
+
+<div class="progress-summary">
+  <div class="ps-card">
+    <div class="ps-num" style="color:var(--blue);">7</div>
+    <div class="ps-label">Available now</div>
+  </div>
+  <div class="ps-card">
+    <div class="ps-num" style="color:var(--amber);">20</div>
+    <div class="ps-label">Coming soon</div>
+  </div>
+  <div class="ps-card">
+    <div class="ps-num" style="color:var(--green);">27</div>
+    <div class="ps-label">Total concepts</div>
+  </div>
+  <div class="ps-card">
+    <div class="ps-num" style="color:var(--purple);">4</div>
+    <div class="ps-label">Domains</div>
+  </div>
+</div>
+
+
+<div class="domain-section">
+  <div class="domain-hdr">
+    <div class="domain-dot" style="background:var(--blue)"></div>
+    <div class="domain-name">Craft & Structure</div>
+    <div class="domain-count">2/7 available</div>
+  </div>
+  <div class="lessons-grid">
+
+    <a href="english_lesson_01.html" class="lesson-card ready blue">
+      <div class="lc-num">01</div>
+      <div class="lc-title">Words in Context</div>
+      <div class="lc-status ready-badge">Ready →</div>
+    </a>
+    <a href="english_lesson_02.html" class="lesson-card ready blue">
+      <div class="lc-num">02</div>
+      <div class="lc-title">Text Structure — Single Passage</div>
+      <div class="lc-status ready-badge">Ready →</div>
+    </a>
+    <a href="english_lesson_03.html" class="lesson-card ready blue">
+      <div class="lc-num">03</div>
+      <div class="lc-title">Text Structure — Overall Passage</div>
+      <div class="lc-status ready-badge">Ready →</div>
+    </a>
+    <a href="english_lesson_04.html" class="lesson-card ready blue">
+      <div class="lc-num">04</div>
+      <div class="lc-title">Author's Purpose</div>
+      <div class="lc-status ready-badge">Ready →</div>
+    </a>
+    <a href="english_lesson_05.html" class="lesson-card ready blue">
+      <div class="lc-num">05</div>
+      <div class="lc-title">Cross-Text — Agree / Extend</div>
+      <div class="lc-status ready-badge">Ready →</div>
+    </a>
+    <a href="english_lesson_06.html" class="lesson-card ready blue">
+      <div class="lc-num">06</div>
+      <div class="lc-title">Cross-Text — Complicate / Contradict</div>
+      <div class="lc-status ready-badge">Ready →</div>
+    </a>
+    <a href="english_lesson_07.html" class="lesson-card ready blue">
+      <div class="lc-num">07</div>
+      <div class="lc-title">Cross-Text — Perspective & Evidence</div>
+      <div class="lc-status ready-badge">Ready →</div>
+    </a>
+  </div>
+</div>
+
+<div class="domain-section">
+  <div class="domain-hdr">
+    <div class="domain-dot" style="background:var(--green)"></div>
+    <div class="domain-name">Expression of Ideas</div>
+    <div class="domain-count">0/7 available</div>
+  </div>
+  <div class="lessons-grid">
+
+    <div class="lesson-card coming green">
+      <div class="lc-num">08</div>
+      <div class="lc-title">Transitions — Contrast</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming green">
+      <div class="lc-num">09</div>
+      <div class="lc-title">Transitions — Cause & Result</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming green">
+      <div class="lc-num">10</div>
+      <div class="lc-title">Transitions — Addition</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming green">
+      <div class="lc-num">11</div>
+      <div class="lc-title">Transitions — Concession</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming green">
+      <div class="lc-num">12</div>
+      <div class="lc-title">Transitions — Example</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming green">
+      <div class="lc-num">13</div>
+      <div class="lc-title">Rhetorical Synthesis</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming green">
+      <div class="lc-num">14</div>
+      <div class="lc-title">Add / Delete / Revise / Placement</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+  </div>
+</div>
+
+<div class="domain-section">
+  <div class="domain-hdr">
+    <div class="domain-dot" style="background:var(--purple)"></div>
+    <div class="domain-name">SEC — Punctuation</div>
+    <div class="domain-count">0/6 available</div>
+  </div>
+  <div class="lessons-grid">
+
+    <div class="lesson-card coming purple">
+      <div class="lc-num">15</div>
+      <div class="lc-title">Sentence Boundaries</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming purple">
+      <div class="lc-num">16</div>
+      <div class="lc-title">Commas</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming purple">
+      <div class="lc-num">17</div>
+      <div class="lc-title">Colons</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming purple">
+      <div class="lc-num">18</div>
+      <div class="lc-title">Semicolons</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming purple">
+      <div class="lc-num">19</div>
+      <div class="lc-title">Dashes</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming purple">
+      <div class="lc-num">20</div>
+      <div class="lc-title">Apostrophes</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+  </div>
+</div>
+
+<div class="domain-section">
+  <div class="domain-hdr">
+    <div class="domain-dot" style="background:var(--amber)"></div>
+    <div class="domain-name">SEC — Grammar</div>
+    <div class="domain-count">0/7 available</div>
+  </div>
+  <div class="lessons-grid">
+
+    <div class="lesson-card coming amber">
+      <div class="lc-num">21</div>
+      <div class="lc-title">Subject-Verb Agreement</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming amber">
+      <div class="lc-num">22</div>
+      <div class="lc-title">Pronoun Agreement & Reference</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming amber">
+      <div class="lc-num">23</div>
+      <div class="lc-title">Verb Tense & Consistency</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming amber">
+      <div class="lc-num">24</div>
+      <div class="lc-title">Dangling & Misplaced Modifiers</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming amber">
+      <div class="lc-num">25</div>
+      <div class="lc-title">Parallelism</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming amber">
+      <div class="lc-num">26</div>
+      <div class="lc-title">Restrictive vs Non-Restrictive Clauses</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+    <div class="lesson-card coming amber">
+      <div class="lc-num">27</div>
+      <div class="lc-title">Concise & Redundant Language</div>
+      <div class="lc-status coming-badge">Coming soon</div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+</body>
+</html>
