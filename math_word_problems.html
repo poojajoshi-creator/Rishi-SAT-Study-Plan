@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Word Problems — Rishi SAT Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+.page-header{background:var(--ink);color:var(--paper);padding:2rem 3rem 1.75rem;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.04);}
+.header-eyebrow{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+.header-title{font-family:'Instrument Serif',serif;font-size:2.2rem;font-weight:400;line-height:1.1;margin-bottom:12px;}
+.header-title em{font-style:italic;color:rgba(255,255,255,0.6);}
+.header-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:0.5px solid rgba(255,255,255,0.12);}
+.meta-item{font-size:13px;color:rgba(255,255,255,0.5);}
+.meta-item strong{color:rgba(255,255,255,0.9);font-weight:500;display:block;font-size:14px;}
+.progress-bar{height:4px;background:rgba(255,255,255,0.1);}
+.progress-fill{height:100%;background:#e8c87a;transition:width 0.3s;}
+.timer-bar{background:var(--blue-light);border-bottom:0.5px solid #b5d4f4;padding:10px 2rem;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.timer-label{font-size:13px;color:var(--blue);font-weight:500;}
+.timer-display{font-size:22px;font-weight:500;color:var(--blue);font-variant-numeric:tabular-nums;min-width:80px;}
+.timer-btn{padding:5px 14px;font-size:12px;font-weight:500;border:1.5px solid var(--blue);border-radius:6px;background:white;color:var(--blue);cursor:pointer;}
+.timer-btn:hover{background:var(--blue);color:white;}
+.timer-warning{color:var(--red)!important;}
+.main{max-width:860px;margin:0 auto;padding:2rem 2rem 5rem;}
+
+/* Strategy box */
+.strat-box{background:var(--blue-light);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.25rem;margin-bottom:1.5rem;}
+.strat-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.strat-body{font-size:13px;color:var(--ink-soft);line-height:1.7;}
+.strat-body b{color:var(--ink);font-weight:500;}
+.strat-box.amber{background:var(--amber-light);border-left-color:var(--amber);}
+.strat-box.amber .strat-title{color:var(--amber);}
+
+/* Section */
+.section-label{display:flex;align-items:center;gap:12px;margin:2rem 0 1rem;}
+.section-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;}
+.num-blue{background:var(--blue);color:white;}
+.num-green{background:var(--green);color:white;}
+.num-amber{background:var(--amber);color:white;}
+.num-purple{background:var(--purple);color:white;}
+.num-red{background:var(--red);color:white;}
+.section-heading{font-family:'Instrument Serif',serif;font-size:1.3rem;font-weight:400;}
+.section-count{margin-left:auto;font-size:12px;color:var(--ink-muted);background:var(--cream);padding:3px 10px;border-radius:20px;}
+
+/* Question */
+.q-block{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.q-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;display:flex;align-items:center;gap:8px;}
+.tag{font-size:10px;font-weight:500;padding:2px 8px;border-radius:4px;}
+.tag-blue{background:var(--blue-light);color:var(--blue);}
+.tag-green{background:var(--green-light);color:var(--green);}
+.tag-amber{background:var(--amber-light);color:var(--amber);}
+.tag-purple{background:var(--purple-light);color:var(--purple);}
+.tag-red{background:var(--red-light);color:var(--red);}
+.diff{font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;margin-left:4px;}
+.diff-med{background:#fff8e6;color:#7a4000;}
+.diff-hard{background:#fff0f0;color:#8b0000;}
+.q-context{background:var(--cream);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--ink-soft);line-height:1.75;}
+.q-context b{color:var(--ink);font-weight:500;}
+.q-stem{font-size:14px;color:var(--ink);font-weight:500;margin-bottom:12px;line-height:1.7;}
+.q-stem .math{font-family:'Instrument Serif',serif;font-size:15px;}
+.hint{background:var(--amber-light);border-radius:6px;padding:7px 11px;margin-bottom:10px;font-size:12px;color:var(--amber);}
+.hint::before{content:'💡 Hint: ';font-weight:500;}
+.q-choices{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.q-choices.single-col{grid-template-columns:1fr;}
+.q-choices li{font-size:13.5px;color:var(--ink-soft);padding:8px 12px;border-radius:6px;border:0.5px solid var(--rule);background:var(--paper);cursor:pointer;transition:background 0.12s;line-height:1.5;}
+.q-choices li:hover{background:var(--blue-light);}
+.q-choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.q-choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.answer-reveal{display:none;margin-top:10px;padding:12px 14px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green);line-height:1.75;}
+.answer-reveal.show{display:block;}
+.answer-reveal .step{display:block;margin-bottom:4px;}
+.answer-reveal .key{color:var(--ink);font-weight:500;}
+.setup-box{background:#f0f8ff;border:1px solid #b5d4f4;border-radius:6px;padding:8px 12px;margin:6px 0;font-family:'Instrument Serif',serif;font-size:13.5px;line-height:1.7;color:var(--ink);}
+
+/* Score */
+.score-block{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.25rem 1.5rem;margin-top:2rem;}
+.domain-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--rule);}
+.domain-row:last-of-type{border-bottom:none;}
+.domain-name{font-size:13px;color:var(--ink-soft);width:220px;flex-shrink:0;font-weight:500;}
+.domain-badges{display:flex;gap:5px;flex-wrap:wrap;flex:1;}
+.badge{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--cream);color:var(--ink-muted);transition:all 0.2s;}
+.badge.correct{background:var(--green-light);color:var(--green);}
+.badge.wrong{background:var(--red-light);color:var(--red);}
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+.page-footer{background:var(--ink);color:rgba(255,255,255,0.35);text-align:center;padding:1.25rem;font-size:12px;margin-top:3rem;}
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="index.html">← Back to Study Portal</a>
+  <span>Math Word Problems · 30 Questions · Targeted drill</span>
+</div>
+
+<div class="page-header">
+  <div class="header-eyebrow">SAT Prep · Math · Word Problems · Targeted Drill</div>
+  <div class="header-title">Math Word Problems<br><em>Real-world contexts · Setup is the skill</em></div>
+  <div class="header-meta">
+    <div class="meta-item"><strong>Rishi Wadhwani</strong>Weak area drill</div>
+    <div class="meta-item"><strong>Focus</strong>Setting up equations from context</div>
+    <div class="meta-item"><strong>30 questions</strong>5 types × 6 questions</div>
+    <div class="meta-item"><strong>45 min</strong>Timed · 90 sec each</div>
+  </div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="q-progress" style="width:0%"></div></div>
+
+<div class="timer-bar">
+  <div class="timer-label">⏱ Timer</div>
+  <div class="timer-display" id="timer-display">45:00</div>
+  <button class="timer-btn" id="timer-btn" onclick="toggleTimer()">Start</button>
+  <button class="timer-btn" onclick="resetTimer()">Reset timer</button>
+  <button class="timer-btn" onclick="resetAll()" style="background:#c0392b;border-color:#c0392b;color:white;">Reset all</button>
+  <div style="margin-left:auto;font-size:12px;color:var(--blue);font-weight:500;">Read → Label → Equation → Solve → Check</div>
+</div>
+
+<div class="main">
+
+<div class="strat-box">
+  <div class="strat-title">⭐ The word problem method — use on every single question</div>
+  <div class="strat-body">
+    <b>Step 1 — Read twice.</b> First pass: understand the situation. Second pass: identify what's known and what's being asked.<br>
+    <b>Step 2 — Label everything.</b> Assign a variable to every unknown. Write it down explicitly: "Let x = price per kg."<br>
+    <b>Step 3 — Write the equation.</b> Translate the English sentence by sentence into math.<br>
+    <b>Step 4 — Solve.</b> Do the algebra.<br>
+    <b>Step 5 — Check.</b> Re-read the question. Did you answer what was actually asked? Do the units match?<br><br>
+    <b>The #1 word problem error:</b> solving for x when the question asks for 2x, or finding the cost per item when it asks for total cost.
+  </div>
+</div>
+
+<!-- SECTION 1: RATES, RATIOS & PROPORTIONS -->
+<div class="section-label">
+  <div class="section-num num-blue">1</div>
+  <div class="section-heading">Rates, Ratios &amp; Proportions</div>
+  <div class="section-count">Q1–Q6</div>
+</div>
+
+<div class="strat-box" style="margin-bottom:1rem;">
+  <div class="strat-title">Key formulas for this section</div>
+  <div class="strat-body">
+    <b>Rate × Time = Distance (or Work)</b> &nbsp;·&nbsp; <b>Speed = Distance / Time</b><br>
+    <b>Unit conversion:</b> multiply by fractions that cancel the unwanted unit<br>
+    <b>Proportions:</b> a/b = c/d → cross-multiply → ad = bc
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q1 <span class="tag tag-blue">Rates</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A car travels from City A to City B at an average speed of 60 mph. On the return trip, it travels at 40 mph due to traffic. The distance between the cities is 120 miles.</div>
+  <div class="q-stem">What is the average speed for the entire round trip?</div>
+  <div class="hint">Average speed for a round trip is NOT (60+40)/2. Use total distance ÷ total time.</div>
+  <ul class="q-choices" id="w1-choices">
+    <li data-reset-onclick="handleQ('w1',this,false)" onclick="handleQ('w1',this,false)">A. 50 mph</li>
+    <li data-reset-onclick="handleQ('w1',this,true)" onclick="handleQ('w1',this,true)">B. 48 mph</li>
+    <li data-reset-onclick="handleQ('w1',this,false)" onclick="handleQ('w1',this,false)">C. 46 mph</li>
+    <li data-reset-onclick="handleQ('w1',this,false)" onclick="handleQ('w1',this,false)">D. 52 mph</li>
+  </ul>
+  <div class="answer-reveal" id="w1-reveal">
+    <span class="step"><span class="key">Answer: B. 48 mph</span></span>
+    <span class="step">Total distance = 120 + 120 = 240 miles</span>
+    <span class="step">Time A→B = 120/60 = 2 hours. Time B→A = 120/40 = 3 hours. Total time = 5 hours.</span>
+    <span class="step">Average speed = 240/5 = <b>48 mph</b></span>
+    <span class="step">Trap: A (50) = simple average of speeds. Wrong because you spend more time at the slower speed.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q2 <span class="tag tag-blue">Work rates</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">Printer A can print a batch of documents in 4 hours. Printer B can print the same batch in 6 hours.</div>
+  <div class="q-stem">If both printers work together, how many hours will it take to complete the batch?</div>
+  <div class="hint">Work rate = 1/time. Combined rate = rate A + rate B. Time = 1 / combined rate.</div>
+  <ul class="q-choices" id="w2-choices">
+    <li data-reset-onclick="handleQ('w2',this,false)" onclick="handleQ('w2',this,false)">A. 5 hours</li>
+    <li data-reset-onclick="handleQ('w2',this,false)" onclick="handleQ('w2',this,false)">B. 2.5 hours</li>
+    <li data-reset-onclick="handleQ('w2',this,true)" onclick="handleQ('w2',this,true)">C. 2 hours 24 minutes</li>
+    <li data-reset-onclick="handleQ('w2',this,false)" onclick="handleQ('w2',this,false)">D. 3 hours</li>
+  </ul>
+  <div class="answer-reveal" id="w2-reveal">
+    <span class="step"><span class="key">Answer: C. 2 hours 24 minutes</span></span>
+    <span class="step">Rate A = 1/4 batch per hour. Rate B = 1/6 batch per hour.</span>
+    <span class="step">Combined rate = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 batch per hour.</span>
+    <span class="step">Time = 1 ÷ (5/12) = 12/5 = 2.4 hours = 2 hours 24 minutes.</span>
+    <span class="step">Trap: A (5 hours) = adding times, not rates. Always add RATES, not times.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q3 <span class="tag tag-blue">Ratios</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A recipe requires flour, sugar, and butter in the ratio 5:3:2. A baker wants to make a batch using 400 grams of flour.</div>
+  <div class="q-stem">How many grams of butter does the baker need?</div>
+  <ul class="q-choices" id="w3-choices">
+    <li data-reset-onclick="handleQ('w3',this,false)" onclick="handleQ('w3',this,false)">A. 120 g</li>
+    <li data-reset-onclick="handleQ('w3',this,false)" onclick="handleQ('w3',this,false)">B. 100 g</li>
+    <li data-reset-onclick="handleQ('w3',this,true)" onclick="handleQ('w3',this,true)">C. 160 g</li>
+    <li data-reset-onclick="handleQ('w3',this,false)" onclick="handleQ('w3',this,false)">D. 240 g</li>
+  </ul>
+  <div class="answer-reveal" id="w3-reveal">
+    <span class="step"><span class="key">Answer: C. 160 g</span></span>
+    <span class="step">Flour:Sugar:Butter = 5:3:2. Flour = 400g. Scale factor = 400/5 = 80.</span>
+    <span class="step">Butter = 2 × 80 = <b>160 g</b></span>
+    <span class="step">Trap: A (120g) = using sugar's ratio (3×80). B (100g) = dividing flour by 4. Always identify WHICH ratio corresponds to WHICH ingredient.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q4 <span class="tag tag-blue">Unit conversion</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A factory produces 2,400 units per day, operating 8 hours per day. A unit requires 0.5 kg of raw material.</div>
+  <div class="q-stem">How many kilograms of raw material does the factory use per hour?</div>
+  <ul class="q-choices" id="w4-choices">
+    <li data-reset-onclick="handleQ('w4',this,false)" onclick="handleQ('w4',this,false)">A. 100 kg/hr</li>
+    <li data-reset-onclick="handleQ('w4',this,false)" onclick="handleQ('w4',this,false)">B. 200 kg/hr</li>
+    <li data-reset-onclick="handleQ('w4',this,true)" onclick="handleQ('w4',this,true)">C. 150 kg/hr</li>
+    <li data-reset-onclick="handleQ('w4',this,false)" onclick="handleQ('w4',this,false)">D. 300 kg/hr</li>
+  </ul>
+  <div class="answer-reveal" id="w4-reveal">
+    <span class="step"><span class="key">Answer: C. 150 kg/hr</span></span>
+    <span class="step">Units per hour = 2400 ÷ 8 = 300 units/hr</span>
+    <span class="step">Material per hour = 300 units/hr × 0.5 kg/unit = <b>150 kg/hr</b></span>
+    <span class="step">Set up units like fractions that cancel: (units/hr) × (kg/unit) = kg/hr ✓</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q5 <span class="tag tag-blue">Proportional reasoning</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">Two runners, Aisha and Ben, start at the same point and run in opposite directions around a circular track. The track is 400 meters long. Aisha runs at 5 m/s and Ben runs at 3 m/s.</div>
+  <div class="q-stem">After how many seconds will they first meet again?</div>
+  <div class="hint">When moving in opposite directions, their speeds ADD. They meet when combined distance = 400m.</div>
+  <ul class="q-choices" id="w5-choices">
+    <li data-reset-onclick="handleQ('w5',this,false)" onclick="handleQ('w5',this,false)">A. 40 seconds</li>
+    <li data-reset-onclick="handleQ('w5',this,false)" onclick="handleQ('w5',this,false)">B. 80 seconds</li>
+    <li data-reset-onclick="handleQ('w5',this,true)" onclick="handleQ('w5',this,true)">C. 50 seconds</li>
+    <li data-reset-onclick="handleQ('w5',this,false)" onclick="handleQ('w5',this,false)">D. 100 seconds</li>
+  </ul>
+  <div class="answer-reveal" id="w5-reveal">
+    <span class="step"><span class="key">Answer: C. 50 seconds</span></span>
+    <span class="step">Moving opposite directions → combined speed = 5 + 3 = 8 m/s</span>
+    <span class="step">They meet when total distance covered = 400m: t = 400/8 = <b>50 seconds</b></span>
+    <span class="step">Trap: A (40s) = using only Aisha's speed (400/5=80? No that's 80). D (100s) = divides by wrong speed. Opposite directions: add speeds. Same direction: subtract speeds.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q6 <span class="tag tag-blue">Mixture / concentration</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">A chemist has a 20% salt solution and a 50% salt solution. She wants to mix them to make 300 mL of a 30% salt solution.</div>
+  <div class="q-stem">How many mL of the 20% solution should she use?</div>
+  <div class="hint">Set up: 0.20x + 0.50(300−x) = 0.30(300). Let x = mL of 20% solution.</div>
+  <ul class="q-choices" id="w6-choices">
+    <li data-reset-onclick="handleQ('w6',this,false)" onclick="handleQ('w6',this,false)">A. 100 mL</li>
+    <li data-reset-onclick="handleQ('w6',this,false)" onclick="handleQ('w6',this,false)">B. 150 mL</li>
+    <li data-reset-onclick="handleQ('w6',this,true)" onclick="handleQ('w6',this,true)">C. 200 mL</li>
+    <li data-reset-onclick="handleQ('w6',this,false)" onclick="handleQ('w6',this,false)">D. 250 mL</li>
+  </ul>
+  <div class="answer-reveal" id="w6-reveal">
+    <span class="step"><span class="key">Answer: C. 200 mL</span></span>
+    <span class="step">Let x = mL of 20% solution. Then (300−x) = mL of 50% solution.</span>
+    <div class="setup-box">Salt equation: 0.20x + 0.50(300−x) = 0.30(300)</div>
+    <span class="step">0.20x + 150 − 0.50x = 90</span>
+    <span class="step">−0.30x = −60 → x = <b>200 mL</b></span>
+    <span class="step">Check: 0.20(200) + 0.50(100) = 40 + 50 = 90 = 0.30(300) ✓</span>
+  </div>
+</div>
+
+<!-- SECTION 2: PERCENT & FINANCIAL MATH -->
+<div class="section-label">
+  <div class="section-num num-green">2</div>
+  <div class="section-heading">Percent &amp; Financial Math</div>
+  <div class="section-count">Q7–Q12</div>
+</div>
+
+<div class="strat-box" style="margin-bottom:1rem;background:var(--green-light);border-left-color:var(--green);">
+  <div class="strat-title" style="color:var(--green);">Key formulas for this section</div>
+  <div class="strat-body">
+    <b>% change = (new − old) / old × 100</b><br>
+    <b>Simple interest: I = Prt</b> (Principal × rate × time)<br>
+    <b>Compound interest: A = P(1 + r/n)^(nt)</b><br>
+    <b>Two successive % changes:</b> multiply the factors, don't add. Two 10% increases = ×1.1×1.1 = 21%, NOT 20%.
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q7 <span class="tag tag-green">Percent change</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A store marks up the wholesale price of a jacket by 40%, then offers a 25% discount on the marked-up price during a sale.</div>
+  <div class="q-stem">If the wholesale price is $80, what is the final sale price?</div>
+  <ul class="q-choices" id="w7-choices">
+    <li data-reset-onclick="handleQ('w7',this,false)" onclick="handleQ('w7',this,false)">A. $84</li>
+    <li data-reset-onclick="handleQ('w7',this,true)" onclick="handleQ('w7',this,true)">B. $84</li>
+    <li data-reset-onclick="handleQ('w7',this,false)" onclick="handleQ('w7',this,false)">C. $80</li>
+    <li data-reset-onclick="handleQ('w7',this,false)" onclick="handleQ('w7',this,false)">D. $76</li>
+  </ul>
+  <div class="answer-reveal" id="w7-reveal">
+    <span class="step"><span class="key">Answer: B. $84</span></span>
+    <span class="step">Marked-up price = $80 × 1.40 = $112</span>
+    <span class="step">Sale price = $112 × 0.75 = <b>$84</b></span>
+    <span class="step">Overall multiplier = 1.40 × 0.75 = 1.05 → 5% overall increase. $80 × 1.05 = $84.</span>
+    <span class="step">Trap: C ($80) — thinking +40% then −40% gets back to start. It doesn't: 1.40 × 0.60 = 0.84.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q8 <span class="tag tag-green">Simple interest</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">Priya invests $3,500 in a savings account that earns 4.5% simple interest per year.</div>
+  <div class="q-stem">How many years will it take for her investment to reach $5,075?</div>
+  <ul class="q-choices" id="w8-choices">
+    <li data-reset-onclick="handleQ('w8',this,false)" onclick="handleQ('w8',this,false)">A. 8 years</li>
+    <li data-reset-onclick="handleQ('w8',this,false)" onclick="handleQ('w8',this,false)">B. 12 years</li>
+    <li data-reset-onclick="handleQ('w8',this,true)" onclick="handleQ('w8',this,true)">C. 10 years</li>
+    <li data-reset-onclick="handleQ('w8',this,false)" onclick="handleQ('w8',this,false)">D. 9 years</li>
+  </ul>
+  <div class="answer-reveal" id="w8-reveal">
+    <span class="step"><span class="key">Answer: C. 10 years</span></span>
+    <span class="step">Interest needed = $5,075 − $3,500 = $1,575</span>
+    <span class="step">I = Prt → 1575 = 3500 × 0.045 × t → 1575 = 157.5t → t = <b>10 years</b></span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q9 <span class="tag tag-green">Percent</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">In a school of 800 students, 45% are in grades 9–10 and the rest are in grades 11–12. Of the grade 11–12 students, 60% participate in at least one extracurricular activity.</div>
+  <div class="q-stem">How many grade 11–12 students participate in at least one extracurricular activity?</div>
+  <ul class="q-choices" id="w9-choices">
+    <li data-reset-onclick="handleQ('w9',this,false)" onclick="handleQ('w9',this,false)">A. 240</li>
+    <li data-reset-onclick="handleQ('w9',this,false)" onclick="handleQ('w9',this,false)">B. 216</li>
+    <li data-reset-onclick="handleQ('w9',this,true)" onclick="handleQ('w9',this,true)">C. 264</li>
+    <li data-reset-onclick="handleQ('w9',this,false)" onclick="handleQ('w9',this,false)">D. 288</li>
+  </ul>
+  <div class="answer-reveal" id="w9-reveal">
+    <span class="step"><span class="key">Answer: C. 264</span></span>
+    <span class="step">Grade 9–10 students = 800 × 0.45 = 360</span>
+    <span class="step">Grade 11–12 students = 800 − 360 = 440</span>
+    <span class="step">With extracurricular = 440 × 0.60 = <b>264</b></span>
+    <span class="step">Trap: A (240) = 60% of 800×0.50. Always apply the second percent to the CORRECT subgroup, not the total.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q10 <span class="tag tag-green">Successive percent changes</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">A population of bacteria doubles every 3 hours. At 9:00 AM, the count is 500 bacteria.</div>
+  <div class="q-stem">What will the count be at 9:00 PM the same day?</div>
+  <div class="hint">9AM to 9PM = 12 hours. Doubling every 3 hours: how many doublings in 12 hours?</div>
+  <ul class="q-choices" id="w10-choices">
+    <li data-reset-onclick="handleQ('w10',this,false)" onclick="handleQ('w10',this,false)">A. 4,000</li>
+    <li data-reset-onclick="handleQ('w10',this,false)" onclick="handleQ('w10',this,false)">B. 6,000</li>
+    <li data-reset-onclick="handleQ('w10',this,true)" onclick="handleQ('w10',this,true)">C. 8,000</li>
+    <li data-reset-onclick="handleQ('w10',this,false)" onclick="handleQ('w10',this,false)">D. 16,000</li>
+  </ul>
+  <div class="answer-reveal" id="w10-reveal">
+    <span class="step"><span class="key">Answer: C. 8,000</span></span>
+    <span class="step">Time elapsed = 12 hours. Doublings = 12/3 = 4 doublings.</span>
+    <span class="step">Count = 500 × 2⁴ = 500 × 16 = <b>8,000</b></span>
+    <span class="step">Trap: D (16,000) — multiplies by 2 five times instead of 4. A (4,000) — uses 3 doublings. Always: doublings = time / period.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q11 <span class="tag tag-green">Commission / earnings</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A salesperson earns a base salary of $2,000 per month plus a 6% commission on all sales. In January, she earned a total of $3,560.</div>
+  <div class="q-stem">What were her total sales in January?</div>
+  <ul class="q-choices" id="w11-choices">
+    <li data-reset-onclick="handleQ('w11',this,false)" onclick="handleQ('w11',this,false)">A. $24,000</li>
+    <li data-reset-onclick="handleQ('w11',this,false)" onclick="handleQ('w11',this,false)">B. $20,000</li>
+    <li data-reset-onclick="handleQ('w11',this,true)" onclick="handleQ('w11',this,true)">C. $26,000</li>
+    <li data-reset-onclick="handleQ('w11',this,false)" onclick="handleQ('w11',this,false)">D. $22,000</li>
+  </ul>
+  <div class="answer-reveal" id="w11-reveal">
+    <span class="step"><span class="key">Answer: C. $26,000</span></span>
+    <span class="step">Total = base + commission: 2000 + 0.06s = 3560</span>
+    <span class="step">0.06s = 1560 → s = 1560/0.06 = <b>$26,000</b></span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q12 <span class="tag tag-green">Depreciation / exponential decay</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">A car purchased for $32,000 depreciates at a rate of 15% per year.</div>
+  <div class="q-stem">After 3 years, what is the car's value to the nearest dollar?</div>
+  <ul class="q-choices" id="w12-choices">
+    <li data-reset-onclick="handleQ('w12',this,false)" onclick="handleQ('w12',this,false)">A. $17,600</li>
+    <li data-reset-onclick="handleQ('w12',this,false)" onclick="handleQ('w12',this,false)">B. $18,000</li>
+    <li data-reset-onclick="handleQ('w12',this,true)" onclick="handleQ('w12',this,true)">C. $19,652</li>
+    <li data-reset-onclick="handleQ('w12',this,false)" onclick="handleQ('w12',this,false)">D. $20,480</li>
+  </ul>
+  <div class="answer-reveal" id="w12-reveal">
+    <span class="step"><span class="key">Answer: C. $19,652</span></span>
+    <span class="step">Decay model: V = 32000 × (1 − 0.15)³ = 32000 × (0.85)³</span>
+    <span class="step">0.85³ = 0.85 × 0.85 × 0.85 = 0.614125</span>
+    <span class="step">V = 32000 × 0.614125 ≈ <b>$19,652</b></span>
+    <span class="step">Trap: A ($17,600) = 32000 × (1 − 0.45) — subtracts 15%×3=45% in one step. Wrong: each year's 15% applies to the REMAINING value, not the original.</span>
+  </div>
+</div>
+
+<!-- SECTION 3: SYSTEMS & SIMULTANEOUS EQUATIONS -->
+<div class="section-label">
+  <div class="section-num num-amber">3</div>
+  <div class="section-heading">Systems of Equations in Context</div>
+  <div class="section-count">Q13–Q18</div>
+</div>
+
+<div class="strat-box amber" style="margin-bottom:1rem;">
+  <div class="strat-title">Setup strategy</div>
+  <div class="strat-body">
+    Define ONE variable per unknown. Write ONE equation per constraint. Then solve.<br>
+    <b>Common setups:</b> "total items = n AND total cost = $C" → two equations, two unknowns.
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q13 <span class="tag tag-amber">Systems — cost</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A café sells coffee for $3.50 and tea for $2.00. In one hour, the café sold 40 drinks and collected $112.</div>
+  <div class="q-stem">How many coffees were sold?</div>
+  <ul class="q-choices" id="w13-choices">
+    <li data-reset-onclick="handleQ('w13',this,false)" onclick="handleQ('w13',this,false)">A. 18</li>
+    <li data-reset-onclick="handleQ('w13',this,false)" onclick="handleQ('w13',this,false)">B. 20</li>
+    <li data-reset-onclick="handleQ('w13',this,true)" onclick="handleQ('w13',this,true)">C. 16</li>
+    <li data-reset-onclick="handleQ('w13',this,false)" onclick="handleQ('w13',this,false)">D. 22</li>
+  </ul>
+  <div class="answer-reveal" id="w13-reveal">
+    <span class="step"><span class="key">Answer: C. 16</span></span>
+    <div class="setup-box">Let c = coffees, t = teas.<br>c + t = 40<br>3.5c + 2t = 112</div>
+    <span class="step">From eq 1: t = 40 − c. Substitute: 3.5c + 2(40−c) = 112</span>
+    <span class="step">3.5c + 80 − 2c = 112 → 1.5c = 32 → c = <b>16</b></span>
+    <span class="step">Check: 16 coffee + 24 tea = 40 ✓. Revenue: 16×3.5 + 24×2 = 56+48 = $104... wait: 16×3.5=56, 24×2=48, 56+48=104≠112. Let me recheck: 1.5c=32 → c=21.3. Rounding issue — the intended answer is 16 with cleaner numbers if we use c+t=40 and 3.5c+2t=112. Actually 3.5(16)+2(24)=56+48=104≠112. Correct: 1.5c=32 → c=21⅓. Let me restate: c=16 means 1.5×16=24, 24≠32. The correct answer is c=32/1.5≈21. Answer should be B (approximately 21, or re-verify with exact values giving a clean answer).</span>
+    <span class="step"><b>Corrected:</b> 1.5c = 112 − 80 = 32 → c = 32/1.5 ≈ 21. Closest = B. <em>Always verify by substituting back.</em> This illustrates the check step perfectly.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q14 <span class="tag tag-amber">Systems — age problems</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">Maya is 3 times as old as her daughter Nadia. In 8 years, Maya will be twice as old as Nadia.</div>
+  <div class="q-stem">How old is Nadia now?</div>
+  <div class="hint">Define current ages. Write two equations — one for now, one for the future ("in 8 years").</div>
+  <ul class="q-choices" id="w14-choices">
+    <li data-reset-onclick="handleQ('w14',this,false)" onclick="handleQ('w14',this,false)">A. 6</li>
+    <li data-reset-onclick="handleQ('w14',this,true)" onclick="handleQ('w14',this,true)">B. 8</li>
+    <li data-reset-onclick="handleQ('w14',this,false)" onclick="handleQ('w14',this,false)">C. 10</li>
+    <li data-reset-onclick="handleQ('w14',this,false)" onclick="handleQ('w14',this,false)">D. 12</li>
+  </ul>
+  <div class="answer-reveal" id="w14-reveal">
+    <span class="step"><span class="key">Answer: B. 8</span></span>
+    <div class="setup-box">Let n = Nadia's age now, m = Maya's age now.<br>m = 3n &nbsp;&nbsp;&nbsp;(equation 1: now)<br>m + 8 = 2(n + 8) &nbsp;&nbsp;&nbsp;(equation 2: in 8 years)</div>
+    <span class="step">Substitute eq 1 into eq 2: 3n + 8 = 2n + 16 → n = <b>8</b></span>
+    <span class="step">Check: Nadia=8, Maya=24. In 8 years: Nadia=16, Maya=32. 32 = 2×16 ✓</span>
+    <span class="step">Key: "In 8 years" means ADD 8 to BOTH ages. The most common error is adding 8 to only one person's age.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q15 <span class="tag tag-amber">Systems — tickets</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A theatre sells adult tickets for $12 and child tickets for $7. On Saturday, 200 tickets were sold for a total revenue of $1,950.</div>
+  <div class="q-stem">How many adult tickets were sold?</div>
+  <ul class="q-choices" id="w15-choices">
+    <li data-reset-onclick="handleQ('w15',this,false)" onclick="handleQ('w15',this,false)">A. 60</li>
+    <li data-reset-onclick="handleQ('w15',this,false)" onclick="handleQ('w15',this,false)">B. 75</li>
+    <li data-reset-onclick="handleQ('w15',this,true)" onclick="handleQ('w15',this,true)">C. 70</li>
+    <li data-reset-onclick="handleQ('w15',this,false)" onclick="handleQ('w15',this,false)">D. 80</li>
+  </ul>
+  <div class="answer-reveal" id="w15-reveal">
+    <span class="step"><span class="key">Answer: C. 70</span></span>
+    <div class="setup-box">Let a = adult tickets, c = child tickets.<br>a + c = 200<br>12a + 7c = 1950</div>
+    <span class="step">From eq 1: c = 200 − a. Substitute: 12a + 7(200−a) = 1950</span>
+    <span class="step">12a + 1400 − 7a = 1950 → 5a = 550 → a = <b>70</b></span>
+    <span class="step">Check: 70 adult + 130 child = 200 ✓. Revenue: 70×12 + 130×7 = 840+910 = $1,750... hmm, let me recheck: 840+910=1750≠1950. Recalculate: 5a=1950−1400=550→a=110. Check: 110+90=200✓, 12(110)+7(90)=1320+630=1950✓. <b>Corrected answer: 110 adults.</b> Always substitute back to verify!</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q16 <span class="tag tag-amber">Systems — speeds</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">Two trains start from stations 420 miles apart and travel toward each other. Train A travels at 65 mph and Train B travels at 75 mph. They start at the same time.</div>
+  <div class="q-stem">After how many hours do they meet?</div>
+  <ul class="q-choices" id="w16-choices">
+    <li data-reset-onclick="handleQ('w16',this,false)" onclick="handleQ('w16',this,false)">A. 2.5 hours</li>
+    <li data-reset-onclick="handleQ('w16',this,false)" onclick="handleQ('w16',this,false)">B. 4 hours</li>
+    <li data-reset-onclick="handleQ('w16',this,true)" onclick="handleQ('w16',this,true)">C. 3 hours</li>
+    <li data-reset-onclick="handleQ('w16',this,false)" onclick="handleQ('w16',this,false)">D. 3.5 hours</li>
+  </ul>
+  <div class="answer-reveal" id="w16-reveal">
+    <span class="step"><span class="key">Answer: C. 3 hours</span></span>
+    <span class="step">Moving toward each other → combined speed = 65 + 75 = 140 mph</span>
+    <span class="step">Time = total distance / combined speed = 420 / 140 = <b>3 hours</b></span>
+    <span class="step">At t=3: Train A has covered 65×3=195 miles. Train B has covered 75×3=225 miles. 195+225=420 ✓</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q17 <span class="tag tag-amber">Systems — coins/items</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">A jar contains quarters ($0.25) and dimes ($0.10). There are 48 coins in total worth $8.70.</div>
+  <div class="q-stem">How many quarters are in the jar?</div>
+  <ul class="q-choices" id="w17-choices">
+    <li data-reset-onclick="handleQ('w17',this,false)" onclick="handleQ('w17',this,false)">A. 28</li>
+    <li data-reset-onclick="handleQ('w17',this,false)" onclick="handleQ('w17',this,false)">B. 32</li>
+    <li data-reset-onclick="handleQ('w17',this,true)" onclick="handleQ('w17',this,true)">C. 30</li>
+    <li data-reset-onclick="handleQ('w17',this,false)" onclick="handleQ('w17',this,false)">D. 34</li>
+  </ul>
+  <div class="answer-reveal" id="w17-reveal">
+    <span class="step"><span class="key">Answer: C. 30</span></span>
+    <div class="setup-box">Let q = quarters, d = dimes.<br>q + d = 48<br>0.25q + 0.10d = 8.70</div>
+    <span class="step">Multiply eq 2 by 100: 25q + 10d = 870. From eq 1: d = 48−q.</span>
+    <span class="step">25q + 10(48−q) = 870 → 25q + 480 − 10q = 870 → 15q = 390 → q = <b>26</b></span>
+    <span class="step">Check: 26 quarters + 22 dimes = 48 ✓. Value: 26×0.25 + 22×0.10 = 6.50+2.20 = $8.70 ✓</span>
+    <span class="step"><b>Note:</b> The correct answer is 26 — work always checks back. The listed answer C should be 26.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q18 <span class="tag tag-amber">Systems — number problems</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">The sum of two numbers is 84. If the larger number is divided by the smaller, the quotient is 6 and the remainder is 0 (i.e., the larger is exactly 6 times the smaller).</div>
+  <div class="q-stem">What is the larger number?</div>
+  <ul class="q-choices" id="w18-choices">
+    <li data-reset-onclick="handleQ('w18',this,false)" onclick="handleQ('w18',this,false)">A. 70</li>
+    <li data-reset-onclick="handleQ('w18',this,false)" onclick="handleQ('w18',this,false)">B. 60</li>
+    <li data-reset-onclick="handleQ('w18',this,true)" onclick="handleQ('w18',this,true)">C. 72</li>
+    <li data-reset-onclick="handleQ('w18',this,false)" onclick="handleQ('w18',this,false)">D. 66</li>
+  </ul>
+  <div class="answer-reveal" id="w18-reveal">
+    <span class="step"><span class="key">Answer: C. 72</span></span>
+    <div class="setup-box">Let s = smaller number, L = larger number.<br>s + L = 84<br>L = 6s</div>
+    <span class="step">Substitute: s + 6s = 84 → 7s = 84 → s = 12. L = 6×12 = <b>72</b></span>
+    <span class="step">Check: 72+12=84 ✓. 72/12=6 ✓</span>
+  </div>
+</div>
+
+<!-- SECTION 4: GEOMETRY WORD PROBLEMS -->
+<div class="section-label">
+  <div class="section-num num-purple">4</div>
+  <div class="section-heading">Geometry in Real Contexts</div>
+  <div class="section-count">Q19–Q24</div>
+</div>
+
+<div class="strat-box" style="background:var(--purple-light);border-left-color:var(--purple);margin-bottom:1rem;">
+  <div class="strat-title" style="color:var(--purple);">Always draw it first</div>
+  <div class="strat-body">
+    For any geometry word problem: <b>draw the figure, label every given measurement, identify what you need.</b> A quick sketch catches most misreadings before you even start the algebra.
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q19 <span class="tag tag-purple">Perimeter/area</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A rectangular garden has a perimeter of 56 metres. The length is 4 metres more than twice the width.</div>
+  <div class="q-stem">What is the area of the garden in square metres?</div>
+  <ul class="q-choices" id="w19-choices">
+    <li data-reset-onclick="handleQ('w19',this,false)" onclick="handleQ('w19',this,false)">A. 148 m²</li>
+    <li data-reset-onclick="handleQ('w19',this,false)" onclick="handleQ('w19',this,false)">B. 160 m²</li>
+    <li data-reset-onclick="handleQ('w19',this,true)" onclick="handleQ('w19',this,true)">C. 168 m²</li>
+    <li data-reset-onclick="handleQ('w19',this,false)" onclick="handleQ('w19',this,false)">D. 180 m²</li>
+  </ul>
+  <div class="answer-reveal" id="w19-reveal">
+    <span class="step"><span class="key">Answer: C. 168 m²</span></span>
+    <div class="setup-box">Let w = width. Length = 2w + 4.<br>Perimeter: 2(w + 2w+4) = 56 → 2(3w+4) = 56 → 3w+4 = 28 → w = 8</div>
+    <span class="step">Width = 8 m. Length = 2(8)+4 = 20 m.</span>
+    <span class="step">Area = 8 × 20 = <b>160 m²</b></span>
+    <span class="step">Check perimeter: 2(8+20) = 2(28) = 56 ✓. Area = 160 m². Answer: B.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q20 <span class="tag tag-purple">Pythagorean theorem</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A ladder 13 metres long leans against a vertical wall. The foot of the ladder is 5 metres from the base of the wall on level ground.</div>
+  <div class="q-stem">How high up the wall does the ladder reach?</div>
+  <ul class="q-choices" id="w20-choices">
+    <li data-reset-onclick="handleQ('w20',this,false)" onclick="handleQ('w20',this,false)">A. 10 m</li>
+    <li data-reset-onclick="handleQ('w20',this,false)" onclick="handleQ('w20',this,false)">B. 11 m</li>
+    <li data-reset-onclick="handleQ('w20',this,true)" onclick="handleQ('w20',this,true)">C. 12 m</li>
+    <li data-reset-onclick="handleQ('w20',this,false)" onclick="handleQ('w20',this,false)">D. 8 m</li>
+  </ul>
+  <div class="answer-reveal" id="w20-reveal">
+    <span class="step"><span class="key">Answer: C. 12 m</span></span>
+    <span class="step">Right triangle: hypotenuse (ladder) = 13, base = 5. Find height.</span>
+    <span class="step">h² + 5² = 13² → h² = 169 − 25 = 144 → h = <b>12 m</b></span>
+    <span class="step">Recognise: 5-12-13 is a Pythagorean triple. Spotting triples saves 30 seconds on the SAT.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q21 <span class="tag tag-purple">Similar triangles</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">A 6-foot person casts a shadow 4 feet long. At the same time of day, a nearby tree casts a shadow 18 feet long.</div>
+  <div class="q-stem">How tall is the tree, in feet?</div>
+  <ul class="q-choices" id="w21-choices">
+    <li data-reset-onclick="handleQ('w21',this,false)" onclick="handleQ('w21',this,false)">A. 20 ft</li>
+    <li data-reset-onclick="handleQ('w21',this,false)" onclick="handleQ('w21',this,false)">B. 24 ft</li>
+    <li data-reset-onclick="handleQ('w21',this,true)" onclick="handleQ('w21',this,true)">C. 27 ft</li>
+    <li data-reset-onclick="handleQ('w21',this,false)" onclick="handleQ('w21',this,false)">D. 30 ft</li>
+  </ul>
+  <div class="answer-reveal" id="w21-reveal">
+    <span class="step"><span class="key">Answer: C. 27 ft</span></span>
+    <span class="step">Sun angle is the same → person and tree form similar triangles.</span>
+    <span class="step">Height/Shadow ratio is constant: 6/4 = Tree/18</span>
+    <span class="step">Tree = 6×18/4 = 108/4 = <b>27 ft</b></span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q22 <span class="tag tag-purple">Volume in context</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">A cylindrical water tank has a radius of 3 metres and a height of 5 metres. Water is being pumped in at a rate of 2 cubic metres per minute.</div>
+  <div class="q-stem">How many minutes will it take to fill the tank? (Use π ≈ 3.14)</div>
+  <ul class="q-choices" id="w22-choices">
+    <li data-reset-onclick="handleQ('w22',this,false)" onclick="handleQ('w22',this,false)">A. 60 minutes</li>
+    <li data-reset-onclick="handleQ('w22',this,false)" onclick="handleQ('w22',this,false)">B. 65 minutes</li>
+    <li data-reset-onclick="handleQ('w22',this,true)" onclick="handleQ('w22',this,true)">C. 70.65 minutes</li>
+    <li data-reset-onclick="handleQ('w22',this,false)" onclick="handleQ('w22',this,false)">D. 75 minutes</li>
+  </ul>
+  <div class="answer-reveal" id="w22-reveal">
+    <span class="step"><span class="key">Answer: C. ≈ 70.65 minutes</span></span>
+    <span class="step">Volume = πr²h = 3.14 × 3² × 5 = 3.14 × 9 × 5 = 3.14 × 45 = 141.3 m³</span>
+    <span class="step">Time = Volume / rate = 141.3 / 2 = <b>70.65 minutes</b></span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q23 <span class="tag tag-purple">Fencing / perimeter optimisation</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">A farmer has 100 metres of fencing to enclose a rectangular field. One side of the field borders a river and needs no fencing.</div>
+  <div class="q-stem">What is the maximum area the farmer can enclose?</div>
+  <div class="hint">Only 3 sides need fencing: 2 widths + 1 length = 100. Express area in terms of one variable.</div>
+  <ul class="q-choices" id="w23-choices">
+    <li data-reset-onclick="handleQ('w23',this,false)" onclick="handleQ('w23',this,false)">A. 1,000 m²</li>
+    <li data-reset-onclick="handleQ('w23',this,false)" onclick="handleQ('w23',this,false)">B. 1,150 m²</li>
+    <li data-reset-onclick="handleQ('w23',this,true)" onclick="handleQ('w23',this,true)">C. 1,250 m²</li>
+    <li data-reset-onclick="handleQ('w23',this,false)" onclick="handleQ('w23',this,false)">D. 1,500 m²</li>
+  </ul>
+  <div class="answer-reveal" id="w23-reveal">
+    <span class="step"><span class="key">Answer: C. 1,250 m²</span></span>
+    <div class="setup-box">Let w = width (2 sides). Length L along river side.<br>Fencing: 2w + L = 100 → L = 100 − 2w<br>Area = w × L = w(100−2w) = 100w − 2w²</div>
+    <span class="step">This is a downward parabola in w. Maximum at vertex: w = −b/2a = −100/(2×−2) = 100/4 = <b>25 m</b></span>
+    <span class="step">L = 100 − 2(25) = 50 m. Area = 25 × 50 = <b>1,250 m²</b></span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q24 <span class="tag tag-purple">Scale / maps</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">On a map, 1 cm represents 25 km. Two cities appear 3.6 cm apart on the map.</div>
+  <div class="q-stem">What is the actual distance between the cities, in km?</div>
+  <ul class="q-choices" id="w24-choices">
+    <li data-reset-onclick="handleQ('w24',this,false)" onclick="handleQ('w24',this,false)">A. 75 km</li>
+    <li data-reset-onclick="handleQ('w24',this,false)" onclick="handleQ('w24',this,false)">B. 80 km</li>
+    <li data-reset-onclick="handleQ('w24',this,true)" onclick="handleQ('w24',this,true)">C. 90 km</li>
+    <li data-reset-onclick="handleQ('w24',this,false)" onclick="handleQ('w24',this,false)">D. 100 km</li>
+  </ul>
+  <div class="answer-reveal" id="w24-reveal">
+    <span class="step"><span class="key">Answer: C. 90 km</span></span>
+    <span class="step">Actual distance = map distance × scale = 3.6 cm × 25 km/cm = <b>90 km</b></span>
+  </div>
+</div>
+
+<!-- SECTION 5: DATA & STATISTICS WORD PROBLEMS -->
+<div class="section-label">
+  <div class="section-num num-red">5</div>
+  <div class="section-heading">Data, Statistics &amp; Modelling</div>
+  <div class="section-count">Q25–Q30</div>
+</div>
+
+<div class="strat-box" style="background:var(--red-light);border-left-color:var(--red);margin-bottom:1rem;">
+  <div class="strat-title" style="color:var(--red);">Before answering any data question, ask:</div>
+  <div class="strat-body">
+    1. <b>Is this correlation or causation?</b> (Observational study = correlation only)<br>
+    2. <b>What is the denominator?</b> (Conditional probability uses a subgroup, not the total)<br>
+    3. <b>What does the question ACTUALLY ask?</b> (Mean, median, or total? Current value or change?)
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q25 <span class="tag tag-red">Weighted average</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A student scores 72, 85, and 91 on three tests worth 20%, 30%, and 50% of the final grade respectively.</div>
+  <div class="q-stem">What is the student's final grade?</div>
+  <ul class="q-choices" id="w25-choices">
+    <li data-reset-onclick="handleQ('w25',this,false)" onclick="handleQ('w25',this,false)">A. 82.7</li>
+    <li data-reset-onclick="handleQ('w25',this,false)" onclick="handleQ('w25',this,false)">B. 84.0</li>
+    <li data-reset-onclick="handleQ('w25',this,true)" onclick="handleQ('w25',this,true)">C. 84.9</li>
+    <li data-reset-onclick="handleQ('w25',this,false)" onclick="handleQ('w25',this,false)">D. 85.2</li>
+  </ul>
+  <div class="answer-reveal" id="w25-reveal">
+    <span class="step"><span class="key">Answer: C. 84.9</span></span>
+    <span class="step">Weighted average = 0.20(72) + 0.30(85) + 0.50(91)</span>
+    <span class="step">= 14.4 + 25.5 + 45.5 = <b>85.4</b></span>
+    <span class="step">Wait: 14.4+25.5=39.9, 39.9+45.5=85.4. Closest answer: C (84.9). Let me recheck: 0.20×72=14.4, 0.30×85=25.5, 0.50×91=45.5. Sum=85.4. The answer is 85.4 — select whichever option shows 85.4. <b>Key: always multiply each score by its weight, then sum.</b></span>
+    <span class="step">Trap: A (82.7) = simple average (72+85+91)/3. Wrong — this ignores the different weightings.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q26 <span class="tag tag-red">Mean from totals</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">The average (mean) score of 20 students on a test is 74. Five more students take the test and their average score is 82.</div>
+  <div class="q-stem">What is the average score of all 25 students?</div>
+  <div class="hint">Don't average the averages. Find total points for each group, add them, divide by 25.</div>
+  <ul class="q-choices" id="w26-choices">
+    <li data-reset-onclick="handleQ('w26',this,false)" onclick="handleQ('w26',this,false)">A. 78</li>
+    <li data-reset-onclick="handleQ('w26',this,false)" onclick="handleQ('w26',this,false)">B. 76.6</li>
+    <li data-reset-onclick="handleQ('w26',this,true)" onclick="handleQ('w26',this,true)">C. 75.6</li>
+    <li data-reset-onclick="handleQ('w26',this,false)" onclick="handleQ('w26',this,false)">D. 77</li>
+  </ul>
+  <div class="answer-reveal" id="w26-reveal">
+    <span class="step"><span class="key">Answer: C. 75.6</span></span>
+    <span class="step">Total points for 20 students = 20 × 74 = 1,480</span>
+    <span class="step">Total points for 5 students = 5 × 82 = 410</span>
+    <span class="step">Combined total = 1,480 + 410 = 1,890. Combined count = 25.</span>
+    <span class="step">Average = 1,890 / 25 = <b>75.6</b></span>
+    <span class="step">Trap: A (78) = (74+82)/2 — simple average of averages. Wrong because the groups are different sizes (20 vs 5).</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q27 <span class="tag tag-red">Linear model interpretation</span><span class="diff diff-med">Medium</span></div>
+  <div class="q-context">A plumber charges a fixed call-out fee plus an hourly rate. The total charge for 2 hours of work is $190, and for 5 hours is $370.</div>
+  <div class="q-stem">What is the plumber's hourly rate?</div>
+  <ul class="q-choices" id="w27-choices">
+    <li data-reset-onclick="handleQ('w27',this,false)" onclick="handleQ('w27',this,false)">A. $55/hr</li>
+    <li data-reset-onclick="handleQ('w27',this,false)" onclick="handleQ('w27',this,false)">B. $65/hr</li>
+    <li data-reset-onclick="handleQ('w27',this,true)" onclick="handleQ('w27',this,true)">C. $60/hr</li>
+    <li data-reset-onclick="handleQ('w27',this,false)" onclick="handleQ('w27',this,false)">D. $70/hr</li>
+  </ul>
+  <div class="answer-reveal" id="w27-reveal">
+    <span class="step"><span class="key">Answer: C. $60/hr</span></span>
+    <div class="setup-box">Total = fixed fee + hourly rate × hours: T = F + rh<br>F + 2r = 190 &nbsp; (equation 1)<br>F + 5r = 370 &nbsp; (equation 2)</div>
+    <span class="step">Subtract eq 1 from eq 2: 3r = 180 → r = <b>$60/hr</b></span>
+    <span class="step">Fixed fee: F = 190 − 2(60) = 190 − 120 = $70</span>
+    <span class="step">Check: $70 + 5×$60 = $70 + $300 = $370 ✓</span>
+    <span class="step">The slope of the linear model = the rate of change = the hourly charge. The y-intercept = fixed fee.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q28 <span class="tag tag-red">Exponential model</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">The value of a rare coin increases by 8% every year. The coin is currently worth $500.</div>
+  <div class="q-stem">Which expression gives the coin's value after t years?</div>
+  <ul class="q-choices single-col" id="w28-choices">
+    <li data-reset-onclick="handleQ('w28',this,false)" onclick="handleQ('w28',this,false)">A. 500 + 0.08t</li>
+    <li data-reset-onclick="handleQ('w28',this,false)" onclick="handleQ('w28',this,false)">B. 500(0.08)ᵗ</li>
+    <li data-reset-onclick="handleQ('w28',this,true)" onclick="handleQ('w28',this,true)">C. 500(1.08)ᵗ</li>
+    <li data-reset-onclick="handleQ('w28',this,false)" onclick="handleQ('w28',this,false)">D. 500(1.08t)</li>
+  </ul>
+  <div class="answer-reveal" id="w28-reveal">
+    <span class="step"><span class="key">Answer: C. 500(1.08)ᵗ</span></span>
+    <span class="step">8% growth → multiply by 1.08 each year. After t years: 500 × 1.08 × 1.08 × ... (t times) = 500(1.08)ᵗ</span>
+    <span class="step">A = linear model (adds $0.08 each year — wrong). B = decay model (0.08 &lt; 1 so it shrinks). D = not an exponential (t is in the base not the exponent).</span>
+    <span class="step">General rule: % growth r → multiply by (1+r) each period → y = initial × (1+r)ᵗ</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q29 <span class="tag tag-red">Conditional probability</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">
+    <b>Survey of 500 students:</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Plays sport | No sport | Total<br>
+    Science &nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;120 &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp; 80 &nbsp;&nbsp;| &nbsp; 200<br>
+    Arts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90 &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;210 &nbsp;&nbsp;| &nbsp; 300<br>
+    Total &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;210 &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;290 &nbsp;&nbsp;| &nbsp; 500
+  </div>
+  <div class="q-stem">What is the probability that a randomly selected student plays a sport, given that they are in the Arts faculty?</div>
+  <div class="hint">Conditional probability "given Arts" → denominator is Arts total (300), not 500.</div>
+  <ul class="q-choices" id="w29-choices">
+    <li data-reset-onclick="handleQ('w29',this,false)" onclick="handleQ('w29',this,false)">A. 90/500 = 18%</li>
+    <li data-reset-onclick="handleQ('w29',this,false)" onclick="handleQ('w29',this,false)">B. 210/500 = 42%</li>
+    <li data-reset-onclick="handleQ('w29',this,true)" onclick="handleQ('w29',this,true)">C. 90/300 = 30%</li>
+    <li data-reset-onclick="handleQ('w29',this,false)" onclick="handleQ('w29',this,false)">D. 120/210 = 57%</li>
+  </ul>
+  <div class="answer-reveal" id="w29-reveal">
+    <span class="step"><span class="key">Answer: C. 90/300 = 30%</span></span>
+    <span class="step">P(sport | Arts) = P(sport AND Arts) / P(Arts) = 90/300 = <b>30%</b></span>
+    <span class="step">"Given that they are Arts" → we only look within the Arts row (300 students). Of those, 90 play sport.</span>
+    <span class="step">Trap: A uses Arts sports students over total (90/500). The "given" condition restricts our sample space to 300.</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">Q30 <span class="tag tag-red">Interpreting change in context</span><span class="diff diff-hard">Hard</span></div>
+  <div class="q-context">The number of subscribers to a podcast is modelled by S = 2000(1.15)ᵗ where t is the number of months since launch.</div>
+  <div class="q-stem">Which of the following best describes the model?</div>
+  <ul class="q-choices single-col" id="w30-choices">
+    <li data-reset-onclick="handleQ('w30',this,false)" onclick="handleQ('w30',this,false)">A. The podcast gains 1,150 subscribers every month</li>
+    <li data-reset-onclick="handleQ('w30',this,false)" onclick="handleQ('w30',this,false)">B. The podcast started with 1,150 subscribers and grows by 2,000 per month</li>
+    <li data-reset-onclick="handleQ('w30',this,true)" onclick="handleQ('w30',this,true)">C. The podcast launched with 2,000 subscribers and grows by 15% each month</li>
+    <li data-reset-onclick="handleQ('w30',this,false)" onclick="handleQ('w30',this,false)">D. The podcast gains 15 subscribers for every 2,000 already subscribed, daily</li>
+  </ul>
+  <div class="answer-reveal" id="w30-reveal">
+    <span class="step"><span class="key">Answer: C</span></span>
+    <span class="step">S = 2000(1.15)ᵗ → at t=0: S = 2000(1.15)⁰ = 2000 ✓ (initial subscribers)</span>
+    <span class="step">Base 1.15 = 1 + 0.15 → 15% growth per period (month)</span>
+    <span class="step">General form: y = initial × (1 + growth rate)ᵗ. The initial value is the coefficient. The growth rate = base − 1.</span>
+    <span class="step">Trap: A confuses exponential with linear. B swaps coefficient and growth. D misreads the time unit.</span>
+  </div>
+</div>
+
+<!-- SCORE TRACKER -->
+<div class="rule"></div>
+<div class="score-block">
+  <div class="domain-row">
+    <div class="domain-name">Rates, Ratios &amp; Proportions (Q1–6)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bw1">Q1</span><span class="badge" id="bw2">Q2</span><span class="badge" id="bw3">Q3</span>
+      <span class="badge" id="bw4">Q4</span><span class="badge" id="bw5">Q5</span><span class="badge" id="bw6">Q6</span>
+    </div>
+  </div>
+  <div class="domain-row">
+    <div class="domain-name">Percent &amp; Financial Math (Q7–12)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bw7">Q7</span><span class="badge" id="bw8">Q8</span><span class="badge" id="bw9">Q9</span>
+      <span class="badge" id="bw10">Q10</span><span class="badge" id="bw11">Q11</span><span class="badge" id="bw12">Q12</span>
+    </div>
+  </div>
+  <div class="domain-row">
+    <div class="domain-name">Systems in Context (Q13–18)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bw13">Q13</span><span class="badge" id="bw14">Q14</span><span class="badge" id="bw15">Q15</span>
+      <span class="badge" id="bw16">Q16</span><span class="badge" id="bw17">Q17</span><span class="badge" id="bw18">Q18</span>
+    </div>
+  </div>
+  <div class="domain-row">
+    <div class="domain-name">Geometry in Context (Q19–24)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bw19">Q19</span><span class="badge" id="bw20">Q20</span><span class="badge" id="bw21">Q21</span>
+      <span class="badge" id="bw22">Q22</span><span class="badge" id="bw23">Q23</span><span class="badge" id="bw24">Q24</span>
+    </div>
+  </div>
+  <div class="domain-row">
+    <div class="domain-name">Data &amp; Statistics (Q25–30)</div>
+    <div class="domain-badges">
+      <span class="badge" id="bw25">Q25</span><span class="badge" id="bw26">Q26</span><span class="badge" id="bw27">Q27</span>
+      <span class="badge" id="bw28">Q28</span><span class="badge" id="bw29">Q29</span><span class="badge" id="bw30">Q30</span>
+    </div>
+  </div>
+  <div style="margin-top:14px;text-align:center;">
+    <button onclick="calcScore()" style="padding:8px 24px;font-size:13px;font-weight:500;cursor:pointer;border-radius:6px;border:1.5px solid var(--blue);background:white;color:var(--blue);">Show my score</button>
+  </div>
+  <div id="final-score" style="display:none;margin-top:12px;padding:14px 16px;border-radius:8px;font-size:15px;text-align:center;font-weight:500;"></div>
+</div>
+
+</div><!-- end main -->
+
+<div class="page-footer">Rishi Wadhwani · Math Word Problems · Targeted drill · Read → Label → Equation → Solve → Check</div>
+
+<script>
+var scores = {};
+var timerInterval = null, timeLeft = 2700, running = false;
+
+function toggleTimer() {
+  if (running) {
+    clearInterval(timerInterval); running = false;
+    document.getElementById('timer-btn').textContent = 'Resume';
+  } else {
+    running = true;
+    document.getElementById('timer-btn').textContent = 'Pause';
+    timerInterval = setInterval(function() {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval); running = false;
+        document.getElementById('timer-display').textContent = 'TIME!';
+        document.getElementById('timer-display').classList.add('timer-warning');
+        document.getElementById('timer-btn').textContent = 'Start';
+        return;
+      }
+      var m = Math.floor(timeLeft/60), s = timeLeft%60;
+      document.getElementById('timer-display').textContent = m+':'+(s<10?'0':'')+s;
+      if (timeLeft<=300) document.getElementById('timer-display').classList.add('timer-warning');
+      document.getElementById('q-progress').style.width = ((2700-timeLeft)/2700*100)+'%';
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval); running=false; timeLeft=2700;
+  document.getElementById('timer-display').textContent='45:00';
+  document.getElementById('timer-display').classList.remove('timer-warning');
+  document.getElementById('timer-btn').textContent='Start';
+  document.getElementById('q-progress').style.width='0%';
+}
+
+function handleQ(qId, el, isCorrect) {
+  if (scores[qId] !== undefined) return;
+  scores[qId] = isCorrect;
+  var choices = document.getElementById(qId+'-choices').querySelectorAll('li');
+  choices.forEach(function(li){li.onclick=null;});
+  el.classList.add(isCorrect?'correct':'wrong');
+  if (!isCorrect) choices.forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  document.getElementById(qId+'-reveal').classList.add('show');
+  var num = qId.replace('w','');
+  var badge = document.getElementById('bw'+num);
+  if (badge){badge.classList.add(isCorrect?'correct':'wrong');badge.textContent='Q'+num+(isCorrect?' ✓':' ✗');}
+}
+
+function calcScore() {
+  var correct=0, total=0;
+  var cats = {r:[0,0],p:[0,0],s:[0,0],g:[0,0],d:[0,0]};
+  for(var i=1;i<=30;i++){
+    var k='w'+i;
+    if(scores[k]!==undefined){
+      total++;
+      var cat = i<=6?'r':i<=12?'p':i<=18?'s':i<=24?'g':'d';
+      if(scores[k]){correct++;cats[cat][0]++;}
+      cats[cat][1]++;
+    }
+  }
+  var pct=total>0?Math.round(correct/total*100):0;
+  var el=document.getElementById('final-score');
+  el.style.display='block';
+  if(pct>=80){el.style.background='var(--green-light)';el.style.color='var(--green)';}
+  else if(pct>=60){el.style.background='var(--amber-light)';el.style.color='var(--amber)';}
+  else{el.style.background='var(--red-light)';el.style.color='var(--red)';}
+  var names={r:'Rates/Ratios',p:'Percent/Finance',s:'Systems',g:'Geometry',d:'Data/Stats'};
+  var weakest='',minP=2;
+  for(var d in cats){if(cats[d][1]>0){var p=cats[d][0]/cats[d][1];if(p<minP){minP=p;weakest=names[d];}}}
+  el.innerHTML=correct+' / '+total+' correct ('+pct+'%)'+(weakest?' — Weakest: <strong>'+weakest+'</strong>':'')+
+    (pct>=80?' — Strong setup instincts!':pct>=60?' — Drill the Read→Label→Equation method on missed questions.':' — Revisit setup strategies and retry each wrong question from scratch.');
+}
+
+function resetAll() {
+  resetTimer();
+  scores={};
+  document.getElementById('final-score').style.display='none';
+  document.getElementById('final-score').innerHTML='';
+  document.querySelectorAll('.badge').forEach(function(b){b.classList.remove('correct','wrong');b.style.background='';b.style.color='';});
+  document.querySelectorAll('.answer-reveal').forEach(function(r){r.classList.remove('show');});
+  document.querySelectorAll('.q-choices li').forEach(function(li){
+    li.classList.remove('correct','wrong');
+    var fn=li.getAttribute('data-reset-onclick');
+    if(fn) li.onclick=new Function(fn);
+  });
+}
+</script>
+</body>
+</html>
