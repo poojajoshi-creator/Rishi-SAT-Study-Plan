@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 22: Pronoun Agreement & Reference — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 22 of 27 · Pronoun Agreement & Reference</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 22 / 27</span><span class="hdr-domain">SEC — Grammar</span></div>
+  <div class="hdr-title">Pronoun Agreement<br><em>&amp; Reference</em></div>
+  <div class="hdr-tagline">A pronoun must agree with its antecedent in number and clearly refer to one specific noun. Vague or ambiguous pronouns are always wrong on the SAT.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 per module</span><span class="chip">Target: 35 sec</span><span class="chip hi">Ask: what does "it/they/their" refer to?</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">he→</div><div class="section-title">Pronoun rules</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Rule 1 — Agreement</div>
+    <div class="def-body">
+      <p>A pronoun must agree with its antecedent (the noun it replaces) in number:<br>
+      Singular antecedent → singular pronoun: "The <b>company</b> released <b>its</b> annual report."<br>
+      Plural antecedent → plural pronoun: "The <b>companies</b> released <b>their</b> annual reports."<br>
+      Collective nouns → singular: "The team completed <b>its</b> season successfully."<br>
+      Indefinite pronouns → singular: "Everyone must bring <b>their</b> own materials." (SAT now accepts "their" for singular indefinite — but "his or her" is always safe)</p>
+    </div>
+  </div>
+  <div class="def-box amber">
+    <div class="def-label">Rule 2 — Clear reference (no ambiguity)</div>
+    <div class="def-body">
+      <p>Every pronoun must clearly refer to ONE specific antecedent. Ambiguous pronouns — those that could refer to more than one noun — are always errors.</p>
+      <p>✗ "When Maria met Sarah, <b>she</b> was nervous." — Who was nervous? Maria or Sarah?<br>
+      ✓ "When Maria met Sarah, <b>Maria</b> was nervous."</p>
+      <p>✗ "The government announced <b>they</b> would increase funding." — "they" has no clear antecedent (government is singular)<br>
+      ✓ "The government announced <b>it</b> would increase funding."</p>
+    </div>
+  </div>
+</div>
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Find the pronoun and its antecedent.</b> What noun does the pronoun replace? Write it out.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Check agreement.</b> Is the antecedent singular or plural? Does the pronoun match? Collective nouns = singular → "it/its." Companies/researchers = plural → "they/their."</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Check for ambiguity.</b> Could the pronoun refer to more than one noun? If yes → the pronoun is wrong regardless of agreement. Replace with the noun itself.</div></div>
+  </div>
+</div>
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">"They" for singular collective nouns</div><div class="trap-body">"The board approved they're decision." Two errors: "they're" should be "their," and "the board" is singular — needs "its decision." "The board approved its decision."</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Ambiguous "it" or "this"</div><div class="trap-body">"The study confirmed the hypothesis. It was remarkable." What was remarkable — the study or the hypothesis? Replace with the specific noun.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Pronoun before antecedent</div><div class="trap-body">"Before <b>they</b> published the findings, the researchers reviewed every data point." "They" refers to "the researchers" which comes after. This is acceptable in English — pronoun can precede the antecedent in complex sentences.</div></div>
+  </div>
+</div>
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+  <div class="example">
+    <div class="example-hdr">Example 1 — Collective noun<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">After months of deliberation, the committee announced <u>their</u> decision to restructure the organisation's funding model.</div>
+      <ul class="choices" id="l22e1">
+        <li data-reset-onclick="pickEx('l22e1',this,false)" onclick="pickEx('l22e1',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l22e1',this,true)" onclick="pickEx('l22e1',this,true)">B. its</li>
+        <li data-reset-onclick="pickEx('l22e1',this,false)" onclick="pickEx('l22e1',this,false)">C. the committee's</li>
+        <li data-reset-onclick="pickEx('l22e1',this,false)" onclick="pickEx('l22e1',this,false)">D. there</div>
+      </ul>
+      <div class="explanation" id="l22e1-exp"><b>B.</b> "Committee" = collective noun = singular. Singular pronoun → "its." A ("their") treats "committee" as plural. C (the committee's) is grammatically correct but unnecessarily wordy when "its" is clear. D ("there") is completely wrong — a location word.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 2 — Ambiguous pronoun<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">When the new regulation was implemented alongside the existing policy, <u>it</u> caused significant confusion among businesses.</div>
+      <ul class="choices" id="l22e2">
+        <li data-reset-onclick="pickEx('l22e2',this,false)" onclick="pickEx('l22e2',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l22e2',this,true)" onclick="pickEx('l22e2',this,true)">B. the combination caused</li>
+        <li data-reset-onclick="pickEx('l22e2',this,false)" onclick="pickEx('l22e2',this,false)">C. they caused</li>
+        <li data-reset-onclick="pickEx('l22e2',this,false)" onclick="pickEx('l22e2',this,false)">D. this caused</div>
+      </ul>
+      <div class="explanation" id="l22e2-exp"><b>B.</b> "It" is ambiguous — does it refer to "the new regulation" or "the existing policy"? The confusion was caused by BOTH together ("alongside"). B clarifies by naming "the combination." A and D both leave the ambiguity. C (they) — two things are mentioned, but "they" is also ambiguous and adds a number error if one of the policies is the intended antecedent.</div>
+    </div>
+  </div>
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">The research team published <u>their</u> findings in a peer-reviewed journal after three years of fieldwork in the Amazon basin.</div>
+    <ul class="choices" id="l22p1">
+      <li data-reset-onclick="pickEx('l22p1',this,true)" onclick="pickEx('l22p1',this,true)">A. No change — "their" is correct</li>
+      <li data-reset-onclick="pickEx('l22p1',this,false)" onclick="pickEx('l22p1',this,false)">B. its findings</li>
+      <li data-reset-onclick="pickEx('l22p1',this,false)" onclick="pickEx('l22p1',this,false)">C. there findings</li>
+      <li data-reset-onclick="pickEx('l22p1',this,false)" onclick="pickEx('l22p1',this,false)">D. they're findings</div>
+    </ul>
+    <div class="explanation" id="l22p1-exp"><b>A.</b> "Research team" — while a collective noun, "team" here refers to the multiple researchers who collectively produced findings. "Their" is acceptable and natural here. B (its) is also grammatically possible for a collective noun, but "their" is standard when referring to the members' collective output in modern usage. C and D are wrong.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">Each nation attending the summit must submit <u>their</u> climate pledge before the final session begins.</div>
+    <ul class="choices" id="l22p2">
+      <li data-reset-onclick="pickEx('l22p2',this,false)" onclick="pickEx('l22p2',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l22p2',this,true)" onclick="pickEx('l22p2',this,true)">B. its</li>
+      <li data-reset-onclick="pickEx('l22p2',this,false)" onclick="pickEx('l22p2',this,false)">C. there</li>
+      <li data-reset-onclick="pickEx('l22p2',this,false)" onclick="pickEx('l22p2',this,false)">D. they're</div>
+    </ul>
+    <div class="explanation" id="l22p2-exp"><b>B.</b> "Each nation" — "each" = singular. "Nation" = singular. Singular pronoun → "its." "Their" treats "each nation" as plural. The SAT tests this frequently: "each" makes everything that follows it singular.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">The professor praised the student for her dissertation, saying <u>it</u> demonstrated an exceptional grasp of the field's most contested debates.</div>
+    <ul class="choices" id="l22p3">
+      <li data-reset-onclick="pickEx('l22p3',this,true)" onclick="pickEx('l22p3',this,true)">A. No change — "it" clearly refers to the dissertation</li>
+      <li data-reset-onclick="pickEx('l22p3',this,false)" onclick="pickEx('l22p3',this,false)">B. she</li>
+      <li data-reset-onclick="pickEx('l22p3',this,false)" onclick="pickEx('l22p3',this,false)">C. they</li>
+      <li data-reset-onclick="pickEx('l22p3',this,false)" onclick="pickEx('l22p3',this,false)">D. this</div>
+    </ul>
+    <div class="explanation" id="l22p3-exp"><b>A.</b> "It" clearly refers to "her dissertation" — the only singular neuter noun in the sentence. No ambiguity. "She demonstrated" (B) would mean the professor said the student herself demonstrated the grasp — awkward. "It" is correct and unambiguous here.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 4</div>
+    <div class="passage">Analysts noted that the merger between the two firms would likely affect <u>their</u> combined market share, though the full impact remained unclear.</div>
+    <ul class="choices" id="l22p4">
+      <li data-reset-onclick="pickEx('l22p4',this,true)" onclick="pickEx('l22p4',this,true)">A. No change — "their" correctly refers to the two firms</li>
+      <li data-reset-onclick="pickEx('l22p4',this,false)" onclick="pickEx('l22p4',this,false)">B. its</li>
+      <li data-reset-onclick="pickEx('l22p4',this,false)" onclick="pickEx('l22p4',this,false)">C. the firms'</li>
+      <li data-reset-onclick="pickEx('l22p4',this,false)" onclick="pickEx('l22p4',this,false)">D. there</div>
+    </ul>
+    <div class="explanation" id="l22p4-exp"><b>A.</b> "Their" refers to "the two firms" — plural, so "their" is correct. B (its) would treat two firms as singular. C is wordy but not wrong — however A is more concise and correct. D (there) is a location word.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">When the city council reviewed the urban development plan alongside the environmental impact report, <u>they</u> concluded that additional green spaces were necessary.</div>
+    <ul class="choices" id="l22p5">
+      <li data-reset-onclick="pickEx('l22p5',this,false)" onclick="pickEx('l22p5',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l22p5',this,false)" onclick="pickEx('l22p5',this,false)">B. it concluded</li>
+      <li data-reset-onclick="pickEx('l22p5',this,true)" onclick="pickEx('l22p5',this,true)">C. the council concluded</li>
+      <li data-reset-onclick="pickEx('l22p5',this,false)" onclick="pickEx('l22p5',this,false)">D. the documents concluded</div>
+    </ul>
+    <div class="explanation" id="l22p5-exp"><b>C.</b> "They" is ambiguous — it could refer to "the city council" or to the two documents (the plan and the report). Only the council can "conclude" something — but the pronoun is unclear. C replaces the ambiguous "they" with "the council" to make it explicit. B (it) treats "council" as singular which is grammatically possible but ambiguous about which noun it refers to. D (the documents concluded) is wrong — documents don't conclude.</div>
+  
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Pronoun Agreement &amp; Reference — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">Agreement rule</div><div class="summary-item-body">Pronoun must match antecedent in number. Singular → it/its/he/she. Plural → they/their. Collective nouns → singular (its).</div></div>
+      <div class="summary-item"><div class="summary-item-title">Clarity rule</div><div class="summary-item-body">Every pronoun must clearly refer to ONE noun. If "it" or "they" could refer to two nouns → ambiguous → wrong. Replace with the noun itself.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Each/every = singular</div><div class="summary-item-body">"Each company must update its records." Not "their." "Each" forces singular on everything that follows.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Collective nouns</div><div class="summary-item-body">team/committee/board/government/jury → "it/its." "The board made its decision." NOT "their decision."</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_21.html" class="nav-arrow">← Lesson 21: Subject-Verb Agreement</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 22 of 27</span>
+  <a href="english_lesson_23.html" class="nav-arrow">Next: Lesson 23: Verb Tense →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

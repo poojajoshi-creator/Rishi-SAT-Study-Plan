@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 27: Concise & Redundant Language — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 27 of 27 · Concise & Redundant Language</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 27 / 27</span><span class="hdr-domain">SEC — Grammar</span></div>
+  <div class="hdr-title">Concise &amp;<br><em>Redundant Language</em></div>
+  <div class="hdr-tagline">The SAT always prefers the shortest option that preserves the full meaning. If two choices say the same thing, the shorter one is correct. Redundancy, wordiness, and unnecessary repetition are always wrong.</div>
+  <div class="hdr-chips"><span class="chip">~2–3 per module</span><span class="chip">Target: 25 sec</span><span class="chip hi">Rule: shortest that keeps the meaning = correct</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">✂</div><div class="section-title">What the SAT tests</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Three types of wordiness</div>
+    <div class="def-body">
+      <p><b>Type 1 — Redundancy</b> (saying the same thing twice):<br>
+      ✗ "future plans" (plans are always future) · "past history" (history is always past)<br>
+      ✗ "end result" · "final conclusion" · "completely destroyed" · "brief summary"<br>
+      ✗ "She nodded her head in agreement." → "She nodded in agreement." (nodding = head movement)<br>
+      ✗ "The reason why is because..." → "The reason is that..." or "because..."</p>
+      <p><b>Type 2 — Circumlocution</b> (taking many words to say something a few words can):<br>
+      ✗ "due to the fact that" → "because"<br>
+      ✗ "in spite of the fact that" → "although"<br>
+      ✗ "at this point in time" → "now"<br>
+      ✗ "in the event that" → "if"<br>
+      ✗ "has the ability to" → "can"</p>
+      <p><b>Type 3 — Unnecessary context already stated</b>:<br>
+      If the sentence already tells us something, the answer choice that repeats that information is wrong.<br>
+      "The nineteenth-century poet, who lived in the 1800s, wrote in a distinctive style." — "who lived in the 1800s" repeats "nineteenth-century."</p>
+    </div>
+  </div>
+</div>
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Compare the choices.</b> What's different between them? Usually one adds words, one removes them. Ask whether the extra words add any new meaning.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Eliminate anything that repeats information already in the sentence.</b> If the passage already says X, an answer choice that also says X in different words is redundant — eliminate it.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Pick the shortest choice that preserves the full meaning.</b> "Shortest" doesn't mean "most incomplete" — it means no unnecessary words. Verify nothing essential is lost.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><b>Watch for "OMIT" as an answer choice.</b> On questions asking what to do with an underlined portion, "omit the underlined portion" is often the correct answer when the underlined text is redundant.</div></div>
+  </div>
+</div>
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Longer feels more complete</div><div class="trap-body">Students pick longer answers because they feel safer and more thorough. But on conciseness questions, the longer choice is almost always wrong. Extra words = wrong unless they add genuinely new meaning.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Cutting too much</div><div class="trap-body">The shortest choice removes something essential. Check: does the shortest version still make logical sense and preserve the full intended meaning? If not, it's gone too far.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Redundancy hidden in context</div><div class="trap-body">The redundancy isn't in the answer itself but between the answer and the surrounding sentence. Read the whole sentence to check whether the answer choice repeats something already established earlier.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">"The reason is because"</div><div class="trap-body">"The reason the experiment failed is because of insufficient funding." Wrong — "because" gives a reason and so does "the reason is." Correct: "The reason the experiment failed was insufficient funding." or "The experiment failed because of insufficient funding."</div></div>
+  </div>
+</div>
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+  <div class="example">
+    <div class="example-hdr">Example 1 — Context redundancy<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">Marie Curie, the pioneering physicist and chemist who conducted groundbreaking research on radioactivity, <u>was a scientist who made important contributions to the field of science and conducted research that was considered groundbreaking at the time</u>.</div>
+      <ul class="choices" id="l27e1">
+        <li data-reset-onclick="pickEx('l27e1',this,false)" onclick="pickEx('l27e1',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l27e1',this,false)" onclick="pickEx('l27e1',this,false)">B. was a pioneering figure in the sciences</li>
+        <li data-reset-onclick="pickEx('l27e1',this,true)" onclick="pickEx('l27e1',this,true)">C. became the first woman to win a Nobel Prize</li>
+        <li data-reset-onclick="pickEx('l27e1',this,false)" onclick="pickEx('l27e1',this,false)">D. is widely regarded as one of the most important scientists of the twentieth century</div>
+      </ul>
+      <div class="explanation" id="l27e1-exp"><b>C.</b> The opening already tells us she was a "pioneering physicist and chemist who conducted groundbreaking research." A, B, and D all repeat this information in different words — redundant. C adds genuinely new information (first woman to win a Nobel Prize) that isn't stated anywhere in the sentence. New meaning = not redundant = correct.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 2 — Circumlocution<span class="example-type">Easy</span></div>
+    <div class="example-body">
+      <div class="passage">The project was delayed <u>due to the fact that</u> the primary contractor failed to secure the necessary permits.</div>
+      <ul class="choices" id="l27e2">
+        <li data-reset-onclick="pickEx('l27e2',this,false)" onclick="pickEx('l27e2',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l27e2',this,true)" onclick="pickEx('l27e2',this,true)">B. because</li>
+        <li data-reset-onclick="pickEx('l27e2',this,false)" onclick="pickEx('l27e2',this,false)">C. owing to the reason that</li>
+        <li data-reset-onclick="pickEx('l27e2',this,false)" onclick="pickEx('l27e2',this,false)">D. in light of the fact that</div>
+      </ul>
+      <div class="explanation" id="l27e2-exp"><b>B.</b> "Due to the fact that" = 5 words meaning "because" = 1 word. All four choices mean the same thing — "because" is the most concise. C and D are even wordier than A. On the SAT, when all choices have the same meaning, the shortest is always correct.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 3 — Hidden redundancy<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">The annual report, published every year, showed that revenue had increased by 12% in the third quarter.</div>
+      <ul class="choices" id="l27e3">
+        <li data-reset-onclick="pickEx('l27e3',this,false)" onclick="pickEx('l27e3',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l27e3',this,true)" onclick="pickEx('l27e3',this,true)">B. Remove "published every year"</li>
+        <li data-reset-onclick="pickEx('l27e3',this,false)" onclick="pickEx('l27e3',this,false)">C. Replace with "published on an annual basis"</li>
+        <li data-reset-onclick="pickEx('l27e3',this,false)" onclick="pickEx('l27e3',this,false)">D. Replace with "which comes out yearly"</div>
+      </ul>
+      <div class="explanation" id="l27e3-exp"><b>B.</b> "Annual" already means "every year." "Published every year" repeats "annual" — redundant. Remove it entirely: "The annual report showed that revenue had increased by 12%." A, C, and D all keep the redundancy in different forms.</div>
+    </div>
+  
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">The novel's plot, which was described as complex and intricate by reviewers, <u>had a storyline that many readers found to be difficult to follow due to its complicated and hard-to-understand nature</u>.</div>
+    <ul class="choices" id="l27p1">
+      <li data-reset-onclick="pickEx('l27p1',this,false)" onclick="pickEx('l27p1',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l27p1',this,false)" onclick="pickEx('l27p1',this,false)">B. was something that many readers struggled to understand</li>
+      <li data-reset-onclick="pickEx('l27p1',this,true)" onclick="pickEx('l27p1',this,true)">C. confused many readers</li>
+      <li data-reset-onclick="pickEx('l27p1',this,false)" onclick="pickEx('l27p1',this,false)">D. presented readers with a complex and intricate storyline that proved challenging</div>
+    </ul>
+    <div class="explanation" id="l27p1-exp"><b>C.</b> The opening already tells us the plot is "complex and intricate." A repeats "complicated and hard-to-understand" — redundant. B is shorter but still wordy ("something that many readers struggled to understand"). D repeats "complex and intricate" from the opening. C adds the essential new information (readers were confused) in just three words with no repetition.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">The committee will make a final decision <u>at some point in the future when it has had enough time to consider all the relevant factors and evidence that have been presented to it</u>.</div>
+    <ul class="choices" id="l27p2">
+      <li data-reset-onclick="pickEx('l27p2',this,false)" onclick="pickEx('l27p2',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l27p2',this,false)" onclick="pickEx('l27p2',this,false)">B. after it has considered all the relevant factors</li>
+      <li data-reset-onclick="pickEx('l27p2',this,true)" onclick="pickEx('l27p2',this,true)">C. after further deliberation</li>
+      <li data-reset-onclick="pickEx('l27p2',this,false)" onclick="pickEx('l27p2',this,false)">D. once it has reviewed the evidence and factors presented</div>
+    </ul>
+    <div class="explanation" id="l27p2-exp"><b>C.</b> "At some point in the future when it has had enough time to consider all the relevant factors and evidence that have been presented to it" = 29 words. "After further deliberation" = 3 words. Same meaning — the committee will decide after thinking things through. C is the most concise correct answer. B and D are shorter than A but still wordier than C.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">The reason the experiment produced unexpected results <u>is because</u> the temperature fluctuated beyond the acceptable range.</div>
+    <ul class="choices" id="l27p3">
+      <li data-reset-onclick="pickEx('l27p3',this,false)" onclick="pickEx('l27p3',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l27p3',this,true)" onclick="pickEx('l27p3',this,true)">B. was that</li>
+      <li data-reset-onclick="pickEx('l27p3',this,false)" onclick="pickEx('l27p3',this,false)">C. is due to the fact that</li>
+      <li data-reset-onclick="pickEx('l27p3',this,false)" onclick="pickEx('l27p3',this,false)">D. is because of the fact that</div>
+    </ul>
+    <div class="explanation" id="l27p3-exp"><b>B.</b> "The reason...is because" is redundant — "because" gives a reason and "the reason is" already signals a reason. Correct construction: "The reason...was that [cause]." B fixes this. C and D are even wordier versions of the same error. A is the original error.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 4</div>
+    <div class="passage">The spacecraft, launched into space in 2021, <u>has the capability of travelling at speeds in excess of 28,000 kilometres per hour</u>.</div>
+    <ul class="choices" id="l27p4">
+      <li data-reset-onclick="pickEx('l27p4',this,false)" onclick="pickEx('l27p4',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l27p4',this,true)" onclick="pickEx('l27p4',this,true)">B. can travel at speeds exceeding 28,000 kilometres per hour</li>
+      <li data-reset-onclick="pickEx('l27p4',this,false)" onclick="pickEx('l27p4',this,false)">C. is capable of achieving speeds that exceed 28,000 kilometres per hour</li>
+      <li data-reset-onclick="pickEx('l27p4',this,false)" onclick="pickEx('l27p4',this,false)">D. travels at speeds that are in excess of 28,000 kilometres per hour</div>
+    </ul>
+    <div class="explanation" id="l27p4-exp"><b>B.</b> "Has the capability of travelling" = "can travel." All choices convey the same meaning. B is the shortest and most direct. A (has the capability of travelling) = 5 words for "can travel" = 2 words. C and D are also wordy. "Can" always beats "has the ability/capability to" on the SAT.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard (context redundancy)</div>
+    <div class="passage">In 1969, astronauts Neil Armstrong and Buzz Aldrin became the first humans to walk on the surface of the Moon during the Apollo 11 mission. <u>This historic Moon landing, which took place in 1969, marked a landmark achievement in the history of human space exploration.</u></div>
+    <ul class="choices" id="l27p5">
+      <li data-reset-onclick="pickEx('l27p5',this,false)" onclick="pickEx('l27p5',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l27p5',this,false)" onclick="pickEx('l27p5',this,false)">B. The Moon landing was a significant and historic achievement.</li>
+      <li data-reset-onclick="pickEx('l27p5',this,true)" onclick="pickEx('l27p5',this,true)">C. Omit the underlined sentence entirely.</li>
+      <li data-reset-onclick="pickEx('l27p5',this,false)" onclick="pickEx('l27p5',this,false)">D. Armstrong and Aldrin's achievement was widely celebrated around the world.</div>
+    </ul>
+    <div class="explanation" id="l27p5-exp"><b>C.</b> The previous sentence already told us: (1) it happened in 1969, (2) Armstrong and Aldrin walked on the Moon, (3) it was the Apollo 11 mission. The underlined sentence repeats "1969," "Moon landing," and "historic achievement" — all redundant. B still repeats "historic achievement." D adds slightly new info (celebrated worldwide) but the question asks about the full underlined sentence — the cleanest answer is to omit it entirely. When a sentence is entirely redundant, "omit" is always the correct choice.</div>
+  
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card — and well done!</div><div class="section-num-badge" style="background:var(--gold);">Final lesson</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Concise &amp; Redundant Language — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The rule</div><div class="summary-item-body">Shortest choice that preserves the full meaning = correct. Extra words add nothing → wrong. Missing essential meaning → too short.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Redundancy</div><div class="summary-item-body">Same idea expressed twice: "future plans" · "past history" · "annual...every year" · "the reason is because." Remove the repetition.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Circumlocution</div><div class="summary-item-body">"Due to the fact that" → because · "has the ability to" → can · "at this point in time" → now · "in the event that" → if</div></div>
+      <div class="summary-item"><div class="summary-item-title">Context redundancy</div><div class="summary-item-body">Read the surrounding text. If an answer choice repeats something already stated in the sentence or paragraph → eliminate it.</div></div>
+      <div class="summary-item"><div class="summary-item-title">"Omit" option</div><div class="summary-item-body">When an entire underlined sentence repeats what was just said → omit is correct. Always check if the passage already contains that information.</div></div>
+      <div class="summary-item"><div class="summary-item-title">"The reason is because"</div><div class="summary-item-body">Always wrong. Fix: "The reason is that [noun]" OR simply "because [clause]." Never both "reason" and "because" together.</div></div>
+    </div>
+  </div>
+  <div style="background:linear-gradient(135deg,#1a3a1a,#2d6a3f);border-radius:var(--border-radius-lg);padding:24px;margin-top:1.5rem;text-align:center;color:white;">
+    <div style="font-size:24px;margin-bottom:8px;">🏁</div>
+    <div style="font-family:'Instrument Serif',serif;font-size:1.4rem;margin-bottom:6px;">All 27 lessons complete</div>
+    <div style="font-size:13px;opacity:0.85;">Every concept on the SAT English section — covered, practised, and ready for June 6.</div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_26.html" class="nav-arrow">← Lesson 26: Restrictive vs Non-Restrictive</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 27 of 27</span>
+  <a href="english_lessons.html" class="nav-arrow">🏁 All 27 lessons complete!</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

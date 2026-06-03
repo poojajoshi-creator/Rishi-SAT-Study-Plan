@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 15: Sentence Boundaries — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 15 of 27 · Sentence Boundaries</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 15 / 27</span><span class="hdr-domain">SEC — Punctuation</span></div>
+  <div class="hdr-title">Sentence<br><em>Boundaries</em></div>
+  <div class="hdr-tagline">The most tested SEC concept. A comma alone can never join two independent clauses. Know the four legal ways to connect two complete sentences — and the three illegal ways the SAT always tests.</div>
+  <div class="hdr-chips"><span class="chip">~3–4 per module</span><span class="chip">Target: 40 sec</span><span class="chip hi">Test: can each side stand alone?</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">⊣</div><div class="section-title">What are sentence boundaries?</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">The core rule</div>
+    <div class="def-body">
+      <p>An <b>independent clause</b> is a complete sentence — it has a subject and a verb and can stand alone. Two independent clauses must be joined correctly. The SAT tests three wrong ways and four right ways.</p>
+      <p><b>3 wrong ways (always errors):</b><br>
+      1. <b>Comma splice:</b> "She studied hard, she passed the exam." — comma alone is never enough<br>
+      2. <b>Run-on / fused sentence:</b> "She studied hard she passed the exam." — nothing between them<br>
+      3. <b>Wrong connector:</b> "She studied hard, however she passed." — "however" is an adverb, not a conjunction</p>
+      <p><b>4 correct ways:</b><br>
+      1. <b>Period:</b> "She studied hard. She passed."<br>
+      2. <b>Semicolon:</b> "She studied hard; she passed."<br>
+      3. <b>Comma + FANBOYS:</b> "She studied hard, so she passed." (For / And / Nor / But / Or / Yet / So)<br>
+      4. <b>Subordinating conjunction:</b> "Because she studied hard, she passed." — makes one clause dependent</p>
+    </div>
+  </div>
+  <div class="def-box green">
+    <div class="def-label">The independent clause test</div>
+    <div class="def-body">
+      <p>Before choosing punctuation, test each side of the blank: <b>can this part stand alone as a complete sentence?</b></p>
+      <p>If BOTH sides = complete sentences → you need one of the 4 correct joiners.<br>
+      If only ONE side = complete sentence → a comma alone is often fine (e.g. after an introductory phrase).<br>
+      If NEITHER side = complete sentence → the sentence has a different problem.</p>
+    </div>
+  </div>
+</div>
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Identify what's being tested.</b> Look at how the four choices differ — punctuation only? A conjunction added or removed? This tells you exactly what rule to apply.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Test each side of the blank.</b> Read the left side: complete sentence? Read the right side: complete sentence? If both yes — you need one of the 4 correct joiners.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Apply the rule, don't trust your ear.</b> "The results were surprising, however the team continued" sounds almost right — but it's a comma splice. The rule overrides how it sounds.</div></div>
+  </div>
+</div>
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Transitional adverbs as conjunctions</div><div class="trap-body">However, therefore, furthermore, consequently, moreover — these are ADVERBS, not conjunctions. "Clause, however, clause" is a comma splice. You need a semicolon: "Clause; however, clause."</div><div class="trap-eg">"The data was clear, however, the team disagreed." ✗ → "The data was clear; however, the team disagreed." ✓</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Comma + FANBOYS only</div><div class="trap-body">You must have BOTH a comma AND a FANBOYS conjunction. "She studied hard so she passed" (no comma) is technically a fused sentence for formal writing. The SAT wants the comma.</div><div class="trap-eg">"She left early so she caught the train." ✗ → "She left early, so she caught the train." ✓</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Subordinating conjunctions</div><div class="trap-body">Because, although, since, while, when, if, unless — these make the clause DEPENDENT. "Because she studied" is not a complete sentence. Correct: "Because she studied, she passed." The dependent clause needs the independent one.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Semicolon ≠ colon</div><div class="trap-body">Semicolons join two complete sentences (= period). Colons introduce a list, explanation, or elaboration after a complete sentence — what follows a colon does NOT need to be a complete sentence.</div></div>
+  </div>
+</div>
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+  <div class="example">
+    <div class="example-hdr">Example 1 — Comma splice with transitional adverb<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">The new bridge design reduced construction costs by 18%, _______ it also cut the projected completion time by six months.</div>
+      <div class="q-stem">Which choice correctly joins the two clauses?</div>
+      <ul class="choices" id="l15e1">
+        <li data-reset-onclick="pickEx('l15e1',this,false)" onclick="pickEx('l15e1',this,false)">A. costs by 18%, additionally it</li>
+        <li data-reset-onclick="pickEx('l15e1',this,false)" onclick="pickEx('l15e1',this,false)">B. costs by 18% it</li>
+        <li data-reset-onclick="pickEx('l15e1',this,true)" onclick="pickEx('l15e1',this,true)">C. costs by 18%; additionally, it</li>
+        <li data-reset-onclick="pickEx('l15e1',this,false)" onclick="pickEx('l15e1',this,false)">D. costs by 18%, and additionally it</li>
+      </ul>
+      <div class="explanation" id="l15e1-exp"><b>Answer: C.</b> Both sides are complete sentences. "Additionally" is a transitional adverb — it cannot join clauses alone with just a comma (A = comma splice). B = run-on. D = comma + "and additionally" is redundant and awkward. C = semicolon correctly joins two independent clauses; "additionally" then functions as an adverb modifying the second clause.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 2 — Choosing the right conjunction<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">The researchers expected the experiment to fail _______ the results exceeded every benchmark they had set.</div>
+      <div class="q-stem">Which choice correctly completes the sentence?</div>
+      <ul class="choices" id="l15e2">
+        <li data-reset-onclick="pickEx('l15e2',this,false)" onclick="pickEx('l15e2',this,false)">A. fail, however</li>
+        <li data-reset-onclick="pickEx('l15e2',this,false)" onclick="pickEx('l15e2',this,false)">B. fail</li>
+        <li data-reset-onclick="pickEx('l15e2',this,true)" onclick="pickEx('l15e2',this,true)">C. fail, yet</li>
+        <li data-reset-onclick="pickEx('l15e2',this,false)" onclick="pickEx('l15e2',this,false)">D. fail; the results</li>
+      </ul>
+      <div class="explanation" id="l15e2-exp"><b>Answer: C.</b> Both sides = complete sentences. A (comma + however) = comma splice — "however" is an adverb. B = run-on. C = comma + "yet" (FANBOYS) = correct. D = semicolon correct structurally but the original has "the results" already — no word needed after the semicolon fits the blank.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 3 — Subordinating conjunction<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">_______ the population of the town had declined significantly over the previous decade, the local school board voted to close two of its four elementary schools.</div>
+      <div class="q-stem">Which choice correctly begins the sentence?</div>
+      <ul class="choices" id="l15e3">
+        <li data-reset-onclick="pickEx('l15e3',this,false)" onclick="pickEx('l15e3',this,false)">A. The population of the town had declined significantly over the previous decade,</li>
+        <li data-reset-onclick="pickEx('l15e3',this,false)" onclick="pickEx('l15e3',this,false)">B. The population of the town had declined significantly over the previous decade;</li>
+        <li data-reset-onclick="pickEx('l15e3',this,true)" onclick="pickEx('l15e3',this,true)">C. Because the population of the town had declined significantly over the previous decade,</li>
+        <li data-reset-onclick="pickEx('l15e3',this,false)" onclick="pickEx('l15e3',this,false)">D. The population of the town had declined significantly over the previous decade, and</div>
+      </ul>
+      <div class="explanation" id="l15e3-exp"><b>Answer: C.</b> The sentence has a causal relationship — population decline caused the school closures. "Because" creates a dependent clause that logically connects to the independent clause "the school board voted..." A = comma splice (two independent clauses joined by comma alone). B = semicolon then the second half isn't a new sentence — broken structure. D = "and" implies addition, not causation. C correctly uses "because" to show causation and the comma separates the dependent from independent clause.</div>
+    </div>
+  </div>
+</div>
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">The documentary received widespread critical acclaim _______ it failed to attract a mainstream audience, earning less than $2 million at the box office.</div>
+    <div class="q-stem">Which choice correctly joins the clauses?</div>
+    <ul class="choices" id="l15p1">
+      <li data-reset-onclick="pickEx('l15p1',this,false)" onclick="pickEx('l15p1',this,false)">A. acclaim, however</li>
+      <li data-reset-onclick="pickEx('l15p1',this,true)" onclick="pickEx('l15p1',this,true)">B. acclaim, but</li>
+      <li data-reset-onclick="pickEx('l15p1',this,false)" onclick="pickEx('l15p1',this,false)">C. acclaim; but</li>
+      <li data-reset-onclick="pickEx('l15p1',this,false)" onclick="pickEx('l15p1',this,false)">D. acclaim it</li>
+    </ul>
+    <div class="explanation" id="l15p1-exp"><b>B.</b> Comma + "but" (FANBOYS) correctly joins two independent clauses showing contrast. A = comma splice ("however" is an adverb). C = semicolon + "but" — never use a coordinating conjunction after a semicolon. D = run-on.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">The medication reduces inflammation effectively _______ patients must be monitored for potential side effects including elevated blood pressure.</div>
+    <div class="q-stem">Which choice is correct?</div>
+    <ul class="choices" id="l15p2">
+      <li data-reset-onclick="pickEx('l15p2',this,false)" onclick="pickEx('l15p2',this,false)">A. effectively, therefore</li>
+      <li data-reset-onclick="pickEx('l15p2',this,true)" onclick="pickEx('l15p2',this,true)">B. effectively; however, patients</li>
+      <li data-reset-onclick="pickEx('l15p2',this,false)" onclick="pickEx('l15p2',this,false)">C. effectively, patients</li>
+      <li data-reset-onclick="pickEx('l15p2',this,false)" onclick="pickEx('l15p2',this,false)">D. effectively patients</div>
+    </ul>
+    <div class="explanation" id="l15p2-exp"><b>B.</b> Two independent clauses with a contrasting relationship. Semicolon + "however" + comma is the correct structure for a transitional adverb joining independent clauses. A = comma splice (therefore is an adverb). C = comma splice (no conjunction). D = run-on.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">_______ the bridge had been structurally compromised for years, city engineers did not recommend closure until the most recent inspection revealed critical deterioration.</div>
+    <div class="q-stem">Which choice correctly begins the sentence?</div>
+    <ul class="choices" id="l15p3">
+      <li data-reset-onclick="pickEx('l15p3',this,false)" onclick="pickEx('l15p3',this,false)">A. The bridge had been structurally compromised for years,</li>
+      <li data-reset-onclick="pickEx('l15p3',this,true)" onclick="pickEx('l15p3',this,true)">B. Although the bridge had been structurally compromised for years,</li>
+      <li data-reset-onclick="pickEx('l15p3',this,false)" onclick="pickEx('l15p3',this,false)">C. The bridge had been structurally compromised for years;</li>
+      <li data-reset-onclick="pickEx('l15p3',this,false)" onclick="pickEx('l15p3',this,false)">D. The bridge had been structurally compromised for years and</div>
+    </ul>
+    <div class="explanation" id="l15p3-exp"><b>B.</b> "Although" creates a dependent clause showing concession — the bridge was compromised BUT engineers didn't act until recently. "Although" + comma before the independent clause is correct. A = comma splice. C = semicolon leaves the second part without a proper connection. D = "and" implies addition, not concession.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 4</div>
+    <div class="passage">The team's star player was injured in the second quarter _______ the reserves performed admirably, securing a narrow victory.</div>
+    <div class="q-stem">Which choice is correct?</div>
+    <ul class="choices" id="l15p4">
+      <li data-reset-onclick="pickEx('l15p4',this,true)" onclick="pickEx('l15p4',this,true)">A. quarter, yet</li>
+      <li data-reset-onclick="pickEx('l15p4',this,false)" onclick="pickEx('l15p4',this,false)">B. quarter nevertheless</li>
+      <li data-reset-onclick="pickEx('l15p4',this,false)" onclick="pickEx('l15p4',this,false)">C. quarter, nevertheless</li>
+      <li data-reset-onclick="pickEx('l15p4',this,false)" onclick="pickEx('l15p4',this,false)">D. quarter; yet</div>
+    </ul>
+    <div class="explanation" id="l15p4-exp"><b>A.</b> Comma + "yet" (FANBOYS) is correct. B = run-on (no punctuation before adverb). C = comma + "nevertheless" = comma splice ("nevertheless" is an adverb, not a conjunction). D = semicolon + "yet" — don't combine semicolon with a coordinating conjunction.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">The philosopher argued that consciousness cannot be fully explained by physical processes alone _______ this claim, known as the "hard problem," remains one of the most contested positions in contemporary philosophy of mind.</div>
+    <div class="q-stem">Which choice correctly punctuates the sentence?</div>
+    <ul class="choices" id="l15p5">
+      <li data-reset-onclick="pickEx('l15p5',this,false)" onclick="pickEx('l15p5',this,false)">A. alone, this</li>
+      <li data-reset-onclick="pickEx('l15p5',this,false)" onclick="pickEx('l15p5',this,false)">B. alone and this</li>
+      <li data-reset-onclick="pickEx('l15p5',this,true)" onclick="pickEx('l15p5',this,true)">C. alone; this</li>
+      <li data-reset-onclick="pickEx('l15p5',this,false)" onclick="pickEx('l15p5',this,false)">D. alone, and this</div>
+    </ul>
+    <div class="explanation" id="l15p5-exp"><b>C.</b> Both sides are independent clauses. No conjunction is needed here — the semicolon joins them cleanly. A = comma splice. B = "and" without comma = fused sentence for formal writing. D = comma + "and" works grammatically but creates an awkward meaning — the second clause isn't being added, it's a separate related observation. C (semicolon) is cleaner and correct.</div>
+  
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Sentence Boundaries — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">4 correct ways to join</div><div class="summary-item-body">Period · Semicolon · Comma + FANBOYS (For And Nor But Or Yet So) · Subordinating conjunction (because, although, since, while, when, if)</div></div>
+      <div class="summary-item"><div class="summary-item-title">3 errors</div><div class="summary-item-body">Comma splice (comma alone) · Run-on (nothing) · Comma + transitional adverb (however, therefore, furthermore = NOT conjunctions)</div></div>
+      <div class="summary-item"><div class="summary-item-title">The test</div><div class="summary-item-body">Can each side stand alone as a complete sentence? If both yes → need one of the 4 correct joiners.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Critical rule</div><div class="summary-item-body">However / therefore / furthermore / consequently / moreover = adverbs. With semicolon: "Clause; however, clause." ✓. With comma alone: ALWAYS wrong.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Semicolon rule</div><div class="summary-item-body">Semicolon = period. Complete sentence on BOTH sides. Never "semicolon + but/and/or" — that doubles up.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Subordinating conjunctions</div><div class="summary-item-body">Because / although / since / while / when / if → make one clause dependent. Dependent clause + comma + independent clause = correct structure.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_14.html" class="nav-arrow">← Lesson 14: Add/Delete/Revise</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 15 of 27</span>
+  <a href="english_lesson_16.html" class="nav-arrow">Next: Lesson 16: Commas →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 18: Semicolons — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 18 of 27 · Semicolons</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 18 / 27</span><span class="hdr-domain">SEC — Punctuation</span></div>
+  <div class="hdr-title">Semicolons</div>
+  <div class="hdr-tagline">A semicolon is a period in disguise. The rule is absolute: a complete sentence must appear on BOTH sides. Nothing else.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 per module</span><span class="chip">Target: 25 sec</span><span class="chip hi">Rule: complete sentence on BOTH sides</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">;</div><div class="section-title">What semicolons do</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">The single rule</div>
+    <div class="def-body">
+      <p><b>A semicolon must have a complete independent clause on BOTH sides.</b> It functions exactly like a period — the two clauses could be separate sentences.</p>
+      <p>✓ "The results were unexpected<b>;</b> the team revised their hypothesis."<br>
+      ✓ "She won the award<b>;</b> her colleagues were delighted."<br>
+      ✗ "The results<b>;</b> which were unexpected" — "which were unexpected" is not a complete sentence<br>
+      ✗ "She won the award<b>;</b> a significant achievement" — "a significant achievement" is a phrase, not a sentence</p>
+    </div>
+  </div>
+  <div class="def-box green">
+    <div class="def-label">Two uses of semicolons</div>
+    <div class="def-body">
+      <p><b>Use 1 — Joining related independent clauses:</b><br>
+      "The economy grew by 3%; unemployment fell to a forty-year low."</p>
+      <p><b>Use 2 — Separating complex list items that contain commas:</b><br>
+      "The delegation included representatives from Paris, France; London, England; and Berlin, Germany."<br>
+      This prevents confusion between the commas within items and the commas separating them.</p>
+    </div>
+  </div>
+</div>
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Test both sides.</b> Read before the semicolon: complete sentence? Read after the semicolon: complete sentence? Both must be yes. If either is no → semicolon is wrong.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Remember: transitional adverbs need a semicolon before them.</b> "Clause; however, clause" ✓. "Clause, however, clause" ✗ (comma splice). The semicolon goes BEFORE the transitional adverb.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Never put a coordinating conjunction after a semicolon.</b> "Clause; but clause" is wrong — use either a semicolon alone OR a comma + but. Not both.</div></div>
+  </div>
+</div>
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Semicolon before a phrase</div><div class="trap-body">"The study was significant; a landmark in the field." — "a landmark in the field" is a noun phrase, not a sentence. Wrong. Use a colon or a dash instead.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Semicolon + FANBOYS</div><div class="trap-body">"She studied; but she still failed." — semicolons don't combine with coordinating conjunctions. Use "She studied, but she still failed." or "She studied; she still failed."</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Semicolon before a relative clause</div><div class="trap-body">"The experiment; which took three years, produced remarkable data." — "which took three years" is a relative clause, not an independent clause. The semicolon is wrong here — remove it or use a comma.</div></div>
+  </div>
+</div>
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+  <div class="example">
+    <div class="example-hdr">Example 1<span class="example-type">Easy</span></div>
+    <div class="example-body">
+      <div class="passage">The coastal town had been devastated by the hurricane _______ recovery efforts began within days of the storm's passing.</div>
+      <ul class="choices" id="l18e1">
+        <li data-reset-onclick="pickEx('l18e1',this,false)" onclick="pickEx('l18e1',this,false)">A. hurricane, recovery</li>
+        <li data-reset-onclick="pickEx('l18e1',this,true)" onclick="pickEx('l18e1',this,true)">B. hurricane; recovery</li>
+        <li data-reset-onclick="pickEx('l18e1',this,false)" onclick="pickEx('l18e1',this,false)">C. hurricane: recovery</li>
+        <li data-reset-onclick="pickEx('l18e1',this,false)" onclick="pickEx('l18e1',this,false)">D. hurricane, and recovery</div>
+      </ul>
+      <div class="explanation" id="l18e1-exp"><b>B.</b> Both sides are complete sentences. The semicolon joins them. A = comma splice. C = colon — the recovery effort doesn't explain the devastation, it follows from it; semicolon is more appropriate. D = comma + "and" works but is less tight than a semicolon.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 2 — Semicolon before a phrase (error)<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">The proposal addressed three separate issues; funding, staffing, and long-term sustainability.</div>
+      <ul class="choices" id="l18e2">
+        <li data-reset-onclick="pickEx('l18e2',this,false)" onclick="pickEx('l18e2',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l18e2',this,false)" onclick="pickEx('l18e2',this,false)">B. issues, funding</li>
+        <li data-reset-onclick="pickEx('l18e2',this,true)" onclick="pickEx('l18e2',this,true)">C. issues: funding</li>
+        <li data-reset-onclick="pickEx('l18e2',this,false)" onclick="pickEx('l18e2',this,false)">D. issues. Funding</div>
+      </ul>
+      <div class="explanation" id="l18e2-exp"><b>C.</b> "Funding, staffing, and long-term sustainability" is a list, not an independent clause — semicolon is wrong. A colon after the complete sentence "The proposal addressed three separate issues" correctly introduces the list. B (comma) is too weak. D (period) is wrong — a fragment would follow.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 3 — Complex list<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">The expedition team came from three cities: Cairo, Egypt, Nairobi, Kenya, and Cape Town, South Africa.</div>
+      <ul class="choices" id="l18e3">
+        <li data-reset-onclick="pickEx('l18e3',this,false)" onclick="pickEx('l18e3',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l18e3',this,true)" onclick="pickEx('l18e3',this,true)">B. Cairo, Egypt; Nairobi, Kenya; and Cape Town, South Africa</li>
+        <li data-reset-onclick="pickEx('l18e3',this,false)" onclick="pickEx('l18e3',this,false)">C. Cairo Egypt, Nairobi Kenya, and Cape Town South Africa</li>
+        <li data-reset-onclick="pickEx('l18e3',this,false)" onclick="pickEx('l18e3',this,false)">D. Cairo Egypt; Nairobi Kenya; Cape Town South Africa</div>
+      </ul>
+      <div class="explanation" id="l18e3-exp"><b>B.</b> When list items themselves contain commas (city, country), semicolons separate the items to prevent confusion. B correctly uses commas within each item and semicolons between items. A uses only commas — it's unclear where one item ends and the next begins. C omits the city-country commas. D omits the country commas and the final "and."</div>
+    </div>
+  
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">The new policy was controversial among staff; however many employees acknowledged it was necessary.</div>
+    <ul class="choices" id="l18p1">
+      <li data-reset-onclick="pickEx('l18p1',this,false)" onclick="pickEx('l18p1',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l18p1',this,true)" onclick="pickEx('l18p1',this,true)">B. staff; however, many</li>
+      <li data-reset-onclick="pickEx('l18p1',this,false)" onclick="pickEx('l18p1',this,false)">C. staff, however, many</li>
+      <li data-reset-onclick="pickEx('l18p1',this,false)" onclick="pickEx('l18p1',this,false)">D. staff however, many</div>
+    </ul>
+    <div class="explanation" id="l18p1-exp"><b>B.</b> "However" as a transitional adverb needs a semicolon before it AND a comma after it: "clause; however, clause." A is missing the comma after "however." C = comma splice. D = no semicolon.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">The athlete trained for six months; preparing meticulously for the championship.</div>
+    <ul class="choices" id="l18p2">
+      <li data-reset-onclick="pickEx('l18p2',this,false)" onclick="pickEx('l18p2',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l18p2',this,false)" onclick="pickEx('l18p2',this,false)">B. months: preparing</li>
+      <li data-reset-onclick="pickEx('l18p2',this,true)" onclick="pickEx('l18p2',this,true)">C. months, preparing</li>
+      <li data-reset-onclick="pickEx('l18p2',this,false)" onclick="pickEx('l18p2',this,false)">D. months. Preparing</div>
+    </ul>
+    <div class="explanation" id="l18p2-exp"><b>C.</b> "Preparing meticulously for the championship" is a participial phrase, not an independent clause — semicolon is wrong. A comma correctly follows a main clause before a participial phrase that describes how the athlete trained. D creates a fragment. B (colon) is also incorrect for the same reason as A — neither semicolon nor colon can precede a participial phrase.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">Global temperatures have risen by approximately 1.2°C since pre-industrial times; scientists warn that reaching 1.5°C will trigger irreversible changes in key ecosystems.</div>
+    <ul class="choices" id="l18p3">
+      <li data-reset-onclick="pickEx('l18p3',this,true)" onclick="pickEx('l18p3',this,true)">A. No change — the sentence is correct</li>
+      <li data-reset-onclick="pickEx('l18p3',this,false)" onclick="pickEx('l18p3',this,false)">B. times, scientists</li>
+      <li data-reset-onclick="pickEx('l18p3',this,false)" onclick="pickEx('l18p3',this,false)">C. times: scientists</li>
+      <li data-reset-onclick="pickEx('l18p3',this,false)" onclick="pickEx('l18p3',this,false)">D. times, and scientists</div>
+    </ul>
+    <div class="explanation" id="l18p3-exp"><b>A.</b> Both sides are complete sentences with a related but sequential relationship — temperature rise → scientists' warning. Semicolon is correct. B = comma splice. C = colon — the warning doesn't explain the temperature rise, it's a consequence of it; semicolon is more appropriate. D = comma + "and" works but is weaker than the semicolon.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 4</div>
+    <div class="passage">The exhibition will feature works from three artists: Kenji Yamamoto, who works primarily in watercolour, Sofia Reyes, known for her large-scale installations, and Amara Diallo, a ceramicist based in Dakar.</div>
+    <ul class="choices" id="l18p4">
+      <li data-reset-onclick="pickEx('l18p4',this,false)" onclick="pickEx('l18p4',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l18p4',this,true)" onclick="pickEx('l18p4',this,true)">B. Yamamoto, who works primarily in watercolour; Sofia Reyes, known for her large-scale installations; and Amara Diallo</li>
+      <li data-reset-onclick="pickEx('l18p4',this,false)" onclick="pickEx('l18p4',this,false)">C. Yamamoto who works primarily in watercolour; Sofia Reyes known for her large-scale installations; and Amara Diallo</li>
+      <li data-reset-onclick="pickEx('l18p4',this,false)" onclick="pickEx('l18p4',this,false)">D. Yamamoto; Sofia Reyes; and Amara Diallo</div>
+    </ul>
+    <div class="explanation" id="l18p4-exp"><b>B.</b> Each artist entry contains an internal comma (e.g. "Kenji Yamamoto, who works primarily in watercolour") — so semicolons must separate the three list items. B correctly keeps the internal commas and uses semicolons between the three items. C removes the internal commas. D removes the descriptive phrases entirely.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">The historian argued that the treaty's failure was inevitable; pointing to the absence of enforcement mechanisms as the fatal flaw.</div>
+    <ul class="choices" id="l18p5">
+      <li data-reset-onclick="pickEx('l18p5',this,false)" onclick="pickEx('l18p5',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l18p5',this,true)" onclick="pickEx('l18p5',this,true)">B. inevitable, pointing</li>
+      <li data-reset-onclick="pickEx('l18p5',this,false)" onclick="pickEx('l18p5',this,false)">C. inevitable: pointing</li>
+      <li data-reset-onclick="pickEx('l18p5',this,false)" onclick="pickEx('l18p5',this,false)">D. inevitable. Pointing</div>
+    </ul>
+    <div class="explanation" id="l18p5-exp"><b>B.</b> "Pointing to the absence of enforcement mechanisms as the fatal flaw" is a participial phrase modifying "the historian" — not an independent clause. Semicolon is wrong. A comma correctly attaches the participial phrase to the main clause. D creates a fragment. C (colon) — "pointing to..." is not an elaboration in a list format.</div>
+  
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Semicolons — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The rule</div><div class="summary-item-body">Complete independent clause on BOTH sides. Test each side alone. Both must stand as complete sentences.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Two uses</div><div class="summary-item-body">1. Join two independent clauses. 2. Separate complex list items that contain internal commas.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Transitional adverbs</div><div class="summary-item-body">Clause; however, clause. ✓ — semicolon before, comma after. Never: clause, however, clause (comma splice).</div></div>
+      <div class="summary-item"><div class="summary-item-title">Never</div><div class="summary-item-body">Before a phrase or clause fragment · Before a participial phrase · Before a relative clause · Combined with FANBOYS (semicolon + but = wrong)</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_17.html" class="nav-arrow">← Lesson 17: Colons</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 18 of 27</span>
+  <a href="english_lesson_19.html" class="nav-arrow">Next: Lesson 19: Dashes →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

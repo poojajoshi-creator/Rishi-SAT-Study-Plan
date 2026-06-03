@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 17: Colons — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 17 of 27 · Colons</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 17 / 27</span><span class="hdr-domain">SEC — Punctuation</span></div>
+  <div class="hdr-title">Colons</div>
+  <div class="hdr-tagline">A colon is a promise: it says "what follows is the explanation, list, or elaboration of what I just said." The rule is simple — complete sentence before, anything after.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 per module</span><span class="chip">Target: 30 sec</span><span class="chip hi">Rule: complete sentence MUST come before</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">:</div><div class="section-title">What colons do</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">The one rule</div>
+    <div class="def-body">
+      <p><b>A colon must be preceded by an independent clause (a complete sentence).</b> What comes after the colon can be anything — a word, a phrase, a list, another sentence, a quotation.</p>
+      <p>✓ "She brought three things to the meeting<b>:</b> her laptop, her notes, and her coffee."<br>
+      ✓ "The experiment produced a surprising result<b>:</b> the control group outperformed the test group."<br>
+      ✗ "She brought<b>:</b> her laptop, her notes, and her coffee." — "She brought" is not a complete sentence without the object.</p>
+      <p><b>Test:</b> Remove the colon and everything after it. Does what's left make a complete sentence? If yes → colon is correct. If no → colon is wrong.</p>
+    </div>
+  </div>
+  <div class="def-box amber">
+    <div class="def-label">Colon vs semicolon</div>
+    <div class="def-body">
+      <p><b>Semicolon</b> = two complete sentences, equal relationship. "She studied hard; she passed."<br>
+      <b>Colon</b> = complete sentence, then explanation/list/elaboration. "She passed for one reason: she studied every night."<br>
+      Key: what follows a colon does NOT need to be a complete sentence. What follows a semicolon MUST be a complete sentence.</p>
+    </div>
+  </div>
+</div>
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Cover the colon and everything after it.</b> Read what's left. Is it a complete sentence (subject + verb)? If yes → colon is valid. If no → colon is wrong.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Check the relationship.</b> Does what follows explain, list, or elaborate on the first part? If yes → colon is the right choice over a semicolon.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Never put a colon between a verb and its object</b> or between a preposition and its object. "The study found: three significant results" is wrong — "found" needs its object directly.</div></div>
+  </div>
+</div>
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Colon after a fragment</div><div class="trap-body">"The report highlighted three areas: ..." — "The report highlighted" without "three areas" is complete. But "The most important issues were:" is a fragment (no predicate complement). Check both sides.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Colon between verb and object</div><div class="trap-body">"The scientists discovered: a new species..." — wrong. "Discovered" needs its object immediately. A colon interrupts this natural grammatical connection.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Colon when semicolon is needed</div><div class="trap-body">Two independent clauses with no explanatory relationship → semicolon, not colon. "She studied all night: she was well prepared" — the second clause explains the first, so colon is fine. "She studied: her brother watched TV" — no explanatory relationship, colon is wrong.</div></div>
+  </div>
+</div>
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+  <div class="example">
+    <div class="example-hdr">Example 1<span class="example-type">Easy</span></div>
+    <div class="example-body">
+      <div class="passage">The chef prepared several regional specialities for the banquet _______ lamb tagine, a saffron-infused rice pilaf, and a honey-almond pastry.</div>
+      <div class="q-stem">Which punctuation correctly completes the sentence?</div>
+      <ul class="choices" id="l17e1">
+        <li data-reset-onclick="pickEx('l17e1',this,false)" onclick="pickEx('l17e1',this,false)">A. banquet,</li>
+        <li data-reset-onclick="pickEx('l17e1',this,true)" onclick="pickEx('l17e1',this,true)">B. banquet:</li>
+        <li data-reset-onclick="pickEx('l17e1',this,false)" onclick="pickEx('l17e1',this,false)">C. banquet;</li>
+        <li data-reset-onclick="pickEx('l17e1',this,false)" onclick="pickEx('l17e1',this,false)">D. banquet —</div>
+      </ul>
+      <div class="explanation" id="l17e1-exp"><b>B.</b> "The chef prepared several regional specialities for the banquet" is a complete sentence. What follows is the list of those specialities — the colon introduces the elaboration perfectly. A (comma) is too weak for a list following a complete sentence. C (semicolon) requires a complete sentence after it — "lamb tagine, a saffron-infused rice pilaf..." is not a sentence. D (dash) works but colon is more formal and precise for lists.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 2 — Fragment before colon<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">The committee's main recommendation was: that all government agencies adopt a unified cybersecurity framework by the end of the fiscal year.</div>
+      <div class="q-stem">Which revision corrects the punctuation?</div>
+      <ul class="choices" id="l17e2">
+        <li data-reset-onclick="pickEx('l17e2',this,false)" onclick="pickEx('l17e2',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l17e2',this,true)" onclick="pickEx('l17e2',this,true)">B. Remove the colon — the sentence needs no punctuation between "was" and "that"</li>
+        <li data-reset-onclick="pickEx('l17e2',this,false)" onclick="pickEx('l17e2',this,false)">C. Replace the colon with a semicolon</li>
+        <li data-reset-onclick="pickEx('l17e2',this,false)" onclick="pickEx('l17e2',this,false)">D. Replace the colon with a comma</div>
+      </ul>
+      <div class="explanation" id="l17e2-exp"><b>B.</b> "The committee's main recommendation was" is not a complete sentence — "was" needs its complement to complete the meaning. The colon interrupts the verb from its complement clause "that all government agencies..." Remove the colon: "The committee's main recommendation was that all government agencies adopt..."</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 3 — Colon vs semicolon<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">For decades, astronomers searched for evidence of water on Mars _______ in 2018, ESA's MARSIS radar finally confirmed the presence of a subglacial lake beneath the southern polar ice cap.</div>
+      <div class="q-stem">Which punctuation best completes the sentence?</div>
+      <ul class="choices" id="l17e3">
+        <li data-reset-onclick="pickEx('l17e3',this,false)" onclick="pickEx('l17e3',this,false)">A. Mars,</li>
+        <li data-reset-onclick="pickEx('l17e3',this,false)" onclick="pickEx('l17e3',this,false)">B. Mars, and</li>
+        <li data-reset-onclick="pickEx('l17e3',this,true)" onclick="pickEx('l17e3',this,true)">C. Mars;</li>
+        <li data-reset-onclick="pickEx('l17e3',this,false)" onclick="pickEx('l17e3',this,false)">D. Mars:</div>
+      </ul>
+      <div class="explanation" id="l17e3-exp"><b>C.</b> Both sides are independent clauses. The second clause describes what happened AFTER the search — not an explanation OF the search, but a sequel to it. Semicolon joins two related independent clauses. D (colon) — the discovery doesn't explain the searching; it concludes it. The relationship is sequential, not explanatory, making a semicolon more appropriate. A = comma splice. B = comma + "and" works but is less precise than semicolon here.</div>
+    </div>
+  
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">The novel's central theme is clear from the opening chapter _______ every human relationship is defined by power.</div>
+    <ul class="choices" id="l17p1">
+      <li data-reset-onclick="pickEx('l17p1',this,false)" onclick="pickEx('l17p1',this,false)">A. chapter,</li>
+      <li data-reset-onclick="pickEx('l17p1',this,false)" onclick="pickEx('l17p1',this,false)">B. chapter and</li>
+      <li data-reset-onclick="pickEx('l17p1',this,true)" onclick="pickEx('l17p1',this,true)">C. chapter:</li>
+      <li data-reset-onclick="pickEx('l17p1',this,false)" onclick="pickEx('l17p1',this,false)">D. chapter;</div>
+    </ul>
+    <div class="explanation" id="l17p1-exp"><b>C.</b> "The novel's central theme is clear from the opening chapter" = complete sentence. "Every human relationship is defined by power" = the theme being explained. Colon introduces what the theme IS — explanatory relationship. Semicolon (D) would work structurally but is less precise than a colon for an explanation.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">The new regulation requires: all manufacturers to disclose the full chemical composition of their products on the label.</div>
+    <ul class="choices" id="l17p2">
+      <li data-reset-onclick="pickEx('l17p2',this,false)" onclick="pickEx('l17p2',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l17p2',this,true)" onclick="pickEx('l17p2',this,true)">B. Remove the colon</li>
+      <li data-reset-onclick="pickEx('l17p2',this,false)" onclick="pickEx('l17p2',this,false)">C. Replace the colon with a comma</li>
+      <li data-reset-onclick="pickEx('l17p2',this,false)" onclick="pickEx('l17p2',this,false)">D. Replace the colon with a semicolon</div>
+    </ul>
+    <div class="explanation" id="l17p2-exp"><b>B.</b> "Requires" needs its object directly — "all manufacturers to disclose..." is the object. Inserting a colon between a verb and its object breaks the grammatical connection. Remove it completely.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">Scientists have identified three factors that most strongly predict volcanic eruption _______ increased seismic activity, ground deformation, and changes in gas emissions.</div>
+    <ul class="choices" id="l17p3">
+      <li data-reset-onclick="pickEx('l17p3',this,false)" onclick="pickEx('l17p3',this,false)">A. eruption,</li>
+      <li data-reset-onclick="pickEx('l17p3',this,false)" onclick="pickEx('l17p3',this,false)">B. eruption and</li>
+      <li data-reset-onclick="pickEx('l17p3',this,true)" onclick="pickEx('l17p3',this,true)">C. eruption:</li>
+      <li data-reset-onclick="pickEx('l17p3',this,false)" onclick="pickEx('l17p3',this,false)">D. eruption;</div>
+    </ul>
+    <div class="explanation" id="l17p3-exp"><b>C.</b> "Scientists have identified three factors that most strongly predict volcanic eruption" = complete sentence. The list that follows IS those three factors — the colon introduces the elaboration. D (semicolon) is wrong — the list is not a complete sentence.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 4</div>
+    <div class="passage">The archaeologist made a discovery that would rewrite the region's history _______ a burial chamber containing artefacts dated to 3,500 BCE.</div>
+    <ul class="choices" id="l17p4">
+      <li data-reset-onclick="pickEx('l17p4',this,false)" onclick="pickEx('l17p4',this,false)">A. history,</li>
+      <li data-reset-onclick="pickEx('l17p4',this,false)" onclick="pickEx('l17p4',this,false)">B. history;</li>
+      <li data-reset-onclick="pickEx('l17p4',this,true)" onclick="pickEx('l17p4',this,true)">C. history:</li>
+      <li data-reset-onclick="pickEx('l17p4',this,false)" onclick="pickEx('l17p4',this,false)">D. history, and</div>
+    </ul>
+    <div class="explanation" id="l17p4-exp"><b>C.</b> Complete sentence before: "The archaeologist made a discovery that would rewrite the region's history." What follows: "a burial chamber containing artefacts dated to 3,500 BCE" — this IS the discovery (explanation/elaboration). Colon is perfect. B (semicolon) — the phrase after is not an independent clause.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">The reason for the experiment's failure was not a flaw in the methodology but something far more mundane _______ a graduate student had mislabelled the sample containers.</div>
+    <ul class="choices" id="l17p5">
+      <li data-reset-onclick="pickEx('l17p5',this,false)" onclick="pickEx('l17p5',this,false)">A. mundane,</li>
+      <li data-reset-onclick="pickEx('l17p5',this,false)" onclick="pickEx('l17p5',this,false)">B. mundane;</li>
+      <li data-reset-onclick="pickEx('l17p5',this,true)" onclick="pickEx('l17p5',this,true)">C. mundane:</li>
+      <li data-reset-onclick="pickEx('l17p5',this,false)" onclick="pickEx('l17p5',this,false)">D. mundane —</div>
+    </ul>
+    <div class="explanation" id="l17p5-exp"><b>C.</b> "Something far more mundane" is the subject's complement — and the colon delivers WHAT that something is. Complete sentence before (yes — "The reason...was...something far more mundane"). The second clause explains what "something far more mundane" is. Colon. D (dash) also works grammatically — but colon is more precise for formal explanatory elaboration.</div>
+  
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Colons — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The one rule</div><div class="summary-item-body">Complete sentence MUST come before the colon. Cover and test: does what's left stand alone? If not, no colon.</div></div>
+      <div class="summary-item"><div class="summary-item-title">What follows</div><div class="summary-item-body">Anything: a word, phrase, list, sentence, quotation. What follows a colon does NOT need to be a complete sentence.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Colon vs semicolon</div><div class="summary-item-body">Colon = explanation/list follows. Semicolon = two complete sentences, equal relationship. Both need a complete sentence before them.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Never</div><div class="summary-item-body">Between verb and object · Between preposition and object · After "including," "such as," "for example"</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_16.html" class="nav-arrow">← Lesson 16: Commas</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 17 of 27</span>
+  <a href="english_lesson_18.html" class="nav-arrow">Next: Lesson 18: Semicolons →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

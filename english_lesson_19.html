@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 19: Dashes — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 19 of 27 · Dashes</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 19 / 27</span><span class="hdr-domain">SEC — Punctuation</span></div>
+  <div class="hdr-title">Dashes</div>
+  <div class="hdr-tagline">Dashes are the most flexible punctuation mark — they can do what commas, colons, and parentheses do, but with more emphasis. The key rule: paired dashes always come in pairs.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 per module</span><span class="chip">Target: 30 sec</span><span class="chip hi">Rule: if one dash opens, another must close</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">—</div><div class="section-title">How dashes work</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Two uses of the dash</div>
+    <div class="def-body">
+      <p><b>Use 1 — Single dash: dramatic pause or elaboration</b><br>
+      A single dash introduces an abrupt elaboration, explanation, or emphasis at the end of a sentence — like a colon but more dramatic.<br>
+      "She made one mistake that cost her everything — she trusted the wrong person."<br>
+      "The study confirmed what researchers had long suspected — stress accelerates cellular ageing."</p>
+      <p><b>Use 2 — Paired dashes: parenthetical interruption</b><br>
+      Two dashes frame parenthetical information — an aside, definition, or example — that could be removed without breaking the sentence. They function like two commas but with greater emphasis.<br>
+      "The discovery — made entirely by accident — transformed the field."<br>
+      "Her first novel — written in six weeks during a bout of insomnia — became an international bestseller."</p>
+    </div>
+  </div>
+  <div class="def-box amber">
+    <div class="def-label">Dash vs comma vs parentheses</div>
+    <div class="def-body">
+      <p>All three can frame a parenthetical, but with different emphasis:<br>
+      Lowest: (parentheses) — quietest, most dismissible<br>
+      Middle: comma, comma — standard<br>
+      Highest: dash — dash — loudest, most emphatic<br>
+      The SAT tests whether you use a dash where a comma belongs or vice versa — and especially whether you close a paired dash.</p>
+    </div>
+  </div>
+</div>
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Look for the opening dash.</b> If you see a dash opening a parenthetical, the closing punctuation MUST also be a dash. Cannot close with a comma if opened with a dash.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Test the parenthetical by removing it.</b> Read the sentence without the dashed phrase. Does it still make complete sense? If yes — the dashes are correctly framing a parenthetical.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Single dash at end: check it introduces an elaboration.</b> What follows the dash should explain or dramatically restate what came before — not introduce a new unrelated idea.</div></div>
+  </div>
+</div>
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1 — most common</div><div class="trap-title">Mixed pairs: dash + comma</div><div class="trap-body">"The results — which surprised everyone, were published immediately." The opening is a dash but the closing is a comma. Wrong. Both must match: either two dashes or two commas.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Dash where colon is needed</div><div class="trap-body">Both dash and colon can introduce elaboration, but a colon needs a complete sentence before it. A dash is more flexible. The SAT usually accepts both — check whether the choices offer both and pick the one that matches the surrounding style.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Three dashes in one sentence</div><div class="trap-body">A sentence can't have three dashes — one opens the parenthetical, one closes it, and a third would create confusion about what's paired with what. Restructure if you see three.</div></div>
+  </div>
+</div>
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+  <div class="example">
+    <div class="example-hdr">Example 1 — Mixed pair error<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">The engineer's solution — elegant in its simplicity, reduced production costs by a third without sacrificing quality.</div>
+      <ul class="choices" id="l19e1">
+        <li data-reset-onclick="pickEx('l19e1',this,false)" onclick="pickEx('l19e1',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l19e1',this,true)" onclick="pickEx('l19e1',this,true)">B. solution — elegant in its simplicity — reduced</li>
+        <li data-reset-onclick="pickEx('l19e1',this,false)" onclick="pickEx('l19e1',this,false)">C. solution, elegant in its simplicity, reduced</li>
+        <li data-reset-onclick="pickEx('l19e1',this,false)" onclick="pickEx('l19e1',this,false)">D. solution: elegant in its simplicity, reduced</div>
+      </ul>
+      <div class="explanation" id="l19e1-exp"><b>B.</b> The opening dash after "solution" must be matched with a closing dash. "Elegant in its simplicity" is parenthetical — remove it and "The engineer's solution reduced production costs" makes sense. A mixes dash + comma — wrong pairing. C uses two commas — acceptable but A already has the dash opening, so B is the fix. D (colon) — colons don't close parenthetical insertions mid-sentence.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 2 — Single dash for elaboration<span class="example-type">Easy</span></div>
+    <div class="example-body">
+      <div class="passage">The committee reached a decision that no one had anticipated _______ they voted to dissolve themselves entirely.</div>
+      <ul class="choices" id="l19e2">
+        <li data-reset-onclick="pickEx('l19e2',this,false)" onclick="pickEx('l19e2',this,false)">A. anticipated, they</li>
+        <li data-reset-onclick="pickEx('l19e2',this,true)" onclick="pickEx('l19e2',this,true)">B. anticipated — they</li>
+        <li data-reset-onclick="pickEx('l19e2',this,false)" onclick="pickEx('l19e2',this,false)">C. anticipated; they</li>
+        <li data-reset-onclick="pickEx('l19e2',this,false)" onclick="pickEx('l19e2',this,false)">D. anticipated: they</div>
+      </ul>
+      <div class="explanation" id="l19e2-exp"><b>B.</b> The dash introduces a dramatic revelation — what the unexpected decision WAS. This is the single-dash elaboration use. A = comma splice. C (semicolon) works structurally but lacks the dramatic emphasis that the context ("no one had anticipated") calls for. D (colon) also works, but the dash is more dramatic and appropriate for this context.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 3 — Choosing between comma and dash<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">The prime minister's speech, delivered to a packed chamber — outlined a radical departure from forty years of economic policy.</div>
+      <ul class="choices" id="l19e3">
+        <li data-reset-onclick="pickEx('l19e3',this,false)" onclick="pickEx('l19e3',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l19e3',this,true)" onclick="pickEx('l19e3',this,true)">B. speech, delivered to a packed chamber, outlined</li>
+        <li data-reset-onclick="pickEx('l19e3',this,false)" onclick="pickEx('l19e3',this,false)">C. speech — delivered to a packed chamber — outlined</li>
+        <li data-reset-onclick="pickEx('l19e3',this,false)" onclick="pickEx('l19e3',this,false)">D. speech: delivered to a packed chamber, outlined</div>
+      </ul>
+      <div class="explanation" id="l19e3-exp"><b>B.</b> "Delivered to a packed chamber" is a parenthetical — it needs matching punctuation on both sides. The original opens with a comma but closes with a dash — mixed pair, wrong. B uses comma + comma (consistent). C uses dash + dash (also correct). But the context doesn't call for dramatic emphasis — B is the cleaner choice. D opens with a colon (wrong — colons don't open mid-sentence parentheticals) and closes with a comma.</div>
+    </div>
+  
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">The physicist's breakthrough — described by colleagues as the most significant advance in the field in fifty years, earned her the Nobel Prize in Physics.</div>
+    <ul class="choices" id="l19p1">
+      <li data-reset-onclick="pickEx('l19p1',this,false)" onclick="pickEx('l19p1',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l19p1',this,true)" onclick="pickEx('l19p1',this,true)">B. years — earned</li>
+      <li data-reset-onclick="pickEx('l19p1',this,false)" onclick="pickEx('l19p1',this,false)">C. years, earned</li>
+      <li data-reset-onclick="pickEx('l19p1',this,false)" onclick="pickEx('l19p1',this,false)">D. years: earned</div>
+    </ul>
+    <div class="explanation" id="l19p1-exp"><b>B.</b> The sentence opens the parenthetical with a dash ("breakthrough —"). The closing punctuation must also be a dash. B closes with " — earned." A closes with a comma — mixed pair. C changes the closing to a comma — still mixed. D uses a colon — wrong for closing a parenthetical.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">Only one thing could have saved the project at that point — a complete redesign of the underlying architecture.</div>
+    <ul class="choices" id="l19p2">
+      <li data-reset-onclick="pickEx('l19p2',this,true)" onclick="pickEx('l19p2',this,true)">A. No change — the sentence is correctly punctuated</li>
+      <li data-reset-onclick="pickEx('l19p2',this,false)" onclick="pickEx('l19p2',this,false)">B. point, a complete redesign</li>
+      <li data-reset-onclick="pickEx('l19p2',this,false)" onclick="pickEx('l19p2',this,false)">C. point: a complete redesign</li>
+      <li data-reset-onclick="pickEx('l19p2',this,false)" onclick="pickEx('l19p2',this,false)">D. point; a complete redesign</div>
+    </ul>
+    <div class="explanation" id="l19p2-exp"><b>A.</b> Single dash correctly introduces the dramatic revelation of what "only one thing" was. The elaboration ("a complete redesign of the underlying architecture") explains "only one thing." B (comma) is too weak for this emphatic context. C (colon) also works structurally — both colon and single dash are valid here, but A is correct as given. D (semicolon) — "a complete redesign" is not an independent clause.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">The report — compiled over three years by a team of sixteen researchers, represents the most comprehensive analysis of urban housing affordability ever conducted in this country.</div>
+    <ul class="choices" id="l19p3">
+      <li data-reset-onclick="pickEx('l19p3',this,false)" onclick="pickEx('l19p3',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l19p3',this,true)" onclick="pickEx('l19p3',this,true)">B. researchers — represents</li>
+      <li data-reset-onclick="pickEx('l19p3',this,false)" onclick="pickEx('l19p3',this,false)">C. researchers, represents</li>
+      <li data-reset-onclick="pickEx('l19p3',this,false)" onclick="pickEx('l19p3',this,false)">D. researchers: represents</div>
+    </ul>
+    <div class="explanation" id="l19p3-exp"><b>B.</b> Opening dash → must close with dash. "Compiled over three years by a team of sixteen researchers" is parenthetical. Remove it: "The report represents the most comprehensive analysis..." — complete. The closing must be a dash. B provides the matching closing dash.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 4</div>
+    <div class="passage">She had one rule she never broke — always read the contract before signing.</div>
+    <ul class="choices" id="l19p4">
+      <li data-reset-onclick="pickEx('l19p4',this,true)" onclick="pickEx('l19p4',this,true)">A. No change</li>
+      <li data-reset-onclick="pickEx('l19p4',this,false)" onclick="pickEx('l19p4',this,false)">B. broke, always</li>
+      <li data-reset-onclick="pickEx('l19p4',this,false)" onclick="pickEx('l19p4',this,false)">C. broke; always</li>
+      <li data-reset-onclick="pickEx('l19p4',this,false)" onclick="pickEx('l19p4',this,false)">D. broke: always</div>
+    </ul>
+    <div class="explanation" id="l19p4-exp"><b>A.</b> Single dash introduces what "the one rule" was — emphatic elaboration. "Always read the contract before signing" IS the rule. The dash is appropriate for its dramatic reveal function. D (colon) also works — but A is correct as given. B = comma is too weak. C = semicolon — "always read..." is not an independent clause.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">The architect's design — which incorporated recycled materials and passive solar heating — and her innovative financing model, together made the project viable.</div>
+    <ul class="choices" id="l19p5">
+      <li data-reset-onclick="pickEx('l19p5',this,true)" onclick="pickEx('l19p5',this,true)">A. No change — the sentence is correctly punctuated</li>
+      <li data-reset-onclick="pickEx('l19p5',this,false)" onclick="pickEx('l19p5',this,false)">B. design, which incorporated recycled materials and passive solar heating, and her innovative financing model, together</li>
+      <li data-reset-onclick="pickEx('l19p5',this,false)" onclick="pickEx('l19p5',this,false)">C. design — which incorporated recycled materials and passive solar heating, and her innovative financing model — together</li>
+      <li data-reset-onclick="pickEx('l19p5',this,false)" onclick="pickEx('l19p5',this,false)">D. design which incorporated recycled materials and passive solar heating and her innovative financing model, together</div>
+    </ul>
+    <div class="explanation" id="l19p5-exp"><b>A.</b> The paired dashes correctly set off "which incorporated recycled materials and passive solar heating" as a parenthetical describing "the design." The comma after "model" separates the compound subject ("the design...and her innovative financing model") from the predicate ("together made the project viable"). The punctuation is correct. C erroneously expands the dashed section to include "her innovative financing model" — but that's part of the main sentence subject, not the parenthetical.</div>
+  
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Dashes — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">Single dash</div><div class="summary-item-body">Dramatic pause before an elaboration, explanation, or revelation at the end of a sentence. More emphatic than a colon.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Paired dashes</div><div class="summary-item-body">Frame a parenthetical insertion mid-sentence. Must match — dash opens, dash closes. Never dash + comma or comma + dash.</div></div>
+      <div class="summary-item"><div class="summary-item-title">The pairing rule</div><div class="summary-item-body">If you see an opening dash, the closing punctuation MUST also be a dash. Mixed pairs (dash + comma) are always wrong on the SAT.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Test it</div><div class="summary-item-body">Remove the dashed phrase. Does the sentence still make complete sense? If yes, the dashes correctly frame a parenthetical.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_18.html" class="nav-arrow">← Lesson 18: Semicolons</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 19 of 27</span>
+  <a href="english_lesson_20.html" class="nav-arrow">Next: Lesson 20: Apostrophes →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

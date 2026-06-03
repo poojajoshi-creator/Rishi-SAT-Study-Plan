@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 24: Dangling & Misplaced Modifiers — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 24 of 27 · Dangling & Misplaced Modifiers</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 24 / 27</span><span class="hdr-domain">SEC — Grammar</span></div>
+  <div class="hdr-title">Dangling &amp;<br><em>Misplaced Modifiers</em></div>
+  <div class="hdr-tagline">An opening modifier must describe the very first noun or subject after the comma. When it doesn't, the modifier is "dangling" — and the sentence says something unintentionally absurd.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 per module</span><span class="chip">Target: 45 sec</span><span class="chip hi">Rule: after the comma, the SUBJECT must be what the modifier describes</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">→</div><div class="section-title">What is a dangling modifier?</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">The rule — absolute and unbreakable</div>
+    <div class="def-body">
+      <p>When a sentence begins with a participial phrase, gerund phrase, or adjective phrase followed by a comma, <b>the subject immediately after the comma MUST be the thing the phrase describes.</b></p>
+      <p>✗ "<b>Having studied all night,</b> the exam felt manageable." — The exam didn't study all night.<br>
+      ✓ "<b>Having studied all night,</b> she found the exam manageable." — She studied all night.</p>
+      <p>✗ "<b>Frozen by the sudden cold snap,</b> the pipes burst." — The pipes weren't frozen before they burst — they burst BECAUSE they froze. But grammatically: "frozen" describes what? The pipes. This is actually correct — the pipes were frozen. Context matters.<br>
+      ✗ "<b>Walking through the park,</b> a dog ran past me." — The dog wasn't walking.<br>
+      ✓ "<b>Walking through the park,</b> I saw a dog run past." — I was walking.</p>
+    </div>
+  </div>
+  <div class="def-box amber">
+    <div class="def-label">Types of opening modifiers</div>
+    <div class="def-body">
+      <p><b>Participial phrase:</b> "Having completed the experiment, the team..."<br>
+      <b>Gerund phrase:</b> "By analysing the data carefully, researchers..."<br>
+      <b>Infinitive phrase:</b> "To improve accuracy, the instrument was recalibrated." (passive — okay because the instrument IS being improved)<br>
+      <b>Adjective/past participle phrase:</b> "Exhausted by the climb, she..."<br>
+      <b>Absolute phrase:</b> "The report finished, the team celebrated." (absolute phrases modify the whole sentence — grammatically different)</p>
+    </div>
+  </div>
+</div>
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Identify the opening modifier.</b> What does the phrase before the comma describe? Ask: who or what is doing / experiencing / being described?</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Check the subject after the comma.</b> Read: "[Modifier phrase], [SUBJECT] [verb]." Is the subject the thing the modifier describes? If yes → correct. If no → dangling modifier.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Fix by making the right thing the subject.</b> "Having studied all night, the exam felt easy" → make the studier the subject: "Having studied all night, she found the exam easy." OR restructure: "After studying all night, she found the exam easy."</div></div>
+  </div>
+</div>
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1 — most common</div><div class="trap-title">Passive construction after modifier</div><div class="trap-body">"Having analysed the data, several conclusions were drawn." "Several conclusions" didn't analyse the data — the researchers did. Wrong. Fix: "Having analysed the data, the researchers drew several conclusions."</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Sounds fine but isn't</div><div class="trap-body">"Born in 1942, her early childhood was shaped by wartime rationing." "Her early childhood" wasn't born in 1942 — she was. Fix: "Born in 1942, she experienced an early childhood shaped by wartime rationing."</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Misplaced modifier (not dangling)</div><div class="trap-body">"She almost drove her children to school every day." (almost + drove = nearly drove?). Should be: "She drove her children to school almost every day." The word "almost" is in the wrong position — it modifies "drove" instead of "every day."</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Infinitive phrase subject confusion</div><div class="trap-body">"To become a professional athlete, years of dedication are required." "Years of dedication" can't become an athlete. Fix: "To become a professional athlete, one must dedicate years to training."</div></div>
+  </div>
+</div>
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+  <div class="example">
+    <div class="example-hdr">Example 1 — Classic dangling modifier<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">After reviewing hundreds of applications, the ideal candidate was selected by the hiring committee.</div>
+      <ul class="choices" id="l24e1">
+        <li data-reset-onclick="pickEx('l24e1',this,false)" onclick="pickEx('l24e1',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l24e1',this,true)" onclick="pickEx('l24e1',this,true)">B. the hiring committee selected the ideal candidate.</li>
+        <li data-reset-onclick="pickEx('l24e1',this,false)" onclick="pickEx('l24e1',this,false)">C. an ideal candidate emerged from the process.</li>
+        <li data-reset-onclick="pickEx('l24e1',this,false)" onclick="pickEx('l24e1',this,false)">D. it was the ideal candidate who was selected.</div>
+      </ul>
+      <div class="explanation" id="l24e1-exp"><b>B.</b> "After reviewing hundreds of applications" — who reviewed? The hiring committee. After the comma, the subject must be the hiring committee. A and D use passive construction — "the ideal candidate" or "it" becomes the subject, but neither reviewed applications. B correctly makes "the hiring committee" the subject. C — "an ideal candidate" didn't review applications.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 2 — Born in...<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">Born in rural Kentucky in 1902, Barbara's early education was limited to a one-room schoolhouse.</div>
+      <ul class="choices" id="l24e2">
+        <li data-reset-onclick="pickEx('l24e2',this,false)" onclick="pickEx('l24e2',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l24e2',this,true)" onclick="pickEx('l24e2',this,true)">B. Barbara received her early education in a one-room schoolhouse.</li>
+        <li data-reset-onclick="pickEx('l24e2',this,false)" onclick="pickEx('l24e2',this,false)">C. Barbara's early education took place in a one-room schoolhouse.</li>
+        <li data-reset-onclick="pickEx('l24e2',this,false)" onclick="pickEx('l24e2',this,false)">D. a one-room schoolhouse was Barbara's only educational option.</div>
+      </ul>
+      <div class="explanation" id="l24e2-exp"><b>B.</b> "Born in rural Kentucky in 1902" — BARBARA was born, not her education. After the comma, "Barbara" must be the subject. B makes Barbara the subject. C and D both use "Barbara's education" or "a one-room schoolhouse" — neither was born in Kentucky. A (Barbara's early education was born in...) = her education wasn't born.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 3 — To + infinitive<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">To accurately measure the effects of the intervention, a control group was established alongside the experimental group.</div>
+      <ul class="choices" id="l24e3">
+        <li data-reset-onclick="pickEx('l24e3',this,false)" onclick="pickEx('l24e3',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l24e3',this,false)" onclick="pickEx('l24e3',this,false)">B. the research team established a control group</li>
+        <li data-reset-onclick="pickEx('l24e3',this,true)" onclick="pickEx('l24e3',this,true)">C. both A and B are grammatically acceptable</li>
+        <li data-reset-onclick="pickEx('l24e3',this,false)" onclick="pickEx('l24e3',this,false)">D. the effects were accurately measured</div>
+      </ul>
+      <div class="explanation" id="l24e3-exp"><b>C.</b> Infinitive phrases with "to" are more flexible — they can function as purpose modifiers for either an active or passive subject when the meaning is clear. "To measure X, a control group was established" is acceptable because the control group's purpose IS to measure X (even though the group doesn't do the measuring itself). However, B is cleaner. The SAT generally accepts both in purpose-infinitive constructions — the key ambiguity is with participial phrases (having done, studying, etc.), not infinitive phrases.</div>
+    </div>
+  
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">Having spent three decades studying chimpanzee behaviour, Jane Goodall's findings transformed our understanding of primate social structures.</div>
+    <ul class="choices" id="l24p1">
+      <li data-reset-onclick="pickEx('l24p1',this,false)" onclick="pickEx('l24p1',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l24p1',this,true)" onclick="pickEx('l24p1',this,true)">B. Jane Goodall transformed our understanding of primate social structures with her findings.</li>
+      <li data-reset-onclick="pickEx('l24p1',this,false)" onclick="pickEx('l24p1',this,false)">C. the findings of Jane Goodall transformed our understanding of primate social structures.</li>
+      <li data-reset-onclick="pickEx('l24p1',this,false)" onclick="pickEx('l24p1',this,false)">D. primate social structures were better understood because of Jane Goodall's findings.</div>
+    </ul>
+    <div class="explanation" id="l24p1-exp"><b>B.</b> "Having spent three decades studying" — Jane Goodall spent three decades, not her findings. After the comma, "Jane Goodall" must be the subject. B makes Jane Goodall the subject. A (her findings) = Jane's findings didn't spend three decades studying. C (the findings) = same problem.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">Exhausted after the twelve-hour flight, the hotel room offered a welcome respite for the delegates.</div>
+    <ul class="choices" id="l24p2">
+      <li data-reset-onclick="pickEx('l24p2',this,false)" onclick="pickEx('l24p2',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l24p2',this,true)" onclick="pickEx('l24p2',this,true)">B. the delegates found the hotel room a welcome respite.</li>
+      <li data-reset-onclick="pickEx('l24p2',this,false)" onclick="pickEx('l24p2',this,false)">C. a welcome respite was offered by the hotel room to the delegates.</li>
+      <li data-reset-onclick="pickEx('l24p2',this,false)" onclick="pickEx('l24p2',this,false)">D. the hotel room was a welcome respite after the flight.</div>
+    </ul>
+    <div class="explanation" id="l24p2-exp"><b>B.</b> "Exhausted after the twelve-hour flight" — the delegates were exhausted, not the hotel room. B makes the delegates the subject immediately after the comma. A and C both use "the hotel room" — hotel rooms can't be exhausted. D removes "exhausted" from the modifier position — technically correct but loses the modifier test.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">Widely regarded as the father of modern linguistics, Noam Chomsky's generative grammar theory revolutionised how language is studied.</div>
+    <ul class="choices" id="l24p3">
+      <li data-reset-onclick="pickEx('l24p3',this,false)" onclick="pickEx('l24p3',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l24p3',this,true)" onclick="pickEx('l24p3',this,true)">B. Noam Chomsky revolutionised how language is studied with his generative grammar theory.</li>
+      <li data-reset-onclick="pickEx('l24p3',this,false)" onclick="pickEx('l24p3',this,false)">C. the field of linguistics was revolutionised by Noam Chomsky's theory.</li>
+      <li data-reset-onclick="pickEx('l24p3',this,false)" onclick="pickEx('l24p3',this,false)">D. Noam Chomsky's theory is widely considered revolutionary.</div>
+    </ul>
+    <div class="explanation" id="l24p3-exp"><b>B.</b> "Widely regarded as the father of modern linguistics" — Chomsky is regarded this way, not his theory. "Noam Chomsky's generative grammar theory" (possessive + noun) is not the same as making Chomsky the subject. B makes Noam Chomsky the subject directly.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 4</div>
+    <div class="passage">By reducing the concentration of the reagent, the experiment's accuracy was significantly improved.</div>
+    <ul class="choices" id="l24p4">
+      <li data-reset-onclick="pickEx('l24p4',this,false)" onclick="pickEx('l24p4',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l24p4',this,true)" onclick="pickEx('l24p4',this,true)">B. the researchers significantly improved the experiment's accuracy.</li>
+      <li data-reset-onclick="pickEx('l24p4',this,false)" onclick="pickEx('l24p4',this,false)">C. significant improvements were made to the experiment's accuracy.</li>
+      <li data-reset-onclick="pickEx('l24p4',this,false)" onclick="pickEx('l24p4',this,false)">D. a more accurate experiment was the result.</div>
+    </ul>
+    <div class="explanation" id="l24p4-exp"><b>B.</b> "By reducing the concentration" — the researchers reduced it, not the accuracy. The experiment's accuracy can't reduce a reagent. B makes the researchers the active subject. A and C use passive constructions that leave the modifier dangling.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard (misplaced, not dangling)</div>
+    <div class="passage">The committee only reviewed the applications submitted before the deadline, rejecting all others without further consideration.</div>
+    <ul class="choices" id="l24p5">
+      <li data-reset-onclick="pickEx('l24p5',this,false)" onclick="pickEx('l24p5',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l24p5',this,true)" onclick="pickEx('l24p5',this,true)">B. The committee reviewed only the applications submitted before the deadline</li>
+      <li data-reset-onclick="pickEx('l24p5',this,false)" onclick="pickEx('l24p5',this,false)">C. Only the committee reviewed the applications submitted before the deadline</li>
+      <li data-reset-onclick="pickEx('l24p5',this,false)" onclick="pickEx('l24p5',this,false)">D. The committee reviewed the only applications submitted before the deadline</div>
+    </ul>
+    <div class="explanation" id="l24p5-exp"><b>B.</b> "Only" is a misplaced modifier in A. "The committee only reviewed" implies the committee did nothing but review — but the intended meaning is that it reviewed ONLY certain applications. "Only" must be placed immediately before "the applications" to modify the right word. C misplaces "only" before "the committee" — implying no one else could review them. D changes the meaning (the applications were the only ones).</div>
+  
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Dangling &amp; Misplaced Modifiers — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The rule</div><div class="summary-item-body">Opening modifier phrase → comma → SUBJECT must be what the phrase describes. No exceptions.</div></div>
+      <div class="summary-item"><div class="summary-item-title">How to spot</div><div class="summary-item-body">Read: "[Modifier], [subject] [verb]." Ask: did [subject] do/experience what the modifier describes? If no → dangling.</div></div>
+      <div class="summary-item"><div class="summary-item-title">How to fix</div><div class="summary-item-body">Option 1: Make the correct noun the subject after the comma. Option 2: Restructure the modifier into a full clause ("After she studied all night, the exam was manageable.").</div></div>
+      <div class="summary-item"><div class="summary-item-title">Passive = danger zone</div><div class="summary-item-body">Passive voice after an opening modifier almost always creates a dangling error. "Having done X, the result was Y" is almost always wrong.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Possessive ≠ subject</div><div class="summary-item-body">"Having studied, Jane's knowledge grew." "Jane's knowledge" didn't study — Jane did. Possessive nouns are not the subject. Make the person/thing itself the subject.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Misplaced modifiers</div><div class="summary-item-body">"Only" must be placed immediately before the word it modifies. "Almost" modifies the word after it — check it's in the right position.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_23.html" class="nav-arrow">← Lesson 23: Verb Tense</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 24 of 27</span>
+  <a href="english_lesson_25.html" class="nav-arrow">Next: Lesson 25: Parallelism →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

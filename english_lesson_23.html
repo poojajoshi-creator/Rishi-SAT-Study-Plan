@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 23: Verb Tense & Consistency — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 23 of 27 · Verb Tense & Consistency</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 23 / 27</span><span class="hdr-domain">SEC — Grammar</span></div>
+  <div class="hdr-title">Verb Tense<br><em>&amp; Consistency</em></div>
+  <div class="hdr-tagline">Tense tells the reader when events happen. The SAT tests two things: using the right tense for the timeline described, and keeping tense consistent when no shift is needed.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 per module</span><span class="chip">Target: 40 sec</span><span class="chip hi">Ask: when does this event happen relative to others?</span></div>
+</div>
+<div class="main">
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">t→</div><div class="section-title">The tense system</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">The key tenses and when to use them</div>
+    <div class="def-body">
+      <p><b>Simple past</b> (walked): event completed in the past. "She walked to the lab."</p>
+      <p><b>Past perfect</b> (had walked): event completed BEFORE another past event. "She had already walked to the lab by the time the results arrived." Use "had + past participle" when one past event precedes another.</p>
+      <p><b>Simple present</b> (walks): ongoing facts, habitual actions, or universal truths. "Water freezes at 0°C." (always true — present tense even in historical writing)</p>
+      <p><b>Present perfect</b> (has walked): action that started in the past and continues or is relevant to the present. "Scientists have studied this phenomenon for decades."</p>
+      <p><b>Sequence words</b> that signal tense:<br>
+      "By the time..." / "Before..." / "After...had..." → past perfect<br>
+      "Since..." / "For the past X years..." → present perfect<br>
+      "Now that..." → present or future</p>
+    </div>
+  </div>
+</div>
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Identify the established tense of the passage.</b> Is it past? Present? Future? The surrounding verbs tell you.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Look for sequence words</b> that signal a timeline: "before," "after," "by the time," "since," "until." These words determine the correct tense.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Consistency rule:</b> unless the timeline demands a shift, keep the same tense throughout. An unexplained tense shift mid-passage is always an error.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><b>Past perfect = had + past participle.</b> Use it when one past event happened BEFORE another past event. "She studied before she took the exam" (simple past — both events). "She had studied extensively before she took the exam" (past perfect — study came first).</div></div>
+  </div>
+</div>
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1</div><div class="trap-title">Missing past perfect</div><div class="trap-body">"By the time the rescue team arrived, the survivors crossed the river." "By the time" signals that "crossing" happened first — needs past perfect: "had crossed."</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Unnecessary tense shift</div><div class="trap-body">Passage is in past tense. Mid-sentence: "she picks up the report and examines it carefully." Shift to present for no reason. Should stay: "she picked up the report and examined it."</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Present for a completed past event</div><div class="trap-body">"Darwin observes finches in the Galápagos and develops his theory." If describing a historical event in narrative, use past: "Darwin observed... and developed."</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Simple past instead of present perfect</div><div class="trap-body">"Since 1990, global temperatures rose by 1.2°C." "Since" signals a continuing period → present perfect: "have risen." Simple past implies the rising is complete; present perfect signals it continues.</div></div>
+  </div>
+</div>
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+  <div class="example">
+    <div class="example-hdr">Example 1 — Past perfect required<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">By the time the investigation was formally launched, key witnesses <u>left</u> the country and crucial documents were no longer accessible.</div>
+      <ul class="choices" id="l23e1">
+        <li data-reset-onclick="pickEx('l23e1',this,false)" onclick="pickEx('l23e1',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l23e1',this,true)" onclick="pickEx('l23e1',this,true)">B. had left</li>
+        <li data-reset-onclick="pickEx('l23e1',this,false)" onclick="pickEx('l23e1',this,false)">C. have left</li>
+        <li data-reset-onclick="pickEx('l23e1',this,false)" onclick="pickEx('l23e1',this,false)">D. were leaving</div>
+      </ul>
+      <div class="explanation" id="l23e1-exp"><b>B.</b> "By the time the investigation was launched" = the witnesses leaving happened BEFORE the investigation. One past event (leaving) before another past event (launching) = past perfect: "had left." C (have left) = present perfect — wrong tense for an entirely past timeline. D (were leaving) = past progressive — implies simultaneous ongoing action, not prior completion.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 2 — Tense consistency<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">The expedition set out in early March, crossed three mountain ranges, and <u>arrives</u> at the research station six weeks later.</div>
+      <ul class="choices" id="l23e2">
+        <li data-reset-onclick="pickEx('l23e2',this,false)" onclick="pickEx('l23e2',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l23e2',this,true)" onclick="pickEx('l23e2',this,true)">B. arrived</li>
+        <li data-reset-onclick="pickEx('l23e2',this,false)" onclick="pickEx('l23e2',this,false)">C. had arrived</li>
+        <li data-reset-onclick="pickEx('l23e2',this,false)" onclick="pickEx('l23e2',this,false)">D. was arriving</div>
+      </ul>
+      <div class="explanation" id="l23e2-exp"><b>B.</b> "Set out" and "crossed" are both simple past. The series must be consistent — "arrived" (simple past). A ("arrives") is an unexplained shift to present. C (had arrived) = past perfect — implies arriving happened before the crossing, which reverses the intended timeline.</div>
+    </div>
+  </div>
+  <div class="example">
+    <div class="example-hdr">Example 3 — Since + present perfect<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">Since the discovery of CRISPR technology in 2012, researchers <u>made</u> significant advances in gene editing for treating genetic diseases.</div>
+      <ul class="choices" id="l23e3">
+        <li data-reset-onclick="pickEx('l23e3',this,false)" onclick="pickEx('l23e3',this,false)">A. No change</li>
+        <li data-reset-onclick="pickEx('l23e3',this,true)" onclick="pickEx('l23e3',this,true)">B. have made</li>
+        <li data-reset-onclick="pickEx('l23e3',this,false)" onclick="pickEx('l23e3',this,false)">C. had made</li>
+        <li data-reset-onclick="pickEx('l23e3',this,false)" onclick="pickEx('l23e3',this,false)">D. make</div>
+      </ul>
+      <div class="explanation" id="l23e3-exp"><b>B.</b> "Since 2012" = from a past point up to the present → present perfect: "have made." A (made) = simple past — implies the advances are over. C (had made) = past perfect — implies the advances happened before something else in the past. D (make) = simple present — wrong tense. "Since" always signals present perfect when describing a continuing period.</div>
+    </div>
+  
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">The scientist reported her findings, shared them with colleagues, and <u>requests</u> additional funding for a follow-up study.</div>
+    <ul class="choices" id="l23p1">
+      <li data-reset-onclick="pickEx('l23p1',this,false)" onclick="pickEx('l23p1',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l23p1',this,true)" onclick="pickEx('l23p1',this,true)">B. requested</li>
+      <li data-reset-onclick="pickEx('l23p1',this,false)" onclick="pickEx('l23p1',this,false)">C. had requested</li>
+      <li data-reset-onclick="pickEx('l23p1',this,false)" onclick="pickEx('l23p1',this,false)">D. was requesting</div>
+    </ul>
+    <div class="explanation" id="l23p1-exp"><b>B.</b> "Reported" and "shared" are simple past. Consistency: "requested." A (requests) = unjustified present shift. C (had requested) = past perfect — implies the request happened before reporting and sharing, which contradicts the sequence.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">Before the bridge <u>collapsed</u>, engineers had warned city officials about its deteriorating structural integrity for over a decade.</div>
+    <ul class="choices" id="l23p2">
+      <li data-reset-onclick="pickEx('l23p2',this,true)" onclick="pickEx('l23p2',this,true)">A. No change — the sentence is correct</li>
+      <li data-reset-onclick="pickEx('l23p2',this,false)" onclick="pickEx('l23p2',this,false)">B. had collapsed</li>
+      <li data-reset-onclick="pickEx('l23p2',this,false)" onclick="pickEx('l23p2',this,false)">C. was collapsing</li>
+      <li data-reset-onclick="pickEx('l23p2',this,false)" onclick="pickEx('l23p2',this,false)">D. collapses</div>
+    </ul>
+    <div class="explanation" id="l23p2-exp"><b>A.</b> Correct as written. The warnings ("had warned") happened BEFORE the collapse. So warnings = past perfect. The collapse = simple past ("collapsed"). The sequence is properly expressed: past perfect (warnings first) → simple past (collapse second).</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">For the past two decades, the glacier <u>retreated</u> by an average of forty metres per year.</div>
+    <ul class="choices" id="l23p3">
+      <li data-reset-onclick="pickEx('l23p3',this,false)" onclick="pickEx('l23p3',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l23p3',this,true)" onclick="pickEx('l23p3',this,true)">B. has retreated</li>
+      <li data-reset-onclick="pickEx('l23p3',this,false)" onclick="pickEx('l23p3',this,false)">C. had retreated</li>
+      <li data-reset-onclick="pickEx('l23p3',this,false)" onclick="pickEx('l23p3',this,false)">D. retreats</div>
+    </ul>
+    <div class="explanation" id="l23p3-exp"><b>B.</b> "For the past two decades" = from the past to the present, ongoing → present perfect: "has retreated." A (retreated) = simple past — implies the retreat is complete. C (had retreated) = past perfect — would imply it stopped before something else. D (retreats) = simple present — wrong for a specific ongoing trend.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 4</div>
+    <div class="passage">After the final vote <u>was cast</u>, the chairperson announced that the motion had passed by a narrow margin.</div>
+    <ul class="choices" id="l23p4">
+      <li data-reset-onclick="pickEx('l23p4',this,true)" onclick="pickEx('l23p4',this,true)">A. No change — the sentence is correct</li>
+      <li data-reset-onclick="pickEx('l23p4',this,false)" onclick="pickEx('l23p4',this,false)">B. had been cast</li>
+      <li data-reset-onclick="pickEx('l23p4',this,false)" onclick="pickEx('l23p4',this,false)">C. is cast</li>
+      <li data-reset-onclick="pickEx('l23p4',this,false)" onclick="pickEx('l23p4',this,false)">D. has been cast</div>
+    </ul>
+    <div class="explanation" id="l23p4-exp"><b>A.</b> "Was cast" (simple past) works here because "After" already establishes the sequence — the vote happened before the announcement. You don't need past perfect when "after" already clarifies the sequence. "Had been cast" (B) is grammatically possible but unnecessary. A is correct as written.</div>
+  
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage">The author <u>writes</u> the manuscript during a period of intense personal turmoil, drawing on memories she had suppressed for years, and published it to widespread critical acclaim.</div>
+    <ul class="choices" id="l23p5">
+      <li data-reset-onclick="pickEx('l23p5',this,false)" onclick="pickEx('l23p5',this,false)">A. No change</li>
+      <li data-reset-onclick="pickEx('l23p5',this,true)" onclick="pickEx('l23p5',this,true)">B. wrote</li>
+      <li data-reset-onclick="pickEx('l23p5',this,false)" onclick="pickEx('l23p5',this,false)">C. has written</li>
+      <li data-reset-onclick="pickEx('l23p5',this,false)" onclick="pickEx('l23p5',this,false)">D. had written</div>
+    </ul>
+    <div class="explanation" id="l23p5-exp"><b>B.</b> "Published" = simple past. Consistency: "wrote." The historical sequence is: suppressed memories (past perfect — before writing) → wrote the manuscript (simple past) → published (simple past). A (writes) = unjustified present tense shift. D (had written) = past perfect — implies writing happened before publishing but before something else too, creating an illogical three-layer sequence.</div>
+  
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Verb Tense &amp; Consistency — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">Past perfect (had + verb)</div><div class="summary-item-body">Use when one past event happened BEFORE another past event. Signal words: "by the time," "before," "after...had," "when...already."</div></div>
+      <div class="summary-item"><div class="summary-item-title">Present perfect (has/have + verb)</div><div class="summary-item-body">Use for actions from the past that continue or are relevant to the present. Signal words: "since," "for the past X years," "over the past decade."</div></div>
+      <div class="summary-item"><div class="summary-item-title">Consistency</div><div class="summary-item-body">Stay in the same tense unless the timeline demands a shift. An unexplained switch from past to present mid-passage is always an error.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Sequence rule</div><div class="summary-item-body">"After" and "before" clarify sequence — past perfect is optional with these words. Without sequence words, past perfect is required to show which event came first.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_22.html" class="nav-arrow">← Lesson 22: Pronoun Agreement</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 23 of 27</span>
+  <a href="english_lesson_24.html" class="nav-arrow">Next: Lesson 24: Dangling Modifiers →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>
