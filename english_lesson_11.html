@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11: Transitions — Concession — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 11 of 27 · Transitions — Concession</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 11 / 27</span><span class="hdr-domain">Expression of Ideas</span></div>
+  <div class="hdr-title">Transitions<br><em>Concession</em></div>
+  <div class="hdr-tagline">The most misunderstood transition type. Concession says "yes, AND YET..." — it acknowledges something true before pivoting to a qualification. It is not the same as contrast.</div>
+  <div class="hdr-chips"><span class="chip">~1–2 per module</span><span class="chip">Target: 45 sec</span><span class="chip hi">Key: concession ACCEPTS before it qualifies</span></div>
+</div>
+<div class="main">
+
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🤲</div><div class="section-title">What is Concession?</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">Core definition</div>
+    <div class="def-body">
+      <p>A concession transition acknowledges or grants something — a valid point, a genuine fact, a legitimate concern — and then introduces a complication, limitation, or counter-perspective. The structure is always:</p>
+      <p style="text-align:center;padding:8px;font-family:'Instrument Serif',serif;font-size:1.1rem;">"Yes, X is true. <b>Nevertheless</b>, Y is also true — and Y matters."</p>
+      <p><b>Concession words:</b> nevertheless · nonetheless · even so · that said · admittedly · granted · while it is true that · despite this · all the same · be that as it may · yet (when used for concession)</p>
+    </div>
+  </div>
+  <div class="def-box amber">
+    <div class="def-label">Concession vs Contrast — the distinction that costs points</div>
+    <div class="def-body">
+      <p><b>Contrast</b> compares two different things or situations that point in opposite directions. Neither is "accepted" — they just differ.<br>
+      "Dogs are loyal. <u>In contrast</u>, cats are independent." — two different animals, two different qualities.</p>
+      <p><b>Concession</b> is about ONE thing — the writer acknowledges an aspect of it (often one others raise against their argument) and then qualifies it.<br>
+      "Dogs require significant daily exercise. <u>Nevertheless</u>, for active households, this commitment is well worth the companionship they provide." — the exercise requirement is ACCEPTED as true, but the writer argues it doesn't undermine adopting a dog.</p>
+      <p><b>The structural test:</b> Is the first sentence an acknowledgement of something the writer would rather not have to admit? If yes → concession. Are two separate things simply being compared? If yes → contrast.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Read Sentence A. Ask: is the writer acknowledging a downside, limitation, or opposing view?</b> If Sentence A is a concession ("admittedly, X is true"), then Sentence B will be the real point ("nevertheless, Y").</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Ask the structural question:</b> "Is the writer saying: I accept A is true, but B matters more?" → concession. "Are two separate different things being compared?" → contrast.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Apply the "yes, and yet" test.</b> Can you read the two sentences as "yes [Sentence A is true], and yet [Sentence B is also true and qualifies it]"? If yes → concession word.</div></div>
+  </div>
+</div>
+
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">Traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1 — most common</div><div class="trap-title">Picking contrast for concession</div><div class="trap-body">"However" is both a contrast word AND a concession word. "In contrast" is ONLY contrast. If the structure is concession (accepting A before qualifying with B), "however" works — but "in contrast" does not.</div><div class="trap-eg">"The drug has serious side effects. _____, clinical trials show it dramatically extends survival in late-stage patients." → "Nevertheless" / "However" both work. "In contrast" does not — there are not two different things being compared.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Picking result for concession</div><div class="trap-body">"Therefore" and "consequently" are result words. If B qualifies A rather than following FROM it causally, a concession word is needed, not a result word.</div><div class="trap-eg">"The evidence is limited. _____, the policy was implemented." → "Nevertheless" (concession). Not "therefore" — limited evidence did not cause the policy.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">"Admittedly" with no counter</div><div class="trap-body">"Admittedly" introduces a concession in Sentence A — the main point must follow in Sentence B. If the question asks for the transition between A (the concession) and B (the counter-point), "admittedly" belongs in A, not as the blank.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">False concession</div><div class="trap-body">If both sentences point in the same direction — no acknowledgement of a downside — it's addition, not concession. "The policy reduced poverty. _____, it improved healthcare outcomes." → addition (furthermore), not concession.</div></div>
+  </div>
+</div>
+
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+
+  <div class="example">
+    <div class="example-hdr">Example 1 — Classic concession structure<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">The construction of the new highway will undoubtedly generate significant noise and disruption for nearby residents during the two-year build period. _______, it will reduce commute times by up to 40 minutes for the 120,000 workers who travel through the corridor daily, and transport economists estimate it will add $2.3 billion to regional GDP over the next decade.</div>
+      <div class="thought"><div class="thought-title">💭 Thinking</div><div class="thought-body">S1: highway construction = disruption for residents (a downside being acknowledged). S2: but it has major economic benefits. The writer is accepting the disruption is real, then arguing the benefits outweigh it. → <b>Concession: "Nevertheless" or "That said."</b></div></div>
+      <div class="q-stem">Which transition best completes the text?</div>
+      <ul class="choices" id="l11e1">
+        <li data-reset-onclick="pickEx('l11e1',this,false)" onclick="pickEx('l11e1',this,false)">A. In contrast</li>
+        <li data-reset-onclick="pickEx('l11e1',this,false)" onclick="pickEx('l11e1',this,false)">B. As a result</li>
+        <li data-reset-onclick="pickEx('l11e1',this,true)" onclick="pickEx('l11e1',this,true)">C. Nevertheless</li>
+        <li data-reset-onclick="pickEx('l11e1',this,false)" onclick="pickEx('l11e1',this,false)">D. Furthermore</li>
+      </ul>
+      <div class="explanation" id="l11e1-exp"><b>Answer: C.</b> S1 acknowledges the disruption (conceded). S2 argues the economic benefits outweigh it. "Nevertheless" = "yes, disruption is real, and yet the benefits matter." A (In contrast) would compare two different things — but one highway is being discussed. B (As a result) = causal — wrong. D (Furthermore) = addition — both sentences would need to be positive points; S1 is a negative being conceded.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 2 — Concession vs Contrast<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">Critics have raised legitimate concerns about the privacy implications of widespread facial recognition technology in public spaces. _______, law enforcement agencies argue that the technology has proven valuable in identifying suspects in serious crimes where traditional investigative methods had stalled.</div>
+      <div class="thought"><div class="thought-title">💭 Thinking</div><div class="thought-body">S1: privacy concerns are "legitimate" — the writer accepts them as valid. S2: law enforcement has a counter-argument. One thing (facial recognition) is being discussed from two angles. The pivot follows acknowledging the critics have a point. → <b>Concession.</b> Not contrast — it's not two different technologies being compared.</div></div>
+      <div class="q-stem">Which transition best completes the text?</div>
+      <ul class="choices" id="l11e2">
+        <li data-reset-onclick="pickEx('l11e2',this,false)" onclick="pickEx('l11e2',this,false)">A. Similarly</li>
+        <li data-reset-onclick="pickEx('l11e2',this,false)" onclick="pickEx('l11e2',this,false)">B. Consequently</li>
+        <li data-reset-onclick="pickEx('l11e2',this,false)" onclick="pickEx('l11e2',this,false)">C. In contrast</li>
+        <li data-reset-onclick="pickEx('l11e2',this,true)" onclick="pickEx('l11e2',this,true)">D. Even so</li>
+      </ul>
+      <div class="explanation" id="l11e2-exp"><b>Answer: D.</b> "Even so" = despite the concerns raised (accepted as legitimate), law enforcement argues otherwise. Concession structure: accept critics' point, then present the counter-position. C (In contrast) would imply the writer is comparing two separate things — but one technology is under discussion. A (Similarly) = same direction — wrong. B (Consequently) = causal — wrong.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 3 — "Admittedly" as a set-up<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">Admittedly, the early clinical trials for the new treatment produced mixed results, with roughly a third of participants showing no meaningful improvement. _______, the subset of patients who did respond showed dramatically better outcomes than those receiving the standard of care, and researchers have since identified the biomarkers that predict which patients are most likely to benefit.</div>
+      <div class="thought"><div class="thought-title">💭 Thinking</div><div class="thought-body">S1 starts with "Admittedly" — the writer is already conceding the mixed results. S2 presents the counter-point (some patients did extremely well, and researchers now know which ones). The blank comes between the concession and the main argument. → <b>Concession word:</b> "Nevertheless" or "That said" — not "Admittedly" (which already opened S1).</div></div>
+      <div class="q-stem">Which transition best completes the text?</div>
+      <ul class="choices" id="l11e3">
+        <li data-reset-onclick="pickEx('l11e3',this,false)" onclick="pickEx('l11e3',this,false)">A. Admittedly</li>
+        <li data-reset-onclick="pickEx('l11e3',this,false)" onclick="pickEx('l11e3',this,false)">B. In addition</li>
+        <li data-reset-onclick="pickEx('l11e3',this,true)" onclick="pickEx('l11e3',this,true)">C. That said</li>
+        <li data-reset-onclick="pickEx('l11e3',this,false)" onclick="pickEx('l11e3',this,false)">D. Therefore</li>
+      </ul>
+      <div class="explanation" id="l11e3-exp"><b>Answer: C.</b> "That said" = after acknowledging those mixed results, here is the counter-point. A (Admittedly) would be another concession — double-concession makes no sense here; S2 is the argument, not a second drawback. B (In addition) = same direction addition — S1 and S2 point in opposite directions. D (Therefore) = causal — the mixed results didn't produce the positive subset finding.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage">The proposed carbon tax would increase fuel prices for consumers, placing an additional burden on households with lower incomes. _______, the revenue generated would fund targeted rebates to those same households, and economic modelling suggests that the bottom two income quintiles would see net financial gains overall.</div>
+    <div class="q-stem">Which transition best completes the text?</div>
+    <ul class="choices" id="l11p1">
+      <li data-reset-onclick="pickEx('l11p1',this,false)" onclick="pickEx('l11p1',this,false)">A. Furthermore</li>
+      <li data-reset-onclick="pickEx('l11p1',this,false)" onclick="pickEx('l11p1',this,false)">B. In contrast</li>
+      <li data-reset-onclick="pickEx('l11p1',this,true)" onclick="pickEx('l11p1',this,true)">C. Nevertheless</li>
+      <li data-reset-onclick="pickEx('l11p1',this,false)" onclick="pickEx('l11p1',this,false)">D. Consequently</li>
+    </ul>
+    <div class="explanation" id="l11p1-exp"><b>C.</b> S1 concedes the burden (accepted as true). S2 argues the net effect is actually positive for low-income households. Classic "yes, but here's why it still works" = concession.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage">Long-haul trucking produces far higher carbon emissions per tonne of freight than rail transport. _______, rail infrastructure requires enormous upfront capital investment that many regions cannot afford, meaning that trucking remains the only economically viable option for freight in much of the rural United States.</div>
+    <div class="q-stem">Which transition best completes the text?</div>
+    <ul class="choices" id="l11p2">
+      <li data-reset-onclick="pickEx('l11p2',this,false)" onclick="pickEx('l11p2',this,false)">A. As a result</li>
+      <li data-reset-onclick="pickEx('l11p2',this,false)" onclick="pickEx('l11p2',this,false)">B. Similarly</li>
+      <li data-reset-onclick="pickEx('l11p2',this,true)" onclick="pickEx('l11p2',this,true)">C. Even so</li>
+      <li data-reset-onclick="pickEx('l11p2',this,false)" onclick="pickEx('l11p2',this,false)">D. Moreover</li>
+    </ul>
+    <div class="explanation" id="l11p2-exp"><b>C.</b> S1 states rail is cleaner (implicit: we should prefer rail). S2 concedes this but argues rail isn't practically available everywhere — so trucking persists despite its emissions. "Even so" = despite the environmental case for rail. This is one situation (freight transport) assessed from two angles — concession, not contrast between two separate things.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage">The study's sample size of 42 participants is too small to draw definitive conclusions applicable to the wider population. _______, its findings are consistent with those of three larger studies published in the past decade, suggesting the effect it documents is real and worth investigating further.</div>
+    <div class="q-stem">Which transition best completes the text?</div>
+    <ul class="choices" id="l11p3">
+      <li data-reset-onclick="pickEx('l11p3',this,false)" onclick="pickEx('l11p3',this,false)">A. Therefore</li>
+      <li data-reset-onclick="pickEx('l11p3',this,false)" onclick="pickEx('l11p3',this,false)">B. Furthermore</li>
+      <li data-reset-onclick="pickEx('l11p3',this,true)" onclick="pickEx('l11p3',this,true)">C. Nonetheless</li>
+      <li data-reset-onclick="pickEx('l11p3',this,false)" onclick="pickEx('l11p3',this,false)">D. In contrast</li>
+    </ul>
+    <div class="explanation" id="l11p3-exp"><b>C.</b> S1 concedes the small sample is a real limitation. S2 argues the findings are still worth taking seriously because they align with larger studies. "Nonetheless" = despite that limitation. D (In contrast) would compare two different studies — but one study is being evaluated.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 4 — Hard</div>
+    <div class="passage">It is true that urban green spaces require ongoing maintenance funding that many cash-strapped municipalities struggle to provide. _______, research consistently shows that every dollar invested in urban parks returns between three and five dollars in economic value through improved resident health, reduced urban heat, and increased property values nearby.</div>
+    <div class="q-stem">Which transition best completes the text?</div>
+    <ul class="choices" id="l11p4">
+      <li data-reset-onclick="pickEx('l11p4',this,false)" onclick="pickEx('l11p4',this,false)">A. In contrast</li>
+      <li data-reset-onclick="pickEx('l11p4',this,false)" onclick="pickEx('l11p4',this,false)">B. As a result</li>
+      <li data-reset-onclick="pickEx('l11p4',this,true)" onclick="pickEx('l11p4',this,true)">C. That said</li>
+      <li data-reset-onclick="pickEx('l11p4',this,false)" onclick="pickEx('l11p4',this,false)">D. Additionally</li>
+    </ul>
+    <div class="explanation" id="l11p4-exp"><b>C.</b> "It is true that..." sets up the concession directly — the writer ACCEPTS that funding is hard. "That said" pivots to the argument for investment. The structural clue "It is true that" almost always signals a concession sentence that will be followed by a concession transition.</div>
+  </div>
+  <div class="practice-q"><div class="pq-num">Practice 5 — Contrast or concession?</div>
+    <div class="passage">Traditional print journalism employs editorial teams, fact-checkers, and legal review processes that create multiple layers of verification before publication. _______, many online news sources publish content with minimal editorial oversight, and corrections — when they occur — rarely reach the same audience as the original inaccurate report.</div>
+    <div class="q-stem">Which transition best completes the text?</div>
+    <ul class="choices" id="l11p5">
+      <li data-reset-onclick="pickEx('l11p5',this,false)" onclick="pickEx('l11p5',this,false)">A. Nevertheless</li>
+      <li data-reset-onclick="pickEx('l11p5',this,true)" onclick="pickEx('l11p5',this,true)">B. By contrast</li>
+      <li data-reset-onclick="pickEx('l11p5',this,false)" onclick="pickEx('l11p5',this,false)">C. That said</li>
+      <li data-reset-onclick="pickEx('l11p5',this,false)" onclick="pickEx('l11p5',this,false)">D. As a result</li>
+    </ul>
+    <div class="explanation" id="l11p5-exp"><b>B.</b> This is CONTRAST, not concession. Two genuinely different things — traditional print journalism vs online news sources — are being directly compared. S1 doesn't concede a downside of print; it describes print's strengths. S2 describes online's weaknesses. Two separate things compared = contrast. "By contrast" is correct. A (Nevertheless) would concede that print is strong before pivoting — but the pivot would need to be about print's limitations, not online's. C (That said) is a concession word — wrong structure here.</div>
+  </div>
+</div>
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Transitions — Concession · Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The words</div><div class="summary-item-body">nevertheless · nonetheless · even so · that said · admittedly · granted · despite this · all the same · be that as it may</div></div>
+      <div class="summary-item"><div class="summary-item-title">The structure</div><div class="summary-item-body">"Yes, A is true. <b>Nevertheless</b>, B is also true — and B qualifies / outweighs A." One thing, two aspects. The writer accepts A before arguing B.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Concession vs Contrast</div><div class="summary-item-body">Contrast = two DIFFERENT things compared. Concession = ONE thing, acknowledging a downside before making the counter-case. "It is true that..." almost always signals a concession sentence.</div></div>
+      <div class="summary-item"><div class="summary-item-title">The "yes, and yet" test</div><div class="summary-item-body">Read: "yes [S1], and yet [S2]." If this makes sense → concession. If not → try contrast, addition, or result.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Signal phrases in S1</div><div class="summary-item-body">"It is true that..." · "Admittedly..." · "While X is a legitimate concern..." → these almost guarantee a concession transition at the start of S2.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap</div><div class="summary-item-body">"However" works for both contrast AND concession. "In contrast" / "By contrast" only work for contrast. If the structure is concession, "in contrast" is always wrong.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="lesson-footer">
+  <a href="english_lesson_10.html" class="nav-arrow">← Lesson 10: Transitions — Addition</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 11 of 27</span>
+  <a href="english_lesson_12.html" class="nav-arrow">Next: Lesson 12: Transitions — Example →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

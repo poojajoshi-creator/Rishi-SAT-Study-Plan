@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 14: Add / Delete / Revise / Placement — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 14 of 27 · Add / Delete / Revise / Placement</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 14 / 27</span><span class="hdr-domain">Expression of Ideas</span></div>
+  <div class="hdr-title">Add · Delete<br><em>Revise &amp; Placement</em></div>
+  <div class="hdr-tagline">Four related question types that test whether sentences belong in a passage, where they belong, and whether they need to be changed. The single deciding test: does this serve THIS paragraph's specific main point?</div>
+  <div class="hdr-chips"><span class="chip">~2–4 per module</span><span class="chip">Target: 60 sec</span><span class="chip hi">Rule: main point first, then decide</span></div>
+</div>
+<div class="main">
+
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">✂️</div><div class="section-title">Four question types, one underlying rule</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">The four types</div>
+    <div class="def-body">
+      <p><b>Add:</b> "Should the following sentence be added here?" Or: "Which sentence, if added, would best accomplish [goal]?"</p>
+      <p><b>Delete:</b> "The student is considering deleting the underlined sentence. Should it be kept or deleted?"</p>
+      <p><b>Placement:</b> "Where in the paragraph should sentence X be placed — at position A, B, C, or D?"</p>
+      <p><b>Revise:</b> "Which choice best completes the sentence?" or "Which revision of the underlined portion best accomplishes [stated goal]?"</p>
+    </div>
+  </div>
+  <div class="def-box amber">
+    <div class="def-label">The single rule governing all four types</div>
+    <div class="def-body">
+      <p>Before answering ANY of these questions, complete this sentence:</p>
+      <p style="text-align:center;padding:10px;font-family:'Instrument Serif',serif;font-size:1.1rem;">"The main point of this paragraph is: ___."</p>
+      <p>Then ask: <b>"Does this sentence / position / revision directly serve that main point?"</b></p>
+      <p>If yes → add it / keep it / place it there / use that revision.<br>
+      If no → don't add it / delete it / don't place it there.</p>
+      <p><b>The trap that kills students:</b> "This sentence is interesting, accurate, and related to the topic." That is NOT the standard. The standard is whether it directly serves THIS paragraph's specific main point.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">Strategy for each type</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">Add</div><div class="step-body"><b>Read the passage around the insertion point. State the main point. Ask: does the new sentence directly serve that main point?</b> If a specific goal is stated, check whether the sentence accomplishes that goal. "Yes if..." answers are usually wrong — the sentence either serves the point or it doesn't.</div></div>
+    <div class="step"><div class="step-num">Delete</div><div class="step-body"><b>Apply the deletion test: "What would the paragraph lose if this sentence were removed?"</b> If the answer is "nothing essential to the main point" → delete. If the answer is "important evidence or explanation" → keep. "Interesting but not central" → delete.</div></div>
+    <div class="step"><div class="step-num">Place</div><div class="step-body"><b>Read the sentence to be placed. Identify what it requires (a set-up) and what it provides (context for what follows).</b> It must come AFTER the idea it refers back to and BEFORE the idea it introduces. Try each position and see which one makes the paragraph logically coherent.</div></div>
+    <div class="step"><div class="step-num">Revise</div><div class="step-body"><b>If a goal is stated, treat it exactly like rhetorical synthesis — goal first, then match.</b> If no goal is stated, read for logical flow, precision, and avoidance of redundancy. The correct revision is usually the most direct and specific version.</div></div>
+  </div>
+</div>
+
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">The traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1 — the most costly</div><div class="trap-title">"Interesting and related" ≠ keep</div><div class="trap-body">The sentence is factually true and about the same topic as the paragraph. Students keep it. But if it doesn't serve the specific main point, it should be deleted. Topic relevance is NOT the standard.</div><div class="trap-eg">Paragraph: why urban heat islands form. Sentence: "The first urban heat island study was conducted in London in 1810." True, related — but it doesn't explain the mechanism. Delete.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">The "adds detail" justification</div><div class="trap-body">Wrong answer for keep: "It adds important detail about the topic." Correct question: does the detail serve the main point? Extra detail that doesn't advance the argument = delete.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Placement: pronoun before antecedent</div><div class="trap-body">If the sentence refers to "it" or "this," the thing "it" refers to must appear BEFORE the sentence. Common placement error: placing a sentence that uses "this discovery" before the discovery is mentioned.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Add: "fits the theme" but not the point</div><div class="trap-body">The new sentence is about the same general subject as the paragraph. But the paragraph has a specific point, and the new sentence addresses a different aspect of the subject. Specific point ≠ general subject.</div></div>
+  </div>
+</div>
+
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+
+  <div class="example">
+    <div class="example-hdr">Example 1 — Delete decision<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">Urban heat islands form when cities replace natural surfaces with heat-absorbing materials such as asphalt, concrete, and dark rooftops. These materials absorb solar radiation during the day and release it slowly at night, keeping city temperatures elevated long after sunset. <u>[The concept of urban heat islands was first described by Luke Howard, a nineteenth-century amateur meteorologist who studied temperature differences between London and its surrounding countryside.]</u> As a result, urban residents are exposed to consistently higher temperatures than those in surrounding rural areas, increasing risks of heat-related illness during warm months.</div>
+      <div class="thought"><div class="thought-title">💭 Thinking</div><div class="thought-body">Main point: how urban heat islands form (mechanism) and their health consequences. Does the underlined sentence serve that point? It describes the historical origin of the concept — true, related to the topic, but it doesn't explain the mechanism or the health risk. Deletion test: what would the paragraph lose? The mechanism explanation and health consequence are complete without the Howard sentence. → <b>Delete.</b></div></div>
+      <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+      <ul class="choices" id="l14e1">
+        <li data-reset-onclick="pickEx('l14e1',this,false)" onclick="pickEx('l14e1',this,false)">A. Kept, because it provides historical context that helps explain how the concept of urban heat islands developed.</li>
+        <li data-reset-onclick="pickEx('l14e1',this,false)" onclick="pickEx('l14e1',this,false)">B. Kept, because Luke Howard's work is an important part of the scientific understanding of urban temperature.</li>
+        <li data-reset-onclick="pickEx('l14e1',this,true)" onclick="pickEx('l14e1',this,true)">C. Deleted, because the paragraph's focus is on the mechanism by which heat islands form and their health consequences, not on the history of the concept.</li>
+        <li data-reset-onclick="pickEx('l14e1',this,false)" onclick="pickEx('l14e1',this,false)">D. Deleted, because Luke Howard's findings have been superseded by modern research.</li>
+      </ul>
+      <div class="explanation" id="l14e1-exp"><b>Answer: C.</b> The paragraph explains mechanism + health consequence. The Howard sentence is historical background — interesting but not serving the main point. A (historical context helps explain the concept) — but the paragraph isn't about explaining the concept's origins; it's about the mechanism. D invents a claim (superseded by modern research) not supported by the passage. Always delete when the reason is "serves a different purpose than this paragraph's main point."</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 2 — Placement<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage">[A] Scientists have long known that certain deep-sea fish produce their own light through bioluminescence. [B] The anglerfish, for example, uses a bioluminescent lure to attract prey in environments where sunlight never penetrates. [C] Researchers recently discovered that dragonfish produce a special type of chlorophyll-based pigment in their eyes that allows them to detect this red-shifted light, giving them a visual advantage over prey that cannot see it. [D] Most bioluminescent animals emit blue-green light, but dragonfish emit far-red light invisible to most deep-sea species.</div>
+      <div class="q-stem">Where should the following sentence be placed? "This unusual red light makes dragonfish both hard to detect and effective hunters, since their prey cannot see them approaching."</div>
+      <ul class="choices" id="l14e2">
+        <li data-reset-onclick="pickEx('l14e2',this,false)" onclick="pickEx('l14e2',this,false)">A. Position A</li>
+        <li data-reset-onclick="pickEx('l14e2',this,false)" onclick="pickEx('l14e2',this,false)">B. Position B</li>
+        <li data-reset-onclick="pickEx('l14e2',this,false)" onclick="pickEx('l14e2',this,false)">C. Position C</li>
+        <li data-reset-onclick="pickEx('l14e2',this,true)" onclick="pickEx('l14e2',this,true)">D. Position D (at the end)</li>
+      </ul>
+      <div class="explanation" id="l14e2-exp"><b>Answer: D.</b> The new sentence says "this unusual red light" — it refers back to dragonfish red light, which is introduced in the [D] sentence ("dragonfish emit far-red light"). The new sentence must come AFTER [D] to have an antecedent for "this unusual red light." At A or B — "red light" hasn't been mentioned yet. At C — the passage is discussing the dragonfish's eyes, not its red light emission. Only after [D] does "this unusual red light" have a clear referent.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 3 — Add decision with stated goal<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage">Antibiotic resistance is emerging as one of the most serious threats to global public health. The WHO estimates that by 2050, drug-resistant infections could cause 10 million deaths annually — more than cancer currently does. The problem is driven by overuse and misuse of antibiotics in both human medicine and livestock farming, which accelerates the evolution of resistant bacterial strains. Coordinated global action — including stricter prescribing guidelines, reduced agricultural use, and investment in new antibiotic development — will be essential.</div>
+      <div class="q-stem">A student wants to add the following sentence to strengthen the paragraph's argument for coordinated action: "In 2019, the G7 nations pledged to halve their antibiotic use in agriculture by 2030 as part of an international agreement." Where should it be placed?</div>
+      <ul class="choices" id="l14e3">
+        <li data-reset-onclick="pickEx('l14e3',this,false)" onclick="pickEx('l14e3',this,false)">A. After the first sentence, to establish the severity of the problem</li>
+        <li data-reset-onclick="pickEx('l14e3',this,false)" onclick="pickEx('l14e3',this,false)">B. After the second sentence, to provide additional statistical evidence</li>
+        <li data-reset-onclick="pickEx('l14e3',this,false)" onclick="pickEx('l14e3',this,false)">C. After the third sentence, to illustrate how agricultural antibiotic use is driving resistance</li>
+        <li data-reset-onclick="pickEx('l14e3',this,true)" onclick="pickEx('l14e3',this,true)">D. After the final sentence, to provide a real-world example of the coordinated action being called for</li>
+      </ul>
+      <div class="explanation" id="l14e3-exp"><b>Answer: D.</b> The stated goal: strengthen the argument FOR coordinated action. The G7 pledge IS an example of coordinated action. It belongs after the final sentence, which calls for coordinated action — the G7 example then shows it has already begun. At A — the paragraph hasn't argued for coordinated action yet. At B — the sentence isn't statistical evidence for the problem's severity. At C — the G7 pledged to reduce agricultural use, so there's a partial fit, but the goal is to strengthen the argument for coordinated action, which the final sentence introduces. D is the most logical and goal-consistent placement.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+
+  <div class="practice-q"><div class="pq-num">Practice 1 — Delete</div>
+    <div class="passage">Photosynthesis is the process by which plants convert sunlight into chemical energy stored as glucose. The reaction occurs in chloroplasts — organelles found in plant cells that contain the pigment chlorophyll. Chlorophyll absorbs primarily red and blue wavelengths of light, reflecting green wavelengths, which is why most plants appear green. <u>[Charles Darwin conducted extensive experiments on plant movement and sensitivity to light in the late nineteenth century, publishing his findings in "The Power of Movement in Plants" in 1880.]</u> The glucose produced through photosynthesis provides the energy plants need for growth, reproduction, and all other cellular processes.</div>
+    <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+    <ul class="choices" id="l14p1">
+      <li data-reset-onclick="pickEx('l14p1',this,false)" onclick="pickEx('l14p1',this,false)">A. Kept, because Darwin's work on plant biology is relevant to the topic of photosynthesis.</li>
+      <li data-reset-onclick="pickEx('l14p1',this,false)" onclick="pickEx('l14p1',this,false)">B. Kept, because it provides important historical context for understanding plant science.</li>
+      <li data-reset-onclick="pickEx('l14p1',this,true)" onclick="pickEx('l14p1',this,true)">C. Deleted, because the paragraph explains how photosynthesis works, and Darwin's experiments on plant movement are not part of that explanation.</li>
+      <li data-reset-onclick="pickEx('l14p1',this,false)" onclick="pickEx('l14p1',this,false)">D. Deleted, because Darwin's findings were later disproven by modern plant scientists.</li>
+    </ul>
+    <div class="explanation" id="l14p1-exp"><b>C.</b> Main point: how photosynthesis works (mechanism → chloroplasts → chlorophyll → glucose). Darwin's experiments on plant MOVEMENT are a completely different topic — not about photosynthesis. True, interesting, related to plant biology broadly — but doesn't serve this paragraph's specific mechanism explanation. A and B both use the "related to the topic" justification — the trap. D invents a claim about Darwin being disproven.</div>
+  </div>
+
+  <div class="practice-q"><div class="pq-num">Practice 2 — Placement</div>
+    <div class="passage">[A] The discovery of penicillin by Alexander Fleming in 1928 revolutionised medicine. [B] Fleming noticed that a mould (Penicillium notatum) had contaminated a petri dish and was killing the surrounding bacteria. [C] Despite this promising discovery, penicillin was not developed into a usable medicine until the 1940s, when Howard Florey and Ernst Chain successfully purified and mass-produced it. [D] Fleming received the Nobel Prize in 1945.</div>
+    <div class="q-stem">Where should the following sentence be placed? "This observation led Fleming to hypothesise that the mould was producing a substance with antibacterial properties."</div>
+    <ul class="choices" id="l14p2">
+      <li data-reset-onclick="pickEx('l14p2',this,false)" onclick="pickEx('l14p2',this,false)">A. Position A</li>
+      <li data-reset-onclick="pickEx('l14p2',this,true)" onclick="pickEx('l14p2',this,true)">B. Position B (after the mould observation sentence)</li>
+      <li data-reset-onclick="pickEx('l14p2',this,false)" onclick="pickEx('l14p2',this,false)">C. Position C</li>
+      <li data-reset-onclick="pickEx('l14p2',this,false)" onclick="pickEx('l14p2',this,false)">D. Position D</li>
+    </ul>
+    <div class="explanation" id="l14p2-exp"><b>B.</b> "This observation" refers to Fleming noticing the mould killing bacteria — described in sentence [B]. The new sentence must come AFTER the observation it refers to. At A — the observation hasn't happened yet. At C or D — "this observation" is too far in the past; the sentence logically follows immediately from [B] and bridges to the development gap explained in [C].</div>
+  </div>
+
+  <div class="practice-q"><div class="pq-num">Practice 3 — Add</div>
+    <div class="passage">Citizen science programmes — research initiatives that recruit members of the public to collect or classify data — have significantly expanded scientific capacity in fields such as astronomy, ecology, and ornithology. These programmes can mobilise thousands of volunteers simultaneously, generating datasets far larger than any single research team could produce. They also improve public engagement with science and give participants a genuine sense of contribution to knowledge.</div>
+    <div class="q-stem">The student wants to add the following sentence: "The Audubon Society's Christmas Bird Count, begun in 1900, is one of the oldest and largest citizen science programmes, having recorded bird population data across North America for over a century." Should it be added, and if so, where?</div>
+    <ul class="choices" id="l14p3">
+      <li data-reset-onclick="pickEx('l14p3',this,false)" onclick="pickEx('l14p3',this,false)">A. Yes, before the first sentence, because it introduces citizen science to the reader.</li>
+      <li data-reset-onclick="pickEx('l14p3',this,false)" onclick="pickEx('l14p3',this,false)">B. Yes, after the second sentence, because it illustrates how large citizen science datasets can become.</li>
+      <li data-reset-onclick="pickEx('l14p3',this,true)" onclick="pickEx('l14p3',this,true)">C. Yes, after the first sentence, because it provides a concrete example that illustrates the range and longevity of citizen science programmes described in the opening claim.</li>
+      <li data-reset-onclick="pickEx('l14p3',this,false)" onclick="pickEx('l14p3',this,false)">D. No, because the paragraph's focus is on scientific capacity and public engagement, and the history of one specific programme is a distraction.</li>
+    </ul>
+    <div class="explanation" id="l14p3-exp"><b>C.</b> The first sentence makes a general claim about citizen science expanding scientific capacity across multiple fields. The Audubon Count illustrates this with a specific example — ornithology, which is one of the mentioned fields, and the "over a century" detail supports "significantly expanded" and "large datasets." C correctly identifies it as an illustration of the opening claim. B is tempting — the large dataset point fits — but the sentence's primary information (begun in 1900, bird count, over a century) is better placed right after the general claim than after the dataset-size sentence. D is wrong — the example directly illustrates the main claim.</div>
+  </div>
+
+  <div class="practice-q"><div class="pq-num">Practice 4 — Revise with goal</div>
+    <div class="passage">Sleep deprivation has serious consequences. Studies have documented numerous negative effects on cognition and physical health in sleep-deprived individuals.</div>
+    <div class="q-stem">The student wants to revise the underlined portion to be more specific and persuasive about the scale of the problem. Which revision best accomplishes this goal?</div>
+    <ul class="choices" id="l14p4">
+      <li data-reset-onclick="pickEx('l14p4',this,false)" onclick="pickEx('l14p4',this,false)">A. Research suggests that not sleeping enough may be bad for you in various ways.</li>
+      <li data-reset-onclick="pickEx('l14p4',this,false)" onclick="pickEx('l14p4',this,false)">B. Some studies have found that sleep-deprived people do not perform as well on certain tasks.</li>
+      <li data-reset-onclick="pickEx('l14p4',this,true)" onclick="pickEx('l14p4',this,true)">C. Studies have found that sleeping fewer than six hours per night impairs memory consolidation, reduces reaction time by up to 20%, and increases the risk of cardiovascular disease.</li>
+      <li data-reset-onclick="pickEx('l14p4',this,false)" onclick="pickEx('l14p4',this,false)">D. Scientists who study sleep have published research showing that sleep deprivation affects many different body systems in ways that are currently being investigated.</div>
+    </ul>
+    <div class="explanation" id="l14p4-exp"><b>C.</b> Goal: more specific AND more persuasive about scale. C gives specific thresholds (fewer than six hours), specific effects (memory, reaction time), specific magnitude (up to 20%), and a specific risk (cardiovascular disease). A is LESS specific than the original. B is vague (some studies, not perform as well, certain tasks). D is verbose and non-committal ("ways that are currently being investigated").</div>
+  </div>
+
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard: keep or delete with competing justifications</div>
+    <div class="passage">The Amazon rainforest plays a critical role in regulating global climate by absorbing vast quantities of carbon dioxide. Deforestation releases this stored carbon back into the atmosphere, contributing directly to rising greenhouse gas levels. <u>[Brazil's Amazon region is home to approximately 40,000 plant species, 1,300 bird species, and 3,000 types of fish, many of which are found nowhere else on Earth.]</u> At current rates of deforestation, researchers estimate that the Amazon could cross a "tipping point" within the next decade, beyond which it would begin releasing more carbon than it absorbs.</div>
+    <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+    <ul class="choices" id="l14p5">
+      <li data-reset-onclick="pickEx('l14p5',this,false)" onclick="pickEx('l14p5',this,false)">A. Kept, because the biodiversity of the Amazon reinforces its importance as a conservation target.</li>
+      <li data-reset-onclick="pickEx('l14p5',this,false)" onclick="pickEx('l14p5',this,false)">B. Kept, because the biodiversity statistics strengthen the case for protecting the Amazon from deforestation.</li>
+      <li data-reset-onclick="pickEx('l14p5',this,true)" onclick="pickEx('l14p5',this,true)">C. Deleted, because the paragraph's focus is on the Amazon's role in climate regulation through carbon absorption, and the biodiversity statistics do not serve that specific argument.</li>
+      <li data-reset-onclick="pickEx('l14p5',this,false)" onclick="pickEx('l14p5',this,false)">D. Deleted, because the biodiversity data is inaccurate.</div>
+    </ul>
+    <div class="explanation" id="l14p5-exp"><b>C.</b> This is the hardest type: A and B both make plausible arguments for keeping it. The key is the paragraph's SPECIFIC main point — carbon absorption and climate regulation. The biodiversity statistics are genuinely interesting and supportive of conservation broadly, but the paragraph is making a narrow climate argument, not a biodiversity argument. The sentence introduces a different supporting rationale (biodiversity) that isn't the paragraph's focus. D invents a factual error not present in the passage.</div>
+  </div>
+
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Add · Delete · Revise · Placement — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The one rule</div><div class="summary-item-body">State the paragraph's main point first. Then ask: does this sentence DIRECTLY serve that specific main point? Not: is it interesting? Not: is it related to the topic?</div></div>
+      <div class="summary-item"><div class="summary-item-title">Delete test</div><div class="summary-item-body">"What would the paragraph lose if this sentence were removed?" If the main point survives intact → delete. If essential mechanism/evidence is lost → keep.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Placement rule</div><div class="summary-item-body">The sentence must come AFTER whatever it refers back to ("this discovery," "the observation") and BEFORE whatever it introduces or sets up. Pronouns must have antecedents that precede them.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Revise with goal</div><div class="summary-item-body">Same as rhetorical synthesis — goal verb first. "More specific" = add precise numbers/examples. "More persuasive" = stronger claim with evidence. "Introduce" = define + context.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap — the biggest one</div><div class="summary-item-body">"Interesting and related to the topic" is NOT a reason to keep. "Supports conservation" is NOT the same as "serves this paragraph's specific climate argument." Match the sentence to the paragraph's narrow point.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Wrong deletion reasons</div><div class="summary-item-body">Never delete because: "the information is inaccurate" (unless actually false) or "the author disagrees" (not stated). Only delete because: doesn't serve the main point.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-footer">
+  <a href="english_lesson_13.html" class="nav-arrow">← Lesson 13: Rhetorical Synthesis</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 14 of 27</span>
+  <a href="english_lesson_15.html" class="nav-arrow">Next: Lesson 15: Sentence Boundaries →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>

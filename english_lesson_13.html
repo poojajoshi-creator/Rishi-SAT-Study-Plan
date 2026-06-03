@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13: Rhetorical Synthesis — Rishi SAT English</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;
+  --paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;
+  --red:#c0392b;--red-light:#fdf0ee;
+  --amber:#b7540a;--amber-light:#fdf5ec;
+  --blue:#1a4d8a;--blue-light:#eef3fa;
+  --green:#2d6a3f;--green-light:#eef7f1;
+  --purple:#6b3fa0;--purple-light:#f3eefb;
+  --gold:#7a5c00;--gold-light:#fdf8e6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+
+/* Progress nav */
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.lesson-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-right:4px;}
+
+/* Header */
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.5);color:#a8c8f0;}
+
+/* Main layout */
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Section anchors */
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.section-num-badge{margin-left:auto;font-size:11px;font-weight:500;color:white;padding:3px 10px;border-radius:20px;}
+
+/* Content blocks */
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--blue);}
+.def-box.green{border-left-color:var(--green);}
+.def-box.amber{border-left-color:var(--amber);}
+.def-box.purple{border-left-color:var(--purple);}
+.def-box.red{border-left-color:var(--red);}
+.def-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.red .def-label{color:var(--red);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:10px;}
+.def-body p:last-child{margin-bottom:0;}
+
+/* Step boxes */
+.steps{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.step{display:flex;gap:14px;background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1rem 1.25rem;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-body{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+.step-body b{color:var(--ink);font-weight:500;}
+
+/* Trap cards */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.trap-card{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;}
+.trap-label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.trap-label::before{content:'⚠ ';}
+.trap-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.trap-body{font-size:12.5px;color:var(--ink-soft);line-height:1.65;}
+.trap-eg{font-family:'Instrument Serif',serif;font-size:12.5px;background:white;border-radius:5px;padding:5px 8px;margin-top:6px;color:var(--ink-soft);}
+
+/* Worked examples */
+.example{background:white;border:0.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.example-hdr{background:var(--ink);color:rgba(255,255,255,0.7);padding:8px 16px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
+.example-type{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;font-size:10px;}
+.example-body{padding:1.25rem 1.5rem;}
+.passage{background:#fffef9;border:1px solid var(--rule);border-radius:8px;padding:1rem 1.25rem;margin-bottom:12px;font-family:'Instrument Serif',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+.passage u{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.65;}
+.choices{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.choices li{font-size:13px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--rule);color:var(--ink-soft);cursor:pointer;transition:all 0.12s;}
+.choices li:hover{background:var(--blue-light);}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.explanation{display:none;background:var(--green-light);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--green);line-height:1.7;}
+.explanation.show{display:block;}
+.explanation b{color:var(--ink);font-weight:500;}
+.explanation .wrong-why{display:block;margin-top:8px;color:var(--ink-soft);font-size:12.5px;}
+
+/* Thought process */
+.thought{background:var(--blue-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:12px;}
+.thought-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.thought-body{font-size:13px;color:var(--blue);line-height:1.7;}
+
+/* Summary card */
+.summary-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:2rem;margin-top:2rem;}
+.summary-title{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:1.25rem;color:rgba(255,255,255,0.9);}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.summary-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;}
+.summary-item-title{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.summary-item-body{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;}
+.summary-item-body b{color:rgba(255,255,255,0.95);font-weight:500;}
+
+/* Practice section */
+.practice-q{background:white;border:0.5px solid var(--rule);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:12px;}
+.pq-num{font-size:11px;font-weight:500;color:var(--ink-muted);margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Nav arrows */
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:2rem;background:white;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.nav-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:8px 16px;border:1.5px solid var(--blue);border-radius:8px;}
+.nav-arrow:hover{background:var(--blue);color:white;}
+
+.rule{height:0.5px;background:var(--rule);margin:1.5rem 0;}
+p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px;}
+@media(max-width:640px){
+  .trap-grid,.summary-grid{grid-template-columns:1fr;}
+  .hdr{padding:1.5rem;}
+  .hdr-title{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="back-bar"><a href="english_lessons.html">← All Lessons</a><span>Concept 13 of 27 · Rhetorical Synthesis</span></div>
+<div class="lesson-nav">
+  <span class="lesson-num">Jump to:</span>
+  <a href="#what">What it is</a><a href="#strategy">Strategy</a><a href="#traps">Traps</a>
+  <a href="#examples">Worked examples</a><a href="#practice">Practice</a><a href="#summary">Summary</a>
+</div>
+
+<div class="hdr">
+  <div class="hdr-concept"><span class="hdr-num">Concept 13 / 27</span><span class="hdr-domain">Expression of Ideas</span></div>
+  <div class="hdr-title">Rhetorical<br><em>Synthesis</em></div>
+  <div class="hdr-tagline">You are given a set of research notes and asked to write a sentence that accomplishes a specific stated goal. The notes are raw material. The goal is the only thing that matters.</div>
+  <div class="hdr-chips"><span class="chip">~2–3 per module</span><span class="chip">Target: 60 sec</span><span class="chip hi">Rule: goal first, facts second</span></div>
+</div>
+<div class="main">
+
+<div class="section" id="what">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔀</div><div class="section-title">What is Rhetorical Synthesis?</div><div class="section-num-badge" style="background:var(--blue);">Step 1</div></div>
+  <div class="def-box">
+    <div class="def-label">The format</div>
+    <div class="def-body">
+      <p>The question gives you a bulleted list of research notes — typically 4–6 facts about a topic. Then it states a specific writing goal and asks which answer choice best accomplishes that goal.</p>
+      <p>Example goal: <em>"The student wants to introduce the topic to an audience unfamiliar with it, emphasising its historical origins."</em></p>
+      <p>Example goal: <em>"The student wants to compare the two methods using specific data from the notes."</em></p>
+      <p>Example goal: <em>"The student wants to argue that Method A is superior to Method B."</em></p>
+      <p>The notes contain the raw facts. Your job is to find the answer that uses those facts to accomplish the stated goal — not the answer that uses the most facts, or the most accurate facts.</p>
+    </div>
+  </div>
+  <div class="def-box amber">
+    <div class="def-label">The most important thing to understand</div>
+    <div class="def-body">
+      <p><b>Accurate ≠ correct.</b> All four answer choices will use facts accurately drawn from the notes. But only one accomplishes the stated goal. Three of them use real facts for the wrong purpose.</p>
+      <p>This is why students miss these questions: they pick the answer that has the most facts, or the most precise facts, rather than the answer that does exactly what the goal says.</p>
+      <p><b>Read the goal first. Underline the key verb.</b> The verb tells you exactly what to look for: "introduce," "compare," "argue," "emphasise," "explain the cause," "highlight the benefit," "describe the method."</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="strategy">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--green-light);">⭐</div><div class="section-title">The 4-step method</div><div class="section-num-badge" style="background:var(--green);">Step 2</div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><b>Read the notes quickly.</b> Skim for the key facts — don't memorise, just get a sense of what's there. 15 seconds maximum.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><b>Read the goal carefully. Underline the verb and any key modifiers.</b> "Introduce the topic to an unfamiliar audience" — verb: introduce. Modifier: unfamiliar audience. "Compare the two approaches using data" — verb: compare. Modifier: using data.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><b>Before reading choices, think: what would an answer that accomplishes this goal look like?</b> Rough mental template: "It would probably start with [X] and include [Y] and NOT include [Z]."</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><b>For each choice, ask one question: Does this accomplish the goal?</b> Not: is it accurate? Not: does it use lots of facts? Just: does it do what the goal says? Eliminate all that don't. Among survivors, pick the most complete and direct.</div></div>
+  </div>
+</div>
+
+<div class="section" id="traps">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--red-light);">⚠️</div><div class="section-title">The 4 traps</div><div class="section-num-badge" style="background:var(--red);">Step 3</div></div>
+  <div class="trap-grid">
+    <div class="trap-card"><div class="trap-label">Trap 1 — most common</div><div class="trap-title">Most facts ≠ correct answer</div><div class="trap-body">One wrong choice packs in multiple accurate data points — students pick it because it feels comprehensive. But if it doesn't accomplish the goal, it's wrong. Goal beats data.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 2</div><div class="trap-title">Accurate but wrong purpose</div><div class="trap-body">A choice that would perfectly accomplish a DIFFERENT goal — but not this one. "Introduce" ≠ "argue." "Compare" ≠ "explain why." Each answer uses facts for a specific purpose; match the purpose to the goal.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 3</div><div class="trap-title">Missing the audience modifier</div><div class="trap-body">Goal: "introduce to an unfamiliar reader." Wrong answer: uses technical jargon without explanation. Right answer: defines terms, gives context. The audience described in the goal changes what counts as the correct approach.</div></div>
+    <div class="trap-card"><div class="trap-label">Trap 4</div><div class="trap-title">Introduces information not in notes</div><div class="trap-body">Any answer that brings in facts not supported by the notes is wrong — even if those facts are true in general. The correct answer uses ONLY what the notes provide.</div></div>
+  </div>
+</div>
+
+<div class="section" id="examples">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--blue-light);">🔬</div><div class="section-title">Worked examples</div><div class="section-num-badge" style="background:var(--blue);">Step 4</div></div>
+
+  <div class="example">
+    <div class="example-hdr">Example 1 — Argue using evidence<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage" style="font-size:13px;line-height:1.8;">
+        <b>Notes:</b><br>
+        • Mangrove forests store 3–5 times more carbon per hectare than terrestrial tropical forests<br>
+        • Global mangrove coverage has declined by 35% since 1980<br>
+        • Mangrove restoration costs approximately $1,500–$12,000 per hectare<br>
+        • Coastal communities protected by mangroves have 70% lower storm damage than unprotected ones<br>
+        • One hectare of restored mangrove sequesters 1.5 tonnes of carbon annually
+      </div>
+      <div class="thought"><div class="thought-title">💭 Goal</div><div class="thought-body">Goal: "The student wants to argue that mangrove restoration is a cost-effective climate solution, using specific data from the notes." Key verb: ARGUE. Modifier: cost-effective + specific data. I need: an argument for restoration + cost + carbon data.</div></div>
+      <div class="q-stem">Which choice best accomplishes the goal?</div>
+      <ul class="choices" id="l13e1">
+        <li data-reset-onclick="pickEx('l13e1',this,false)" onclick="pickEx('l13e1',this,false)">A. Mangrove forests are important ecosystems that have been significantly reduced in coverage over recent decades, making their protection a priority for climate policy.</li>
+        <li data-reset-onclick="pickEx('l13e1',this,false)" onclick="pickEx('l13e1',this,false)">B. At a restoration cost of $1,500–$12,000 per hectare, mangroves protect coastal communities from storm damage while also providing habitat for marine species.</li>
+        <li data-reset-onclick="pickEx('l13e1',this,true)" onclick="pickEx('l13e1',this,true)">C. Given that restored mangroves sequester 1.5 tonnes of carbon per hectare annually — at a cost of as little as $1,500 per hectare — mangrove restoration offers a compelling return on climate investment compared to many conventional mitigation strategies.</li>
+        <li data-reset-onclick="pickEx('l13e1',this,false)" onclick="pickEx('l13e1',this,false)">D. Mangrove forests store 3–5 times more carbon than terrestrial tropical forests and have declined by 35% since 1980, making their loss a major driver of greenhouse gas emissions.</li>
+      </ul>
+      <div class="explanation" id="l13e1-exp"><b>Answer: C.</b> Goal: argue cost-effectiveness using data. C uses the cost ($1,500/ha) and the carbon sequestration (1.5t/ha/year) together to make an argument for value. A is general and doesn't argue using data. B uses cost data but argues storm protection, not climate cost-effectiveness. D uses carbon and decline data but doesn't make the cost-effectiveness argument.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 2 — Introduce to unfamiliar audience<span class="example-type">Medium</span></div>
+    <div class="example-body">
+      <div class="passage" style="font-size:13px;line-height:1.8;">
+        <b>Notes:</b><br>
+        • CRISPR-Cas9 is a gene-editing technology developed in the early 2010s<br>
+        • It uses a guide RNA to direct the Cas9 protein to a specific DNA sequence<br>
+        • The Cas9 protein cuts the DNA at the target location<br>
+        • CRISPR has been used to correct genetic mutations in trials for sickle cell disease<br>
+        • Jennifer Doudna and Emmanuelle Charpentier won the 2020 Nobel Prize in Chemistry for developing CRISPR
+      </div>
+      <div class="thought"><div class="thought-title">💭 Goal</div><div class="thought-body">Goal: "introduce CRISPR to a general audience with no prior knowledge of the technology." Key verb: INTRODUCE. Modifier: general audience, no prior knowledge. I need: what it is, plain-language explanation, probably its significance. Do NOT assume the reader knows what RNA, Cas9, or sequencing means.</div></div>
+      <div class="q-stem">Which choice best accomplishes the goal?</div>
+      <ul class="choices" id="l13e2">
+        <li data-reset-onclick="pickEx('l13e2',this,false)" onclick="pickEx('l13e2',this,false)">A. CRISPR-Cas9 uses a guide RNA to direct the Cas9 protein to a specific DNA sequence, where it makes a precise cut — a mechanism that won its developers the 2020 Nobel Prize in Chemistry.</li>
+        <li data-reset-onclick="pickEx('l13e2',this,true)" onclick="pickEx('l13e2',this,true)">B. Developed in the early 2010s and recognised with a Nobel Prize in 2020, CRISPR-Cas9 is a gene-editing tool that allows scientists to locate and modify specific sections of DNA — a capability with potential applications ranging from treating genetic diseases to improving crops.</li>
+        <li data-reset-onclick="pickEx('l13e2',this,false)" onclick="pickEx('l13e2',this,false)">C. The sickle cell disease trials demonstrate that CRISPR has moved beyond the laboratory into clinical application, though questions about long-term safety and equitable access remain.</li>
+        <li data-reset-onclick="pickEx('l13e2',this,false)" onclick="pickEx('l13e2',this,false)">D. Jennifer Doudna and Emmanuelle Charpentier's Nobel Prize-winning work on CRISPR represents a milestone in molecular biology, enabling programmable genome editing at a resolution not previously possible.</li>
+      </ul>
+      <div class="explanation" id="l13e2-exp"><b>Answer: B.</b> Goal: introduce to a general audience. B defines what CRISPR is in plain language ("gene-editing tool that allows scientists to locate and modify specific sections of DNA"), gives its timeline (early 2010s), its recognition (Nobel), and its significance (treating diseases, improving crops) — all without assuming technical knowledge. A assumes the reader knows what RNA and Cas9 are. C assumes familiarity with CRISPR and pivots to a debate about it — not an introduction. D uses technical language ("molecular biology," "programmable genome editing," "resolution") unsuitable for a general audience.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-hdr">Example 3 — Compare using data<span class="example-type">Hard</span></div>
+    <div class="example-body">
+      <div class="passage" style="font-size:13px;line-height:1.8;">
+        <b>Notes:</b><br>
+        • Traditional incandescent bulbs convert ~5% of energy into light; the rest becomes heat<br>
+        • LED bulbs convert ~90% of energy into light<br>
+        • Incandescent bulbs cost ~$1 each; LED bulbs cost ~$5–$8 each<br>
+        • An LED bulb lasts approximately 25,000 hours vs 1,000 hours for incandescent<br>
+        • Over a 25,000-hour lifespan, LEDs cost ~$30 in electricity vs ~$180 for incandescent
+      </div>
+      <div class="thought"><div class="thought-title">💭 Goal</div><div class="thought-body">Goal: "compare the long-term cost of LEDs vs incandescent bulbs to show LEDs are more economical." Key verb: COMPARE + show LEDs are more economical. I need: cost comparison over time + conclusion that LEDs are cheaper in the long run.</div></div>
+      <div class="q-stem">Which choice best accomplishes the goal?</div>
+      <ul class="choices" id="l13e3">
+        <li data-reset-onclick="pickEx('l13e3',this,false)" onclick="pickEx('l13e3',this,false)">A. LED bulbs are significantly more energy-efficient than incandescent bulbs, converting 90% of energy to light compared to just 5%, making them the environmentally superior choice.</li>
+        <li data-reset-onclick="pickEx('l13e3',this,false)" onclick="pickEx('l13e3',this,false)">B. Although LED bulbs cost $5–$8 compared to $1 for incandescent bulbs, LEDs last 25 times longer and use far less energy.</li>
+        <li data-reset-onclick="pickEx('l13e3',this,true)" onclick="pickEx('l13e3',this,true)">C. While LEDs cost more upfront ($5–$8 vs $1), their electricity cost over 25,000 hours is approximately $30 compared to $180 for incandescent bulbs — meaning LEDs are substantially more economical over their full lifespan.</li>
+        <li data-reset-onclick="pickEx('l13e3',this,false)" onclick="pickEx('l13e3',this,false)">D. LED technology has advanced dramatically, producing bulbs that outlast traditional incandescent options by a ratio of 25:1 while also delivering superior energy efficiency.</li>
+      </ul>
+      <div class="explanation" id="l13e3-exp"><b>Answer: C.</b> Goal: compare long-term cost + show LEDs cheaper. C does exactly this: acknowledges the higher upfront cost (acknowledges the objection), then uses the lifetime electricity data ($30 vs $180) to demonstrate long-term economy. A compares efficiency but doesn't make the cost argument. B mentions longevity and cost but doesn't use the electricity cost data to complete the economic argument. D mentions longevity and efficiency but makes no cost comparison.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="practice">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">✏️</div><div class="section-title">Practice — 5 questions</div><div class="section-num-badge" style="background:var(--gold);">Step 5</div></div>
+
+  <div class="practice-q"><div class="pq-num">Practice 1</div>
+    <div class="passage" style="font-size:13px;line-height:1.8;"><b>Notes:</b><br>• Deep-sea mining targets polymetallic nodules on the ocean floor<br>• These nodules contain manganese, cobalt, nickel, and copper<br>• Mining disturbs seafloor sediment, which can take thousands of years to resettle<br>• The Clarion-Clipperton Zone in the Pacific is the primary target area<br>• Species in the Clarion-Clipperton Zone are largely undiscovered and scientifically uncharacterised</div>
+    <div class="q-stem">Goal: The student wants to explain why deep-sea mining poses a particular scientific risk, using evidence from the notes.<br><br>Which choice best accomplishes the goal?</div>
+    <ul class="choices" id="l13p1">
+      <li data-reset-onclick="pickEx('l13p1',this,false)" onclick="pickEx('l13p1',this,false)">A. Deep-sea mining in the Clarion-Clipperton Zone extracts valuable minerals including manganese, cobalt, nickel, and copper that are essential to modern electronics manufacturing.</li>
+      <li data-reset-onclick="pickEx('l13p1',this,false)" onclick="pickEx('l13p1',this,false)">B. The sediment disturbance caused by deep-sea mining can persist for thousands of years, making the environmental damage extremely difficult to reverse.</li>
+      <li data-reset-onclick="pickEx('l13p1',this,true)" onclick="pickEx('l13p1',this,true)">C. Because the species living in target zones like the Clarion-Clipperton Zone are largely uncharacterised by science, mining-induced disturbances that take thousands of years to settle risk destroying biodiversity that has never even been documented.</li>
+      <li data-reset-onclick="pickEx('l13p1',this,false)" onclick="pickEx('l13p1',this,false)">D. Deep-sea mining involves extracting polymetallic nodules from the ocean floor, a process that disturbs sediment and impacts the marine ecosystem.</li>
+    </ul>
+    <div class="explanation" id="l13p1-exp"><b>C.</b> Goal: explain the particular SCIENTIFIC risk. C combines two specific facts from the notes — undiscovered species + thousands-of-years settlement — to explain why the risk is specifically scientific (destroying what we don't yet know). B mentions the sediment persistence but doesn't explain why that's a scientific risk. A explains economic value — not scientific risk. D is general and vague.</div>
+  </div>
+
+  <div class="practice-q"><div class="pq-num">Practice 2</div>
+    <div class="passage" style="font-size:13px;line-height:1.8;"><b>Notes:</b><br>• The Great Barrier Reef covers 344,000 km² off northeast Australia<br>• It supports 1,500 fish species and 4,000 types of mollusc<br>• Coral bleaching events have occurred in 1998, 2002, 2016, 2017, 2020, 2022, and 2024<br>• Ocean temperature increases of 1–2°C above average trigger bleaching<br>• The reef contributes AUD $6.4 billion to the Australian economy annually</div>
+    <div class="q-stem">Goal: The student wants to highlight the increasing frequency of bleaching events as evidence that the reef's health is worsening over time.<br><br>Which choice best accomplishes the goal?</div>
+    <ul class="choices" id="l13p2">
+      <li data-reset-onclick="pickEx('l13p2',this,false)" onclick="pickEx('l13p2',this,false)">A. The Great Barrier Reef supports extraordinary biodiversity — including 1,500 fish species and 4,000 types of mollusc — while contributing AUD $6.4 billion annually to the Australian economy.</li>
+      <li data-reset-onclick="pickEx('l13p2',this,true)" onclick="pickEx('l13p2',this,true)">B. Having experienced only two bleaching events in the seventeen years between 1998 and 2015, the reef has suffered five bleaching events in the nine years since 2016 — a pattern that strongly suggests its health is deteriorating as ocean temperatures rise.</li>
+      <li data-reset-onclick="pickEx('l13p2',this,false)" onclick="pickEx('l13p2',this,false)">C. Coral bleaching occurs when ocean temperatures rise 1–2°C above average, a threshold that is being crossed with increasing frequency due to climate change.</li>
+      <li data-reset-onclick="pickEx('l13p2',this,false)" onclick="pickEx('l13p2',this,false)">D. The Great Barrier Reef is a vital ecosystem and economic resource, but bleaching events driven by rising ocean temperatures represent a growing threat to its future.</li>
+    </ul>
+    <div class="explanation" id="l13p2-exp"><b>B.</b> Goal: highlight increasing FREQUENCY as evidence of worsening health. B uses the dates strategically — 2 events in 17 years vs 5 in 9 years — to demonstrate the acceleration. This directly accomplishes the goal of using frequency as evidence. C explains what causes bleaching but doesn't demonstrate the increasing frequency pattern. A uses biodiversity and economic data — irrelevant to bleaching frequency. D is vague and general.</div>
+  </div>
+
+  <div class="practice-q"><div class="pq-num">Practice 3</div>
+    <div class="passage" style="font-size:13px;line-height:1.8;"><b>Notes:</b><br>• Finland introduced a basic income pilot in 2017–2018 with 2,000 unemployed participants<br>• Participants received €560/month unconditionally<br>• Employment rates among participants were no lower than the control group<br>• Participants reported significantly higher wellbeing and lower stress than the control group<br>• Finland's broader welfare system remained unchanged during the pilot</div>
+    <div class="q-stem">Goal: The student wants to challenge the common claim that basic income reduces incentives to work, citing specific evidence from the pilot.<br><br>Which choice best accomplishes the goal?</div>
+    <ul class="choices" id="l13p3">
+      <li data-reset-onclick="pickEx('l13p3',this,false)" onclick="pickEx('l13p3',this,false)">A. Finland's basic income pilot provided 2,000 unemployed citizens with €560 per month and produced notable improvements in participants' reported wellbeing and mental health.</li>
+      <li data-reset-onclick="pickEx('l13p3',this,false)" onclick="pickEx('l13p3',this,false)">B. The Finnish pilot demonstrates that basic income can coexist with an existing welfare system without replacing it, suggesting it could complement rather than disrupt current support structures.</li>
+      <li data-reset-onclick="pickEx('l13p3',this,true)" onclick="pickEx('l13p3',this,true)">C. Contrary to the assumption that unconditional income reduces work incentives, Finland's pilot found that participants who received €560 per month worked at rates no lower than those in the control group.</li>
+      <li data-reset-onclick="pickEx('l13p3',this,false)" onclick="pickEx('l13p3',this,false)">D. Basic income pilots like Finland's provide valuable data on the economic and social effects of unconditional payments, informing ongoing policy debates around welfare reform.</li>
+    </ul>
+    <div class="explanation" id="l13p3-exp"><b>C.</b> Goal: CHALLENGE the work-incentive claim using specific evidence. C directly sets up the claim being challenged ("assumption that unconditional income reduces work incentives"), then cites the specific evidence (employment rates no lower). This is exactly the goal. A uses wellbeing data — the goal is about work incentives. B uses the welfare system data — not about work incentives. D is vague and doesn't cite specific evidence.</div>
+  </div>
+
+  <div class="practice-q"><div class="pq-num">Practice 4 — Hard</div>
+    <div class="passage" style="font-size:13px;line-height:1.8;"><b>Notes:</b><br>• The human brain contains approximately 86 billion neurons<br>• Each neuron can form up to 10,000 synaptic connections with other neurons<br>• Neural pathways strengthen with repeated use (synaptic plasticity)<br>• The brain can form new neural connections throughout life (neuroplasticity)<br>• Learning a new skill activates neuroplasticity and creates new pathways</div>
+    <div class="q-stem">Goal: The student wants to explain how repeated practice produces lasting improvement in a skill, drawing on the biological mechanism described in the notes.<br><br>Which choice best accomplishes the goal?</div>
+    <ul class="choices" id="l13p4">
+      <li data-reset-onclick="pickEx('l13p4',this,false)" onclick="pickEx('l13p4',this,false)">A. The human brain's 86 billion neurons, each capable of forming up to 10,000 connections, give the brain an extraordinary capacity for information processing and learning.</li>
+      <li data-reset-onclick="pickEx('l13p4',this,true)" onclick="pickEx('l13p4',this,true)">B. Each time a skill is practised, the neural pathways associated with it are used and strengthened through synaptic plasticity — the biological mechanism by which repeated activation makes connections more efficient and durable, producing the lasting improvement we recognise as mastery.</li>
+      <li data-reset-onclick="pickEx('l13p4',this,false)" onclick="pickEx('l13p4',this,false)">C. The brain's neuroplasticity means it can form new neural connections throughout life, making it theoretically possible to learn new skills at any age.</li>
+      <li data-reset-onclick="pickEx('l13p4',this,false)" onclick="pickEx('l13p4',this,false)">D. Learning a new skill activates the brain's neuroplasticity, demonstrating the extraordinary adaptability of the human brain and its capacity for lifelong development.</li>
+    </ul>
+    <div class="explanation" id="l13p4-exp"><b>B.</b> Goal: explain how REPEATED PRACTICE → lasting improvement via the biological mechanism. B specifically connects repeated practice → pathway use → synaptic plasticity (the mechanism) → lasting improvement (mastery). It traces the full causal chain. A discusses scale (86bn neurons) — not the mechanism of improvement. C explains neuroplasticity generally but doesn't connect it to repeated practice → improvement. D mentions neuroplasticity but is vague about the mechanism and doesn't explain the practice → improvement link.</div>
+  </div>
+
+  <div class="practice-q"><div class="pq-num">Practice 5 — Hard</div>
+    <div class="passage" style="font-size:13px;line-height:1.8;"><b>Notes:</b><br>• Kelp forests can grow up to 30–60 cm per day under ideal conditions<br>• They provide habitat for over 1,000 species<br>• Kelp forests absorb CO₂ and have been proposed as a climate mitigation tool<br>• Rising ocean temperatures are reducing kelp forest coverage globally<br>• Kelp forest area has declined by 40% in some regions since the 1950s</div>
+    <div class="q-stem">Goal: The student wants to present kelp forests as both ecologically valuable and environmentally threatened, to motivate conservation action.<br><br>Which choice best accomplishes the goal?</div>
+    <ul class="choices" id="l13p5">
+      <li data-reset-onclick="pickEx('l13p5',this,false)" onclick="pickEx('l13p5',this,false)">A. Kelp forests, which can grow up to 60 cm per day, are among the fastest-growing organisms on Earth and have potential applications in carbon sequestration.</li>
+      <li data-reset-onclick="pickEx('l13p5',this,false)" onclick="pickEx('l13p5',this,false)">B. Rising ocean temperatures are reducing kelp forest coverage globally, threatening the more than 1,000 species that depend on these ecosystems for habitat.</li>
+      <li data-reset-onclick="pickEx('l13p5',this,true)" onclick="pickEx('l13p5',this,true)">C. Kelp forests support over 1,000 species and absorb carbon dioxide at rates that make them a promising climate solution — yet rising temperatures have already caused a 40% decline in coverage in some regions, making conservation an urgent priority.</div>
+      <li data-reset-onclick="pickEx('l13p5',this,false)" onclick="pickEx('l13p5',this,false)">D. The 40% decline in kelp forest coverage since the 1950s represents a significant loss of marine habitat and underscores the need for immediate action to address ocean warming.</li>
+    </ul>
+    <div class="explanation" id="l13p5-exp"><b>C.</b> Goal: present BOTH ecological value AND threat, to motivate conservation. C does both: value (1,000+ species, CO₂ absorption, climate solution) AND threat (40% decline, rising temps) AND explicitly calls for conservation. B only covers the threat. A only covers the value (growth rate + carbon). D only covers the threat and decline — doesn't establish the ecological value that makes conservation worth pursuing.</div>
+  </div>
+</div>
+
+<div class="section" id="summary">
+  <div class="section-hdr"><div class="section-icon" style="background:var(--gold-light);">📌</div><div class="section-title">Summary card</div><div class="section-num-badge" style="background:var(--gold);">Keep this</div></div>
+  <div class="summary-card">
+    <div class="summary-title">Rhetorical Synthesis — Everything you need</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="summary-item-title">The format</div><div class="summary-item-body">Bulleted notes (raw facts) + a stated goal → which answer accomplishes the goal?</div></div>
+      <div class="summary-item"><div class="summary-item-title">The 4-step method</div><div class="summary-item-body">1. Skim notes. 2. Underline the goal verb. 3. Picture what the correct answer would do. 4. Eliminate anything that doesn't accomplish the goal.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 1 — biggest</div><div class="summary-item-body">Most facts ≠ correct. All choices use accurate facts. Only one uses them for the RIGHT PURPOSE. Goal beats data every time.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Trap 2</div><div class="summary-item-body">Accurate but wrong purpose. A choice that would perfectly accomplish a different goal. Each goal verb — introduce, compare, argue, explain, highlight — requires a specific structure.</div></div>
+      <div class="summary-item"><div class="summary-item-title">The goal verb matters most</div><div class="summary-item-body">Introduce = define + context. Argue = claim + evidence. Compare = both sides + specific data. Explain cause = mechanism. Highlight benefit = value + impact.</div></div>
+      <div class="summary-item"><div class="summary-item-title">Audience modifier</div><div class="summary-item-body">"Unfamiliar audience" = avoid jargon, define terms. "Expert audience" = technical precision. Audience changes what counts as the correct approach.</div></div>
+    </div>
+  </div>
+
+</div>
+<div class="lesson-footer">
+  <a href="english_lesson_12.html" class="nav-arrow">← Lesson 12: Transitions — Example</a>
+  <span style="font-size:12px;color:var(--ink-muted);">Concept 13 of 27</span>
+  <a href="english_lesson_14.html" class="nav-arrow">Next: Lesson 14: Add / Delete / Revise / Placement →</a>
+</div>
+<script>
+var answered={};
+function pickEx(id,el,correct){
+  if(answered[id])return;answered[id]=true;
+  var list=document.getElementById(id);
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'-exp');
+  if(exp)exp.classList.add('show');
+}
+</script>
+</body>
+</html>
