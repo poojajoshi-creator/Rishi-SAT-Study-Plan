@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rishi — Targeted Practice Paper · 50 Questions</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a18;--ink-muted:#6b6b65;--ink-faint:#a8a8a0;--bg:#fafaf7;--bg-alt:#f2f2ec;--border:#e2e2d8;--blue:#1a5fa8;--blue-light:#e6f0fb;--green:#2a6e3f;--green-light:#e6f4ec;--amber:#b85c00;--amber-light:#fef0e0;--red:#b82a2a;--red-light:#fde8e8;--purple:#5a2d82;--purple-light:#f0e8fa;--gold:#8a6800;--gold-light:#fdf5d8;--radius:10px;--radius-sm:6px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;}
+.paper-header{background:var(--ink);color:white;padding:2rem 2.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;}
+.header-left h1{font-family:'Instrument Serif',serif;font-size:1.9rem;font-weight:400;margin-bottom:4px;}
+.header-left p{font-size:13px;opacity:.65;}
+.header-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.header-chip{background:rgba(255,255,255,.12);border:.5px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:12px;}
+.header-chip.hi{background:rgba(255,255,255,.22);font-weight:500;}
+.score-display{text-align:right;}
+.score-live{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1;}
+.score-label{font-size:11px;opacity:.5;margin-top:4px;}
+.timer-box{margin-top:12px;background:rgba(255,255,255,.1);border-radius:var(--radius-sm);padding:8px 14px;font-size:13px;text-align:center;}
+#timer{font-weight:600;font-size:1.1rem;letter-spacing:1px;}
+.progress-bar-wrap{height:4px;background:var(--border);}
+.progress-bar-fill{height:100%;background:var(--blue);width:0%;transition:width .3s;}
+.section-banner{display:flex;align-items:center;gap:14px;padding:1rem 2.5rem;border-bottom:.5px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px);}
+.section-banner.english{background:rgba(230,244,252,.95);}
+.section-banner.math{background:rgba(230,244,236,.95);}
+.sb-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;flex-shrink:0;}
+.section-banner.english .sb-icon{background:var(--blue);color:white;}
+.section-banner.math .sb-icon{background:var(--green);color:white;}
+.sb-title{font-family:'Instrument Serif',serif;font-size:1.2rem;}
+.sb-sub{font-size:12px;color:var(--ink-muted);}
+.sb-count{margin-left:auto;font-size:12px;color:var(--ink-muted);background:var(--bg-alt);border-radius:20px;padding:3px 12px;border:.5px solid var(--border);}
+.questions-wrap{max-width:860px;margin:0 auto;padding:2rem 2.5rem 5rem;}
+.q-block{margin-bottom:2rem;border:.5px solid var(--border);border-radius:var(--radius);overflow:hidden;background:white;transition:box-shadow .2s;}
+.q-block:hover{box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.q-block.answered-correct{border-color:var(--green);}
+.q-block.answered-wrong{border-color:var(--red);}
+.q-header{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:.5px solid var(--border);background:var(--bg-alt);}
+.q-num{font-size:12px;font-weight:600;color:var(--ink-muted);}
+.q-tag{font-size:11px;padding:2px 8px;border-radius:12px;font-weight:500;}
+.tag-eoi{background:var(--blue-light);color:var(--blue);}
+.tag-iai{background:var(--purple-light);color:var(--purple);}
+.tag-sec{background:var(--amber-light);color:var(--amber);}
+.tag-geo{background:var(--red-light);color:var(--red);}
+.tag-data{background:var(--gold-light);color:var(--gold);}
+.tag-adv{background:var(--green-light);color:var(--green);}
+.q-diff{font-size:11px;color:var(--ink-faint);margin-left:auto;}
+.q-body{padding:16px;}
+.passage{background:var(--bg-alt);border-left:3px solid var(--border);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 14px;font-size:14px;line-height:1.75;margin-bottom:14px;}
+.passage.notes{border-left-color:var(--blue);}
+.q-stem{font-size:14px;font-weight:500;margin-bottom:12px;}
+.choices{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.choices li{padding:9px 13px;border:.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;transition:background .15s,border-color .15s;display:flex;gap:10px;align-items:flex-start;}
+.choices li:hover:not(.correct):not(.wrong){background:var(--bg-alt);border-color:var(--blue);}
+.choice-letter{font-weight:600;color:var(--ink-muted);min-width:16px;}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.choices li.correct .choice-letter{color:var(--green);}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.choices li.wrong .choice-letter{color:var(--red);}
+.explanation{display:none;margin-top:12px;padding:12px 14px;background:var(--bg-alt);border-radius:var(--radius-sm);font-size:13px;line-height:1.7;border-left:3px solid var(--green);}
+.explanation.show{display:block;}
+.exp-label{font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--green);margin-bottom:4px;}
+.results-panel{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,26,24,.85);z-index:100;align-items:center;justify-content:center;}
+.results-panel.show{display:flex;}
+.results-card{background:white;border-radius:16px;padding:2.5rem;max-width:520px;width:90%;text-align:center;}
+.results-card h2{font-family:'Instrument Serif',serif;font-size:1.8rem;margin-bottom:6px;}
+.results-big{font-family:'Instrument Serif',serif;font-size:4rem;margin:1rem 0;}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:1.5rem 0;}
+.rg-item{background:var(--bg-alt);border-radius:var(--radius-sm);padding:14px;}
+.rg-label{font-size:11px;color:var(--ink-muted);margin-bottom:4px;}
+.rg-val{font-size:1.4rem;font-weight:600;}
+.btn-close{background:var(--ink);color:white;border:none;border-radius:var(--radius-sm);padding:12px 28px;font-size:14px;cursor:pointer;margin-top:1rem;font-family:'DM Sans',sans-serif;}
+.submit-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:.5px solid var(--border);padding:12px 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.submit-progress{font-size:13px;color:var(--ink-muted);}
+.btn-submit{background:var(--blue);color:white;border:none;border-radius:var(--radius-sm);padding:10px 28px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-submit:hover{background:#1348a0;}
+</style>
+</head>
+<body>
+
+<div class="paper-header">
+  <div class="header-left">
+    <h1>Targeted Practice Paper</h1>
+    <p>Rishi Wadhwani · June 2026 · Focused on weak areas from Practice Test 5</p>
+    <div class="header-chips">
+      <span class="header-chip hi">30 English · 20 Math</span>
+      <span class="header-chip">Expression of Ideas — 14 Qs</span>
+      <span class="header-chip">Information &amp; Ideas — 10 Qs</span>
+      <span class="header-chip">SEC — 6 Qs</span>
+      <span class="header-chip">Geometry &amp; Trig — 8 Qs</span>
+      <span class="header-chip">Data Analysis — 7 Qs</span>
+      <span class="header-chip">Advanced Math — 5 Qs</span>
+    </div>
+  </div>
+  <div class="score-display">
+    <div class="score-live"><span id="sc">0</span>/0</div>
+    <div class="score-label">correct / answered</div>
+    <div class="timer-box">⏱ <span id="timer">00:00</span></div>
+  </div>
+</div>
+<div class="progress-bar-wrap"><div class="progress-bar-fill" id="pb"></div></div>
+
+<!-- ═══════════════ ENGLISH ═══════════════ -->
+<div class="section-banner english">
+  <div class="sb-icon">E</div>
+  <div><div class="sb-title">Reading &amp; Writing</div><div class="sb-sub">Expression of Ideas · Information &amp; Ideas · Standard English Conventions</div></div>
+  <div class="sb-count">Q1 – Q30</div>
+</div>
+<div class="questions-wrap">
+
+<div class="q-block" id="q1">
+  <div class="q-header"><span class="q-num">Q1</span><span class="q-tag tag-eoi">Expression of Ideas — Transitions</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">For centuries, coral reefs were considered stable ecosystems capable of recovering from periodic disturbances such as storms. Researchers now understand that rising ocean temperatures cause bleaching events that can kill entire reef systems within weeks.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q1c">
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">A</span> Furthermore, researchers now understand</li>
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">B</span> For instance, researchers now understand</li>
+      <li onclick="pick('q1',this,true)"><span class="choice-letter">C</span> However, researchers now understand</li>
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">D</span> Consequently, researchers now understand</li>
+    </ul>
+    <div class="explanation" id="q1e"><div class="exp-label">Correct: C — Contrast</div>S1: reefs were stable and resilient. S2: reefs are now understood to be highly vulnerable. Direct contradiction of prior belief → contrast. "However" signals the pivot. A (Furthermore) = addition — same direction. B = example. D = result — the vulnerability didn't result from the stability belief.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q2">
+  <div class="q-header"><span class="q-num">Q2</span><span class="q-tag tag-eoi">Expression of Ideas — Transitions</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The city's new cycling infrastructure reduced traffic congestion along the main arterial roads. Commute times for drivers fell by an average of eleven minutes per journey.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q2c">
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">A</span> Nevertheless, commute times</li>
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">B</span> In contrast, commute times</li>
+      <li onclick="pick('q2',this,true)"><span class="choice-letter">C</span> As a result, commute times</li>
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">D</span> For example, commute times</li>
+    </ul>
+    <div class="explanation" id="q2e"><div class="exp-label">Correct: C — Cause/Result</div>Reduced congestion → shorter commutes. S2 is the direct consequence of S1. "As a result." A = concession. B = contrast — both point same way. D = example — commute times are a consequence, not an illustration.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q3">
+  <div class="q-header"><span class="q-num">Q3</span><span class="q-tag tag-eoi">Expression of Ideas — Transitions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Proponents of universal basic income argue that it would eliminate the poverty trap by removing income-dependent welfare cliffs. Critics contend that unconditional payments would reduce incentives to work and place unsustainable pressure on public finances.</div>
+    <div class="q-stem">Which transition, inserted at the beginning of the second sentence, best reflects the relationship?</div>
+    <ul class="choices" id="q3c">
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">A</span> Furthermore,</li>
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">B</span> Therefore,</li>
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">C</span> For instance,</li>
+      <li onclick="pick('q3',this,true)"><span class="choice-letter">D</span> However,</li>
+    </ul>
+    <div class="explanation" id="q3e"><div class="exp-label">Correct: D — Contrast</div>S1: proponents say UBI is beneficial. S2: critics say UBI is harmful. Two opposing views on the same policy = contrast. A = addition. B = result — critics' arguments don't result from proponents'. C = example — critics aren't an example of proponents.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q4">
+  <div class="q-header"><span class="q-num">Q4</span><span class="q-tag tag-eoi">Expression of Ideas — Transitions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">The researcher acknowledged that the study's sample was drawn exclusively from university students, which limits the generalisability of the findings. The observed correlation between sleep duration and academic performance was remarkably consistent across all subgroups, suggesting the effect may be robust.</div>
+    <div class="q-stem">Which transition, added to the beginning of the second sentence, best reflects the logical relationship?</div>
+    <ul class="choices" id="q4c">
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">A</span> As a result,</li>
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">B</span> In contrast,</li>
+      <li onclick="pick('q4',this,true)"><span class="choice-letter">C</span> Nevertheless,</li>
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">D</span> For instance,</li>
+    </ul>
+    <div class="explanation" id="q4e"><div class="exp-label">Correct: C — Concession</div>S1 concedes a real limitation (narrow sample). S2 argues the findings are still compelling despite it. "Yes, the sample is limited. Nevertheless, the results are consistent." = concession. B (In contrast) would compare two different things — but one study is being discussed from two angles. A = causal. D = example.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q5">
+  <div class="q-header"><span class="q-num">Q5</span><span class="q-tag tag-eoi">Expression of Ideas — Transitions</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">Traditional brick-and-mortar retailers have struggled with rising rents and changing consumer habits. Many luxury brands have reported record sales by focusing on exclusive in-store experiences that cannot be replicated online.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q5c">
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">A</span> Similarly, many luxury brands</li>
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">B</span> Therefore, many luxury brands</li>
+      <li onclick="pick('q5',this,true)"><span class="choice-letter">C</span> Yet many luxury brands</li>
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">D</span> Additionally, many luxury brands</li>
+    </ul>
+    <div class="explanation" id="q5e"><div class="exp-label">Correct: C — Contrast</div>S1: traditional retail is struggling. S2: luxury brands are thriving. Unexpected result given S1 — contrast. "Yet" (FANBOYS) signals the pivot. A = same direction. B = result. D = addition.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q6">
+  <div class="q-header"><span class="q-num">Q6</span><span class="q-tag tag-eoi">Expression of Ideas — Transitions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">It is true that reintroducing apex predators such as wolves carries ecological risks, including potential livestock losses for nearby farmers. The long-term evidence from rewilding projects in Yellowstone and northern Europe shows that restored predator populations lead to measurably healthier and more biodiverse ecosystems overall.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q6c">
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">A</span> For example, the long-term evidence</li>
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">B</span> In contrast, the long-term evidence</li>
+      <li onclick="pick('q6',this,true)"><span class="choice-letter">C</span> Even so, the long-term evidence</li>
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">D</span> As a result, the long-term evidence</li>
+    </ul>
+    <div class="explanation" id="q6e"><div class="exp-label">Correct: C — Concession</div>"It is true that..." = classic concession signal. S1 accepts the risks. S2 argues that despite those risks, the evidence supports rewilding. "Even so" = despite the risks. B (In contrast) would compare two different things — but one issue (rewilding) is discussed from two angles. A = example. D = causal.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q7">
+  <div class="q-header"><span class="q-num">Q7</span><span class="q-tag tag-eoi">Expression of Ideas — Rhetorical Synthesis</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Light pollution affects 83% of the world's population<br>
+• Sea turtle hatchlings navigate to the ocean using light from the horizon<br>
+• Artificial coastal lighting disorients hatchlings, causing them to move inland<br>
+• Hatchlings that move inland face dehydration and predation<br>
+• Several Florida counties have adopted red-spectrum lighting ordinances</div>
+    <div class="q-stem">The student wants to explain why coastal light pollution is specifically harmful to sea turtles. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q7c">
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">A</span> Light pollution affects the vast majority of the world's population and has wide-ranging ecological consequences.</li>
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">B</span> Florida counties have responded to sea turtle conservation concerns by adopting special lighting ordinances.</li>
+      <li onclick="pick('q7',this,true)"><span class="choice-letter">C</span> Because sea turtle hatchlings navigate by following the brightest horizon, artificial coastal lighting draws them inland rather than toward the sea, exposing them to dehydration and predation.</li>
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">D</span> Sea turtles are among the many species affected by light pollution, which disrupts natural behaviours across a wide range of animals.</li>
+    </ul>
+    <div class="explanation" id="q7e"><div class="exp-label">Correct: C</div>Goal: explain WHY/HOW light pollution is specifically harmful — the mechanism. C traces the causal chain: navigation by light → artificial light misdirects → inland movement → dehydration/predation. A is too general. B describes the response, not the harm. D acknowledges the effect but doesn't explain the mechanism.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q8">
+  <div class="q-header"><span class="q-num">Q8</span><span class="q-tag tag-eoi">Expression of Ideas — Rhetorical Synthesis</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Open-plan offices became dominant in corporate design from the 1990s<br>
+• A 2018 Harvard study found face-to-face interaction dropped by 70% after open-plan transition<br>
+• Electronic communication increased by 20–50% in the same study<br>
+• Workers cited noise and lack of privacy as top sources of dissatisfaction<br>
+• Some companies have reversed to hybrid layouts with enclosed spaces</div>
+    <div class="q-stem">The student wants to challenge the assumption that open-plan offices increase collaboration, using data from the notes. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q8c">
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">A</span> Open-plan offices have been the dominant office design for decades, though they are increasingly being reconsidered by employers.</li>
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">B</span> Workers in open-plan offices consistently report noise and lack of privacy as major sources of dissatisfaction.</li>
+      <li onclick="pick('q8',this,true)"><span class="choice-letter">C</span> Contrary to the assumption that open-plan layouts encourage collaboration, a Harvard study found that direct face-to-face interaction fell by 70% following such transitions, with workers shifting instead to electronic communication.</li>
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">D</span> The shift away from open-plan offices toward hybrid layouts reflects growing recognition of their limitations, including noise and insufficient privacy.</li>
+    </ul>
+    <div class="explanation" id="q8e"><div class="exp-label">Correct: C</div>Goal: CHALLENGE the assumption + use DATA. C directly names the assumption being challenged, then cites the specific 70% data point and the mechanism (shift to electronic). A = historical context, no data challenge. B = dissatisfaction data, doesn't challenge the collaboration assumption. D = describes reversal trend, uses no specific data.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q9">
+  <div class="q-header"><span class="q-num">Q9</span><span class="q-tag tag-eoi">Expression of Ideas — Rhetorical Synthesis</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Microplastics (under 5mm) are found in every ocean on Earth<br>
+• A 2022 study detected microplastics in human blood for the first time<br>
+• Average human ingests approximately 5 grams of plastic per week<br>
+• Microplastics found in placentas, breast milk, and lung tissue<br>
+• Long-term health effects not yet fully understood</div>
+    <div class="q-stem">The student wants to convey both the pervasiveness of microplastic contamination and the uncertainty about its health effects. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q9c">
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">A</span> Microplastics have been detected in oceans, human blood, placentas, and lung tissue — yet researchers have not established what long-term accumulation means for human health.</li>
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">B</span> The discovery of microplastics in human blood in 2022 represents a significant escalation of concern about this environmental contaminant.</li>
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">C</span> Humans ingest approximately 5 grams of plastic per week, raising serious questions about the safety of plastic packaging and food storage.</li>
+      <li onclick="pick('q9',this,true)"><span class="choice-letter">D</span> Microplastics now permeate environments from ocean depths to human organs including the placenta and lungs, yet despite humans ingesting roughly 5 grams weekly, the long-term health consequences remain poorly understood.</li>
+    </ul>
+    <div class="explanation" id="q9e"><div class="exp-label">Correct: D</div>Goal: BOTH pervasiveness AND uncertainty. D covers both: pervasiveness (ocean depths to human organs, placenta, lungs, 5g/week ingestion) AND uncertainty ("long-term health consequences remain poorly understood"). A covers both but less comprehensively on pervasiveness. B covers only discovery. C focuses on ingestion but doesn't frame the broader pervasiveness.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q10">
+  <div class="q-header"><span class="q-num">Q10</span><span class="q-tag tag-eoi">Expression of Ideas — Rhetorical Synthesis</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Prescribed burns are intentional, controlled fires set by land managers<br>
+• They reduce accumulation of dry vegetation that fuels larger wildfires<br>
+• In Australia, prescribed burns reduced wildfire severity in treated areas by 60%<br>
+• In the western US, only 10% of land requiring treatment receives prescribed burns annually<br>
+• Opposition comes from concerns about air quality, liability, and escaped fires</div>
+    <div class="q-stem">The student wants to argue that the US should expand its prescribed burn programme, using evidence of effectiveness alongside acknowledgement of the implementation gap. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q10c">
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">A</span> Prescribed burns face opposition from communities concerned about air quality and the risk of fires spreading beyond intended boundaries.</li>
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">B</span> Prescribed burns reduce the accumulation of dry vegetation and have been shown to cut wildfire severity significantly in treated areas.</li>
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">C</span> Australia's 60% reduction in wildfire severity demonstrates the potential of prescribed burns, which the US has proven effective at conducting in limited areas.</li>
+      <li onclick="pick('q10',this,true)"><span class="choice-letter">D</span> Given that prescribed burns reduced wildfire severity by 60% in Australian trials, the US should dramatically expand its programme — currently treating only 10% of the land that requires it — before another catastrophic wildfire season arrives.</li>
+    </ul>
+    <div class="explanation" id="q10e"><div class="exp-label">Correct: D</div>Goal: ARGUE for expansion + effectiveness evidence + implementation gap. D does all three: effectiveness (60%), gap (only 10% treated), and clear argument for expansion ("should dramatically expand"). A = only opposition. B = effectiveness but no gap or argument. C = effectiveness + vague US reference, no gap figure, no explicit expansion argument.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q11">
+  <div class="q-header"><span class="q-num">Q11</span><span class="q-tag tag-eoi">Expression of Ideas — Add/Delete/Revise</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The discovery of the double helix structure of DNA by Watson and Crick in 1953 transformed molecular biology. <u>Rosalind Franklin's X-ray crystallography work, particularly Image 51, provided critical data that Watson and Crick used in developing their model, though she received little recognition during her lifetime.</u> The structure revealed that genetic information is encoded in sequences of base pairs, enabling scientists to understand how traits are inherited and how mutations occur.</div>
+    <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+    <ul class="choices" id="q11c">
+      <li onclick="pick('q11',this,false)"><span class="choice-letter">A</span> Deleted, because it interrupts the explanation of how DNA structure contributed to genetics.</li>
+      <li onclick="pick('q11',this,false)"><span class="choice-letter">B</span> Deleted, because Franklin's contribution has been disputed by historians of science.</li>
+      <li onclick="pick('q11',this,true)"><span class="choice-letter">C</span> Kept, because it provides important context about the collaborative and contested nature of the discovery that the paragraph introduces.</li>
+      <li onclick="pick('q11',this,false)"><span class="choice-letter">D</span> Kept, because without it, readers would not understand what X-ray crystallography is.</li>
+    </ul>
+    <div class="explanation" id="q11e"><div class="exp-label">Correct: C</div>The paragraph is about the DNA discovery. The underlined sentence adds context about HOW the discovery was made (Franklin's data) and a significant aspect of its history (attribution). This directly enriches the paragraph's opening claim. A is wrong — it doesn't prevent the explanation; it contextualises it. B invents a claim. D overstates the purpose.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q12">
+  <div class="q-header"><span class="q-num">Q12</span><span class="q-tag tag-eoi">Expression of Ideas — Add/Delete/Revise</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">Urban heat islands form when cities replace natural surfaces with heat-absorbing materials such as concrete and asphalt. <u>The term "urban heat island" was first used by Luke Howard in his 1820 study of London's climate, making it one of the oldest concepts in urban climatology.</u> These surfaces raise city temperatures significantly above those of surrounding rural areas, increasing heat-related health risks for urban residents.</div>
+    <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+    <ul class="choices" id="q12c">
+      <li onclick="pick('q12',this,false)"><span class="choice-letter">A</span> Kept, because it provides historical context that helps explain how the urban heat island effect was discovered.</li>
+      <li onclick="pick('q12',this,true)"><span class="choice-letter">B</span> Deleted, because the paragraph's focus is on how and why urban heat islands form and their health consequences — not on the history of the terminology.</li>
+      <li onclick="pick('q12',this,false)"><span class="choice-letter">C</span> Kept, because readers unfamiliar with the term need to know where it originated.</li>
+      <li onclick="pick('q12',this,false)"><span class="choice-letter">D</span> Deleted, because Luke Howard's research has been superseded by modern climate science.</li>
+    </ul>
+    <div class="explanation" id="q12e"><div class="exp-label">Correct: B</div>Main point: how urban heat islands form + health consequences. The underlined sentence is about the history of the TERM — not the mechanism or health effects. True and related to the topic broadly — but doesn't serve this paragraph's specific main point. A says "helps explain how it was discovered" — but the paragraph isn't about discovery, it's about mechanism. D invents a claim.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q13">
+  <div class="q-header"><span class="q-num">Q13</span><span class="q-tag tag-eoi">Expression of Ideas — Add/Delete/Revise</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">[A] Fermentation has been used by human civilisations for millennia to preserve food and produce beverages. [B] The process works by allowing microorganisms such as yeast and bacteria to break down sugars, producing alcohol, acids, or gases as byproducts. [C] Different fermentation processes produce vastly different results — from wine and beer to yoghurt, sourdough bread, and kimchi. [D] These products share the characteristic of being created through microbial activity rather than direct human processing.</div>
+    <div class="q-stem">Where should the following sentence be placed? "This capacity to extend the shelf life of perishables made fermentation essential to communities that lacked refrigeration."</div>
+    <ul class="choices" id="q13c">
+      <li onclick="pick('q13',this,true)"><span class="choice-letter">A</span> After sentence A</li>
+      <li onclick="pick('q13',this,false)"><span class="choice-letter">B</span> After sentence B</li>
+      <li onclick="pick('q13',this,false)"><span class="choice-letter">C</span> After sentence C</li>
+      <li onclick="pick('q13',this,false)"><span class="choice-letter">D</span> After sentence D</li>
+    </ul>
+    <div class="explanation" id="q13e"><div class="exp-label">Correct: A — After sentence A</div>"This capacity to extend the shelf life of perishables" — "this capacity" refers to what was just mentioned. Sentence A says fermentation was used "to preserve food." The new sentence elaborates on WHY preservation mattered (lack of refrigeration). It must come immediately after A. After B — B is about the mechanism, not preservation specifically. After C or D — too far from the preservation point.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q14">
+  <div class="q-header"><span class="q-num">Q14</span><span class="q-tag tag-eoi">Expression of Ideas — Add/Delete/Revise</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Gig economy platforms have fundamentally altered labour markets in advanced economies. Workers on these platforms gain flexibility and autonomy over their schedules. <u>They lack the employment protections — minimum wage guarantees, sick pay, pension contributions — that traditional employees receive as standard.</u></div>
+    <div class="q-stem">The student wants to revise the underlined sentence to more explicitly signal the contrast with the preceding sentence. Which revision best accomplishes this?</div>
+    <ul class="choices" id="q14c">
+      <li onclick="pick('q14',this,false)"><span class="choice-letter">A</span> They do not, however, receive employment protections such as minimum wage guarantees, sick pay, or pension contributions.</li>
+      <li onclick="pick('q14',this,true)"><span class="choice-letter">B</span> Yet this flexibility comes at a cost: they lack the employment protections — minimum wage guarantees, sick pay, pension contributions — that traditional employees receive as standard.</li>
+      <li onclick="pick('q14',this,false)"><span class="choice-letter">C</span> Employment protections such as minimum wage, sick pay, and pension contributions are not provided to gig workers.</li>
+      <li onclick="pick('q14',this,false)"><span class="choice-letter">D</span> These workers also lack the employment protections that traditional employees receive.</li>
+    </ul>
+    <div class="explanation" id="q14e"><div class="exp-label">Correct: B</div>Goal: MORE EXPLICITLY signal contrast. B opens with "Yet" (explicit contrast signal), then frames the tradeoff ("this flexibility comes at a cost") before listing the missing protections — most explicit and complete. A uses "however" mid-sentence — less emphatic opening. C has no contrast signal at all. D uses "also" — an addition word, not contrast.</div>
+  </div>
+</div>
+
+<!-- IAI: INFORMATION AND IDEAS (10 Qs) -->
+
+<div class="q-block" id="q15">
+  <div class="q-header"><span class="q-num">Q15</span><span class="q-tag tag-iai">Information &amp; Ideas — Main Idea</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">Historians have long debated whether the fall of the Western Roman Empire was primarily the result of internal decay — political corruption, economic deterioration, and military overextension — or external pressure from migrating peoples. Recent scholarship has moved toward a more nuanced position: that the empire did not "fall" in any sudden, catastrophic sense, but rather underwent a prolonged transformation over several centuries, during which Roman institutions, culture, and identity were gradually absorbed and adapted by the successor kingdoms that replaced imperial rule.</div>
+    <div class="q-stem">Which choice best states the main idea of the passage?</div>
+    <ul class="choices" id="q15c">
+      <li onclick="pick('q15',this,false)"><span class="choice-letter">A</span> Internal decay rather than external invasion was the primary cause of Rome's decline.</li>
+      <li onclick="pick('q15',this,false)"><span class="choice-letter">B</span> The Western Roman Empire fell suddenly and catastrophically in the fifth century CE.</li>
+      <li onclick="pick('q15',this,true)"><span class="choice-letter">C</span> Current historians increasingly view the end of Roman rule as a gradual transformation rather than a sudden collapse.</li>
+      <li onclick="pick('q15',this,false)"><span class="choice-letter">D</span> Roman culture survived the end of the empire through its influence on successor kingdoms.</li>
+    </ul>
+    <div class="explanation" id="q15e"><div class="exp-label">Correct: C</div>The passage opens with the historical debate, then pivots: "Recent scholarship has moved toward..." — the main idea is what that recent scholarship says. C captures this. A presents one side of the old debate. B directly contradicts the passage ("did not fall in any sudden, catastrophic sense"). D is a supporting detail, not the main idea.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q16">
+  <div class="q-header"><span class="q-num">Q16</span><span class="q-tag tag-iai">Information &amp; Ideas — Text Structure</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The first paragraph of a scientific paper is rarely its most important. It is, however, frequently its most revealing. Authors who have mastered their subject write introductions that locate their work precisely within a broader conversation — acknowledging what has been established, identifying what remains contested, and specifying the gap their study addresses. Authors who have not yet mastered their subject write introductions that either claim too much or too little. The introduction, in short, is a diagnostic of intellectual confidence.</div>
+    <div class="q-stem">The primary purpose of this passage is to</div>
+    <ul class="choices" id="q16c">
+      <li onclick="pick('q16',this,false)"><span class="choice-letter">A</span> argue that scientific papers should prioritise the introduction over other sections.</li>
+      <li onclick="pick('q16',this,false)"><span class="choice-letter">B</span> explain how to write an effective scientific paper introduction step by step.</li>
+      <li onclick="pick('q16',this,true)"><span class="choice-letter">C</span> suggest that a paper's introduction reveals the author's level of mastery of the subject.</li>
+      <li onclick="pick('q16',this,false)"><span class="choice-letter">D</span> compare well-written and poorly-written scientific papers across several disciplines.</li>
+    </ul>
+    <div class="explanation" id="q16e"><div class="exp-label">Correct: C</div>The closing line — "the introduction is a diagnostic of intellectual confidence" — states the central claim. The whole passage builds toward this: introductions reveal mastery or lack of it. C captures this. A misrepresents — the passage doesn't argue introductions should be prioritised. B — not a how-to guide. D — no cross-disciplinary comparison is made.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q17">
+  <div class="q-header"><span class="q-num">Q17</span><span class="q-tag tag-iai">Information &amp; Ideas — Words in Context</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The committee's report was exhaustive in its scope, cataloguing every known instance of the practice across forty years of records, yet its conclusions were curiously <u>circumspect</u> — stopping short of the direct condemnation that its own evidence seemed to demand.</div>
+    <div class="q-stem">As used in the passage, "circumspect" most nearly means</div>
+    <ul class="choices" id="q17c">
+      <li onclick="pick('q17',this,false)"><span class="choice-letter">A</span> comprehensive</li>
+      <li onclick="pick('q17',this,false)"><span class="choice-letter">B</span> mistaken</li>
+      <li onclick="pick('q17',this,true)"><span class="choice-letter">C</span> cautious</li>
+      <li onclick="pick('q17',this,false)"><span class="choice-letter">D</span> contradictory</li>
+    </ul>
+    <div class="explanation" id="q17e"><div class="exp-label">Correct: C — cautious</div>The dash defines the word: "stopping short of direct condemnation that its own evidence seemed to demand" = being careful/restrained. "Circumspect" = careful about potential consequences. A (comprehensive) describes the scope, not the conclusions. B (mistaken) not suggested. D (contradictory) — the conclusions don't contradict the evidence; they just don't go as far as warranted.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q18">
+  <div class="q-header"><span class="q-num">Q18</span><span class="q-tag tag-iai">Information &amp; Ideas — Words in Context</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">In literary criticism, the term "unreliable narrator" is often deployed too broadly, applied to any narrator who withholds information or demonstrates a limited perspective. Strictly speaking, however, an unreliable narrator is one whose account of events the reader has grounds to actively <u>distrust</u> — not merely one who cannot see the full picture.</div>
+    <div class="q-stem">As used in the passage, "distrust" most nearly means</div>
+    <ul class="choices" id="q18c">
+      <li onclick="pick('q18',this,false)"><span class="choice-letter">A</span> misunderstand</li>
+      <li onclick="pick('q18',this,true)"><span class="choice-letter">B</span> question the truthfulness of</li>
+      <li onclick="pick('q18',this,false)"><span class="choice-letter">C</span> find confusing</li>
+      <li onclick="pick('q18',this,false)"><span class="choice-letter">D</span> disagree with the opinions of</li>
+    </ul>
+    <div class="explanation" id="q18e"><div class="exp-label">Correct: B</div>The passage distinguishes an unreliable narrator (whose account the reader has grounds to actively distrust) from a merely limited one. "Distrust" here means doubting accuracy or truthfulness — they may be lying or self-deceived. B captures this. A = reader misunderstanding ≠ narrator being untruthful. C = confusion ≠ credibility concern. D = opinions vs facts/events.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q19">
+  <div class="q-header"><span class="q-num">Q19</span><span class="q-tag tag-iai">Information &amp; Ideas — Cross-Text</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage"><b>Text 1:</b> Attention restoration theory proposes that natural environments promote recovery from mental fatigue because they engage "soft fascination" — effortless attention that is restorative, as opposed to directed attention required by urban environments. Research supports this: subjects who spent time in nature showed improved concentration and reduced stress compared to those in urban settings.<br><br>
+    <b>Text 2:</b> A 2022 meta-analysis of 31 studies found that while exposure to nature was associated with modest improvements in mood and stress, cognitive benefits attributed to natural environments were not reliably distinguished from the benefits of simply taking a break from directed tasks. The authors suggested the restorative effect may be due to rest itself, rather than the specific properties of natural environments.</div>
+    <div class="q-stem">Which statement best describes the relationship between Text 1 and Text 2?</div>
+    <ul class="choices" id="q19c">
+      <li onclick="pick('q19',this,false)"><span class="choice-letter">A</span> Text 2 confirms the central claim of Text 1 by providing large-scale evidence of nature's restorative benefits.</li>
+      <li onclick="pick('q19',this,false)"><span class="choice-letter">B</span> Text 2 contradicts Text 1 by showing that natural environments have no effect on mental wellbeing.</li>
+      <li onclick="pick('q19',this,true)"><span class="choice-letter">C</span> Text 2 complicates the claim in Text 1 by questioning whether the restorative effect is specific to natural environments or is a result of rest more broadly.</li>
+      <li onclick="pick('q19',this,false)"><span class="choice-letter">D</span> Text 2 extends Text 1 by applying attention restoration theory to a wider range of settings.</li>
+    </ul>
+    <div class="explanation" id="q19e"><div class="exp-label">Correct: C</div>T1: nature specifically restores attention (soft fascination). T2: cognitive benefits aren't reliably distinguished from simply resting — so it may be rest, not nature specifically. T2 doesn't deny nature has any effects (mood/stress showed modest improvements), so it doesn't fully contradict T1 (eliminates B). It complicates T1 by questioning the mechanism. A wrong — T2 doesn't confirm. D wrong — T2 challenges, doesn't extend.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q20">
+  <div class="q-header"><span class="q-num">Q20</span><span class="q-tag tag-iai">Information &amp; Ideas — Cross-Text</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage"><b>Text 1:</b> Economists have long maintained that free trade benefits all participating nations in the aggregate, even if some sectors experience short-term disruption. The theory of comparative advantage holds that nations should specialise in goods for which they have the lowest opportunity cost, then trade — generating greater overall efficiency than self-sufficiency could achieve.<br><br>
+    <b>Text 2:</b> Critics of free trade theory argue that comparative advantage models assume perfect labour mobility — that workers displaced from uncompetitive industries can readily transition to growing sectors. In practice, this transition is often geographically impossible and economically prohibitive for older workers and those in specialised roles, meaning aggregate gains from trade can obscure persistent, concentrated harm in specific communities.</div>
+    <div class="q-stem">The author of Text 2 would most likely respond to Text 1's claim that free trade benefits all nations "in the aggregate" by arguing that</div>
+    <ul class="choices" id="q20c">
+      <li onclick="pick('q20',this,false)"><span class="choice-letter">A</span> comparative advantage theory is mathematically flawed and has been disproven by economic data.</li>
+      <li onclick="pick('q20',this,false)"><span class="choice-letter">B</span> free trade should be abandoned in favour of protectionist policies that preserve domestic industries.</li>
+      <li onclick="pick('q20',this,true)"><span class="choice-letter">C</span> aggregate benefits can mask real harm to specific workers and communities who cannot easily adjust to trade-driven disruptions.</li>
+      <li onclick="pick('q20',this,false)"><span class="choice-letter">D</span> nations should specialise in industries where they have an absolute, not comparative, advantage.</li>
+    </ul>
+    <div class="explanation" id="q20e"><div class="exp-label">Correct: C</div>T2's central argument: labour mobility assumptions are unrealistic, so aggregate gains "can obscure persistent, concentrated harm in specific communities." C directly paraphrases this. A — T2 doesn't say the math is wrong; it says assumptions are unrealistic. B — T2 doesn't advocate protectionism. D — T2 doesn't address absolute vs comparative advantage.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q21">
+  <div class="q-header"><span class="q-num">Q21</span><span class="q-tag tag-iai">Information &amp; Ideas — Author's Purpose</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">To call a scientific finding "preliminary" is not, as it is sometimes taken to be, an admission of weakness. Preliminary findings are the lifeblood of active research — the hypotheses in progress, the observations awaiting replication, the anomalies that may become paradigm shifts. To dismiss them is to misunderstand how science actually works. Certainty, in science, is not a starting point but a destination, reached only through the accumulation and revision of findings that were, at some point, preliminary.</div>
+    <div class="q-stem">The author's primary purpose in this passage is to</div>
+    <ul class="choices" id="q21c">
+      <li onclick="pick('q21',this,false)"><span class="choice-letter">A</span> explain the process by which preliminary findings become accepted scientific fact.</li>
+      <li onclick="pick('q21',this,false)"><span class="choice-letter">B</span> critique scientists who publish findings before they have been replicated.</li>
+      <li onclick="pick('q21',this,true)"><span class="choice-letter">C</span> defend the value of preliminary findings against a common mischaracterisation.</li>
+      <li onclick="pick('q21',this,false)"><span class="choice-letter">D</span> argue that scientific certainty is unattainable and therefore unimportant.</li>
+    </ul>
+    <div class="explanation" id="q21e"><div class="exp-label">Correct: C</div>The passage opens by correcting a misunderstanding ("not, as it is sometimes taken to be, an admission of weakness") and defends preliminary findings as "the lifeblood of active research." Purpose: defend/reframe preliminary findings against a negative characterisation. A — touches on certainty but that's supporting evidence, not the primary purpose. B — no criticism of scientists. D — certainty is a destination, not unimportant.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q22">
+  <div class="q-header"><span class="q-num">Q22</span><span class="q-tag tag-iai">Information &amp; Ideas — Data Interpretation</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">A longitudinal study tracked 800 adults over 20 years, measuring annual income and self-reported life satisfaction on a 10-point scale. At incomes below $75,000, each $10,000 increase in income was associated with a 0.8-point rise in satisfaction. Above $75,000, additional income had no statistically significant effect on satisfaction scores. The correlation below $75,000 remained consistent across age groups, but varied significantly by geographic region.</div>
+    <div class="q-stem">Which conclusion is best supported by the study's findings?</div>
+    <ul class="choices" id="q22c">
+      <li onclick="pick('q22',this,false)"><span class="choice-letter">A</span> Income is the single most important factor in determining life satisfaction across all populations.</li>
+      <li onclick="pick('q22',this,false)"><span class="choice-letter">B</span> Life satisfaction continues to increase proportionally with income at all income levels.</li>
+      <li onclick="pick('q22',this,true)"><span class="choice-letter">C</span> The relationship between income and life satisfaction diminishes above a certain threshold.</li>
+      <li onclick="pick('q22',this,false)"><span class="choice-letter">D</span> Geographic variation in the income-satisfaction relationship disproves the study's central findings.</li>
+    </ul>
+    <div class="explanation" id="q22e"><div class="exp-label">Correct: C</div>The study states: below $75k income correlates with satisfaction; above $75k "no statistically significant effect." This supports C — the relationship diminishes (disappears) above a threshold. A overstates — not "the single most important factor." B directly contradicts the findings. D misinterprets — geographic variation doesn't disprove the threshold finding.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q23">
+  <div class="q-header"><span class="q-num">Q23</span><span class="q-tag tag-iai">Information &amp; Ideas — Inference</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">The history of the novel is, in large part, a history of contested legitimacy. When Samuel Richardson published <i>Pamela</i> in 1740, critics dismissed the novel form as vulgar entertainment for idle women. A century later, George Eliot had to publish under a male pseudonym to ensure her work received serious critical attention. By the twentieth century, novels had become the central form of literary culture — yet even then, critics distinguished "literary fiction" from "genre fiction" in ways that replicated older hierarchies of respectability.</div>
+    <div class="q-stem">Which inference is best supported by the passage?</div>
+    <ul class="choices" id="q23c">
+      <li onclick="pick('q23',this,false)"><span class="choice-letter">A</span> The novel form was universally accepted as a serious literary medium by the twentieth century.</li>
+      <li onclick="pick('q23',this,false)"><span class="choice-letter">B</span> George Eliot was the first female novelist to be taken seriously by the literary establishment.</li>
+      <li onclick="pick('q23',this,true)"><span class="choice-letter">C</span> Questions of which literature deserves prestige have persisted throughout the novel's history, even as the boundaries of what is considered prestigious have shifted.</li>
+      <li onclick="pick('q23',this,false)"><span class="choice-letter">D</span> Genre fiction is artistically inferior to literary fiction and has never received critical recognition.</li>
+    </ul>
+    <div class="explanation" id="q23e"><div class="exp-label">Correct: C</div>The passage traces a through-line: novels dismissed (1740) → women's work dismissed (Eliot) → novels gained prestige but then genre/literary distinctions replicated "older hierarchies." The question of legitimacy/prestige keeps recurring in different forms. C captures this. A wrong — "yet even then, critics distinguished..." — universal acceptance never came. B overstates. D is a value judgment the passage doesn't make.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q24">
+  <div class="q-header"><span class="q-num">Q24</span><span class="q-tag tag-iai">Information &amp; Ideas — Evidence for Claim</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">A researcher studying urban food deserts argues that proximity to grocery stores is not the primary determinant of healthy eating in low-income communities. She claims that even when stores are nearby, time constraints and food costs play a more significant role in dietary choices.</div>
+    <div class="q-stem">Which finding, if true, would most directly support the researcher's claim?</div>
+    <ul class="choices" id="q24c">
+      <li onclick="pick('q24',this,false)"><span class="choice-letter">A</span> Low-income neighbourhoods have significantly fewer grocery stores per square kilometre than high-income neighbourhoods.</li>
+      <li onclick="pick('q24',this,false)"><span class="choice-letter">B</span> Residents of food deserts travel farther to access fresh produce than residents of other areas.</li>
+      <li onclick="pick('q24',this,true)"><span class="choice-letter">C</span> Opening a new supermarket in a low-income area produced no statistically significant change in residents' fruit and vegetable consumption.</li>
+      <li onclick="pick('q24',this,false)"><span class="choice-letter">D</span> Time spent commuting is positively correlated with reliance on processed convenience foods across all income groups.</li>
+    </ul>
+    <div class="explanation" id="q24e"><div class="exp-label">Correct: C</div>The researcher claims proximity is NOT the primary determinant. C directly tests and supports this: even when a store was added (proximity improved), consumption didn't change. This shows proximity alone isn't sufficient. A actually supports the idea that proximity IS a problem — opposite direction. B reinforces the access/distance problem. D supports the time-constraint argument but doesn't specifically address proximity vs other factors.</div>
+  </div>
+</div>
+
+<!-- SEC: 6 Qs -->
+
+<div class="q-block" id="q25">
+  <div class="q-header"><span class="q-num">Q25</span><span class="q-tag tag-sec">Standard English Conventions — Sentence Boundaries</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The newly discovered exoplanet orbits within its star's habitable zone _______ scientists caution that liquid water on its surface remains speculative given the planet's estimated atmospheric composition.</div>
+    <div class="q-stem">Which choice correctly completes the sentence?</div>
+    <ul class="choices" id="q25c">
+      <li onclick="pick('q25',this,false)"><span class="choice-letter">A</span> zone, scientists</li>
+      <li onclick="pick('q25',this,true)"><span class="choice-letter">B</span> zone; however, scientists</li>
+      <li onclick="pick('q25',this,false)"><span class="choice-letter">C</span> zone, however scientists</li>
+      <li onclick="pick('q25',this,false)"><span class="choice-letter">D</span> zone however scientists</li>
+    </ul>
+    <div class="explanation" id="q25e"><div class="exp-label">Correct: B</div>Two independent clauses with a contrast relationship. "However" = transitional adverb — needs semicolon before it and comma after: "zone; however, scientists." A = comma splice. C = comma + however without closing comma = comma splice (however is an adverb, not a conjunction). D = run-on.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q26">
+  <div class="q-header"><span class="q-num">Q26</span><span class="q-tag tag-sec">Standard English Conventions — Dashes</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The architect's most celebrated building — a soaring glass atrium that floods the lobby with natural light _______ has been described by critics as a masterwork of civic design.</div>
+    <div class="q-stem">Which choice correctly completes the sentence?</div>
+    <ul class="choices" id="q26c">
+      <li onclick="pick('q26',this,false)"><span class="choice-letter">A</span> , has been described</li>
+      <li onclick="pick('q26',this,true)"><span class="choice-letter">B</span> — has been described</li>
+      <li onclick="pick('q26',this,false)"><span class="choice-letter">C</span> ; has been described</li>
+      <li onclick="pick('q26',this,false)"><span class="choice-letter">D</span> has been described</li>
+    </ul>
+    <div class="explanation" id="q26e"><div class="exp-label">Correct: B</div>The sentence opens a paired dash after "building." Paired dashes must match: dash opens → dash closes. A (comma) = mixed pairing — wrong. C (semicolon) = wrong closing for a mid-sentence parenthetical. D = no closing punctuation = unclosed parenthetical.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q27">
+  <div class="q-header"><span class="q-num">Q27</span><span class="q-tag tag-sec">Standard English Conventions — Subject-Verb Agreement</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Neither the senior partners nor the managing director <u>were</u> informed of the restructuring plan before it was announced to the entire firm.</div>
+    <div class="q-stem">Which choice is grammatically correct?</div>
+    <ul class="choices" id="q27c">
+      <li onclick="pick('q27',this,false)"><span class="choice-letter">A</span> No change — "were" is correct</li>
+      <li onclick="pick('q27',this,true)"><span class="choice-letter">B</span> was</li>
+      <li onclick="pick('q27',this,false)"><span class="choice-letter">C</span> have been</li>
+      <li onclick="pick('q27',this,false)"><span class="choice-letter">D</span> are</li>
+    </ul>
+    <div class="explanation" id="q27e"><div class="exp-label">Correct: B — "was"</div>Neither/nor rule: the verb agrees with the subject CLOSER to the verb. "The managing director" (singular) is closer to the verb than "the senior partners" (plural). Singular → "was." A ("were") agrees with the farther plural subject — wrong. The closer subject determines agreement.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q28">
+  <div class="q-header"><span class="q-num">Q28</span><span class="q-tag tag-sec">Standard English Conventions — Dangling Modifier</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Having conducted fieldwork across three continents over the course of a decade, the anthropologist's conclusions challenged prevailing theories about the universality of certain social structures.</div>
+    <div class="q-stem">Which revision corrects the grammatical error?</div>
+    <ul class="choices" id="q28c">
+      <li onclick="pick('q28',this,false)"><span class="choice-letter">A</span> No change — the sentence is correct.</li>
+      <li onclick="pick('q28',this,true)"><span class="choice-letter">B</span> Having conducted fieldwork across three continents over the course of a decade, the anthropologist challenged prevailing theories about the universality of certain social structures.</li>
+      <li onclick="pick('q28',this,false)"><span class="choice-letter">C</span> The anthropologist's conclusions, having conducted fieldwork across three continents, challenged prevailing theories.</li>
+      <li onclick="pick('q28',this,false)"><span class="choice-letter">D</span> The fieldwork conducted across three continents led the anthropologist's conclusions to challenge prevailing theories.</li>
+    </ul>
+    <div class="explanation" id="q28e"><div class="exp-label">Correct: B</div>"Having conducted fieldwork..." — who conducted it? The anthropologist, not the conclusions. "The anthropologist's conclusions" is a possessive noun phrase — the modifier dangles. Fix: make "the anthropologist" the subject directly. B does this. C moves the participial phrase mid-sentence but "the anthropologist's conclusions" still isn't the anthropologist himself. D awkwardly makes "conclusions" the logical agent of challenging.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q29">
+  <div class="q-header"><span class="q-num">Q29</span><span class="q-tag tag-sec">Standard English Conventions — Parallelism</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">The new curriculum requires students to analyse primary sources critically, construct evidence-based arguments, and <u>the evaluation of competing historical interpretations</u> must be undertaken with scholarly rigour.</div>
+    <div class="q-stem">Which revision corrects the underlined portion?</div>
+    <ul class="choices" id="q29c">
+      <li onclick="pick('q29',this,false)"><span class="choice-letter">A</span> No change</li>
+      <li onclick="pick('q29',this,false)"><span class="choice-letter">B</span> evaluating competing historical interpretations with scholarly rigour</li>
+      <li onclick="pick('q29',this,true)"><span class="choice-letter">C</span> evaluate competing historical interpretations with scholarly rigour</li>
+      <li onclick="pick('q29',this,false)"><span class="choice-letter">D</span> to evaluate competing historical interpretations with scholarly rigour</li>
+    </ul>
+    <div class="explanation" id="q29e"><div class="exp-label">Correct: C</div>The list: "to analyse... construct... and [?]." Pattern uses bare infinitives after the shared "to": "to analyse, construct, and evaluate." C: "evaluate" = bare infinitive, parallel. A = full clause interruption. B = gerund ("evaluating") — doesn't match. D = "to evaluate" — the "to" is already shared from the series and adding it again is redundant.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q30">
+  <div class="q-header"><span class="q-num">Q30</span><span class="q-tag tag-sec">Standard English Conventions — Conciseness</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The reason the trial was declared a mistrial was <u>because the jury had been improperly exposed to prejudicial media coverage that occurred prior to the verdict being delivered</u>.</div>
+    <div class="q-stem">Which revision best corrects the underlined portion?</div>
+    <ul class="choices" id="q30c">
+      <li onclick="pick('q30',this,false)"><span class="choice-letter">A</span> No change</li>
+      <li onclick="pick('q30',this,false)"><span class="choice-letter">B</span> due to the fact that the jury had been improperly exposed to prejudicial pre-verdict media coverage</li>
+      <li onclick="pick('q30',this,true)"><span class="choice-letter">C</span> improper jury exposure to prejudicial pre-verdict media coverage</li>
+      <li onclick="pick('q30',this,false)"><span class="choice-letter">D</span> because of the improper exposure of the jury to media coverage that was prejudicial in nature</li>
+    </ul>
+    <div class="explanation" id="q30e"><div class="exp-label">Correct: C</div>Two issues: (1) "The reason...was because" is redundant — fix with "was [noun]." (2) "that occurred prior to the verdict being delivered" = wordy for "pre-verdict." C fixes both: "The reason...was improper jury exposure to prejudicial pre-verdict media coverage." A = reason/because error + verbose. B = still has implied redundancy + "due to the fact that" = wordy for "because." D = "prejudicial in nature" is redundant.</div>
+  </div>
+</div>
+
+</div><!-- /questions-wrap english -->
+
+<!-- ═══════════════ MATH ═══════════════ -->
+<div class="section-banner math">
+  <div class="sb-icon">M</div>
+  <div><div class="sb-title">Math</div><div class="sb-sub">Geometry &amp; Trigonometry · Problem-Solving &amp; Data Analysis · Advanced Math</div></div>
+  <div class="sb-count">Q31 – Q50</div>
+</div>
+<div class="questions-wrap">
+
+<div class="q-block" id="q31">
+  <div class="q-header"><span class="q-num">Q31</span><span class="q-tag tag-geo">Geometry — Arc Length &amp; Sectors</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">A circle has a radius of 9 cm. A sector has a central angle of 140°. What is the arc length of this sector, in terms of π?</div>
+    <ul class="choices" id="q31c">
+      <li onclick="pick('q31',this,false)"><span class="choice-letter">A</span> 5π cm</li>
+      <li onclick="pick('q31',this,true)"><span class="choice-letter">B</span> 7π cm</li>
+      <li onclick="pick('q31',this,false)"><span class="choice-letter">C</span> 9π cm</li>
+      <li onclick="pick('q31',this,false)"><span class="choice-letter">D</span> 14π cm</li>
+    </ul>
+    <div class="explanation" id="q31e"><div class="exp-label">Correct: B — 7π cm</div>Arc length = (θ/360°) × 2πr = (140/360) × 2π(9) = (7/18) × 18π = 7π cm.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q32">
+  <div class="q-header"><span class="q-num">Q32</span><span class="q-tag tag-geo">Geometry — Similar Triangles</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">Triangle ABC is similar to Triangle DEF. The sides of Triangle ABC measure 6, 8, and 10. The shortest side of Triangle DEF measures 15. What is the perimeter of Triangle DEF?</div>
+    <ul class="choices" id="q32c">
+      <li onclick="pick('q32',this,false)"><span class="choice-letter">A</span> 48</li>
+      <li onclick="pick('q32',this,false)"><span class="choice-letter">B</span> 54</li>
+      <li onclick="pick('q32',this,true)"><span class="choice-letter">C</span> 60</li>
+      <li onclick="pick('q32',this,false)"><span class="choice-letter">D</span> 75</li>
+    </ul>
+    <div class="explanation" id="q32e"><div class="exp-label">Correct: C — 60</div>Shortest side of ABC = 6. Scale factor = 15/6 = 5/2. Perimeter of ABC = 6+8+10 = 24. Perimeter of DEF = 24 × (5/2) = 60.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q33">
+  <div class="q-header"><span class="q-num">Q33</span><span class="q-tag tag-geo">Trigonometry — SOHCAHTOA</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">In a right triangle, the side adjacent to angle θ has length 5, and the hypotenuse has length 13. What is sin θ?</div>
+    <ul class="choices" id="q33c">
+      <li onclick="pick('q33',this,false)"><span class="choice-letter">A</span> 5/13</li>
+      <li onclick="pick('q33',this,false)"><span class="choice-letter">B</span> 5/12</li>
+      <li onclick="pick('q33',this,true)"><span class="choice-letter">C</span> 12/13</li>
+      <li onclick="pick('q33',this,false)"><span class="choice-letter">D</span> 13/12</li>
+    </ul>
+    <div class="explanation" id="q33e"><div class="exp-label">Correct: C — 12/13</div>Adjacent = 5, Hypotenuse = 13. Opposite = √(13²−5²) = √(169−25) = √144 = 12. sin θ = opposite/hypotenuse = 12/13. (cos θ = 5/13 — don't confuse the two.)</div>
+  </div>
+</div>
+
+<div class="q-block" id="q34">
+  <div class="q-header"><span class="q-num">Q34</span><span class="q-tag tag-geo">Trigonometry — Complementary Angles</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">In a right triangle where one angle is x° and the other non-right angle is y°, it is known that sin(x°) = 0.6. What is cos(y°)?</div>
+    <ul class="choices" id="q34c">
+      <li onclick="pick('q34',this,false)"><span class="choice-letter">A</span> 0.4</li>
+      <li onclick="pick('q34',this,false)"><span class="choice-letter">B</span> 0.8</li>
+      <li onclick="pick('q34',this,true)"><span class="choice-letter">C</span> 0.6</li>
+      <li onclick="pick('q34',this,false)"><span class="choice-letter">D</span> Cannot be determined without more information</li>
+    </ul>
+    <div class="explanation" id="q34e"><div class="exp-label">Correct: C — 0.6</div>In a right triangle, x + y = 90° (the two non-right angles are complementary). The identity: sin(x°) = cos(90°−x°) = cos(y°). Therefore cos(y°) = sin(x°) = 0.6. Key identity: for complementary angles, sine of one equals cosine of the other.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q35">
+  <div class="q-header"><span class="q-num">Q35</span><span class="q-tag tag-geo">Geometry — Volume</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">A cylinder has radius 4 cm and height 10 cm. A cone has the same radius and height. What is the ratio of the volume of the cone to the volume of the cylinder?</div>
+    <ul class="choices" id="q35c">
+      <li onclick="pick('q35',this,false)"><span class="choice-letter">A</span> 1 : 2</li>
+      <li onclick="pick('q35',this,true)"><span class="choice-letter">B</span> 1 : 3</li>
+      <li onclick="pick('q35',this,false)"><span class="choice-letter">C</span> 2 : 3</li>
+      <li onclick="pick('q35',this,false)"><span class="choice-letter">D</span> 3 : 4</li>
+    </ul>
+    <div class="explanation" id="q35e"><div class="exp-label">Correct: B — 1:3</div>V(cylinder) = πr²h. V(cone) = ⅓πr²h. With same r and h: ratio = ⅓πr²h ÷ πr²h = 1/3. A cone always has 1/3 the volume of a cylinder with the same dimensions.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q36">
+  <div class="q-header"><span class="q-num">Q36</span><span class="q-tag tag-geo">Geometry — Circle Equations</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">A circle has its centre at (3, −2) and passes through the point (7, 1). Which is the equation of the circle?</div>
+    <ul class="choices" id="q36c">
+      <li onclick="pick('q36',this,false)"><span class="choice-letter">A</span> (x − 3)² + (y + 2)² = 5</li>
+      <li onclick="pick('q36',this,false)"><span class="choice-letter">B</span> (x + 3)² + (y − 2)² = 25</li>
+      <li onclick="pick('q36',this,true)"><span class="choice-letter">C</span> (x − 3)² + (y + 2)² = 25</li>
+      <li onclick="pick('q36',this,false)"><span class="choice-letter">D</span> (x − 3)² + (y + 2)² = 7</li>
+    </ul>
+    <div class="explanation" id="q36e"><div class="exp-label">Correct: C</div>Standard form: (x−h)²+(y−k)²=r². Centre (3,−2) → (x−3)²+(y+2)²=r². Radius = distance from (3,−2) to (7,1) = √((7−3)²+(1+2)²) = √(16+9) = √25 = 5. r²=25. Equation: (x−3)²+(y+2)²=25.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q37">
+  <div class="q-header"><span class="q-num">Q37</span><span class="q-tag tag-geo">Geometry — Parallel Lines &amp; Transversals</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">Two parallel lines are cut by a transversal. One co-interior (same-side interior) angle measures (3x + 15)°. The other co-interior angle measures (2x + 25)°. Find the value of x.</div>
+    <ul class="choices" id="q37c">
+      <li onclick="pick('q37',this,false)"><span class="choice-letter">A</span> x = 24</li>
+      <li onclick="pick('q37',this,false)"><span class="choice-letter">B</span> x = 25</li>
+      <li onclick="pick('q37',this,true)"><span class="choice-letter">C</span> x = 28</li>
+      <li onclick="pick('q37',this,false)"><span class="choice-letter">D</span> x = 36</li>
+    </ul>
+    <div class="explanation" id="q37e"><div class="exp-label">Correct: C — x = 28</div>Co-interior angles are supplementary (sum to 180°) when lines are parallel. (3x+15)+(2x+25)=180 → 5x+40=180 → 5x=140 → x=28. Check: 3(28)+15=99°, 2(28)+25=81°. 99+81=180 ✓.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q38">
+  <div class="q-header"><span class="q-num">Q38</span><span class="q-tag tag-geo">Trigonometry — Special Angles</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">What is the value of tan(π/3)?</div>
+    <ul class="choices" id="q38c">
+      <li onclick="pick('q38',this,false)"><span class="choice-letter">A</span> 1/2</li>
+      <li onclick="pick('q38',this,false)"><span class="choice-letter">B</span> √2/2</li>
+      <li onclick="pick('q38',this,false)"><span class="choice-letter">C</span> 1</li>
+      <li onclick="pick('q38',this,true)"><span class="choice-letter">D</span> √3</li>
+    </ul>
+    <div class="explanation" id="q38e"><div class="exp-label">Correct: D — √3</div>π/3 radians = 60°. In a 30-60-90 triangle: sides 1:√3:2. At 60°: opposite=√3, adjacent=1. tan(60°)=√3/1=√3. Key: tan(30°)=1/√3, tan(45°)=1, tan(60°)=√3.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q39">
+  <div class="q-header"><span class="q-num">Q39</span><span class="q-tag tag-data">Data Analysis — Probability</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">A bag contains 5 red marbles, 3 blue marbles, and 2 green marbles. Two marbles are drawn without replacement. What is the probability that both are red?</div>
+    <ul class="choices" id="q39c">
+      <li onclick="pick('q39',this,false)"><span class="choice-letter">A</span> 1/4</li>
+      <li onclick="pick('q39',this,true)"><span class="choice-letter">B</span> 2/9</li>
+      <li onclick="pick('q39',this,false)"><span class="choice-letter">C</span> 5/18</li>
+      <li onclick="pick('q39',this,false)"><span class="choice-letter">D</span> 1/3</li>
+    </ul>
+    <div class="explanation" id="q39e"><div class="exp-label">Correct: B — 2/9</div>P(first red) = 5/10 = 1/2. After one red drawn, 4 red remain of 9 total. P(second red) = 4/9. P(both red) = (1/2) × (4/9) = 4/18 = 2/9.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q40">
+  <div class="q-header"><span class="q-num">Q40</span><span class="q-tag tag-data">Data Analysis — Conditional Probability</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">In a survey of 200 students: 120 play a sport, 80 do not. Of sport players, 90 also study music. Of non-sport students, 20 study music. A student chosen at random studies music. What is the probability they also play a sport?</div>
+    <ul class="choices" id="q40c">
+      <li onclick="pick('q40',this,false)"><span class="choice-letter">A</span> 3/4</li>
+      <li onclick="pick('q40',this,true)"><span class="choice-letter">B</span> 9/11</li>
+      <li onclick="pick('q40',this,false)"><span class="choice-letter">C</span> 45/100</li>
+      <li onclick="pick('q40',this,false)"><span class="choice-letter">D</span> 2/3</li>
+    </ul>
+    <div class="explanation" id="q40e"><div class="exp-label">Correct: B — 9/11</div>Total music students: 90 (sport) + 20 (no sport) = 110. P(sport | music) = 90/110 = 9/11. Given that the student studies music, 90 of the 110 music students play sport.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q41">
+  <div class="q-header"><span class="q-num">Q41</span><span class="q-tag tag-data">Data Analysis — Mean</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">A dataset of seven values has a mean of 12. When an eighth value is added, the mean becomes 13. What is the eighth value?</div>
+    <ul class="choices" id="q41c">
+      <li onclick="pick('q41',this,false)"><span class="choice-letter">A</span> 13</li>
+      <li onclick="pick('q41',this,false)"><span class="choice-letter">B</span> 17</li>
+      <li onclick="pick('q41',this,false)"><span class="choice-letter">C</span> 19</li>
+      <li onclick="pick('q41',this,true)"><span class="choice-letter">D</span> 20</li>
+    </ul>
+    <div class="explanation" id="q41e"><div class="exp-label">Correct: D — 20</div>Original sum = 7 × 12 = 84. New sum = 8 × 13 = 104. Eighth value = 104 − 84 = 20.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q42">
+  <div class="q-header"><span class="q-num">Q42</span><span class="q-tag tag-data">Data Analysis — Percentage Change</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">A product originally costs $240. It is discounted by 25%, then the discounted price is increased by 20%. What is the final price?</div>
+    <ul class="choices" id="q42c">
+      <li onclick="pick('q42',this,false)"><span class="choice-letter">A</span> $192</li>
+      <li onclick="pick('q42',this,false)"><span class="choice-letter">B</span> $210</li>
+      <li onclick="pick('q42',this,true)"><span class="choice-letter">C</span> $216</li>
+      <li onclick="pick('q42',this,false)"><span class="choice-letter">D</span> $228</li>
+    </ul>
+    <div class="explanation" id="q42e"><div class="exp-label">Correct: C — $216</div>Step 1: 25% off → $240 × 0.75 = $180. Step 2: 20% on → $180 × 1.20 = $216. Key trap: 25% off then 20% on ≠ net 5% off. Net multiplier = 0.75 × 1.20 = 0.90. $240 × 0.90 = $216.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q43">
+  <div class="q-header"><span class="q-num">Q43</span><span class="q-tag tag-data">Data Analysis — Line of Best Fit</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">A line of best fit has equation y = 4.5x + 32, where x = hours of revision and y = test score. How many additional hours of revision are needed to increase a predicted score from 50 to 68?</div>
+    <ul class="choices" id="q43c">
+      <li onclick="pick('q43',this,false)"><span class="choice-letter">A</span> 2 hours</li>
+      <li onclick="pick('q43',this,false)"><span class="choice-letter">B</span> 3 hours</li>
+      <li onclick="pick('q43',this,false)"><span class="choice-letter">C</span> 3.5 hours</li>
+      <li onclick="pick('q43',this,true)"><span class="choice-letter">D</span> 4 hours</li>
+    </ul>
+    <div class="explanation" id="q43e"><div class="exp-label">Correct: D — 4 hours</div>Score increase needed = 68−50 = 18 points. Each hour adds 4.5 points (the slope). Additional hours = 18 ÷ 4.5 = 4. Check: 50=4.5x+32 → x=4; 68=4.5x+32 → x=8. Difference = 4 hours. ✓</div>
+  </div>
+</div>
+
+<div class="q-block" id="q44">
+  <div class="q-header"><span class="q-num">Q44</span><span class="q-tag tag-data">Data Analysis — Ratios &amp; Proportions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">A solution is made by mixing chemicals A and B in a ratio of 3:5 by volume. If 24 litres of chemical A are used, how many litres of total solution are produced?</div>
+    <ul class="choices" id="q44c">
+      <li onclick="pick('q44',this,false)"><span class="choice-letter">A</span> 40 litres</li>
+      <li onclick="pick('q44',this,false)"><span class="choice-letter">B</span> 56 litres</li>
+      <li onclick="pick('q44',this,false)"><span class="choice-letter">C</span> 60 litres</li>
+      <li onclick="pick('q44',this,true)"><span class="choice-letter">D</span> 64 litres</li>
+    </ul>
+    <div class="explanation" id="q44e"><div class="exp-label">Correct: D — 64 litres</div>Ratio A:B = 3:5. A = 24 litres → each part = 24/3 = 8 litres. B = 5 × 8 = 40 litres. Total = 24 + 40 = 64 litres.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q45">
+  <div class="q-header"><span class="q-num">Q45</span><span class="q-tag tag-data">Data Analysis — Standard Deviation</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">Two classes took the same test. Class A: mean = 72, standard deviation = 3. Class B: mean = 72, standard deviation = 9. Which statement best describes the difference?</div>
+    <ul class="choices" id="q45c">
+      <li onclick="pick('q45',this,false)"><span class="choice-letter">A</span> Class B performed better on average than Class A.</li>
+      <li onclick="pick('q45',this,false)"><span class="choice-letter">B</span> Class A's scores were more spread out than Class B's scores.</li>
+      <li onclick="pick('q45',this,true)"><span class="choice-letter">C</span> Class B's scores showed more variability around the mean than Class A's scores.</li>
+      <li onclick="pick('q45',this,false)"><span class="choice-letter">D</span> The two classes performed identically since they have the same mean.</li>
+    </ul>
+    <div class="explanation" id="q45e"><div class="exp-label">Correct: C</div>Same mean → neither performed better on average (eliminates A and D). Higher SD = more spread/variability. Class B (SD=9) is MORE spread out than Class A (SD=3). C is correct. B has it backwards — A is LESS spread out (smaller SD). D is wrong — same mean doesn't mean identical performance; distributions can differ significantly.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q46">
+  <div class="q-header"><span class="q-num">Q46</span><span class="q-tag tag-adv">Algebra — Linear Systems</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">A café charges £4.50 for a sandwich and £2.00 for a drink. On one day, 85 items were sold for a total of £262.50. How many sandwiches were sold?</div>
+    <ul class="choices" id="q46c">
+      <li onclick="pick('q46',this,false)"><span class="choice-letter">A</span> 30</li>
+      <li onclick="pick('q46',this,false)"><span class="choice-letter">B</span> 35</li>
+      <li onclick="pick('q46',this,true)"><span class="choice-letter">C</span> 37</li>
+      <li onclick="pick('q46',this,false)"><span class="choice-letter">D</span> 40</li>
+    </ul>
+    <div class="explanation" id="q46e"><div class="exp-label">Correct: C — 37 sandwiches</div>Let s = sandwiches, d = drinks. s+d=85 → d=85−s. 4.5s+2d=262.5 → 4.5s+2(85−s)=262.5 → 4.5s+170−2s=262.5 → 2.5s=92.5 → s=37. Check: 4.5(37)+2(48)=166.5+96=262.5 ✓</div>
+  </div>
+</div>
+
+<div class="q-block" id="q47">
+  <div class="q-header"><span class="q-num">Q47</span><span class="q-tag tag-adv">Algebra — Inequalities</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="q-stem">Which is the solution set for 3(2x − 4) &gt; 5x − 1?</div>
+    <ul class="choices" id="q47c">
+      <li onclick="pick('q47',this,false)"><span class="choice-letter">A</span> x &gt; 7</li>
+      <li onclick="pick('q47',this,false)"><span class="choice-letter">B</span> x &gt; 9</li>
+      <li onclick="pick('q47',this,true)"><span class="choice-letter">C</span> x &gt; 11</li>
+      <li onclick="pick('q47',this,false)"><span class="choice-letter">D</span> x &gt; 13</li>
+    </ul>
+    <div class="explanation" id="q47e"><div class="exp-label">Correct: C — x &gt; 11</div>3(2x−4) &gt; 5x−1 → 6x−12 &gt; 5x−1 → 6x−5x &gt; −1+12 → x &gt; 11.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q48">
+  <div class="q-header"><span class="q-num">Q48</span><span class="q-tag tag-adv">Advanced Math — Quadratics</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">The function f(x) = −2x² + 8x − 3. What is the maximum value of f(x)?</div>
+    <ul class="choices" id="q48c">
+      <li onclick="pick('q48',this,false)"><span class="choice-letter">A</span> 2</li>
+      <li onclick="pick('q48',this,false)"><span class="choice-letter">B</span> 3</li>
+      <li onclick="pick('q48',this,false)"><span class="choice-letter">C</span> 4</li>
+      <li onclick="pick('q48',this,true)"><span class="choice-letter">D</span> 5</li>
+    </ul>
+    <div class="explanation" id="q48e"><div class="exp-label">Correct: D — 5</div>a=−2 (negative) → parabola opens downward → maximum at vertex. x-vertex = −b/(2a) = −8/(2×−2) = 2. f(2) = −2(4)+8(2)−3 = −8+16−3 = 5.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q49">
+  <div class="q-header"><span class="q-num">Q49</span><span class="q-tag tag-adv">Advanced Math — Exponential Growth</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">A population of bacteria doubles every 3 hours. At t = 0, there are 500 bacteria. Which function models the population P after t hours?</div>
+    <ul class="choices" id="q49c">
+      <li onclick="pick('q49',this,false)"><span class="choice-letter">A</span> P = 500(2)^t</li>
+      <li onclick="pick('q49',this,false)"><span class="choice-letter">B</span> P = 500(3)^t</li>
+      <li onclick="pick('q49',this,true)"><span class="choice-letter">C</span> P = 500(2)^(t/3)</li>
+      <li onclick="pick('q49',this,false)"><span class="choice-letter">D</span> P = 500(t/3)²</li>
+    </ul>
+    <div class="explanation" id="q49e"><div class="exp-label">Correct: C — P = 500(2)^(t/3)</div>Doubles every 3 hours → after t hours, there are t/3 doubling periods. P = 500 × 2^(t/3). Check: t=0→500 ✓; t=3→500×2=1000 ✓; t=6→500×4=2000 ✓. A would double every hour — too fast.</div>
+  </div>
+</div>
+
+<div class="q-block" id="q50">
+  <div class="q-header"><span class="q-num">Q50</span><span class="q-tag tag-adv">Advanced Math — Function Transformations</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="q-stem">If f(x) = x² − 4x + 7, which expression represents f(x + 2)?</div>
+    <ul class="choices" id="q50c">
+      <li onclick="pick('q50',this,false)"><span class="choice-letter">A</span> x² − 4x + 9</li>
+      <li onclick="pick('q50',this,false)"><span class="choice-letter">B</span> x² + 4x + 3</li>
+      <li onclick="pick('q50',this,true)"><span class="choice-letter">C</span> x² + 3</li>
+      <li onclick="pick('q50',this,false)"><span class="choice-letter">D</span> x² − 4x + 3</li>
+    </ul>
+    <div class="explanation" id="q50e"><div class="exp-label">Correct: C — x² + 3</div>f(x+2): substitute (x+2) for x. f(x+2) = (x+2)²−4(x+2)+7 = x²+4x+4−4x−8+7 = x²+3. The 4x terms cancel perfectly: +4x from expanding (x+2)² and −4x from −4(x+2).</div>
+  </div>
+</div>
+
+</div><!-- /questions-wrap math -->
+
+<!-- Submit bar -->
+<div class="submit-bar">
+  <div class="submit-progress" id="sub-prog">0 of 50 answered</div>
+  <button class="btn-submit" onclick="submitPaper()">Submit &amp; See Results</button>
+</div>
+
+<!-- Results panel -->
+<div class="results-panel" id="res-panel">
+  <div class="results-card">
+    <h2>Practice Paper Complete</h2>
+    <div class="results-big" id="res-score">—</div>
+    <div style="color:var(--ink-muted);font-size:13px;">out of 50 questions</div>
+    <div class="results-grid">
+      <div class="rg-item"><div class="rg-label">English (Q1–30)</div><div class="rg-val" id="res-eng">—</div></div>
+      <div class="rg-item"><div class="rg-label">Math (Q31–50)</div><div class="rg-val" id="res-math">—</div></div>
+      <div class="rg-item"><div class="rg-label">Expression of Ideas</div><div class="rg-val" id="res-eoi">—</div></div>
+      <div class="rg-item"><div class="rg-label">Geometry &amp; Trig</div><div class="rg-val" id="res-geo">—</div></div>
+      <div class="rg-item"><div class="rg-label">Information &amp; Ideas</div><div class="rg-val" id="res-iai">—</div></div>
+      <div class="rg-item"><div class="rg-label">Data Analysis</div><div class="rg-val" id="res-data">—</div></div>
+    </div>
+    <button class="btn-close" onclick="document.getElementById('res-panel').classList.remove('show')">Review Answers</button>
+  </div>
+</div>
+
+<script>
+var state={}, start=Date.now();
+setInterval(function(){
+  var e=Math.floor((Date.now()-start)/1000);
+  document.getElementById('timer').textContent=String(Math.floor(e/60)).padStart(2,'0')+':'+String(e%60).padStart(2,'0');
+},1000);
+
+function pick(id,el,correct){
+  if(state[id])return;
+  state[id]={correct:correct};
+  var list=document.getElementById(id+'c');
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct) list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var exp=document.getElementById(id+'e');
+  if(exp)exp.classList.add('show');
+  var blk=document.getElementById(id);
+  if(blk)blk.classList.add(correct?'answered-correct':'answered-wrong');
+  var ans=Object.keys(state).length;
+  var cor=Object.keys(state).filter(function(k){return state[k].correct;}).length;
+  document.getElementById('sc').textContent=cor;
+  document.querySelector('.score-live').innerHTML=cor+'/'+ans;
+  document.getElementById('pb').style.width=(ans/50*100)+'%';
+  document.getElementById('sub-prog').textContent=ans+' of 50 answered';
+}
+
+function ds(qs){
+  var c=0,t=0;
+  qs.forEach(function(n){var k='q'+n;if(state[k]){t++;if(state[k].correct)c++;}});
+  return t?c+'/'+t:'—';
+}
+
+function submitPaper(){
+  var ans=Object.keys(state).length;
+  var cor=Object.keys(state).filter(function(k){return state[k].correct;}).length;
+  document.getElementById('res-score').textContent=cor+'/'+ans;
+  document.getElementById('res-eng').textContent=ds([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]);
+  document.getElementById('res-math').textContent=ds([31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]);
+  document.getElementById('res-eoi').textContent=ds([1,2,3,4,5,6,7,8,9,10,11,12,13,14]);
+  document.getElementById('res-geo').textContent=ds([31,32,33,34,35,36,37,38]);
+  document.getElementById('res-iai').textContent=ds([15,16,17,18,19,20,21,22,23,24]);
+  document.getElementById('res-data').textContent=ds([39,40,41,42,43,44,45]);
+  document.getElementById('res-panel').classList.add('show');
+}
+</script>
+</body>
+</html>

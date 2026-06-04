@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rishi's Exam Day Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a18;--bg:#fafaf7;--border:#ddd;--blue:#1a5fa8;--blue-bg:#eaf2fc;--green:#1e6b3a;--green-bg:#e8f5ee;--amber:#a05000;--amber-bg:#fff4e0;--red:#991f1f;--red-bg:#fdeaea;--purple:#5a2a80;--purple-bg:#f3ecfb;--teal:#0a6b60;--teal-bg:#e2f5f2;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:13px;line-height:1.5;}
+
+/* Print optimised */
+@media print{
+  body{background:white;font-size:11px;}
+  .no-print{display:none;}
+  .page{box-shadow:none;margin:0;max-width:100%;padding:12px;}
+  @page{margin:1cm;size:A4;}
+}
+
+.no-print{text-align:center;padding:16px;background:#1a1a18;color:white;font-size:13px;}
+.no-print button{background:white;color:#1a1a18;border:none;border-radius:6px;padding:8px 20px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;margin-left:12px;}
+
+.page{max-width:960px;margin:0 auto;padding:20px;}
+
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--ink);}
+.page-header h1{font-family:'Instrument Serif',serif;font-size:1.6rem;font-weight:400;}
+.page-header .exam-info{text-align:right;font-size:11px;color:#555;}
+.page-header .exam-info b{font-size:13px;color:var(--ink);}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+
+.card{border-radius:8px;padding:12px 14px;border:.5px solid var(--border);}
+.card.blue{background:var(--blue-bg);border-color:#b0cce8;}
+.card.green{background:var(--green-bg);border-color:#a0d0b0;}
+.card.amber{background:var(--amber-bg);border-color:#e0c080;}
+.card.red{background:var(--red-bg);border-color:#e0a0a0;}
+.card.purple{background:var(--purple-bg);border-color:#c0a0e0;}
+.card.teal{background:var(--teal-bg);border-color:#80c8c0;}
+.card.dark{background:#1a1a18;color:white;border-color:#1a1a18;}
+
+.card-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;opacity:.7;}
+.card.dark .card-title{opacity:.5;}
+
+/* Transition table */
+.trans-table{width:100%;border-collapse:collapse;font-size:12px;}
+.trans-table tr{border-bottom:.5px solid rgba(0,0,0,.08);}
+.trans-table tr:last-child{border-bottom:none;}
+.trans-table td{padding:4px 6px;vertical-align:top;}
+.trans-table td:first-child{font-weight:600;min-width:80px;color:var(--blue);}
+.trans-words{color:#333;font-size:11.5px;}
+
+/* Trig table */
+.trig-table{width:100%;border-collapse:collapse;font-size:12px;}
+.trig-table th{background:rgba(0,0,0,.06);padding:4px 6px;text-align:center;font-size:11px;}
+.trig-table td{padding:4px 6px;text-align:center;border-bottom:.5px solid rgba(0,0,0,.06);}
+.trig-table td:first-child{font-weight:600;text-align:left;}
+
+/* Formula list */
+.formula-list{list-style:none;}
+.formula-list li{padding:4px 0;border-bottom:.5px solid rgba(0,0,0,.08);font-size:12px;display:flex;justify-content:space-between;align-items:center;}
+.formula-list li:last-child{border-bottom:none;}
+.formula-list .f-name{color:#555;font-size:11px;}
+.formula-list .f-val{font-weight:600;font-family:'Courier New',monospace;font-size:12px;}
+
+/* Rule cards */
+.rule-list{list-style:none;}
+.rule-list li{padding:3px 0;font-size:12px;border-bottom:.5px solid rgba(0,0,0,.06);}
+.rule-list li:last-child{border-bottom:none;}
+.rule-list .r-label{font-weight:600;color:var(--green);}
+.rule-list .r-bad{color:var(--red);font-size:11px;text-decoration:line-through;}
+.rule-list .r-good{color:var(--green);font-size:11px;}
+
+/* Mindset box */
+.mindset-items{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.mi{background:rgba(255,255,255,.08);border-radius:6px;padding:7px 9px;font-size:12px;}
+.mi b{display:block;font-size:10px;opacity:.5;margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px;}
+
+.section-divider{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin:14px 0 6px;padding-bottom:4px;border-bottom:.5px solid var(--border);}
+
+.pythagorean-triples{display:flex;gap:8px;flex-wrap:wrap;}
+.pt{background:rgba(0,0,0,.06);border-radius:4px;padding:3px 8px;font-size:12px;font-family:'Courier New',monospace;}
+
+.special-angles{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;}
+.sa{text-align:center;background:rgba(0,0,0,.06);border-radius:4px;padding:4px 8px;min-width:60px;}
+.sa-angle{font-size:11px;font-weight:600;}
+.sa-vals{font-size:10px;color:#555;line-height:1.4;}
+</style>
+</head>
+<body>
+
+<div class="no-print">
+  📄 This is your exam-day cheat sheet. Read it the morning of June 6.
+  <button onclick="window.print()">🖨 Print / Save as PDF</button>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <h1>Rishi's SAT Cheat Sheet</h1>
+    <div style="font-size:11px;color:#666;margin-top:3px;">Read this the morning of June 6 · Then put it away and trust yourself</div>
+  </div>
+  <div class="exam-info">
+    <div><b>Target: 1500</b></div>
+    <div>RW: 680 → 750 &nbsp;|&nbsp; Math: 740 → hold</div>
+    <div style="margin-top:4px;color:#999;">You've put the work in. Now execute.</div>
+  </div>
+</div>
+
+<!-- ═══ ENGLISH SECTION ═══ -->
+<div class="section-divider">English — Reading &amp; Writing</div>
+
+<div class="grid" style="margin-bottom:12px;">
+
+  <!-- Transitions -->
+  <div class="card blue">
+    <div class="card-title">Transition Logic — The 5 Types</div>
+    <table class="trans-table">
+      <tr>
+        <td>Contrast</td>
+        <td class="trans-words">However, Yet, In contrast, Despite, Nevertheless, Even so, Still, But, Although</td>
+      </tr>
+      <tr>
+        <td>Cause/Result</td>
+        <td class="trans-words">Therefore, Thus, Consequently, As a result, Hence, So</td>
+      </tr>
+      <tr>
+        <td>Addition</td>
+        <td class="trans-words">Furthermore, Moreover, Additionally, Also, In addition, Similarly</td>
+      </tr>
+      <tr>
+        <td>Concession</td>
+        <td class="trans-words">Nevertheless, Even so, Yet, Still — used when S1 concedes and S2 defends</td>
+      </tr>
+      <tr>
+        <td>Example</td>
+        <td class="trans-words">For instance, For example, Specifically, In particular</td>
+      </tr>
+    </table>
+    <div style="margin-top:8px;font-size:11px;background:rgba(26,95,168,.1);padding:6px 8px;border-radius:5px;color:var(--blue);">
+      <b>Concession signal words in S1:</b> "It is true that / Admittedly / Although / It must be acknowledged / While" → S2 needs Nevertheless / Even so / Yet
+    </div>
+  </div>
+
+  <!-- Rhetorical Synthesis -->
+  <div class="card amber">
+    <div class="card-title">Rhetorical Synthesis — 4 Steps</div>
+    <ul class="rule-list">
+      <li><span class="r-label">1. Read the GOAL first</span> — the question tells you exactly what the sentence must do</li>
+      <li><span class="r-label">2. Identify the MUST-HAVES</span> — if goal says "both X and Y", the answer must have both</li>
+      <li><span class="r-label">3. Eliminate answers that are too broad or too narrow</span> — match the goal precisely</li>
+      <li><span class="r-label">4. Correct answer often has "although/while/yet"</span> — when goal asks for tension or nuance</li>
+    </ul>
+    <div style="margin-top:8px;font-size:11px;background:rgba(160,80,0,.1);padding:6px 8px;border-radius:5px;color:var(--amber);">
+      <b>Common traps:</b> A (too general) · B (only one half of the goal) · D (policy/response instead of mechanism)
+    </div>
+  </div>
+
+</div>
+
+<div class="grid" style="margin-bottom:12px;">
+
+  <!-- Add/Delete -->
+  <div class="card green">
+    <div class="card-title">Add / Delete / Revise — Decision Tree</div>
+    <ul class="rule-list">
+      <li><span class="r-label">DELETE if:</span> True but doesn't serve THIS paragraph's specific focus — etymology, origin stories, tangential details</li>
+      <li><span class="r-label">KEEP if:</span> Provides the causal link between S1 and S3 · Substantiates the opening claim · Provides the mechanism behind a general claim</li>
+      <li><span class="r-label">PLACEMENT:</span> "This X / These effects / This capacity" → find what X refers to and place IMMEDIATELY after</li>
+      <li><span class="r-label">REVISE goal:</span> "more explicitly" / "more analytical" = add the WHY/mechanism, not just restate the what</li>
+    </ul>
+  </div>
+
+  <!-- SEC Rules -->
+  <div class="card purple">
+    <div class="card-title">SEC — Must-Know Rules</div>
+    <ul class="rule-list">
+      <li><span class="r-label">FANBOYS</span> — For And Nor But Or Yet So → join independent clauses with comma before: ", but"</li>
+      <li><span class="r-label">Semicolons</span> → join two independent clauses: "clause; clause" or "clause; however, clause"</li>
+      <li><span class="r-label">Paired dashes</span> — open with — must close with — (not comma, not semicolon)</li>
+      <li><span class="r-label">Neither/nor · Either/or</span> → verb agrees with the CLOSER subject</li>
+      <li><span class="r-label">Dangling modifier</span> → the doer of the opening phrase must be the subject: "Having studied X, <b>the researcher</b>..." not "Having studied X, <b>the results</b>..."</li>
+      <li><span class="r-label">Parallelism</span> → "to analyse, construct, and evaluate" (not "evaluating")</li>
+      <li><span class="r-label">Conciseness</span> → "the reason...was because" = redundant. "prior to" = before. "in nature" = delete.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ═══ MATH SECTION ═══ -->
+<div class="section-divider">Math — Geometry, Trig &amp; Data</div>
+
+<div class="grid-3" style="margin-bottom:12px;">
+
+  <!-- Geometry Formulas -->
+  <div class="card teal">
+    <div class="card-title">Key Geometry Formulas</div>
+    <ul class="formula-list">
+      <li><span class="f-name">Circle area</span><span class="f-val">πr²</span></li>
+      <li><span class="f-name">Circumference</span><span class="f-val">2πr</span></li>
+      <li><span class="f-name">Arc length</span><span class="f-val">(θ/360) × 2πr</span></li>
+      <li><span class="f-name">Sector area</span><span class="f-val">(θ/360) × πr²</span></li>
+      <li><span class="f-name">Cylinder volume</span><span class="f-val">πr²h</span></li>
+      <li><span class="f-name">Cone volume</span><span class="f-val">⅓πr²h</span></li>
+      <li><span class="f-name">Sphere volume</span><span class="f-val">⁴⁄₃πr³</span></li>
+      <li><span class="f-name">Circle equation</span><span class="f-val">(x−h)²+(y−k)²=r²</span></li>
+      <li><span class="f-name">Interior angles</span><span class="f-val">(n−2)×180°</span></li>
+    </ul>
+  </div>
+
+  <!-- Trig -->
+  <div class="card red">
+    <div class="card-title">Trigonometry</div>
+    <div style="font-size:11.5px;margin-bottom:6px;"><b>SOHCAHTOA:</b> sin=opp/hyp · cos=adj/hyp · tan=opp/adj</div>
+    <table class="trig-table">
+      <tr><th>Angle</th><th>sin</th><th>cos</th><th>tan</th></tr>
+      <tr><td>30° (π/6)</td><td>1/2</td><td>√3/2</td><td>1/√3</td></tr>
+      <tr><td>45° (π/4)</td><td>√2/2</td><td>√2/2</td><td>1</td></tr>
+      <tr><td>60° (π/3)</td><td>√3/2</td><td>1/2</td><td>√3</td></tr>
+      <tr><td>90° (π/2)</td><td>1</td><td>0</td><td>—</td></tr>
+    </table>
+    <div style="margin-top:7px;font-size:11px;background:rgba(153,31,31,.08);padding:5px 7px;border-radius:4px;color:var(--red);">
+      <b>Complementary:</b> sin(x°) = cos(90°−x°)<br>
+      <b>Convert:</b> radians × (180/π) = degrees
+    </div>
+  </div>
+
+  <!-- Data Analysis + Pythagorean -->
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div class="card amber">
+      <div class="card-title">Pythagorean Triples</div>
+      <div class="pythagorean-triples">
+        <span class="pt">3-4-5</span>
+        <span class="pt">5-12-13</span>
+        <span class="pt">8-15-17</span>
+        <span class="pt">7-24-25</span>
+      </div>
+      <div style="margin-top:6px;font-size:11px;color:#666;">Multiples count: 6-8-10, 9-12-15, etc.</div>
+      <div style="margin-top:6px;font-size:11.5px;"><b>30-60-90:</b> 1 : √3 : 2 &nbsp;|&nbsp; <b>45-45-90:</b> 1 : 1 : √2</div>
+    </div>
+
+    <div class="card green">
+      <div class="card-title">Data Analysis — Key Rules</div>
+      <ul class="formula-list">
+        <li><span class="f-name">Mean</span><span class="f-val">sum ÷ count</span></li>
+        <li><span class="f-name">New mean</span><span class="f-val">new sum ÷ new count</span></li>
+        <li><span class="f-name">Slope</span><span class="f-val">score change per unit x</span></li>
+        <li><span class="f-name">% change</span><span class="f-val">(new−old)/old × 100</span></li>
+        <li><span class="f-name">Similar areas</span><span class="f-val">ratio² of sides</span></li>
+        <li><span class="f-name">SD larger</span><span class="f-val">= more spread out</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ MINDSET ═══ -->
+<div class="card dark">
+  <div class="card-title">Exam Day — What to Remember</div>
+  <div class="mindset-items">
+    <div class="mi"><b>Transitions</b>Read both sentences, identify the direction. Label S1 and S2 before looking at options.</div>
+    <div class="mi"><b>Synthesis</b>Read the GOAL first. Answers that only do half the job are wrong, even if they sound good.</div>
+    <div class="mi"><b>Add/Delete</b>Ask: does this sentence serve THIS paragraph's specific focus? Not "is it true?" — is it relevant HERE?</div>
+    <div class="mi"><b>Cross-Text</b>T2 either confirms, contradicts, complicates, or extends T1. Identify which before answering.</div>
+    <div class="mi"><b>Math traps</b>Arc length uses circumference (2πr), not area. Cone = ⅓ cylinder. Use r not d. sin≠cos.</div>
+    <div class="mi"><b>If stuck</b>Eliminate the obviously wrong, make your best call, move on. Don't let one question cost you three.</div>
+  </div>
+  <div style="text-align:center;margin-top:12px;font-family:'Instrument Serif',serif;font-size:1.1rem;opacity:.7;">You've put the work in. Trust it. Go get 1500. 🎯</div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>

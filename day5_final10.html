@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 5 — Final 10 · Hardest English Questions</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a18;--ink-muted:#6b6b65;--ink-faint:#a8a8a0;--bg:#fafaf7;--bg-alt:#f2f2ec;--border:#e2e2d8;--blue:#1a5fa8;--blue-light:#e6f0fb;--green:#2a6e3f;--green-light:#e6f4ec;--red:#b82a2a;--red-light:#fde8e8;--gold:#8a6800;--gold-light:#fdf5d8;--radius:10px;--radius-sm:6px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;}
+.header{background:linear-gradient(135deg,#1a1a18 0%,#2d1f00 100%);color:white;padding:1.8rem 2.5rem;}
+.header h1{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;margin-bottom:4px;}
+.header p{font-size:12px;opacity:.6;}
+.header-chips{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.12);border:.5px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:11px;}
+.chip.hi{background:rgba(255,193,7,.25);border-color:rgba(255,193,7,.4);color:#ffc107;font-weight:600;}
+.banner{background:var(--gold-light);border-bottom:.5px solid #d4b800;padding:12px 2.5rem;font-size:13px;color:var(--gold);}
+.banner b{color:#5a4000;}
+.progress-wrap{height:4px;background:var(--border);}
+.progress-fill{height:100%;background:var(--gold);width:0%;transition:width .3s;}
+.questions-wrap{max-width:820px;margin:0 auto;padding:2rem 2.5rem 5rem;}
+.q-block{margin-bottom:2rem;border:.5px solid var(--border);border-radius:var(--radius);overflow:hidden;background:white;position:relative;}
+.q-block.answered-correct{border-color:var(--green);}
+.q-block.answered-wrong{border-color:var(--red);}
+.hard-badge{position:absolute;top:10px;right:14px;font-size:10px;background:var(--gold-light);color:var(--gold);border:.5px solid #e0c800;border-radius:12px;padding:2px 8px;font-weight:600;}
+.q-header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg-alt);border-bottom:.5px solid var(--border);}
+.q-num{font-size:11px;font-weight:600;color:var(--ink-muted);}
+.q-tag{font-size:10px;padding:2px 8px;border-radius:12px;font-weight:500;}
+.tag-eoi{background:var(--blue-light);color:var(--blue);}
+.tag-iai{background:#f0e8fa;color:#5a2d82;}
+.tag-sec{background:#fef0e0;color:#b85c00;}
+.q-body{padding:15px;}
+.passage{background:var(--bg-alt);border-left:3px solid var(--border);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 14px;font-size:13.5px;line-height:1.8;margin-bottom:13px;}
+.passage.notes{border-left-color:var(--blue);}
+.q-stem{font-size:13.5px;font-weight:500;margin-bottom:11px;}
+.choices{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.choices li{padding:9px 13px;border:.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:13.5px;display:flex;gap:9px;align-items:flex-start;transition:background .15s,border-color .15s;}
+.choices li:hover:not(.correct):not(.wrong){background:var(--bg-alt);border-color:var(--gold);}
+.choice-letter{font-weight:600;color:var(--ink-muted);min-width:14px;}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.choices li.correct .choice-letter{color:var(--green);}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.choices li.wrong .choice-letter{color:var(--red);}
+.explanation{display:none;margin-top:12px;padding:12px 14px;background:var(--bg-alt);border-radius:var(--radius-sm);font-size:12.5px;line-height:1.75;border-left:3px solid var(--green);}
+.explanation.show{display:block;}
+.exp-label{font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--green);margin-bottom:4px;}
+.trap-box{background:#fff8e6;border:.5px solid #f0d080;border-radius:var(--radius-sm);padding:8px 11px;margin-top:8px;font-size:12px;color:#7a5800;}
+.trap-box b{color:#5a4000;}
+.submit-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:.5px solid var(--border);padding:12px 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.sub-prog{font-size:12px;color:var(--ink-muted);}
+.btn-submit{background:var(--gold);color:white;border:none;border-radius:var(--radius-sm);padding:10px 26px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-submit:hover{opacity:.9;}
+.results-panel{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,26,24,.9);z-index:100;align-items:center;justify-content:center;}
+.results-panel.show{display:flex;}
+.results-card{background:white;border-radius:16px;padding:2.2rem;max-width:440px;width:90%;text-align:center;}
+.results-card h2{font-family:'Instrument Serif',serif;font-size:1.7rem;margin-bottom:4px;}
+.results-big{font-family:'Instrument Serif',serif;font-size:3.8rem;margin:.8rem 0;}
+.results-msg{font-size:14px;line-height:1.6;color:var(--ink-muted);margin-bottom:1rem;}
+.btn-close{background:var(--ink);color:white;border:none;border-radius:var(--radius-sm);padding:10px 26px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Day 5 — Final 10</h1>
+  <p>Rishi Wadhwani · June 5, 2026 · Day before the exam</p>
+  <div class="header-chips">
+    <span class="chip hi">⭐ 10 Hardest Questions · No Timer · Full Focus</span>
+    <span class="chip">Concession Transitions — 3 Qs</span>
+    <span class="chip">Cross-Text — 2 Qs</span>
+    <span class="chip">Synthesis — 2 Qs</span>
+    <span class="chip">Add/Delete — 2 Qs</span>
+    <span class="chip">Inference — 1 Q</span>
+  </div>
+</div>
+<div class="progress-wrap"><div class="progress-fill" id="pb"></div></div>
+<div class="banner"><b>Day before exam — no timer, no pressure.</b> Read each question carefully. Trust the reasoning you've built this week. These are the 10 question types that separate 680 from 750.</div>
+
+<div class="questions-wrap">
+
+<div class="q-block" id="q1">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q1</span><span class="q-tag tag-eoi">Transitions — Concession</span></div>
+  <div class="q-body">
+    <div class="passage">The evidence strongly suggests that early human migration out of Africa occurred along coastal routes, following shorelines that provided consistent food sources. The genetic record shows that all non-African populations descend from a remarkably small founding group, suggesting a single major dispersal event rather than multiple waves.</div>
+    <div class="q-stem">Which transition, added to the beginning of the second sentence, best reflects the relationship?</div>
+    <ul class="choices" id="q1c">
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">A</span> However,</li>
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">B</span> For instance,</li>
+      <li onclick="pick('q1',this,true)"><span class="choice-letter">C</span> Moreover,</li>
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">D</span> Nevertheless,</li>
+    </ul>
+    <div class="explanation" id="q1e">
+      <div class="exp-label">Correct: C — Addition</div>
+      S1: migration followed coastal routes. S2: genetic record confirms single dispersal event. Both sentences support the same model of early human migration — they're building the same case, not contrasting or conceding. "Moreover" (addition) is correct. 
+      <div class="trap-box"><b>Trap:</b> The passage looks like it might be building toward a contrast, but S2 is additional supporting evidence, not a pivot. When both sentences point the same direction, use addition — not "however" or "nevertheless."</div>
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q2">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q2</span><span class="q-tag tag-eoi">Transitions — Concession</span></div>
+  <div class="q-body">
+    <div class="passage">Proponents of charter schools argue that they increase educational choice and allow for pedagogical innovation free from bureaucratic constraints. Studies examining student performance outcomes show mixed results — some charter schools dramatically outperform local public schools, while others perform no better or even worse.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q2c">
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">A</span> As a result, studies</li>
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">B</span> Furthermore, studies</li>
+      <li onclick="pick('q2',this,true)"><span class="choice-letter">C</span> Even so, studies</li>
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">D</span> Similarly, studies</li>
+    </ul>
+    <div class="explanation" id="q2e">
+      <div class="exp-label">Correct: C — Concession</div>
+      S1: proponents make a strong case FOR charter schools. S2: the evidence is mixed — some do well, some don't. S2 doesn't deny that charter schools exist or that the arguments are made; it complicates the picture. "Even so" = despite those arguments, the evidence is mixed. 
+      <div class="trap-box"><b>Trap:</b> This isn't a full contradiction (which would need "However"). It's a concession that accepts the proponents' claim while showing the reality is more complicated. "Even so" captures that nuance.</div>
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q3">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q3</span><span class="q-tag tag-eoi">Transitions — Concession</span></div>
+  <div class="q-body">
+    <div class="passage">Admittedly, the methodological limitations of the 2019 study — including a small sample size and lack of a control group — mean that its conclusions cannot be considered definitive. Its findings are consistent with those of three subsequent, more rigorous trials, suggesting the core result may be reliable despite the original study's weaknesses.</div>
+    <div class="q-stem">Which transition, added to the beginning of the second sentence, best reflects the logical relationship?</div>
+    <ul class="choices" id="q3c">
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">A</span> Therefore,</li>
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">B</span> In contrast,</li>
+      <li onclick="pick('q3',this,true)"><span class="choice-letter">C</span> Nevertheless,</li>
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">D</span> For example,</li>
+    </ul>
+    <div class="explanation" id="q3e">
+      <div class="exp-label">Correct: C — Concession</div>
+      "Admittedly" = classic concession signal. S1 accepts the limitations. S2 argues the findings are still trustworthy because subsequent studies corroborate them. "Nevertheless" = despite those limitations, the findings hold up. 
+      <div class="trap-box"><b>Key pattern:</b> "Admittedly / It is true that / It must be acknowledged" in S1 → "Nevertheless / Even so / Yet" in S2. The concession in S1 is accepted, then S2 pivots to defend the main claim despite it.</div>
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q4">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q4</span><span class="q-tag tag-iai">Cross-Text Connections</span></div>
+  <div class="q-body">
+    <div class="passage"><b>Text 1:</b> The concept of "deep work" — sustained, focused cognitive effort on demanding tasks — has become increasingly difficult to achieve in modern workplaces characterised by constant email, messaging notifications, and open-plan office environments. Research suggests that knowledge workers spend an average of only 11 minutes on a task before being interrupted, and require up to 25 minutes to regain full concentration after each interruption.<br><br>
+    <b>Text 2:</b> A 2023 study of hybrid workers found that employees given two designated "no-meeting, no-interruption" hours per day reported significantly higher task completion rates, lower stress levels, and greater job satisfaction than a control group who continued working under standard conditions. The productivity gains persisted for at least three months after the intervention ended.</div>
+    <div class="q-stem">How does Text 2 relate to Text 1?</div>
+    <ul class="choices" id="q4c">
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">A</span> Text 2 contradicts Text 1 by showing that modern workplaces can support focused work.</li>
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">B</span> Text 2 explains why the interruptions described in Text 1 are inevitable in modern workplaces.</li>
+      <li onclick="pick('q4',this,true)"><span class="choice-letter">C</span> Text 2 supports the concern raised in Text 1 by demonstrating that protecting uninterrupted work time yields measurable benefits.</li>
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">D</span> Text 2 extends Text 1 by arguing that open-plan offices should be eliminated entirely.</li>
+    </ul>
+    <div class="explanation" id="q4e">
+      <div class="exp-label">Correct: C — T2 supports T1</div>
+      T1: deep work is difficult due to interruptions. T2: protecting uninterrupted time → better outcomes. T2 doesn't contradict T1 (eliminating A) — it demonstrates WHY protecting focus matters, which supports T1's concern. A wrong — T2 shows protection works, not that modern workplaces naturally support focus. B wrong — T2 says nothing about why interruptions are inevitable. D wrong — T2 doesn't argue for eliminating open-plan offices.
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q5">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q5</span><span class="q-tag tag-iai">Cross-Text Connections</span></div>
+  <div class="q-body">
+    <div class="passage"><b>Text 1:</b> Economists who favour a universal basic income (UBI) point to pilot programmes in Finland, Kenya, and Stockton, California, where recipients reported reduced financial stress, improved mental health, and — contrary to fears — no significant reduction in employment. These results suggest that UBI does not disincentivise work to the degree critics predict.<br><br>
+    <b>Text 2:</b> The scale of pilot UBI programmes makes their results difficult to generalise. In a full national implementation, increased consumer spending by UBI recipients could drive inflation, eroding the real value of the income transfer. Additionally, funding mechanisms — whether through taxation or deficit spending — would create economic pressures absent from small-scale, externally funded experiments.</div>
+    <div class="q-stem">The author of Text 2 would most likely respond to the pilot programme evidence in Text 1 by arguing that</div>
+    <ul class="choices" id="q5c">
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">A</span> the mental health improvements reported by UBI recipients are not a valid measure of economic policy success.</li>
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">B</span> UBI pilots prove that universal income transfers are economically unviable at the national level.</li>
+      <li onclick="pick('q5',this,true)"><span class="choice-letter">C</span> the conditions of small-scale, externally funded experiments cannot reliably predict the economic effects of a national implementation.</li>
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">D</span> UBI recipients in pilot programmes would have found work regardless of whether they received the income transfer.</li>
+    </ul>
+    <div class="explanation" id="q5e">
+      <div class="exp-label">Correct: C</div>
+      T2's core argument: pilot scale → national scale creates new problems (inflation, funding pressures) absent from pilots. The author's response to T1's pilot evidence would be: those pilots can't predict national-level outcomes because the scale conditions are fundamentally different. C captures this. A — T2 doesn't dismiss mental health as a measure. B — T2 argues pilots don't prove viability/unviability, not that they prove unviability. D — T2 makes no claim about employment counterfactuals.
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q6">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q6</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Solastalgia: psychological distress caused by environmental change in one's home environment<br>
+• Term coined by philosopher Glenn Albrecht in 2003<br>
+• Originally applied to communities near mining operations experiencing landscape destruction<br>
+• Now used to describe distress caused by climate-related changes: droughts, floods, habitat loss<br>
+• Studies document solastalgia in farmers, Indigenous communities, and coastal populations<br>
+• Symptoms overlap with depression and anxiety but are tied specifically to place-based loss</div>
+    <div class="q-stem">The student wants to explain both what solastalgia is and why it has gained relevance beyond its original context. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q6c">
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">A</span> Solastalgia, coined by philosopher Glenn Albrecht in 2003, describes the psychological distress experienced by communities watching their home environments deteriorate — originally near mine sites, but increasingly applied to those affected by climate change.</li>
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">B</span> Solastalgia is now documented among farmers, Indigenous communities, and coastal populations, all of whom experience symptoms that overlap with depression and anxiety.</li>
+      <li onclick="pick('q6',this,true)"><span class="choice-letter">C</span> Originally describing distress caused by industrial landscape destruction, solastalgia has gained broader relevance as climate-driven droughts, floods, and habitat loss now expose far larger populations to the place-based psychological harm Albrecht first identified.</li>
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">D</span> Glenn Albrecht coined "solastalgia" in 2003 to name the psychological effects of living through environmental destruction, a concept that has since been studied across multiple disciplines.</div>
+    </ul>
+    <div class="explanation" id="q6e">
+      <div class="exp-label">Correct: C</div>
+      Goal: WHAT it is + WHY gained relevance beyond original context. C: what it is (distress from landscape destruction, Albrecht) and the specific reason for broader relevance (climate change now exposes far larger populations to the same harm). A covers what it is + the expansion, but doesn't explain WHY — it just states the expanded application. C explicitly gives the mechanism (larger populations exposed). B = symptoms only, no definition or relevance explanation. D = origin + academic spread, no climate relevance.
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q7">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q7</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Gene editing via CRISPR-Cas9 allows precise modifications to DNA sequences<br>
+• Potential medical applications: eliminating genetic diseases like sickle cell anaemia and cystic fibrosis<br>
+• In 2023, the first CRISPR-based therapy (Casgevy) approved for sickle cell disease in the US and UK<br>
+• "Germline editing": editing embryos, eggs, or sperm — changes heritable by future generations<br>
+• Germline editing currently banned or restricted in most countries due to ethical concerns<br>
+• Cost of approved CRISPR therapies: over $2 million per patient</div>
+    <div class="q-stem">The student wants to present CRISPR gene editing as a breakthrough with significant limitations that must be addressed before it becomes widely accessible. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q7c">
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">A</span> CRISPR-Cas9 technology has enabled precise DNA modifications that could eliminate diseases like sickle cell anaemia, and in 2023 the first CRISPR therapy received regulatory approval.</li>
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">B</span> Despite its promise, CRISPR gene editing raises profound ethical questions, particularly around germline editing, and current approved therapies cost over $2 million per patient.</li>
+      <li onclick="pick('q7',this,true)"><span class="choice-letter">C</span> While the 2023 approval of Casgevy — a CRISPR-based therapy for sickle cell disease — marks a genuine medical breakthrough, its $2 million price tag and the ethical complexities surrounding heritable germline editing mean that widespread, equitable access remains a distant prospect.</li>
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">D</span> Germline editing, which would make genetic changes heritable by future generations, is currently banned or heavily restricted in most countries, limiting CRISPR's potential applications.</div>
+    </ul>
+    <div class="explanation" id="q7e">
+      <div class="exp-label">Correct: C</div>
+      Goal: BREAKTHROUGH + SIGNIFICANT LIMITATIONS + not yet widely accessible. C: breakthrough (Casgevy approval, sickle cell), limitations ($2M cost, germline ethics), and conclusion (widespread equitable access is distant). A = breakthrough only. B = limitations only, no breakthrough framing. D = germline restriction only — no breakthrough, no accessibility framing.
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q8">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q8</span><span class="q-tag tag-eoi">Add / Delete / Revise</span></div>
+  <div class="q-body">
+    <div class="passage">The enclosure movement in eighteenth-century Britain transformed agricultural land by consolidating open fields and common lands into private holdings. <u>This dispossession of rural communities from land they had traditionally worked drove millions into urban centres, where they became the labour force for the emerging factory system.</u> Without this mass migration of displaced agricultural workers into cities, the Industrial Revolution's factories could not have been staffed at the scale required for rapid industrialisation.</div>
+    <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+    <ul class="choices" id="q8c">
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">A</span> Deleted, because the paragraph focuses on agricultural transformation, not on urban migration or industrial labour.</li>
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">B</span> Deleted, because the information in the underlined sentence is already implied by the final sentence.</li>
+      <li onclick="pick('q8',this,true)"><span class="choice-letter">C</span> Kept, because it provides the causal link between the enclosure movement described in the first sentence and the industrial labour supply referenced in the final sentence.</li>
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">D</span> Kept, because readers need to understand the human cost of enclosure before appreciating the Industrial Revolution's achievements.</div>
+    </ul>
+    <div class="explanation" id="q8e">
+      <div class="exp-label">Correct: C</div>
+      S1: enclosure created private holdings (agricultural change). S3: factories needed staffed labour for industrialisation. The underlined sentence bridges them: dispossession → urban migration → factory labour pool. Without it, S1 and S3 don't logically connect. C correctly identifies this bridging causal function. A wrong — the paragraph IS about how agricultural change fed urban/industrial growth. B wrong — S3 says factories needed labour but doesn't explain WHERE that labour came from (that's what the underlined sentence does). D wrong — the purpose isn't human cost but causal logic.
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q9">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q9</span><span class="q-tag tag-eoi">Add / Delete / Revise</span></div>
+  <div class="q-body">
+    <div class="passage">Conspiracy theories tend to thrive in environments where institutional trust has eroded and official explanations feel inadequate. <u>They offer a coherent, emotionally satisfying narrative that transforms random or painful events into the result of deliberate human agency — making the world feel less chaotic, if more sinister.</u> Countering conspiracy theories through direct factual rebuttal alone is rarely effective, because the psychological appeal of the narrative often outweighs the logical appeal of the correction.</div>
+    <div class="q-stem">The student wants to revise the underlined sentence to make it more explicitly connect the psychological function of conspiracy theories to the difficulty of debunking them. Which revision best accomplishes this?</div>
+    <ul class="choices" id="q9c">
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">A</span> They provide simple explanations for complex events, which many people find more satisfying than ambiguous or incomplete official accounts.</li>
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">B</span> The narrative structures of conspiracy theories are emotionally compelling and resistant to factual correction.</li>
+      <li onclick="pick('q9',this,true)"><span class="choice-letter">C</span> By converting randomness and suffering into the product of deliberate agency, conspiracy theories satisfy a deep psychological need for order — and it is precisely this emotional function, not factual accuracy, that makes them so difficult to dislodge.</li>
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">D</span> Conspiracy theories persist because they explain not just what happened, but who is responsible, giving believers a clear target for their distrust or anger.</div>
+    </ul>
+    <div class="explanation" id="q9e">
+      <div class="exp-label">Correct: C</div>
+      Goal: MORE EXPLICITLY connect the psychological function to the difficulty of debunking. C: explains the function (converts randomness to deliberate agency, satisfies need for order) AND directly draws the connection to debunking difficulty ("it is precisely this emotional function... that makes them so difficult to dislodge"). This bridges S2 and S3 explicitly. A = function only (simpler explanations), no debunking connection. B = states they're resistant but doesn't explain the psychological mechanism or connect the two. D = accountability function (who's responsible) — doesn't connect to debunking difficulty.
+    </div>
+  </div>
+</div>
+
+<div class="q-block" id="q10">
+  <div class="hard-badge">Hard</div>
+  <div class="q-header"><span class="q-num">Q10</span><span class="q-tag tag-iai">Inference</span></div>
+  <div class="q-body">
+    <div class="passage">The history of dietary advice in the twentieth century offers a cautionary tale about the limits of nutritional science. In the 1960s and 70s, saturated fat was identified as the primary dietary villain, driving a decades-long campaign to replace butter and animal fats with polyunsaturated vegetable oils and margarine. By the 1990s, fat itself had become the target, producing a generation of low-fat products whose removed fat was replaced with sugar. More recent research has rehabilitated some fats while implicating refined carbohydrates and ultra-processed foods. Through each shift, the food industry profited by reformulating products to align with the current nutritional consensus — a consensus that, in retrospect, was repeatedly revised.</div>
+    <div class="q-stem">Which inference is best supported by the passage?</div>
+    <ul class="choices" id="q10c">
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">A</span> Dietary advice should be ignored, since nutritional science has consistently failed to produce accurate guidance.</li>
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">B</span> The food industry deliberately manipulated nutritional research to increase profits.</li>
+      <li onclick="pick('q10',this,true)"><span class="choice-letter">C</span> The rapid adoption of nutritional consensus into food policy and consumer products may be premature given how frequently that consensus has been revised.</li>
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">D</span> Ultra-processed foods and refined carbohydrates are definitively the primary drivers of poor health outcomes.</div>
+    </ul>
+    <div class="explanation" id="q10e">
+      <div class="exp-label">Correct: C</div>
+      The passage traces multiple revisions to dietary consensus — saturated fat → all fat → carbs/ultra-processed — and notes that "in retrospect, [the consensus] was repeatedly revised." The supported inference is one of epistemic caution: the consensus keeps changing, so acting on it too quickly may be unwise. C captures this without overstating. A overstates — the passage doesn't say ignore all advice; it urges caution. B makes a causation claim (deliberate manipulation) — the passage only says the industry profited by aligning with consensus, not that it caused the consensus. D asserts the current consensus as definitive — but the passage's whole point is that current consensus has historically been revised.
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="submit-bar">
+  <div class="sub-prog" id="sub-prog">0 of 10 answered</div>
+  <button class="btn-submit" onclick="submitPaper()">Submit &amp; See Results</button>
+</div>
+
+<div class="results-panel" id="res-panel">
+  <div class="results-card">
+    <h2>Final 10 Complete</h2>
+    <div class="results-big" id="res-score">—</div>
+    <div style="color:var(--ink-muted);font-size:12px;margin-bottom:.5rem;">out of 10 questions</div>
+    <div class="results-msg" id="res-msg"></div>
+    <button class="btn-close" onclick="document.getElementById('res-panel').classList.remove('show')">Review Answers</button>
+  </div>
+</div>
+
+<script>
+var state={};
+function pick(id,el,correct){
+  if(state[id])return;
+  state[id]={correct:correct};
+  var list=document.getElementById(id+'c');
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  document.getElementById(id+'e').classList.add('show');
+  document.getElementById(id).classList.add(correct?'answered-correct':'answered-wrong');
+  var ans=Object.keys(state).length;
+  document.getElementById('pb').style.width=(ans/10*100)+'%';
+  document.getElementById('sub-prog').textContent=ans+' of 10 answered';
+}
+function submitPaper(){
+  var ans=Object.keys(state).length,cor=Object.keys(state).filter(function(k){return state[k].correct;}).length;
+  document.getElementById('res-score').textContent=cor+'/'+ans;
+  var pct=ans>0?Math.round(cor/ans*100):0;
+  var msg;
+  if(pct>=90)msg="🌟 Outstanding — you're ready. Trust yourself tomorrow.";
+  else if(pct>=80)msg="✅ Strong — you're well-prepared. Review the 1 or 2 you missed and move on.";
+  else if(pct>=70)msg="👍 Good — re-read the explanations for the ones you missed. Focus on the reasoning patterns.";
+  else msg="📖 Read every explanation carefully. These patterns WILL appear tomorrow. You've got this.";
+  document.getElementById('res-msg').textContent=msg;
+  document.getElementById('res-panel').classList.add('show');
+}
+</script>
+</body>
+</html>
