@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Day — English Test · 30 Questions</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a18;--ink-muted:#6b6b65;--ink-faint:#a8a8a0;--bg:#fafaf7;--bg-alt:#f2f2ec;--border:#e2e2d8;--blue:#1a5fa8;--blue-light:#e6f0fb;--green:#2a6e3f;--green-light:#e6f4ec;--red:#b82a2a;--red-light:#fde8e8;--amber:#b85c00;--amber-light:#fef0e0;--purple:#5a2d82;--purple-light:#f0e8fa;--radius:10px;--radius-sm:6px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;}
+.header{background:linear-gradient(135deg,#0d1b2a 0%,#1a3a5c 100%);color:white;padding:1.8rem 2.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;}
+.header-left h1{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;margin-bottom:4px;}
+.header-left p{font-size:12px;opacity:.6;margin-top:2px;}
+.header-chips{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.12);border:.5px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:11px;}
+.chip.hi{background:rgba(255,215,0,.2);border-color:rgba(255,215,0,.4);color:#ffd700;font-weight:600;}
+.score-wrap{text-align:right;}
+.score-live{font-family:'Instrument Serif',serif;font-size:2.8rem;line-height:1;}
+.score-label{font-size:10px;opacity:.5;margin-top:3px;}
+.timer-box{margin-top:10px;background:rgba(255,255,255,.1);border-radius:6px;padding:7px 14px;text-align:center;}
+#timer{font-weight:600;font-size:1.1rem;letter-spacing:1px;}
+#timer.warn{color:#ff9f43;}
+#timer.danger{color:#ff6b6b;}
+.progress-wrap{height:4px;background:var(--border);}
+.progress-fill{height:100%;background:var(--blue);width:0%;transition:width .3s;}
+.section-banner{background:rgba(230,240,251,.97);border-bottom:.5px solid var(--border);padding:.8rem 2.5rem;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;backdrop-filter:blur(8px);}
+.sb-icon{width:32px;height:32px;background:var(--blue);color:white;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
+.sb-title{font-family:'Instrument Serif',serif;font-size:1.1rem;}
+.sb-sub{font-size:11px;color:var(--ink-muted);}
+.sb-count{margin-left:auto;font-size:11px;color:var(--ink-muted);background:var(--bg-alt);border-radius:20px;padding:2px 10px;border:.5px solid var(--border);}
+.questions-wrap{max-width:840px;margin:0 auto;padding:1.8rem 2.5rem 5rem;}
+.q-block{margin-bottom:1.8rem;border:.5px solid var(--border);border-radius:var(--radius);overflow:hidden;background:white;transition:box-shadow .2s;}
+.q-block:hover{box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.q-block.answered-correct{border-color:var(--green);}
+.q-block.answered-wrong{border-color:var(--red);}
+.q-header{display:flex;align-items:center;gap:9px;padding:9px 14px;background:var(--bg-alt);border-bottom:.5px solid var(--border);}
+.q-num{font-size:11px;font-weight:600;color:var(--ink-muted);}
+.q-tag{font-size:10px;padding:2px 8px;border-radius:12px;font-weight:500;}
+.tag-eoi{background:var(--blue-light);color:var(--blue);}
+.tag-iai{background:var(--purple-light);color:var(--purple);}
+.tag-sec{background:var(--amber-light);color:var(--amber);}
+.q-diff{font-size:10px;color:var(--ink-faint);margin-left:auto;}
+.q-body{padding:14px;}
+.passage{background:var(--bg-alt);border-left:3px solid var(--border);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:11px 13px;font-size:13.5px;line-height:1.8;margin-bottom:12px;}
+.passage.notes{border-left-color:var(--blue);}
+.q-stem{font-size:13.5px;font-weight:500;margin-bottom:10px;}
+.choices{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.choices li{padding:8px 12px;border:.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:13.5px;display:flex;gap:9px;align-items:flex-start;transition:background .15s,border-color .15s;}
+.choices li:hover:not(.correct):not(.wrong){background:var(--bg-alt);border-color:var(--blue);}
+.choice-letter{font-weight:600;color:var(--ink-muted);min-width:14px;}
+.choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.choices li.correct .choice-letter{color:var(--green);}
+.choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.choices li.wrong .choice-letter{color:var(--red);}
+.explanation{display:none;margin-top:10px;padding:10px 13px;background:var(--bg-alt);border-radius:var(--radius-sm);font-size:12.5px;line-height:1.7;border-left:3px solid var(--green);}
+.explanation.show{display:block;}
+.exp-label{font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--green);margin-bottom:3px;}
+.submit-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:.5px solid var(--border);padding:11px 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.sub-prog{font-size:12px;color:var(--ink-muted);}
+.btn-submit{background:var(--blue);color:white;border:none;border-radius:var(--radius-sm);padding:9px 26px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-submit:hover{background:#1348a0;}
+.results-panel{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,26,24,.88);z-index:100;align-items:center;justify-content:center;}
+.results-panel.show{display:flex;}
+.results-card{background:white;border-radius:16px;padding:2.2rem;max-width:500px;width:92%;text-align:center;}
+.results-card h2{font-family:'Instrument Serif',serif;font-size:1.7rem;margin-bottom:4px;}
+.results-big{font-family:'Instrument Serif',serif;font-size:4rem;margin:.8rem 0;}
+.results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:1.2rem 0;}
+.rg-item{background:var(--bg-alt);border-radius:var(--radius-sm);padding:12px;}
+.rg-label{font-size:10px;color:var(--ink-muted);margin-bottom:3px;}
+.rg-val{font-size:1.25rem;font-weight:600;}
+.res-msg{font-size:13px;color:var(--ink-muted);margin:.5rem 0 1rem;}
+.btn-close{background:var(--ink);color:white;border:none;border-radius:var(--radius-sm);padding:10px 26px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Final Day English Test</h1>
+    <p>Rishi Wadhwani · June 5, 2026 · Last prep before exam day</p>
+    <div class="header-chips">
+      <span class="chip hi">30 Questions · 32 Minutes</span>
+      <span class="chip">Transitions — 8 Qs</span>
+      <span class="chip">Rhetorical Synthesis — 7 Qs</span>
+      <span class="chip">Add/Delete/Revise — 6 Qs</span>
+      <span class="chip">Information &amp; Ideas — 6 Qs</span>
+      <span class="chip">SEC — 3 Qs</span>
+    </div>
+  </div>
+  <div class="score-wrap">
+    <div class="score-live"><span id="sc">0</span>/0</div>
+    <div class="score-label">correct / answered</div>
+    <div class="timer-box">⏱ <span id="timer">32:00</span></div>
+  </div>
+</div>
+<div class="progress-wrap"><div class="progress-fill" id="pb"></div></div>
+
+<div class="section-banner">
+  <div class="sb-icon">E</div>
+  <div><div class="sb-title">Reading &amp; Writing</div><div class="sb-sub">Full mixed test · exam simulation</div></div>
+  <div class="sb-count">Q1 – Q30</div>
+</div>
+
+<div class="questions-wrap">
+
+<!-- TRANSITIONS: 8 Qs -->
+<div class="q-block" id="q1">
+  <div class="q-header"><span class="q-num">Q1</span><span class="q-tag tag-eoi">Transitions</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">Studies in the 1980s established that exercise significantly improves cardiovascular health by strengthening the heart muscle and improving circulation. Recent research has revealed that regular physical activity also triggers the release of neurotrophic factors that promote the growth of new neurons in the hippocampus, a region critical for learning and memory.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q1c">
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">A</span> However, recent research</li>
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">B</span> Therefore, recent research</li>
+      <li onclick="pick('q1',this,true)"><span class="choice-letter">C</span> More recently, research has revealed</li>
+      <li onclick="pick('q1',this,false)"><span class="choice-letter">D</span> For example, recent research</li>
+    </ul>
+    <div class="explanation" id="q1e"><div class="exp-label">Correct: C — Addition</div>S1: exercise helps the heart. S2: exercise also helps the brain. Both are benefits of exercise — same direction, adding a new category of benefit. "More recently" signals addition with a temporal shift. A (However) = contrast — wrong, both are benefits. B (Therefore) = result — S2 isn't a consequence of S1. D (For example) = S2 isn't an example of cardiovascular benefit.</div></div>
+</div>
+
+<div class="q-block" id="q2">
+  <div class="q-header"><span class="q-num">Q2</span><span class="q-tag tag-eoi">Transitions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">It is widely acknowledged that social media platforms have been designed to maximise engagement through variable reward schedules similar to those used in slot machines. Several longitudinal studies tracking teenagers over five years have found no significant causal link between social media use and clinical depression — only a weak correlation that disappears when controlling for pre-existing mental health conditions.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q2c">
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">A</span> Furthermore, several longitudinal studies</li>
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">B</span> Consequently, several longitudinal studies</li>
+      <li onclick="pick('q2',this,true)"><span class="choice-letter">C</span> Nevertheless, several longitudinal studies</li>
+      <li onclick="pick('q2',this,false)"><span class="choice-letter">D</span> For instance, several longitudinal studies</li>
+    </ul>
+    <div class="explanation" id="q2e"><div class="exp-label">Correct: C — Concession</div>"It is widely acknowledged" = concession signal in S1. S1 accepts the manipulative design of platforms. S2 presents evidence that despite this, clinical depression links are weak. "Nevertheless" = despite the acknowledged design concerns, the causal evidence is weaker than expected. A = addition — same direction. B = result — causal. D = example.</div></div>
+</div>
+
+<div class="q-block" id="q3">
+  <div class="q-header"><span class="q-num">Q3</span><span class="q-tag tag-eoi">Transitions</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The Great Wall of China was not constructed as a single unified project but rather accumulated over more than two thousand years under a succession of dynasties, each adding, rebuilding, or extending existing fortifications. Large sections of the wall were built using compacted earth and have largely eroded; the iconic stone and brick sections most tourists visit today date primarily from the Ming Dynasty.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q3c">
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">A</span> Therefore, large sections</li>
+      <li onclick="pick('q3',this,true)"><span class="choice-letter">B</span> Indeed, large sections</li>
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">C</span> However, large sections</li>
+      <li onclick="pick('q3',this,false)"><span class="choice-letter">D</span> Similarly, large sections</li>
+    </ul>
+    <div class="explanation" id="q3e"><div class="exp-label">Correct: B — Elaboration/Confirmation</div>S1: Wall was built over 2000 years by many dynasties. S2: gives a specific concrete illustration of that — different materials and eras. "Indeed" = elaborates and confirms what S1 said. C (However) = contrast — but S2 supports and extends S1. A = result — not causal. D = similarity — not comparing two things.</div></div>
+</div>
+
+<div class="q-block" id="q4">
+  <div class="q-header"><span class="q-num">Q4</span><span class="q-tag tag-eoi">Transitions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Proponents of ranked-choice voting argue that it eliminates the spoiler effect, encourages more civil campaigning, and ensures winners have broader support. Jurisdictions that have adopted ranked-choice voting have not consistently demonstrated higher voter satisfaction, and implementation complexity has sometimes led to delayed results and increased administrative costs.</div>
+    <div class="q-stem">Which transition, added to the beginning of the second sentence, best reflects the relationship?</div>
+    <ul class="choices" id="q4c">
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">A</span> Moreover,</li>
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">B</span> Therefore,</li>
+      <li onclick="pick('q4',this,true)"><span class="choice-letter">C</span> In practice, however,</li>
+      <li onclick="pick('q4',this,false)"><span class="choice-letter">D</span> For example,</li>
+    </ul>
+    <div class="explanation" id="q4e"><div class="exp-label">Correct: C — Contrast</div>S1: theoretical arguments FOR ranked-choice voting. S2: real-world outcomes have been mixed — satisfaction not higher, costs up. "In practice, however" signals the gap between theoretical promise (S1) and practical reality (S2). A = addition — same direction. B = result. D = example — S2 isn't an example of the arguments; it contradicts them.</div></div>
+</div>
+
+<div class="q-block" id="q5">
+  <div class="q-header"><span class="q-num">Q5</span><span class="q-tag tag-eoi">Transitions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Admittedly, the transition to renewable energy will require substantial upfront investment in infrastructure, grid upgrades, and energy storage technology. The long-term economic case for renewables is compelling: once built, solar and wind installations have near-zero fuel costs, and the social costs of continued fossil fuel combustion — including healthcare, climate damage, and air quality — are enormous and largely unaccounted for in market prices.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q5c">
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">A</span> As a result, the long-term</div>
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">B</span> For instance, the long-term</li>
+      <li onclick="pick('q5',this,false)"><span class="choice-letter">C</span> Furthermore, the long-term</li>
+      <li onclick="pick('q5',this,true)"><span class="choice-letter">D</span> Even so, the long-term</li>
+    </ul>
+    <div class="explanation" id="q5e"><div class="exp-label">Correct: D — Concession</div>"Admittedly" = concession in S1. S1 accepts real costs of transition. S2 argues that despite those costs, the long-term case is compelling. "Even so" = despite those upfront costs, the economics still favour renewables. A = result — S2 doesn't result from S1. B = example. C = addition — implies S2 adds to S1's point, but S2 pivots against S1's concern.</div></div>
+</div>
+
+<div class="q-block" id="q6">
+  <div class="q-header"><span class="q-num">Q6</span><span class="q-tag tag-eoi">Transitions</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The discovery of the Higgs boson in 2012 confirmed a prediction of the Standard Model that had stood for nearly fifty years. Physicists immediately began designing new experiments to probe whether the Higgs boson's properties matched theoretical predictions exactly — or whether deviations might point toward physics beyond the Standard Model.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q6c">
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">A</span> However, physicists immediately</li>
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">B</span> Nevertheless, physicists immediately</li>
+      <li onclick="pick('q6',this,true)"><span class="choice-letter">C</span> Yet rather than marking an endpoint, the discovery prompted physicists to immediately</li>
+      <li onclick="pick('q6',this,false)"><span class="choice-letter">D</span> Similarly, physicists immediately</li>
+    </ul>
+    <div class="explanation" id="q6e"><div class="exp-label">Correct: C — Contrast/Pivot</div>S1: discovery confirmed a 50-year-old prediction — sounds like an endpoint. S2: physicists used it as a springboard to probe further. C explicitly captures this contrast: confirmation wasn't the end; it opened new questions. A and B are contrast signals but don't explain the nature of the contrast. D = similarity — no comparison being made.</div></div>
+</div>
+
+<div class="q-block" id="q7">
+  <div class="q-header"><span class="q-num">Q7</span><span class="q-tag tag-eoi">Transitions</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">Languages with grammatical gender — where nouns are assigned masculine, feminine, or neuter categories — tend to influence how their speakers conceptualise and describe the world. Research has found that Spanish speakers, for whom "bridge" (puente) is masculine, tend to describe bridges using adjectives like "strong" and "towering," while German speakers, for whom "bridge" (Brücke) is feminine, tend to use words like "elegant" and "slender."</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q7c">
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">A</span> However, research has found</li>
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">B</span> Therefore, research has found</li>
+      <li onclick="pick('q7',this,true)"><span class="choice-letter">C</span> For instance, research has found</li>
+      <li onclick="pick('q7',this,false)"><span class="choice-letter">D</span> Nevertheless, research has found</li>
+    </ul>
+    <div class="explanation" id="q7e"><div class="exp-label">Correct: C — Example</div>S1: general claim — grammatical gender influences how speakers conceptualise the world. S2: a specific study illustrating exactly this — Spanish vs German speakers describing bridges differently based on grammatical gender. Specific case of a general claim = example. "For instance." A = contrast. B = result — S2 isn't a consequence of S1. D = concession.</div></div>
+</div>
+
+<div class="q-block" id="q8">
+  <div class="q-header"><span class="q-num">Q8</span><span class="q-tag tag-eoi">Transitions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Reintroducing large predators such as wolves to ecosystems from which they were eliminated can trigger what ecologists call a "trophic cascade" — a chain of effects rippling through the food web. The reintroduction of wolves to Yellowstone in 1995 not only reduced elk overgrazing but altered elk behaviour so significantly that vegetation recovered in areas inaccessible to wolves, waterways stabilised, and beaver populations rebounded.</div>
+    <div class="q-stem">Which transition best connects the two sentences?</div>
+    <ul class="choices" id="q8c">
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">A</span> Nevertheless, the reintroduction</li>
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">B</span> In contrast, the reintroduction</li>
+      <li onclick="pick('q8',this,true)"><span class="choice-letter">C</span> The reintroduction of wolves to Yellowstone in 1995 illustrates this:</li>
+      <li onclick="pick('q8',this,false)"><span class="choice-letter">D</span> However, the reintroduction</li>
+    </ul>
+    <div class="explanation" id="q8e"><div class="exp-label">Correct: C — Example/Illustration</div>S1 defines "trophic cascade" as a general concept. S2 gives the classic real-world example of exactly that. C explicitly signals this with "illustrates this" — connecting the concept to the case study. A, B, D all signal contrast or concession — wrong, S2 supports and demonstrates S1.</div></div>
+</div>
+
+<!-- RHETORICAL SYNTHESIS: 7 Qs -->
+<div class="q-block" id="q9">
+  <div class="q-header"><span class="q-num">Q9</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Global average temperature has risen approximately 1.2°C above pre-industrial levels<br>
+• Arctic warming is occurring at 3–4× the global average rate<br>
+• Arctic sea ice extent in September 2023 was second lowest on record<br>
+• Permafrost thaw releases methane, a greenhouse gas 80× more potent than CO₂ over 20 years<br>
+• Indigenous Arctic communities face displacement as sea ice, which supports hunting routes, disappears</div>
+    <div class="q-stem">The student wants to explain why the Arctic is considered a climate "early warning system" for the rest of the planet. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q9c">
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">A</span> Indigenous Arctic communities face serious consequences from climate change, including threats to traditional hunting routes as sea ice disappears.</li>
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">B</span> Global temperatures have risen 1.2°C above pre-industrial levels, with Arctic sea ice reaching near-record lows in 2023.</li>
+      <li onclick="pick('q9',this,true)"><span class="choice-letter">C</span> Because the Arctic warms 3–4 times faster than the global average, changes there — including record sea ice loss and permafrost thaw that releases potent methane — signal what the rest of the world may soon face at a larger scale.</li>
+      <li onclick="pick('q9',this,false)"><span class="choice-letter">D</span> Permafrost thaw releases methane that is 80 times more potent than CO₂ over 20 years, creating a dangerous feedback loop that could accelerate global warming.</li>
+    </ul>
+    <div class="explanation" id="q9e"><div class="exp-label">Correct: C</div>Goal: explain WHY Arctic = early warning system. C gives the mechanism: Arctic warms faster (3–4×) → it shows in advance what will happen elsewhere (sea ice loss, methane feedback). The "early warning" logic requires explaining faster rate + what those changes foreshadow. A = human impact only. B = global stats, doesn't explain the early warning concept. D = methane only, doesn't explain the early warning framing.</div></div>
+</div>
+
+<div class="q-block" id="q10">
+  <div class="q-header"><span class="q-num">Q10</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Octopuses have nine brains: one central brain and one in each of their eight arms<br>
+• Each arm can taste, touch, and move independently of the central brain<br>
+• Octopuses have demonstrated problem-solving, tool use, and play behaviour<br>
+• They are invertebrates — more closely related to clams than to vertebrates<br>
+• Their intelligence evolved completely independently from vertebrate intelligence</div>
+    <div class="q-stem">The student wants to argue that octopus intelligence challenges assumptions about what kinds of animals can be intelligent. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q10c">
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">A</span> Octopuses are capable of problem-solving, tool use, and play — behaviours long associated with cognitive sophistication in animals.</li>
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">B</span> With nine brains — one central and one in each arm — octopuses have a uniquely distributed nervous system unlike any vertebrate.</li>
+      <li onclick="pick('q10',this,true)"><span class="choice-letter">C</span> Octopuses — invertebrates more closely related to clams than to any vertebrate — demonstrate sophisticated problem-solving and tool use despite having evolved their intelligence on a completely separate evolutionary path, suggesting that complex cognition is not the exclusive domain of vertebrates.</li>
+      <li onclick="pick('q10',this,false)"><span class="choice-letter">D</span> The octopus's distributed nervous system, with semi-autonomous arms that can taste and move independently, represents a fundamentally different architecture of intelligence than vertebrate brains.</li>
+    </ul>
+    <div class="explanation" id="q10e"><div class="exp-label">Correct: C</div>Goal: CHALLENGE assumptions about what animals can be intelligent. C does this explicitly: names the assumption (vertebrates = intelligent), shows octopuses are invertebrates (closer to clams), shows they ARE intelligent, and draws the conclusion ("not the exclusive domain of vertebrates"). A = cognitive abilities but doesn't challenge the vertebrate assumption. B = nervous system, no challenge to assumptions. D = architecture of intelligence, doesn't make the comparative claim.</div></div>
+</div>
+
+<div class="q-block" id="q11">
+  <div class="q-header"><span class="q-num">Q11</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Loneliness epidemic: 22% of adults in the US report rarely or never feeling close to others<br>
+• US Surgeon General issued an advisory on loneliness as a public health crisis in 2023<br>
+• Chronic loneliness associated with 26% increased risk of premature death<br>
+• Social isolation equivalent in health risk to smoking 15 cigarettes per day<br>
+• Younger adults (18–22) report higher rates of loneliness than older adults</div>
+    <div class="q-stem">The student wants to convey the severity of the loneliness epidemic by comparing its health impact to a more familiar risk factor. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q11c">
+      <li onclick="pick('q11',this,false)"><span class="choice-letter">A</span> The US Surgeon General declared loneliness a public health crisis in 2023, citing data showing that 22% of American adults rarely feel close to others.</li>
+      <li onclick="pick('q11',this,true)"><span class="choice-letter">B</span> Chronic social isolation carries a health risk equivalent to smoking 15 cigarettes per day and is associated with a 26% increased risk of premature death — figures that reframe loneliness as a medical emergency, not merely a social problem.</li>
+      <li onclick="pick('q11',this,false)"><span class="choice-letter">C</span> Loneliness disproportionately affects younger adults aged 18–22, challenging the assumption that it is primarily a condition of old age.</li>
+      <li onclick="pick('q11',this,false)"><span class="choice-letter">D</span> Over a fifth of American adults report rarely feeling close to others, a figure that rises among younger generations who, despite constant digital connectivity, report the highest rates of loneliness.</li>
+    </ul>
+    <div class="explanation" id="q11e"><div class="exp-label">Correct: B</div>Goal: convey severity BY COMPARING to a familiar risk factor. B uses the cigarette comparison (familiar risk = 15 cigarettes/day) + mortality data (26%), explicitly framing this as redefining loneliness as medical. A = Surgeon General advisory + scale stat, no comparison to familiar risk. C = demographic breakdown, no comparison. D = scale + youth angle, no familiar risk comparison.</div></div>
+</div>
+
+<div class="q-block" id="q12">
+  <div class="q-header"><span class="q-num">Q12</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• James Webb Space Telescope (JWST) launched December 2021<br>
+• Observes in infrared — can see through dust clouds that block visible light<br>
+• Detected galaxies from just 300–400 million years after the Big Bang<br>
+• These early galaxies are larger and more mature than models predicted<br>
+• Astronomers now revising models of how quickly galaxies can form and grow</div>
+    <div class="q-stem">The student wants to explain how JWST has complicated existing scientific understanding, not just confirmed it. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q12c">
+      <li onclick="pick('q12',this,false)"><span class="choice-letter">A</span> The James Webb Space Telescope's infrared capabilities allow it to peer through dust clouds and observe objects that were invisible to previous telescopes, making it a transformative instrument for astronomy.</li>
+      <li onclick="pick('q12',this,false)"><span class="choice-letter">B</span> JWST has detected galaxies from just 300–400 million years after the Big Bang, pushing the observable frontier of the universe further back than ever before.</li>
+      <li onclick="pick('q12',this,true)"><span class="choice-letter">C</span> Rather than simply confirming existing models, JWST has found early galaxies that are far larger and more mature than theorists predicted, forcing astronomers to revise fundamental assumptions about how quickly galaxies can form.</li>
+      <li onclick="pick('q12',this,false)"><span class="choice-letter">D</span> By detecting galaxies from the universe's first 400 million years, JWST has opened a new observational window into cosmic history that will keep astronomers busy for decades.</li>
+    </ul>
+    <div class="explanation" id="q12e"><div class="exp-label">Correct: C</div>Goal: JWST complicated understanding, didn't just confirm it. C directly addresses this: "rather than simply confirming" + found unexpected results (larger/more mature galaxies) + forced revision of models. A = capabilities only. B = detection, framed as confirmation/extension. D = "opened a new window" — framed as advancement, not complication.</div></div>
+</div>
+
+<div class="q-block" id="q13">
+  <div class="q-header"><span class="q-num">Q13</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Mass incarceration in the US: 2.1 million incarcerated — highest rate in the world<br>
+• 70% of formerly incarcerated individuals are re-arrested within 3 years (recidivism)<br>
+• Annual cost per prisoner: approximately $35,000 federal, up to $60,000 in some states<br>
+• Countries with lower incarceration rates (e.g. Norway: 74 per 100,000 vs US: 639 per 100,000) have far lower recidivism rates<br>
+• Norwegian prisons focus on rehabilitation, vocational training, and reintegration</div>
+    <div class="q-stem">The student wants to argue that the US approach to incarceration is both costly and ineffective, using international comparison to support the argument. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q13c">
+      <li onclick="pick('q13',this,false)"><span class="choice-letter">A</span> The United States incarcerates more people per capita than any other country, at a cost of up to $60,000 per prisoner per year in some states.</li>
+      <li onclick="pick('q13',this,false)"><span class="choice-letter">B</span> With 70% of formerly incarcerated individuals re-arrested within three years, the US criminal justice system is failing to reduce reoffending despite enormous public expenditure.</li>
+      <li onclick="pick('q13',this,true)"><span class="choice-letter">C</span> The US spends up to $60,000 annually per prisoner while achieving a 70% recidivism rate — yet Norway, which incarcerates at less than a ninth of the US rate and prioritises rehabilitation, achieves dramatically lower rates of reoffending, suggesting the US model is both expensive and ineffective.</li>
+      <li onclick="pick('q13',this,false)"><span class="choice-letter">D</span> Norway's rehabilitation-focused prison system produces far lower recidivism rates than the US system, demonstrating that investment in reintegration programmes yields better outcomes than punitive incarceration.</li>
+    </ul>
+    <div class="explanation" id="q13e"><div class="exp-label">Correct: C</div>Goal: COSTLY + INEFFECTIVE + international comparison. C: costly ($60k/year), ineffective (70% recidivism), international comparison (Norway — 1/9th the incarceration rate, lower recidivism). A = costly + scale, no recidivism, no comparison. B = ineffective + costly framing, no comparison. D = Norway only — no US cost/recidivism data.</div></div>
+</div>
+
+<div class="q-block" id="q14">
+  <div class="q-header"><span class="q-num">Q14</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• The Turing Test: proposed by Alan Turing in 1950 as a measure of machine intelligence<br>
+• A machine passes if a human judge cannot distinguish it from a human in text conversation<br>
+• Modern large language models can pass basic versions of the Turing Test<br>
+• Critics: passing the Turing Test does not prove genuine understanding — only mimicry<br>
+• Turing himself acknowledged the test was a pragmatic proxy, not a definition of consciousness</div>
+    <div class="q-stem">The student wants to present the Turing Test as a useful but limited measure of intelligence. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q14c">
+      <li onclick="pick('q14',this,false)"><span class="choice-letter">A</span> Alan Turing proposed his famous test in 1950 as a way of sidestepping difficult philosophical questions about machine consciousness by focusing on observable conversational behaviour instead.</li>
+      <li onclick="pick('q14',this,true)"><span class="choice-letter">B</span> While passing the Turing Test — which modern language models now routinely do — demonstrates impressive conversational ability, critics note it may reflect sophisticated mimicry rather than genuine understanding, a limitation Turing himself acknowledged when he called it a pragmatic proxy rather than a definition of intelligence.</li>
+      <li onclick="pick('q14',this,false)"><span class="choice-letter">C</span> Modern large language models can pass basic versions of the Turing Test, raising urgent questions about the nature of machine intelligence and whether AI systems deserve moral consideration.</li>
+      <li onclick="pick('q14',this,false)"><span class="choice-letter">D</span> The Turing Test has been criticised by philosophers and AI researchers who argue that conversational fluency is neither necessary nor sufficient evidence of genuine machine cognition.</li>
+    </ul>
+    <div class="explanation" id="q14e"><div class="exp-label">Correct: B</div>Goal: USEFUL but LIMITED. B: useful (modern LLMs pass it = it measures something real), limited (may be mimicry, not understanding; Turing himself called it a proxy). A = origin/rationale only — useful framing but no limitation. C = what LLMs can do + moral questions — no "limited" framing of the test itself. D = criticism only — limited but no useful framing.</div></div>
+</div>
+
+<div class="q-block" id="q15">
+  <div class="q-header"><span class="q-num">Q15</span><span class="q-tag tag-eoi">Rhetorical Synthesis</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage notes"><b>Notes:</b><br>
+• Women make up 51% of the US population but hold only 28% of seats in Congress<br>
+• Countries with gender quotas for political candidates have significantly higher female representation<br>
+• Critics of quotas: they undermine meritocracy and may seat less qualified candidates<br>
+• Supporters: structural barriers, not lack of qualifications, explain the gap<br>
+• Research: legislatures with more women pass more legislation focused on health, education, and family welfare</div>
+    <div class="q-stem">The student wants to make the case for gender quotas in politics while acknowledging the strongest objection. Which choice best accomplishes this goal?</div>
+    <ul class="choices" id="q15c">
+      <li onclick="pick('q15',this,false)"><span class="choice-letter">A</span> Despite making up the majority of the population, women hold just over a quarter of Congressional seats — a gap that reflects structural barriers rather than any deficit in qualifications.</li>
+      <li onclick="pick('q15',this,false)"><span class="choice-letter">B</span> Countries that have implemented gender quotas have achieved significantly higher female representation in their legislatures and seen legislative agendas shift toward health, education, and family welfare.</li>
+      <li onclick="pick('q15',this,true)"><span class="choice-letter">C</span> Although critics argue that gender quotas compromise meritocracy, the evidence suggests structural barriers — not qualifications — explain women's underrepresentation, and countries with quotas achieve both higher female representation and legislatures that produce measurably different policy outcomes.</li>
+      <li onclick="pick('q15',this,false)"><span class="choice-letter">D</span> The underrepresentation of women in Congress reflects a systemic problem that individual ambition and qualifications alone cannot solve without structural intervention.</li>
+    </ul>
+    <div class="explanation" id="q15e"><div class="exp-label">Correct: C</div>Goal: MAKE THE CASE for quotas + acknowledge STRONGEST OBJECTION. C: acknowledges objection (meritocracy critique), counters it (structural barriers, not qualifications), then supports quotas with evidence (higher representation, better policy outcomes). A = gap + structural barriers, no argument for quotas, no objection. B = benefits of quotas, no objection acknowledged. D = systemic problem, no direct argument for quotas, no objection.</div></div>
+</div>
+
+<!-- ADD/DELETE/REVISE: 6 Qs -->
+<div class="q-block" id="q16">
+  <div class="q-header"><span class="q-num">Q16</span><span class="q-tag tag-eoi">Add / Delete</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The Columbian Exchange — the transfer of plants, animals, diseases, and ideas between the Americas and the Old World following Columbus's 1492 voyage — fundamentally reshaped the global economy, human populations, and ecosystems. <u>Before Columbus's voyage, the Americas were home to an estimated 50–60 million people, and many historians now argue that European diseases wiped out up to 90% of indigenous populations within a century of contact.</u> Among the most consequential transfers were the introduction of American crops such as maize, potatoes, and tomatoes to Europe, which fuelled population growth and transformed cuisines across the world.</div>
+    <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+    <ul class="choices" id="q16c">
+      <li onclick="pick('q16',this,false)"><span class="choice-letter">A</span> Kept, because it provides important demographic context that shows the scale of human populations involved in the Exchange.</li>
+      <li onclick="pick('q16',this,false)"><span class="choice-letter">B</span> Kept, because the disease transmission it describes is itself a key example of the Columbian Exchange mentioned in the first sentence.</li>
+      <li onclick="pick('q16',this,false)"><span class="choice-letter">C</span> Deleted, because the paragraph focuses on the economic and agricultural effects of the Exchange, not on demographic or disease history.</li>
+      <li onclick="pick('q16',this,true)"><span class="choice-letter">D</span> Deleted, because while the disease transmission it describes is part of the Exchange, the paragraph pivots in the final sentence to crops and cuisine — the underlined sentence pulls attention away from that focus without being resolved.</div>
+    </ul>
+    <div class="explanation" id="q16e"><div class="exp-label">Correct: D</div>The underlined sentence introduces disease and demographics — genuinely part of the Exchange (so B is tempting). But the paragraph's trajectory is S1 (broad Exchange) → S3 (crops, cuisine, population growth). The underlined sentence opens a disease thread that is then dropped — it's unresolved. D correctly identifies this structural problem: it's not that the content is wrong, it's that it creates a dangling thread the paragraph doesn't follow. C overstates — disease IS part of the Exchange. B is wrong in reasoning — "part of the Exchange" isn't enough to keep it if it derails the paragraph.</div></div>
+</div>
+
+<div class="q-block" id="q17">
+  <div class="q-header"><span class="q-num">Q17</span><span class="q-tag tag-eoi">Add / Delete</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">Quantum computing exploits the principles of quantum mechanics — superposition and entanglement — to perform calculations that would take classical computers millions of years. <u>Classical computers, which process information in binary bits that are either 0 or 1, have been the dominant computational paradigm since the 1940s and underpin virtually all modern digital technology.</u> The potential applications of quantum computing range from breaking current encryption standards to simulating molecular interactions for drug discovery.</div>
+    <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+    <ul class="choices" id="q17c">
+      <li onclick="pick('q17',this,false)"><span class="choice-letter">A</span> Kept, because readers need background on classical computing to appreciate what makes quantum computing different.</li>
+      <li onclick="pick('q17',this,true)"><span class="choice-letter">B</span> Deleted, because the paragraph is about quantum computing's capabilities and applications, and the detail about classical computing goes beyond what is needed to understand those points.</li>
+      <li onclick="pick('q17',this,false)"><span class="choice-letter">C</span> Kept, because without it, the paragraph provides no context for the "millions of years" claim in the first sentence.</li>
+      <li onclick="pick('q17',this,false)"><span class="choice-letter">D</span> Deleted, because the claim that classical computers have been dominant since the 1940s is historically inaccurate.</div>
+    </ul>
+    <div class="explanation" id="q17e"><div class="exp-label">Correct: B</div>The paragraph focuses on quantum computing's power and applications. The underlined sentence describes classical computing history — not necessary to understand quantum's capabilities or applications. B correctly identifies the mismatch. A overstates — S1 already establishes the contrast ("calculations that would take classical computers millions of years") without needing the full classical computing backgrounder. C is wrong — the "millions of years" comparison is already established in S1. D invents a factual dispute.</div></div>
+</div>
+
+<div class="q-block" id="q18">
+  <div class="q-header"><span class="q-num">Q18</span><span class="q-tag tag-eoi">Placement</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">[A] The term "impostor syndrome" was first described by psychologists Pauline Clance and Suzanne Imes in 1978, based on observations of high-achieving women who, despite objective evidence of success, attributed their accomplishments to luck rather than ability. [B] The phenomenon has since been documented across genders, professions, and cultures. [C] Research suggests it is particularly prevalent among first-generation college students and people from underrepresented groups navigating environments where they feel they do not belong. [D] Organisations that address impostor syndrome through mentorship and transparent feedback have reported improvements in employee retention and performance.</div>
+    <div class="q-stem">Where should the following sentence be placed? "This persistent self-doubt often leads individuals to fear that they will eventually be 'found out' as frauds, regardless of their actual track record."</div>
+    <ul class="choices" id="q18c">
+      <li onclick="pick('q18',this,true)"><span class="choice-letter">A</span> After sentence A</li>
+      <li onclick="pick('q18',this,false)"><span class="choice-letter">B</span> After sentence B</li>
+      <li onclick="pick('q18',this,false)"><span class="choice-letter">C</span> After sentence C</li>
+      <li onclick="pick('q18',this,false)"><span class="choice-letter">D</span> After sentence D</li>
+    </ul>
+    <div class="explanation" id="q18e"><div class="exp-label">Correct: A — After sentence A</div>Sentence A defines impostor syndrome: high achievers attributing success to luck, not ability. The new sentence describes the psychological consequence of that attribution — fear of being "found out." This is the direct experiential result of what A describes, and it flows naturally before B (which notes the broader prevalence). After B — too late; B has already moved to prevalence. After C — the paragraph has moved to specific populations, too far from the definition. After D — irrelevant; D is about organisational responses.</div></div>
+</div>
+
+<div class="q-block" id="q19">
+  <div class="q-header"><span class="q-num">Q19</span><span class="q-tag tag-eoi">Revise</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">The ocean absorbs approximately 30% of the CO₂ released by human activities, slowing the pace of atmospheric warming. <u>This absorption, while beneficial in the short term, causes the ocean to become more acidic, threatening marine ecosystems.</u></div>
+    <div class="q-stem">The student wants to revise the underlined sentence to more precisely explain the chemical mechanism and specify which marine organisms are most at risk. Which revision best accomplishes this?</div>
+    <ul class="choices" id="q19c">
+      <li onclick="pick('q19',this,false)"><span class="choice-letter">A</span> This absorption has negative consequences for marine life, as a more acidic ocean is harmful to many species.</li>
+      <li onclick="pick('q19',this,false)"><span class="choice-letter">B</span> This process acidifies the ocean, with damaging effects on biodiversity that scientists are still working to quantify.</li>
+      <li onclick="pick('q19',this,true)"><span class="choice-letter">C</span> This absorption lowers the ocean's pH as dissolved CO₂ forms carbonic acid, a change that impairs the ability of shell-forming organisms such as oysters, corals, and pteropods to build and maintain their calcium carbonate structures.</li>
+      <li onclick="pick('q19',this,false)"><span class="choice-letter">D</span> Ocean acidification, driven by CO₂ absorption, is now considered one of the most serious threats to marine biodiversity alongside overfishing and pollution.</li>
+    </ul>
+    <div class="explanation" id="q19e"><div class="exp-label">Correct: C</div>Goal: chemical MECHANISM + specific ORGANISMS at risk. C: mechanism (dissolved CO₂ → carbonic acid → lower pH → impairs calcium carbonate structures) + specific organisms (oysters, corals, pteropods). A = vague ("harmful to many species"). B = acidification stated but no mechanism, no specific organisms. D = threat framing + other issues — no mechanism, no specific organisms.</div></div>
+</div>
+
+<div class="q-block" id="q20">
+  <div class="q-header"><span class="q-num">Q20</span><span class="q-tag tag-eoi">Add / Delete</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">The concept of "food miles" — the distance food travels from producer to consumer — gained traction in the 1990s as a proxy for the environmental impact of food choices. <u>Researchers at Lincoln University in New Zealand published a landmark 2006 study arguing that food miles are a poor indicator of environmental impact, since transportation typically accounts for only a small fraction of a food's total carbon footprint compared to production methods.</u> Advocates of local food systems have responded by expanding their arguments to encompass broader benefits such as support for local economies, preservation of agricultural land, and community food security.</div>
+    <div class="q-stem">Should the underlined sentence be kept or deleted?</div>
+    <ul class="choices" id="q20c">
+      <li onclick="pick('q20',this,false)"><span class="choice-letter">A</span> Deleted, because it introduces a counterargument to food miles that the paragraph then fails to resolve.</li>
+      <li onclick="pick('q20',this,false)"><span class="choice-letter">B</span> Kept, because it provides essential scientific context about food miles without which the final sentence would seem unmotivated.</li>
+      <li onclick="pick('q20',this,true)"><span class="choice-letter">C</span> Kept, because the criticism it describes explains why advocates shifted their arguments — the final sentence is the direct response to this challenge.</li>
+      <li onclick="pick('q20',this,false)"><span class="choice-letter">D</span> Deleted, because the Lincoln University study's findings have since been updated by more recent research.</div>
+    </ul>
+    <div class="explanation" id="q20e"><div class="exp-label">Correct: C</div>The paragraph structure is: S1 (food miles concept) → underlined (research critique of food miles) → S3 (advocates expanded their arguments). The underlined sentence explains WHY advocates shifted — it's the cause of S3's response. Without it, S3 (advocates expanding arguments) has no motivation. C correctly identifies this causal bridging role. B is partially right but "essential scientific context" is less precise than "explains why advocates shifted." A is wrong — S3 IS the resolution (advocates adapted).</div></div>
+</div>
+
+<div class="q-block" id="q21">
+  <div class="q-header"><span class="q-num">Q21</span><span class="q-tag tag-eoi">Revise</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Income inequality in the United States has risen substantially since the 1970s. <u>The top 1% of earners now captures approximately 20% of all pre-tax income, compared to around 10% in 1980.</u> Economists debate whether this reflects declining union power, changes in technology and globalisation, or the increasing returns to capital relative to labour.</div>
+    <div class="q-stem">The student wants to revise the underlined sentence to more explicitly connect the data to a tangible human consequence, rather than presenting it as a standalone statistic. Which revision best accomplishes this?</div>
+    <ul class="choices" id="q21c">
+      <li onclick="pick('q21',this,false)"><span class="choice-letter">A</span> This concentration of income has been measured using the Gini coefficient, which has risen steadily in the US over the same period.</li>
+      <li onclick="pick('q21',this,true)"><span class="choice-letter">B</span> This means that the share of national income flowing to the wealthiest 1% has doubled since 1980 — income that might otherwise have supported higher wages, stronger social programmes, or reduced household debt for those further down the distribution.</li>
+      <li onclick="pick('q21',this,false)"><span class="choice-letter">C</span> In 2022, the top 1% of earners took home an average of over $2 million each, while the bottom 50% averaged just $13,000.</li>
+      <li onclick="pick('q21',this,false)"><span class="choice-letter">D</span> The top 1% now holds a greater share of income than at any point since the Great Depression, reversing decades of post-war compression.</div>
+    </ul>
+    <div class="explanation" id="q21e"><div class="exp-label">Correct: B</div>Goal: connect data to tangible HUMAN CONSEQUENCE (not just standalone stat). B: restates the doubling of the 1%'s share, then makes it human — what that income "might otherwise have supported" (wages, social programmes, household debt). This is the consequence framing. A = another statistic (Gini). C = more statistics (averages). D = historical comparison, no human consequence.</div></div>
+</div>
+
+<!-- INFORMATION & IDEAS: 6 Qs -->
+<div class="q-block" id="q22">
+  <div class="q-header"><span class="q-num">Q22</span><span class="q-tag tag-iai">Information &amp; Ideas — Words in Context</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">The policy had been designed with the best of intentions, but its implementation proved <u>quixotic</u> — requiring resources that no government agency could realistically marshal and assuming a level of cross-departmental coordination that had never existed in practice.</div>
+    <div class="q-stem">As used in the passage, "quixotic" most nearly means</div>
+    <ul class="choices" id="q22c">
+      <li onclick="pick('q22',this,false)"><span class="choice-letter">A</span> unpopular</li>
+      <li onclick="pick('q22',this,false)"><span class="choice-letter">B</span> secretive</li>
+      <li onclick="pick('q22',this,true)"><span class="choice-letter">C</span> impractically idealistic</li>
+      <li onclick="pick('q22',this,false)"><span class="choice-letter">D</span> deliberately deceptive</li>
+    </ul>
+    <div class="explanation" id="q22e"><div class="exp-label">Correct: C — impractically idealistic</div>The dash after "quixotic" provides the definition: requiring impossible resources + assuming coordination that never existed. The implementation was well-intentioned but utterly unrealistic. "Quixotic" = foolishly idealistic, chasing impossible goals (from Don Quixote). C captures this. A = unpopular — not suggested. B = secretive — opposite of the open design described. D = deceptive — intentions were said to be good.</div></div>
+</div>
+
+<div class="q-block" id="q23">
+  <div class="q-header"><span class="q-num">Q23</span><span class="q-tag tag-iai">Information &amp; Ideas — Main Idea</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">For most of human history, time was measured locally — each town set its clocks by the position of the sun, meaning that noon in Bristol was several minutes different from noon in London. This mosaic of local times caused no significant problems until the expansion of the railway network in the nineteenth century, when train timetables made the inconsistencies glaringly apparent. The standardisation of time into zones was not a scientific discovery but a social and commercial negotiation — driven by the practical needs of industry and transport rather than any new understanding of time's nature.</div>
+    <div class="q-stem">Which choice best states the main idea of the passage?</div>
+    <ul class="choices" id="q23c">
+      <li onclick="pick('q23',this,false)"><span class="choice-letter">A</span> The invention of the railway network caused numerous social disruptions in nineteenth-century Britain.</li>
+      <li onclick="pick('q23',this,false)"><span class="choice-letter">B</span> Time zones were created to reflect scientific understanding of Earth's rotation relative to the sun.</li>
+      <li onclick="pick('q23',this,true)"><span class="choice-letter">C</span> The standardisation of time was a pragmatic social solution driven by industrial and commercial needs, not a scientific advancement.</li>
+      <li onclick="pick('q23',this,false)"><span class="choice-letter">D</span> Local timekeeping was universal before the nineteenth century and served communities effectively for millennia.</div>
+    </ul>
+    <div class="explanation" id="q23e"><div class="exp-label">Correct: C</div>The passage's closing sentence is the thesis: standardisation was "a social and commercial negotiation — driven by practical needs of industry and transport rather than any new understanding of time's nature." C paraphrases this precisely. A = railways causing disruptions — too narrow (just one element of the story). B directly contradicts the passage (explicitly says NOT a scientific discovery). D = local timekeeping — describes S1 only, not the main point.</div></div>
+</div>
+
+<div class="q-block" id="q24">
+  <div class="q-header"><span class="q-num">Q24</span><span class="q-tag tag-iai">Information &amp; Ideas — Cross-Text</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage"><b>Text 1:</b> The widespread adoption of smartphones has transformed how young people navigate social situations. Rather than developing the tolerance for uncertainty and boredom that builds psychological resilience, adolescents can now immediately reach for a device whenever they feel uncomfortable. This constant availability of distraction may be producing a generation less equipped to cope with the inevitable discomforts of adult life.<br><br>
+    <b>Text 2:</b> Cross-national data from 2005 to 2020 show that the rise in adolescent mental health challenges is steepest in English-speaking countries with the highest smartphone penetration, but the effect is modest in Nordic countries with comparable device ownership. This suggests that smartphone use's mental health impact is mediated by cultural factors — including how schools and families structure device use — rather than device ownership alone.</div>
+    <div class="q-stem">The author of Text 2 would most likely respond to Text 1's argument by pointing out that</div>
+    <ul class="choices" id="q24c">
+      <li onclick="pick('q24',this,false)"><span class="choice-letter">A</span> the psychological effects of smartphone use are more severe than Text 1 acknowledges.</li>
+      <li onclick="pick('q24',this,false)"><span class="choice-letter">B</span> adolescents in earlier generations faced different but equally serious challenges to their psychological resilience.</li>
+      <li onclick="pick('q24',this,true)"><span class="choice-letter">C</span> the impact of smartphones on mental health depends significantly on cultural and structural context, not just device ownership, making Text 1's causal claim too simple.</li>
+      <li onclick="pick('q24',this,false)"><span class="choice-letter">D</span> Nordic countries have lower smartphone ownership than English-speaking countries, explaining their better mental health outcomes.</div>
+    </ul>
+    <div class="explanation" id="q24e"><div class="exp-label">Correct: C</div>T2's argument: mental health impact is mediated by cultural factors (how schools/families structure use), not ownership alone — evidenced by Nordic countries with same ownership but smaller effects. T2 would challenge T1's implicit causal claim (smartphones → psychological harm) by saying context matters more. C captures this. A = T2 actually complicates, not amplifies. B = T2 says nothing about earlier generations. D directly contradicts T2 (Nordic countries have COMPARABLE device ownership).</div></div>
+</div>
+
+<div class="q-block" id="q25">
+  <div class="q-header"><span class="q-num">Q25</span><span class="q-tag tag-iai">Information &amp; Ideas — Inference</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">In the nineteenth century, the dominant theory of disease held that illness was caused by "miasma" — foul-smelling air emanating from rotting organic matter. Physicians who noticed that cholera outbreaks clustered around contaminated water sources struggled to have their findings accepted, because the evidence required rejecting not just a single hypothesis but an entire explanatory framework that shaped how doctors understood the human body and its relationship to the environment. Thomas Kuhn would later describe this pattern — where anomalous evidence accumulates without displacing an established paradigm until a dramatic conceptual shift occurs — as a feature of scientific revolutions generally.</div>
+    <div class="q-stem">Which inference is best supported by the passage?</div>
+    <ul class="choices" id="q25c">
+      <li onclick="pick('q25',this,false)"><span class="choice-letter">A</span> Nineteenth-century physicians who supported miasma theory were motivated primarily by professional self-interest rather than genuine belief in the theory.</li>
+      <li onclick="pick('q25',this,false)"><span class="choice-letter">B</span> The germ theory of disease was accepted immediately once physicians observed the link between contaminated water and cholera outbreaks.</li>
+      <li onclick="pick('q25',this,true)"><span class="choice-letter">C</span> Scientific communities may resist new evidence not because researchers are irrational, but because accepting it requires dismantling a broader conceptual framework, not merely updating a single belief.</li>
+      <li onclick="pick('q25',this,false)"><span class="choice-letter">D</span> Miasma theory was unique in its resistance to revision; most scientific theories are readily updated when contradictory evidence emerges.</div>
+    </ul>
+    <div class="explanation" id="q25e"><div class="exp-label">Correct: C</div>The passage explains why cholera evidence was resisted: it required rejecting "an entire explanatory framework," not just a hypothesis. Kuhn's framework generalises this to scientific revolutions. C correctly infers the structural reason for resistance — it's about the cost of paradigm change, not irrationality. A attributes self-interest — passage doesn't say this. B directly contradicts the passage (findings "struggled to have... accepted"). D says miasma was unique — passage says (via Kuhn) this is a general pattern.</div></div>
+</div>
+
+<div class="q-block" id="q26">
+  <div class="q-header"><span class="q-num">Q26</span><span class="q-tag tag-iai">Information &amp; Ideas — Author's Purpose</span><span class="q-diff">Medium</span></div>
+  <div class="q-body">
+    <div class="passage">We speak of species "going extinct" as though extinction were an event — a single, definable moment when the last individual of a kind disappears. In truth, extinction is almost always a process: a slow erosion of population size, genetic diversity, and habitat range that may take decades or centuries before the final disappearance. By the time we observe the last individual, the species has often been functionally extinct — unable to sustain itself reproductively — for generations. Our language obscures this reality, making extinction feel sudden and therefore unpreventable.</div>
+    <div class="q-stem">The author's primary purpose in this passage is to</div>
+    <ul class="choices" id="q26c">
+      <li onclick="pick('q26',this,false)"><span class="choice-letter">A</span> argue that conservation efforts come too late to save most endangered species.</li>
+      <li onclick="pick('q26',this,false)"><span class="choice-letter">B</span> explain the biological definition of functional extinction and how it differs from total extinction.</li>
+      <li onclick="pick('q26',this,true)"><span class="choice-letter">C</span> suggest that the way we talk about extinction misrepresents its nature and may discourage timely intervention.</li>
+      <li onclick="pick('q26',this,false)"><span class="choice-letter">D</span> trace the historical development of scientific understanding of extinction as a biological process.</div>
+    </ul>
+    <div class="explanation" id="q26e"><div class="exp-label">Correct: C</div>The closing sentence is the thesis: "Our language obscures this reality, making extinction feel sudden and therefore unpreventable." The whole passage builds to this — language (event vs process) creates a misconception that affects how we respond. C captures this: language misrepresents → may discourage timely action. A = conservation efforts too late — not the claim. B = defining functional extinction — supporting detail, not the purpose. D = historical development — no history discussed.</div></div>
+</div>
+
+<div class="q-block" id="q27">
+  <div class="q-header"><span class="q-num">Q27</span><span class="q-tag tag-iai">Information &amp; Ideas — Evidence</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">A nutritional researcher argues that the widespread shift to ultra-processed foods over the past fifty years is the primary driver of rising obesity rates — more significant than changes in physical activity levels, sedentary lifestyles, or individual caloric awareness.</div>
+    <div class="q-stem">Which finding, if true, would most directly support the researcher's argument?</div>
+    <ul class="choices" id="q27c">
+      <li onclick="pick('q27',this,false)"><span class="choice-letter">A</span> Countries with high rates of obesity also tend to have lower average levels of daily physical activity than countries with low obesity rates.</li>
+      <li onclick="pick('q27',this,false)"><span class="choice-letter">B</span> Individuals who track their caloric intake using digital apps consistently consume fewer calories than those who do not.</li>
+      <li onclick="pick('q27',this,true)"><span class="choice-letter">C</span> In a controlled trial, participants who consumed primarily ultra-processed foods ate on average 500 more calories per day than those eating minimally processed foods — even when both groups were given equal access to all food types and were told to eat as much as they wanted.</li>
+      <li onclick="pick('q27',this,false)"><span class="choice-letter">D</span> National obesity rates have risen most steeply in countries that have also seen the largest declines in workplace physical activity over the past fifty years.</div>
+    </ul>
+    <div class="explanation" id="q27e"><div class="exp-label">Correct: C</div>The researcher claims ultra-processed foods are the PRIMARY driver — MORE significant than physical activity, sedentary lifestyles, or caloric awareness. C directly supports this by showing ultra-processed foods independently cause higher caloric intake even when physical access and awareness are controlled. This isolates food processing as the key variable. A = supports physical activity as a driver — competes with the researcher's claim. B = supports caloric awareness as a driver — also competes. D = supports sedentary lifestyle / physical activity — competes.</div></div>
+</div>
+
+<!-- SEC: 3 Qs -->
+<div class="q-block" id="q28">
+  <div class="q-header"><span class="q-num">Q28</span><span class="q-tag tag-sec">Standard English Conventions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">Neither the governor's office nor the state legislators <u>was</u> willing to accept responsibility for the budget shortfall that had accumulated over three consecutive fiscal years.</div>
+    <div class="q-stem">Which choice is correct?</div>
+    <ul class="choices" id="q28c">
+      <li onclick="pick('q28',this,false)"><span class="choice-letter">A</span> No change — "was" is correct</li>
+      <li onclick="pick('q28',this,true)"><span class="choice-letter">B</span> were</li>
+      <li onclick="pick('q28',this,false)"><span class="choice-letter">C</span> has been</li>
+      <li onclick="pick('q28',this,false)"><span class="choice-letter">D</span> are</li>
+    </ul>
+    <div class="explanation" id="q28e"><div class="exp-label">Correct: B — "were"</div>Neither/nor rule: verb agrees with the subject CLOSER to the verb. "The state legislators" (plural) is closer → plural verb "were." A (was) agrees with the farther singular subject — wrong. This is the opposite of Q27 in the 50-paper — here the closer subject is PLURAL.</div></div>
+</div>
+
+<div class="q-block" id="q29">
+  <div class="q-header"><span class="q-num">Q29</span><span class="q-tag tag-sec">Standard English Conventions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">After reviewing hundreds of applications, the hiring committee selected three finalists <u>who's</u> portfolios demonstrated not only technical skill but also original thinking.</div>
+    <div class="q-stem">Which choice correctly completes the sentence?</div>
+    <ul class="choices" id="q29c">
+      <li onclick="pick('q29',this,false)"><span class="choice-letter">A</span> No change — "who's" is correct</li>
+      <li onclick="pick('q29',this,true)"><span class="choice-letter">B</span> whose</li>
+      <li onclick="pick('q29',this,false)"><span class="choice-letter">C</span> whom's</li>
+      <li onclick="pick('q29',this,false)"><span class="choice-letter">D</span> that's</li>
+    </ul>
+    <div class="explanation" id="q29e"><div class="exp-label">Correct: B — "whose"</div>"Who's" = "who is" (contraction). "Whose" = possessive pronoun. The sentence needs possessive: "finalists whose portfolios" (= portfolios belonging to them). Test: replace with "who is" — "finalists who is portfolios" makes no sense → use "whose." A = "who's" would mean "who is portfolios" — nonsense. C = "whom's" doesn't exist. D = "that's" = "that is" — same contraction error.</div></div>
+</div>
+
+<div class="q-block" id="q30">
+  <div class="q-header"><span class="q-num">Q30</span><span class="q-tag tag-sec">Standard English Conventions</span><span class="q-diff">Hard</span></div>
+  <div class="q-body">
+    <div class="passage">The committee's final report — a document that had taken eighteen months to produce and incorporated testimony from over two hundred witnesses <u>—</u> was leaked to the press before its official release, prompting a formal inquiry into the breach.</div>
+    <div class="q-stem">Which choice correctly punctuates the underlined section?</div>
+    <ul class="choices" id="q30c">
+      <li onclick="pick('q30',this,true)"><span class="choice-letter">A</span> No change — the dash is correct</li>
+      <li onclick="pick('q30',this,false)"><span class="choice-letter">B</span> , was leaked</li>
+      <li onclick="pick('q30',this,false)"><span class="choice-letter">C</span> ; was leaked</li>
+      <li onclick="pick('q30',this,false)"><span class="choice-letter">D</span> . Was leaked</li>
+    </ul>
+    <div class="explanation" id="q30e"><div class="exp-label">Correct: A — dash is correct</div>The sentence opens a paired dash after "report" (—). The parenthetical description runs to "two hundred witnesses" and must close with a matching em dash before "was leaked." A correctly keeps the closing dash. B (comma) = mismatched pairing — opened with dash, closed with comma. C (semicolon) = wrong closing punctuation for a mid-sentence parenthetical. D (period) = creates a sentence fragment.</div></div>
+</div>
+
+</div><!-- /questions-wrap -->
+
+<div class="submit-bar">
+  <div class="sub-prog" id="sub-prog">0 of 30 answered</div>
+  <button class="btn-submit" onclick="submitPaper()">Submit &amp; See Results</button>
+</div>
+
+<div class="results-panel" id="res-panel">
+  <div class="results-card">
+    <h2>English Test Complete</h2>
+    <div class="results-big" id="res-score">—</div>
+    <div style="color:var(--ink-muted);font-size:12px;">out of 30 questions</div>
+    <div class="results-grid">
+      <div class="rg-item"><div class="rg-label">Transitions</div><div class="rg-val" id="res-tr">—</div></div>
+      <div class="rg-item"><div class="rg-label">Rhet. Synthesis</div><div class="rg-val" id="res-rs">—</div></div>
+      <div class="rg-item"><div class="rg-label">Add/Del/Revise</div><div class="rg-val" id="res-ad">—</div></div>
+      <div class="rg-item"><div class="rg-label">Info &amp; Ideas</div><div class="rg-val" id="res-ii">—</div></div>
+      <div class="rg-item"><div class="rg-label">SEC</div><div class="rg-val" id="res-sec">—</div></div>
+      <div class="rg-item"><div class="rg-label">Time used</div><div class="rg-val" id="res-time">—</div></div>
+    </div>
+    <div id="res-msg" style="font-size:13px;color:var(--ink-muted);margin:.5rem 0 1rem;"></div>
+    <button class="btn-close" onclick="document.getElementById('res-panel').classList.remove('show')">Review Answers</button>
+  </div>
+</div>
+
+<script>
+var state={}, totalSecs=32*60, remaining=totalSecs, timerInterval, started=false, startTime;
+function startTimer(){
+  if(started)return; started=true; startTime=Date.now();
+  timerInterval=setInterval(function(){
+    remaining--;
+    var m=Math.floor(remaining/60),s=remaining%60;
+    var el=document.getElementById('timer');
+    el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    if(remaining<=300)el.className='warn';
+    if(remaining<=60)el.className='danger';
+    if(remaining<=0){clearInterval(timerInterval);el.textContent='00:00';}
+  },1000);
+}
+function pick(id,el,correct){
+  if(!started)startTimer();
+  if(state[id])return;
+  state[id]={correct:correct};
+  var list=document.getElementById(id+'c');
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  document.getElementById(id+'e').classList.add('show');
+  document.getElementById(id).classList.add(correct?'answered-correct':'answered-wrong');
+  var ans=Object.keys(state).length,cor=Object.keys(state).filter(function(k){return state[k].correct;}).length;
+  document.getElementById('sc').textContent=cor;
+  document.querySelector('.score-live').innerHTML=cor+'/'+ans;
+  document.getElementById('pb').style.width=(ans/30*100)+'%';
+  document.getElementById('sub-prog').textContent=ans+' of 30 answered';
+}
+function ds(qs){var c=0,t=0;qs.forEach(function(n){var k='q'+n;if(state[k]){t++;if(state[k].correct)c++;}});return t?c+'/'+t:'—';}
+function submitPaper(){
+  clearInterval(timerInterval);
+  var ans=Object.keys(state).length,cor=Object.keys(state).filter(function(k){return state[k].correct;}).length;
+  var used=started?Math.floor((Date.now()-startTime)/1000):0;
+  document.getElementById('res-score').textContent=cor+'/'+ans;
+  document.getElementById('res-tr').textContent=ds([1,2,3,4,5,6,7,8]);
+  document.getElementById('res-rs').textContent=ds([9,10,11,12,13,14,15]);
+  document.getElementById('res-ad').textContent=ds([16,17,18,19,20,21]);
+  document.getElementById('res-ii').textContent=ds([22,23,24,25,26,27]);
+  document.getElementById('res-sec').textContent=ds([28,29,30]);
+  var m=Math.floor(used/60),s=used%60;
+  document.getElementById('res-time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  var pct=ans>0?Math.round(cor/ans*100):0;
+  document.getElementById('res-msg').textContent=pct>=90?'🌟 Excellent — 750 is within reach tomorrow.':pct>=77?'✅ Strong performance. Review the misses and trust your preparation.':'📖 Study the explanations for every miss — the patterns matter more than the answers.';
+  document.getElementById('res-panel').classList.add('show');
+}
+</script>
+</body>
+</html>
