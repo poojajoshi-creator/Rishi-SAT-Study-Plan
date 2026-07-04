@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEC Deep Dive: Grammar — August Prep Week 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;--paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;--red:#c0392b;--red-light:#fdf0ee;--amber:#b7540a;--amber-light:#fdf5ec;--blue:#1a4d8a;--blue-light:#eef3fa;--green:#2d6a3f;--green-light:#eef7f1;--purple:#6b3fa0;--purple-light:#f3eefb;--gold:#7a5c00;--gold-light:#fdf8e6;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);font-size:12px;}
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all 0.15s;}
+.lesson-nav a:hover{background:var(--purple);color:white;border-color:var(--purple);}
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-concept{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(107,63,160,0.4);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;color:#ccaaff;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(107,63,160,0.4);color:#ccaaff;}
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.def-box{background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem;margin-bottom:1rem;}
+.def-box.red{border-left:4px solid var(--red);}
+.def-box.blue{border-left:4px solid var(--blue);}
+.def-box.green{border-left:4px solid var(--green);}
+.def-box.amber{border-left:4px solid var(--amber);}
+.def-box.purple{border-left:4px solid var(--purple);}
+.def-box.gold{border-left:4px solid var(--gold);}
+.def-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.def-box.red .def-label{color:var(--red);}
+.def-box.blue .def-label{color:var(--blue);}
+.def-box.green .def-label{color:var(--green);}
+.def-box.amber .def-label{color:var(--amber);}
+.def-box.purple .def-label{color:var(--purple);}
+.def-box.gold .def-label{color:var(--gold);}
+.def-body{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+.def-body b{color:var(--ink);font-weight:500;}
+.def-body p{margin-bottom:8px;}
+.def-body p:last-child{margin-bottom:0;}
+.rule-card{background:white;border:0.5px solid var(--rule);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.25rem;}
+.rule-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem;}
+.rule-badge{background:var(--purple);color:white;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.rule-name{font-size:16px;font-weight:500;color:var(--ink);line-height:1.3;}
+.rule-sub{font-size:12px;color:var(--ink-muted);margin-top:2px;}
+.rule-body{font-size:13.5px;color:var(--ink-soft);line-height:1.75;margin-bottom:1rem;}
+.rule-body b{color:var(--ink);font-weight:500;}
+.ex-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:1rem;}
+.ex-row{background:var(--cream);border-radius:8px;padding:10px 14px;font-size:13.5px;line-height:1.6;}
+.ex-row.wrong{background:var(--red-light);border-left:3px solid var(--red);}
+.ex-row.right{background:var(--green-light);border-left:3px solid var(--green);}
+.ex-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.ex-row.wrong .ex-label{color:var(--red);}
+.ex-row.right .ex-label{color:var(--green);}
+.ex-text{color:var(--ink);}
+.ex-text .mark{background:#fff3b0;border-radius:3px;padding:0 3px;}
+.ex-why{font-size:12px;color:var(--ink-muted);margin-top:4px;font-style:italic;}
+.trap-box{background:var(--red-light);border:0.5px solid #e8a090;border-radius:10px;padding:1rem 1.25rem;margin-top:10px;}
+.trap-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+.trap-body{font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.trap-body b{color:var(--ink);font-weight:500;}
+.insight{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:10px;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.insight b{color:var(--gold);font-weight:500;}
+.practice-q{background:var(--cream);border-radius:10px;padding:1.25rem 1.5rem;margin:12px 0;}
+.q-num-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:8px;}
+.q-stem{font-size:14px;color:var(--ink);font-weight:500;margin-bottom:12px;line-height:1.6;}
+.q-passage{background:white;border:0.5px solid var(--rule);border-radius:8px;padding:12px 14px;font-size:13.5px;color:var(--ink-soft);line-height:1.8;margin-bottom:12px;}
+.q-choices{list-style:none;padding:0;}
+.q-choices li{font-size:13.5px;color:var(--ink-soft);padding:7px 12px;border-radius:6px;margin-bottom:5px;border:0.5px solid var(--rule);background:white;cursor:pointer;transition:background 0.12s;display:flex;gap:8px;align-items:flex-start;}
+.q-choices li:hover:not(.correct):not(.wrong){background:var(--purple-light);}
+.q-choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.q-choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.choice-ltr{font-weight:600;min-width:14px;flex-shrink:0;}
+.answer-reveal{display:none;margin-top:10px;padding:10px 14px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green);line-height:1.65;}
+.answer-reveal.show{display:block;}
+.summary-card{background:var(--ink);color:white;border-radius:14px;padding:2rem 2.5rem;margin-top:2rem;}
+.summary-card h3{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;margin-bottom:1rem;}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sg-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 12px;}
+.sg-rule{font-size:12px;font-weight:500;color:rgba(255,255,255,0.9);margin-bottom:3px;}
+.sg-pattern{font-size:11.5px;color:rgba(255,255,255,0.5);line-height:1.5;}
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0 0;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.footer-link{font-size:13px;color:var(--blue);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.footer-link:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="index.html">← Portal</a>
+  <span>/</span>
+  <a href="august_overview.html">August Prep</a>
+  <span>/</span>
+  <a href="aug_sec_punctuation.html">SEC Punctuation</a>
+  <span>/</span>
+  <a style="color:rgba(255,255,255,0.8);">SEC Grammar</a>
+</div>
+
+<nav class="lesson-nav">
+  <a href="#sva">Subject-Verb Agreement</a>
+  <a href="#tense">Verb Tense</a>
+  <a href="#pronoun">Pronoun Agreement</a>
+  <a href="#modifier">Modifiers</a>
+  <a href="#parallel">Parallelism</a>
+  <a href="#concise">Conciseness</a>
+  <a href="#practice">Practice</a>
+  <a href="#summary">Summary</a>
+</nav>
+
+<div class="hdr">
+  <div class="hdr-concept">
+    <span class="hdr-num">AUG · Week 2</span>
+    <span class="hdr-domain">Standard English Conventions</span>
+  </div>
+  <h1 class="hdr-title">Grammar<br><em>Deep Dive</em></h1>
+  <p class="hdr-tagline">Six grammar rules. Every pattern the SAT tests. The goal is automatic recognition — see the sentence structure, know the rule, pick the answer in under 30 seconds.</p>
+  <div class="hdr-chips">
+    <span class="chip hi">Week 2 Priority</span>
+    <span class="chip">Subject-Verb Agreement</span>
+    <span class="chip">Verb Tense</span>
+    <span class="chip">Pronoun Agreement</span>
+    <span class="chip">Modifiers</span>
+    <span class="chip">Parallelism</span>
+    <span class="chip">Conciseness</span>
+    <span class="chip">10 Practice Questions</span>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- RULE 1: SUBJECT-VERB AGREEMENT -->
+<section class="section" id="sva">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:#f3eefb;">1</div>
+    <h2 class="section-title">Subject-Verb Agreement</h2>
+  </div>
+
+  <div class="def-box purple">
+    <div class="def-label">The Core Rule</div>
+    <div class="def-body">
+      <p>A singular subject takes a singular verb. A plural subject takes a plural verb. Simple in theory — the SAT makes it hard by <b>hiding the subject behind long phrases.</b></p>
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-header">
+      <div class="rule-badge">Pattern 1</div>
+      <div><div class="rule-name">Prepositional phrases between subject and verb</div><div class="rule-sub">Cross out everything between commas or between the subject and verb</div></div>
+    </div>
+    <div class="rule-body">The subject of the verb is never inside a prepositional phrase. Strip the phrase away and match the verb to what's left.</div>
+    <div class="ex-grid">
+      <div class="ex-row wrong">
+        <div class="ex-label">Wrong</div>
+        <div class="ex-text">The impact of rising sea levels on coastal communities <span class="mark">are</span> becoming increasingly severe.</div>
+        <div class="ex-why">Strip "of rising sea levels on coastal communities" → subject = "The impact" (singular) → needs "is"</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Correct</div>
+        <div class="ex-text">The impact of rising sea levels on coastal communities <span class="mark">is</span> becoming increasingly severe.</div>
+      </div>
+    </div>
+    <div class="insight"><b>The strip test:</b> Cross out everything between the subject and the verb. What's left? That's your subject. Match the verb to it.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-header">
+      <div class="rule-badge">Pattern 2</div>
+      <div><div class="rule-name">Neither/nor · Either/or — the closer subject wins</div></div>
+    </div>
+    <div class="rule-body">With "neither X nor Y" or "either X or Y," the verb agrees with the subject <b>closer</b> to the verb.</div>
+    <div class="ex-grid">
+      <div class="ex-row right">
+        <div class="ex-label">Singular closer subject → singular verb</div>
+        <div class="ex-text">Neither the senior partners nor the managing director <span class="mark">was</span> informed in advance.</div>
+        <div class="ex-why">"The managing director" (singular) is closer → singular verb "was"</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Plural closer subject → plural verb</div>
+        <div class="ex-text">Neither the director nor the senior partners <span class="mark">were</span> informed in advance.</div>
+        <div class="ex-why">"The senior partners" (plural) is closer → plural verb "were"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-header">
+      <div class="rule-badge">Pattern 3</div>
+      <div><div class="rule-name">Collective nouns and indefinite pronouns</div></div>
+    </div>
+    <div class="rule-body">
+      <b>Collective nouns</b> (team, committee, government, group, audience) are singular on the SAT — they take singular verbs.<br><br>
+      <b>Indefinite pronouns:</b> always singular — each, every, everyone, everybody, someone, anyone, nobody, either, neither, one. Always plural — both, few, many, several.
+    </div>
+    <div class="ex-grid">
+      <div class="ex-row right">
+        <div class="ex-label">Collective noun — singular</div>
+        <div class="ex-text">The committee <span class="mark">has</span> reached a unanimous decision.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Indefinite pronoun — singular</div>
+        <div class="ex-text">Each of the students <span class="mark">was</span> required to submit an individual report.</div>
+        <div class="ex-why">"Each" is singular even though "students" follows. Strip "of the students" → subject = "Each" → singular.</div>
+      </div>
+    </div>
+    <div class="trap-box">
+      <div class="trap-label">Inverted sentences — verb comes before subject</div>
+      <div class="trap-body">Sometimes the SAT inverts the sentence so the verb comes first. Find the actual subject before deciding.<br><br>
+      ❌ "There <b>is</b> several reasons for the delay." → "Reasons" is the subject (plural) → ✅ "There <b>are</b> several reasons."</div>
+    </div>
+  </div>
+</section>
+
+<!-- RULE 2: VERB TENSE -->
+<section class="section" id="tense">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:#f3eefb;">2</div>
+    <h2 class="section-title">Verb Tense &amp; Consistency</h2>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-header">
+      <div class="rule-badge">The Core Rule</div>
+      <div><div class="rule-name">Tense must be consistent within a passage unless the timeline genuinely changes</div></div>
+    </div>
+    <div class="rule-body">
+      The SAT tests whether you can maintain consistent tense throughout a passage. The wrong answers introduce a tense shift that isn't justified by the meaning.
+    </div>
+    <div class="ex-grid">
+      <div class="ex-row wrong">
+        <div class="ex-label">Wrong — unjustified tense shift</div>
+        <div class="ex-text">The scientists collected samples from the riverbed, analysed them in the laboratory, and <span class="mark">are publishing</span> their findings in a peer-reviewed journal.</div>
+        <div class="ex-why">First two verbs are past tense; "are publishing" shifts to present progressive without reason.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Correct — consistent past tense</div>
+        <div class="ex-text">The scientists collected samples from the riverbed, analysed them in the laboratory, and <span class="mark">published</span> their findings in a peer-reviewed journal.</div>
+      </div>
+    </div>
+
+    <div class="def-box blue" style="margin-top:10px;">
+      <div class="def-label">When tense shifts ARE correct</div>
+      <div class="def-body">
+        <p>A tense shift is correct when the passage is genuinely talking about two different time periods.</p>
+        <p>✅ "Darwin <b>proposed</b> his theory in 1859, and scientists <b>continue</b> to build on his work today." — Past for Darwin, present for current scientists. Both are correct.</p>
+        <p><b>The SAT test:</b> Does the passage give you a time-period signal (then, now, currently, today, at the time, since)? If yes, the shift may be justified. If no, keep tense consistent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULE 3: PRONOUN AGREEMENT -->
+<section class="section" id="pronoun">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:#f3eefb;">3</div>
+    <h2 class="section-title">Pronoun Agreement &amp; Reference</h2>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-header">
+      <div class="rule-badge">The Core Rule</div>
+      <div><div class="rule-name">A pronoun must agree with its antecedent in number and be unambiguous</div></div>
+    </div>
+    <div class="rule-body">
+      Two failure modes: <b>agreement</b> (the pronoun doesn't match in singular/plural) and <b>ambiguous reference</b> (it's not clear which noun the pronoun refers to).
+    </div>
+
+    <div class="ex-grid">
+      <div class="ex-row wrong">
+        <div class="ex-label">Wrong — agreement error</div>
+        <div class="ex-text">Each student must submit <span class="mark">their</span> essay before midnight.</div>
+        <div class="ex-why">On the SAT (formal register), "each" is singular → "his or her" or rewrite to avoid. However, note that the SAT now accepts "their" for singular in some contexts — look at the answer choices to determine what the test expects.</div>
+      </div>
+      <div class="ex-row wrong">
+        <div class="ex-label">Wrong — ambiguous reference</div>
+        <div class="ex-text">When the scientist met with the director, <span class="mark">she</span> explained the methodology in detail.</div>
+        <div class="ex-why">"She" could refer to either person. The sentence must be rewritten to clarify.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Correct — unambiguous reference</div>
+        <div class="ex-text">When the scientist met with the director, <span class="mark">the scientist</span> explained the methodology in detail.</div>
+      </div>
+    </div>
+
+    <div class="def-box purple">
+      <div class="def-label">The collective noun trap with pronouns</div>
+      <div class="def-body">
+        <p>Collective nouns (team, company, government, committee) are singular → use "it," not "they."</p>
+        <p>❌ "The committee published <b>their</b> findings." → ✅ "The committee published <b>its</b> findings."</p>
+        <p>❌ "The company announced <b>they</b> would expand." → ✅ "The company announced <b>it</b> would expand."</p>
+      </div>
+    </div>
+
+    <div class="trap-box">
+      <div class="trap-label">The "this / it / they" vagueness trap</div>
+      <div class="trap-body">The SAT often tests whether a pronoun has a clear antecedent. If "this," "it," or "they" could refer to more than one noun in the previous sentence, the pronoun is wrong — the answer replaces it with the specific noun.<br><br>
+      ❌ "Researchers studied both the compound and the catalyst; <b>it</b> proved unstable." → Which was unstable?<br>
+      ✅ "Researchers studied both compounds; <b>the catalyst</b> proved unstable."</div>
+    </div>
+  </div>
+</section>
+
+<!-- RULE 4: MODIFIERS -->
+<section class="section" id="modifier">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:#f3eefb;">4</div>
+    <h2 class="section-title">Dangling &amp; Misplaced Modifiers</h2>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-header">
+      <div class="rule-badge">The Core Rule</div>
+      <div><div class="rule-name">A modifier must be placed next to — and clearly refer to — the word it modifies</div></div>
+    </div>
+    <div class="rule-body">
+      A <b>dangling modifier</b> has no logical subject to attach to. A <b>misplaced modifier</b> is too far from the word it modifies and accidentally describes the wrong noun. Both are fixed the same way: make the modified noun the subject of the main clause.
+    </div>
+    <div class="ex-grid">
+      <div class="ex-row wrong">
+        <div class="ex-label">Dangling modifier — Wrong</div>
+        <div class="ex-text"><span class="mark">Having studied the data carefully,</span> the conclusion was obvious.</div>
+        <div class="ex-why">"Having studied the data" — who studied it? Not "the conclusion." The modifier dangles.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Fixed — make the doer the subject</div>
+        <div class="ex-text"><span class="mark">Having studied the data carefully,</span> <b>the researchers</b> found the conclusion obvious.</div>
+      </div>
+      <div class="ex-row wrong">
+        <div class="ex-label">Possessive noun trap — Wrong</div>
+        <div class="ex-text"><span class="mark">Having conducted fieldwork on three continents,</span> the anthropologist's conclusions challenged prevailing theories.</div>
+        <div class="ex-why">"The anthropologist's conclusions" is a possessive phrase — it's not the anthropologist. The modifier still dangles.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Fixed</div>
+        <div class="ex-text"><span class="mark">Having conducted fieldwork on three continents,</span> <b>the anthropologist</b> challenged prevailing theories with her conclusions.</div>
+      </div>
+    </div>
+    <div class="insight"><b>The modifier test:</b> Find the opening participial phrase (verb-ing / verb-ed at the start of a sentence). Ask: who or what is doing the action in that phrase? That noun must be the subject of the main clause.</div>
+    <div class="trap-box">
+      <div class="trap-label">The possessive trap — the most common modifier error on the SAT</div>
+      <div class="trap-body">"The <b>scientist's</b> discovery was remarkable, having spent years in the field." → "The scientist's discovery" is a possessive phrase, not the scientist. The modifier dangles. The fix: "Having spent years in the field, <b>the scientist</b> made a remarkable discovery."</div>
+    </div>
+  </div>
+</section>
+
+<!-- RULE 5: PARALLELISM -->
+<section class="section" id="parallel">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:#f3eefb;">5</div>
+    <h2 class="section-title">Parallelism</h2>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-header">
+      <div class="rule-badge">The Core Rule</div>
+      <div><div class="rule-name">Items in a list or comparison must have the same grammatical form</div></div>
+    </div>
+    <div class="rule-body">
+      When two or more items are connected by "and," "or," "but," or appear in a list, they must all be the same part of speech and the same grammatical structure. This applies to nouns, verbs, phrases, and clauses.
+    </div>
+
+    <div class="ex-grid">
+      <div class="ex-row wrong">
+        <div class="ex-label">Wrong — mixed forms in a list</div>
+        <div class="ex-text">The programme requires students to <span class="mark">analyse</span> primary sources, <span class="mark">constructing</span> evidence-based arguments, and <span class="mark">the evaluation of</span> competing historical interpretations.</div>
+        <div class="ex-why">Three forms: bare infinitive / gerund / noun phrase — not parallel.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Correct — all bare infinitives</div>
+        <div class="ex-text">The programme requires students to <span class="mark">analyse</span> primary sources, <span class="mark">construct</span> evidence-based arguments, and <span class="mark">evaluate</span> competing historical interpretations.</div>
+      </div>
+    </div>
+
+    <div class="def-box purple">
+      <div class="def-label">The shared "to" rule</div>
+      <div class="def-body">
+        <p>When a list of infinitives shares a single "to," don't repeat "to" for subsequent items — and don't switch to a gerund either.</p>
+        <p>✅ "She hopes to travel, work, and <b>study</b> abroad." (not "to study" — "to" is already shared)</p>
+        <p>✅ "She hopes to travel, to work, and <b>to study</b> abroad." (all explicit "to" = also correct)</p>
+        <p>❌ "She hopes to travel, work, and <b>studying</b> abroad." (gerund breaks the pattern)</p>
+      </div>
+    </div>
+
+    <div class="ex-grid">
+      <div class="ex-row wrong">
+        <div class="ex-label">Wrong — comparison not parallel</div>
+        <div class="ex-text">The results of the new study were more significant than <span class="mark">the old study.</span></div>
+        <div class="ex-why">Comparing "results" (noun) to "the old study" (noun) — wrong. Must compare results to results.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Correct</div>
+        <div class="ex-text">The results of the new study were more significant than <span class="mark">those of the old study.</span></div>
+      </div>
+    </div>
+
+    <div class="trap-box">
+      <div class="trap-label">Correlative conjunctions — must be parallel</div>
+      <div class="trap-body">
+        "Both X and Y" / "not only X but also Y" / "either X or Y" / "neither X nor Y" — both sides must be grammatically parallel.<br><br>
+        ❌ "The policy was <b>both</b> costly <b>and</b> it was controversial." → ✅ "The policy was <b>both</b> costly <b>and</b> controversial." (adj + adj)<br><br>
+        ❌ "<b>Not only</b> did she win the award, <b>but also</b> recognition." → ✅ "<b>Not only</b> did she win the award, <b>but</b> she <b>also</b> gained recognition."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULE 6: CONCISENESS -->
+<section class="section" id="concise">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:#f3eefb;">6</div>
+    <h2 class="section-title">Conciseness &amp; Redundancy</h2>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-header">
+      <div class="rule-badge">The Core Rule</div>
+      <div><div class="rule-name">The correct answer is always the shortest option that preserves the full meaning</div></div>
+    </div>
+    <div class="rule-body">
+      On conciseness questions, the SAT asks you to identify redundant, wordy, or repetitive phrasing. The correct answer conveys exactly the same meaning in fewer words — without losing information.
+    </div>
+
+    <div class="def-box green">
+      <div class="def-label">Common redundancy patterns the SAT tests</div>
+      <div class="def-body">
+        <p><b>"The reason... is because"</b> → redundant. "The reason... is that" OR just "because"</p>
+        <p><b>"End result"</b> → "result" (results are always at the end)</p>
+        <p><b>"Past history"</b> → "history" (history is always in the past)</p>
+        <p><b>"Future plans"</b> → "plans" (plans are always for the future)</p>
+        <p><b>"In order to"</b> → "to"</p>
+        <p><b>"Due to the fact that"</b> → "because"</p>
+        <p><b>"At this point in time"</b> → "now"</p>
+        <p><b>"In the event that"</b> → "if"</p>
+        <p><b>"Adjective + in nature"</b> → just the adjective ("It was harmful in nature" → "It was harmful")</p>
+        <p><b>"Prior to"</b> → "before"</p>
+      </div>
+    </div>
+
+    <div class="ex-grid">
+      <div class="ex-row wrong">
+        <div class="ex-label">Wordy — Wrong</div>
+        <div class="ex-text">The reason the experiment failed was <span class="mark">because of the fact that</span> the temperature controls malfunctioned.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Concise — Correct</div>
+        <div class="ex-text">The experiment failed <span class="mark">because</span> the temperature controls malfunctioned.</div>
+      </div>
+      <div class="ex-row wrong">
+        <div class="ex-label">Redundant — Wrong</div>
+        <div class="ex-text">The committee's <span class="mark">final end conclusion</span> was that the policy required reform.</div>
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Concise — Correct</div>
+        <div class="ex-text">The committee's <span class="mark">conclusion</span> was that the policy required reform.</div>
+      </div>
+    </div>
+
+    <div class="insight"><b>The conciseness test:</b> If you can delete a word or phrase without changing the meaning, it should be deleted. The correct answer on these questions is almost always the shortest option that makes grammatical sense.</div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section class="section" id="practice">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:#eef7f1;">✏️</div>
+    <h2 class="section-title">Practice — 10 Questions</h2>
+  </div>
+
+  <div class="practice-q" id="pq1">
+    <div class="q-num-label">Question 1 — Subject-Verb Agreement</div>
+    <div class="q-passage">The government's approach to regulating artificial intelligence, particularly in areas involving autonomous decision-making and data privacy, _______ been criticised by both industry leaders and civil liberties advocates.</div>
+    <div class="q-stem">Which choice correctly completes the sentence?</div>
+    <ul class="q-choices" id="pq1c">
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">A</span> have</li>
+      <li onclick="pick('pq1',this,true)"><span class="choice-ltr">B</span> has</li>
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">C</span> were</li>
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">D</span> are</li>
+    </ul>
+    <div class="answer-reveal" id="pq1r"><b>Correct: B — "has."</b> Strip the prepositional phrases: "...in areas involving autonomous decision-making and data privacy" → subject = "The government's approach" (singular). Singular subject → singular verb "has been." A ("have") and D ("are") are plural. C ("were") is past tense, wrong here.</div>
+  </div>
+
+  <div class="practice-q" id="pq2">
+    <div class="q-num-label">Question 2 — Neither/Nor Agreement</div>
+    <div class="q-passage">Neither the lead researcher nor the junior scientists _______ informed about the change in protocol before the trial began.</div>
+    <div class="q-stem">Which choice correctly completes the sentence?</div>
+    <ul class="q-choices" id="pq2c">
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">A</span> was</li>
+      <li onclick="pick('pq2',this,true)"><span class="choice-ltr">B</span> were</li>
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">C</span> has been</li>
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">D</span> is</li>
+    </ul>
+    <div class="answer-reveal" id="pq2r"><b>Correct: B — "were."</b> Neither/nor: verb agrees with the closer subject. "The junior scientists" (plural) is closer to the verb → plural "were." A ("was") would be correct if the singular "lead researcher" were closer.</div>
+  </div>
+
+  <div class="practice-q" id="pq3">
+    <div class="q-num-label">Question 3 — Verb Tense</div>
+    <div class="q-passage">Over the past decade, researchers identified a strong correlation between sleep deprivation and cognitive decline, conducted numerous clinical trials, and _______ their findings in several landmark studies.</div>
+    <div class="q-stem">Which choice correctly maintains tense consistency?</div>
+    <ul class="q-choices" id="pq3c">
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">A</span> are publishing</li>
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">B</span> will publish</li>
+      <li onclick="pick('pq3',this,true)"><span class="choice-ltr">C</span> published</li>
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">D</span> have published</li>
+    </ul>
+    <div class="answer-reveal" id="pq3r"><b>Correct: C — "published."</b> The list uses simple past tense: "identified... conducted... published." A (present progressive), B (future), and D (present perfect) all break the established past tense pattern without justification.</div>
+  </div>
+
+  <div class="practice-q" id="pq4">
+    <div class="q-num-label">Question 4 — Pronoun Agreement</div>
+    <div class="q-passage">The advisory board reviewed the proposal and concluded that _______ recommendations were too vague to implement effectively.</div>
+    <div class="q-stem">Which choice correctly completes the sentence?</div>
+    <ul class="q-choices" id="pq4c">
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">A</span> their</li>
+      <li onclick="pick('pq4',this,true)"><span class="choice-ltr">B</span> its</li>
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">C</span> they're</li>
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">D</span> there</li>
+    </ul>
+    <div class="answer-reveal" id="pq4r"><b>Correct: B — "its."</b> "The advisory board" is a collective noun — singular on the SAT → singular pronoun "its." A ("their") is plural. C ("they're") = "they are" — wrong form. D ("there") = location word, wrong entirely.</div>
+  </div>
+
+  <div class="practice-q" id="pq5">
+    <div class="q-num-label">Question 5 — Dangling Modifier</div>
+    <div class="q-passage">Having spent three years studying migratory patterns in the Arctic, _______ were considered groundbreaking by the scientific community.</div>
+    <div class="q-stem">Which choice correctly fixes the modifier error?</div>
+    <ul class="q-choices" id="pq5c">
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">A</span> the biologist's findings were considered groundbreaking by the scientific community.</li>
+      <li onclick="pick('pq5',this,true)"><span class="choice-ltr">B</span> the biologist published findings that were considered groundbreaking by the scientific community.</li>
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">C</span> the findings of the biologist were considered groundbreaking by the scientific community.</li>
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">D</span> the scientific community considered the biologist's findings groundbreaking.</li>
+    </ul>
+    <div class="answer-reveal" id="pq5r"><b>Correct: B.</b> "Having spent three years studying..." — who spent the time? The biologist, not the findings. B makes "the biologist" the subject immediately after the modifier. A and C use possessive "biologist's" — still a dangling modifier (the findings didn't do the studying). D puts "the scientific community" as subject — wrong, they didn't do the studying either.</div>
+  </div>
+
+  <div class="practice-q" id="pq6">
+    <div class="q-num-label">Question 6 — Parallelism</div>
+    <div class="q-passage">The foundation's annual report highlighted three priorities: expanding access to clean water in rural communities, reducing child mortality rates, and _______ sustainable agricultural practices.</div>
+    <div class="q-stem">Which choice correctly completes the parallel list?</div>
+    <ul class="q-choices" id="pq6c">
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">A</span> the promotion of</li>
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">B</span> to promote</li>
+      <li onclick="pick('pq6',this,true)"><span class="choice-ltr">C</span> promoting</li>
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">D</span> it promotes</li>
+    </ul>
+    <div class="answer-reveal" id="pq6r"><b>Correct: C — "promoting."</b> The list pattern is gerunds: "expanding... reducing... promoting." A (noun phrase) and B (infinitive) break the gerund pattern. D (clause) is entirely wrong in a list of gerunds.</div>
+  </div>
+
+  <div class="practice-q" id="pq7">
+    <div class="q-num-label">Question 7 — Parallelism (comparisons)</div>
+    <div class="q-passage">The productivity gains reported in the new study were considerably larger than _______ in previous research.</div>
+    <div class="q-stem">Which choice correctly completes the sentence?</div>
+    <ul class="q-choices" id="pq7c">
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">A</span> the previous research</li>
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">B</span> what previous research found</li>
+      <li onclick="pick('pq7',this,true)"><span class="choice-ltr">C</span> those reported</li>
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">D</span> the gains that researchers previously found in previous research</li>
+    </ul>
+    <div class="answer-reveal" id="pq7r"><b>Correct: C — "those reported."</b> The comparison must be parallel: "productivity gains" compared to "those [gains] reported in previous research." "Those" refers back to gains. A compares gains to the research itself (wrong). B creates a wordy clause. D is correct in meaning but redundant ("previously" + "previous research").</div>
+  </div>
+
+  <div class="practice-q" id="pq8">
+    <div class="q-num-label">Question 8 — Conciseness</div>
+    <div class="q-passage">The reason the clinical trial was suspended was _______ the primary investigator had failed to disclose a significant conflict of interest to the oversight committee.</div>
+    <div class="q-stem">Which choice most concisely completes the sentence?</div>
+    <ul class="q-choices" id="pq8c">
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">A</span> because of the fact that</li>
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">B</span> due to the fact that</span></li>
+      <li onclick="pick('pq8',this,true)"><span class="choice-ltr">C</span> that</li>
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">D</span> on account of the fact that</li>
+    </ul>
+    <div class="answer-reveal" id="pq8r"><b>Correct: C — "that."</b> "The reason... was that [clause]" is the correct and concise structure. "The reason... was because" is redundant. A, B, and D are all wordy alternatives to "that." The SAT consistently rewards the shortest construction that is grammatically correct.</div>
+  </div>
+
+  <div class="practice-q" id="pq9">
+    <div class="q-num-label">Question 9 — Pronoun Reference (ambiguous)</div>
+    <div class="q-passage">When the psychologist interviewed the patient, she described her symptoms in unusually precise detail.</div>
+    <div class="q-stem">Which revision best clarifies the ambiguous pronoun reference?</div>
+    <ul class="q-choices" id="pq9c">
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">A</span> No change — the sentence is clear.</li>
+      <li onclick="pick('pq9',this,true)"><span class="choice-ltr">B</span> When the psychologist interviewed the patient, the patient described her symptoms in unusually precise detail.</li>
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">C</span> When the psychologist interviewed the patient, they described the symptoms in unusually precise detail.</li>
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">D</span> When interviewed by the psychologist, she described her symptoms in unusually precise detail.</li>
+    </ul>
+    <div class="answer-reveal" id="pq9r"><b>Correct: B.</b> Original "she" is ambiguous — could be either woman. B replaces "she" with "the patient," clarifying who described the symptoms. A is wrong — the reference IS ambiguous. C uses "they" for two singular people — wrong. D still uses "she" — still ambiguous.</div>
+  </div>
+
+  <div class="practice-q" id="pq10">
+    <div class="q-num-label">Question 10 — Mixed (hard)</div>
+    <div class="q-passage">The board of directors, after reviewing the quarterly earnings report and consulting with its legal and financial advisers, _______ that the proposed merger should proceed to the next stage of due diligence.</div>
+    <div class="q-stem">Which choice correctly completes the sentence?</div>
+    <ul class="q-choices" id="pq10c">
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">A</span> determined and came to the conclusion</li>
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">B</span> have determined</li>
+      <li onclick="pick('pq10',this,true)"><span class="choice-ltr">C</span> determined</li>
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">D</span> were determining</li>
+    </ul>
+    <div class="answer-reveal" id="pq10r"><b>Correct: C — "determined."</b> Three issues: (1) Subject = "The board of directors" (collective noun → singular). (2) Conciseness: "determined and came to the conclusion" is redundant — determined means exactly that. (3) Tense: simple past "determined" fits a completed board decision. A is redundant. B ("have determined") is present perfect — shifts tense unnecessarily. D ("were determining") is past progressive — implies the process was ongoing, not a completed decision.</div>
+  </div>
+
+</section>
+
+<!-- SUMMARY -->
+<section class="section" id="summary">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:#f3eefb;">📋</div>
+    <h2 class="section-title">The 6-Rule Grammar Cheat Card</h2>
+  </div>
+  <div class="summary-card">
+    <h3>Every grammar rule the SAT tests</h3>
+    <div class="summary-grid">
+      <div class="sg-item">
+        <div class="sg-rule">1. Subject-Verb Agreement</div>
+        <div class="sg-pattern">Strip prepositional phrases. Neither/nor → closer subject wins. Collective nouns → singular. "Each/every/either" → singular.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">2. Verb Tense</div>
+        <div class="sg-pattern">Stay consistent unless a genuine time-period shift. Look for temporal signals (now, then, today, at the time).</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">3. Pronoun Agreement</div>
+        <div class="sg-pattern">Pronoun = antecedent in number. Collective nouns → "it/its" not "they/their." Vague "this/it/they" → replace with the specific noun.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">4. Modifiers</div>
+        <div class="sg-pattern">Opening phrase doer = subject of main clause. Possessive nouns ≠ the person. Test: can the phrase logically describe the subject?</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">5. Parallelism</div>
+        <div class="sg-pattern">Lists: all same form (gerund/infinitive/noun). Comparisons: compare like to like. Correlatives (both/and, not only/but also) = both sides parallel.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">6. Conciseness</div>
+        <div class="sg-pattern">Shortest correct answer wins. "Reason... is because" → redundant. "Due to the fact that" → "because." "In order to" → "to."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-footer">
+  <a class="footer-link" href="aug_sec_punctuation.html">← SEC Punctuation</a>
+  <a class="footer-link" href="aug_sec_drill.html">Next: SEC Drill Paper →</a>
+</div>
+
+</div>
+
+<script>
+function pick(qid, el, correct) {
+  var list = document.getElementById(qid + 'c');
+  if (list.dataset.answered) return;
+  list.dataset.answered = '1';
+  list.querySelectorAll('li').forEach(function(li) { li.onclick = null; });
+  el.classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) list.querySelectorAll('li').forEach(function(li) { if (!li.classList.contains('wrong')) li.classList.add('correct'); });
+  var rev = document.getElementById(qid + 'r');
+  if (rev) rev.classList.add('show');
+}
+</script>
+</body>
+</html>
