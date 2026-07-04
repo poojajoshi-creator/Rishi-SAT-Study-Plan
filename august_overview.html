@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>August Prep — Your Plan to 1500</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a18;
+  --ink-muted: #6b6b65;
+  --ink-faint: #a8a8a0;
+  --bg: #fafaf7;
+  --bg-alt: #f2f2ec;
+  --border: #e2e2d8;
+  --red: #b82a2a;
+  --red-light: #fde8e8;
+  --red-mid: #e24b4a;
+  --amber: #a05000;
+  --amber-light: #fff0dc;
+  --amber-mid: #d97b20;
+  --blue: #1a5fa8;
+  --blue-light: #e6f0fb;
+  --green: #1e6b3a;
+  --green-light: #e6f4ec;
+  --green-mid: #2a8f50;
+  --purple: #5a2d82;
+  --purple-light: #f0e8fa;
+  --radius: 12px;
+  --radius-sm: 7px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--ink);
+  color: white;
+  padding: 3rem 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '1500';
+  position: absolute;
+  right: -20px; top: -30px;
+  font-family: 'Instrument Serif', serif;
+  font-size: 14rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+}
+.hero-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.hero-name em { color: rgba(255,255,255,0.5); font-style: italic; }
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 2rem;
+}
+.score-strip {
+  display: flex;
+  gap: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 0.5px solid rgba(255,255,255,0.12);
+  margin-bottom: 2rem;
+}
+.score-cell {
+  flex: 1;
+  padding: 14px 18px;
+  border-right: 0.5px solid rgba(255,255,255,0.1);
+}
+.score-cell:last-child { border-right: none; }
+.sc-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.35); margin-bottom: 5px; }
+.sc-val { font-family: 'Instrument Serif', serif; font-size: 2rem; line-height: 1; color: white; }
+.sc-arrow { font-size: 1rem; color: rgba(255,255,255,0.3); margin: 0 6px; }
+.sc-target { font-family: 'Instrument Serif', serif; font-size: 2rem; color: #e8c87a; }
+.sc-note { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 3px; }
+.sc-note.gap { color: #e8a060; }
+
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
+}
+.meta-item { font-size: 12px; color: rgba(255,255,255,0.4); }
+.meta-item strong { display: block; font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 500; }
+
+/* ── Main content ── */
+.content { max-width: 860px; margin: 0 auto; padding: 2.5rem 2.5rem 5rem; }
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 2.5rem 0 1rem;
+}
+
+/* ── Honest message ── */
+.honest-block {
+  background: white;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--ink);
+}
+.honest-block h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.honest-block p {
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+.honest-block p:last-child { margin-bottom: 0; }
+.honest-block strong { color: var(--ink); font-weight: 500; }
+
+/* ── Gap cards ── */
+.gap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.gap-card {
+  background: white;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.gap-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+.gap-card.critical::before { background: var(--red-mid); }
+.gap-card.high::before { background: var(--amber-mid); }
+.gap-card.medium::before { background: var(--blue); }
+.gap-card.good::before { background: var(--green-mid); }
+
+.gap-priority {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.gap-card.critical .gap-priority { color: var(--red); }
+.gap-card.high .gap-priority { color: var(--amber); }
+.gap-card.medium .gap-priority { color: var(--blue); }
+.gap-card.good .gap-priority { color: var(--green); }
+
+.gap-domain { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.gap-score {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.gs-current { font-family: 'Instrument Serif', serif; font-size: 1.6rem; color: var(--ink-muted); }
+.gs-arrow { font-size: 12px; color: var(--ink-faint); }
+.gs-target { font-family: 'Instrument Serif', serif; font-size: 1.6rem; }
+.gap-card.critical .gs-target { color: var(--red); }
+.gap-card.high .gs-target { color: var(--amber); }
+.gap-card.medium .gs-target { color: var(--blue); }
+.gap-card.good .gs-target { color: var(--green); }
+
+.gap-bar-track { height: 5px; background: var(--bg-alt); border-radius: 3px; margin-bottom: 10px; }
+.gap-bar-fill { height: 100%; border-radius: 3px; }
+.gap-card.critical .gap-bar-fill { background: var(--red-mid); }
+.gap-card.high .gap-bar-fill { background: var(--amber-mid); }
+.gap-card.medium .gap-bar-fill { background: var(--blue); }
+.gap-card.good .gap-bar-fill { background: var(--green-mid); }
+
+.gap-why { font-size: 12.5px; color: var(--ink-muted); line-height: 1.65; }
+.gap-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.gap-card.critical .gap-tag { background: var(--red-light); color: var(--red); }
+.gap-card.high .gap-tag { background: var(--amber-light); color: var(--amber); }
+.gap-card.medium .gap-tag { background: var(--blue-light); color: var(--blue); }
+.gap-card.good .gap-tag { background: var(--green-light); color: var(--green); }
+
+/* ── What went well ── */
+.wins-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+.win-card {
+  background: var(--green-light);
+  border: 0.5px solid #b0d8c0;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.win-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--green); margin-bottom: 4px; }
+.win-domain { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.win-score { font-size: 13px; color: var(--green); }
+
+/* ── 10-week plan ── */
+.plan-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: white;
+  margin-bottom: 1.5rem;
+}
+.plan-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  border-bottom: 0.5px solid var(--border);
+}
+.plan-row:last-child { border-bottom: none; }
+.plan-week {
+  padding: 14px 16px;
+  border-right: 0.5px solid var(--border);
+  background: var(--bg-alt);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pw-label { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2px; }
+.pw-weeks { font-size: 13px; font-weight: 500; color: var(--ink); }
+.pw-dates { font-size: 11px; color: var(--ink-muted); }
+.plan-detail { padding: 14px 18px; }
+.pd-phase { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.pd-tasks { font-size: 12.5px; color: var(--ink-muted); line-height: 1.6; }
+.pd-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+.badge-red { background: var(--red-light); color: var(--red); }
+.badge-amber { background: var(--amber-light); color: var(--amber); }
+.badge-blue { background: var(--blue-light); color: var(--blue); }
+.badge-green { background: var(--green-light); color: var(--green); }
+.badge-purple { background: var(--purple-light); color: var(--purple); }
+
+/* ── Mindset block ── */
+.mindset-block {
+  background: var(--ink);
+  color: white;
+  border-radius: var(--radius);
+  padding: 2rem 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.mindset-block h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: rgba(255,255,255,0.9);
+}
+.mindset-items { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.mi {
+  background: rgba(255,255,255,0.07);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.mi-title { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.6); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.mi-body { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+/* ── Key truth callout ── */
+.truth-bar {
+  background: #fff0dc;
+  border: 0.5px solid #e0c080;
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 13.5px;
+  color: #6a3c00;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.truth-bar strong { color: #4a2800; font-weight: 500; }
+
+/* ── Coming up section ── */
+.coming-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 2rem; }
+.coming-card {
+  background: white;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.cc-num {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600;
+  flex-shrink: 0;
+}
+.cc-num.red { background: var(--red-light); color: var(--red); }
+.cc-num.amber { background: var(--amber-light); color: var(--amber); }
+.cc-num.blue { background: var(--blue-light); color: var(--blue); }
+.cc-num.green { background: var(--green-light); color: var(--green); }
+.cc-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.cc-sub { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
+
+.page-footer { text-align: center; font-size: 12px; color: var(--ink-faint); padding: 2rem 0 1rem; }
+</style>
+</head>
+<body>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-eyebrow">August Prep · Rishi Wadhwani · Grade 11</div>
+  <h1 class="hero-name">From 1280 to <em>1500.</em></h1>
+  <p class="hero-sub">June 6, 2026 result · Next exam August 22, 2026 · 10 weeks to close the gap</p>
+
+  <div class="score-strip">
+    <div class="score-cell">
+      <div class="sc-label">Total</div>
+      <div style="display:flex;align-items:baseline;gap:6px;">
+        <div class="sc-val">1280</div>
+        <div class="sc-arrow">→</div>
+        <div class="sc-target">1500</div>
+      </div>
+      <div class="sc-note gap">+220 points needed</div>
+    </div>
+    <div class="score-cell">
+      <div class="sc-label">Reading &amp; Writing</div>
+      <div style="display:flex;align-items:baseline;gap:6px;">
+        <div class="sc-val">620</div>
+        <div class="sc-arrow">→</div>
+        <div class="sc-target">750</div>
+      </div>
+      <div class="sc-note gap">+130 points · 79th → 95th pct</div>
+    </div>
+    <div class="score-cell">
+      <div class="sc-label">Math</div>
+      <div style="display:flex;align-items:baseline;gap:6px;">
+        <div class="sc-val">660</div>
+        <div class="sc-arrow">→</div>
+        <div class="sc-target">750</div>
+      </div>
+      <div class="sc-note gap">+90 points · 87th → 95th pct</div>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    <div class="meta-item"><strong>June 6, 2026</strong>Exam date</div>
+    <div class="meta-item"><strong>August 22, 2026</strong>Next exam</div>
+    <div class="meta-item"><strong>10 weeks</strong>Time to prepare</div>
+    <div class="meta-item"><strong>84th percentile</strong>Current standing</div>
+    <div class="meta-item"><strong>~95th percentile</strong>1500 target</div>
+  </div>
+</div>
+
+<!-- ── Content ── -->
+<div class="content">
+
+  <!-- Honest read -->
+  <div class="section-label">The honest read</div>
+  <div class="honest-block">
+    <h2>Here's exactly what happened — and why 1500 is still absolutely achievable.</h2>
+    <p>
+      The June prep <strong>worked in the right places.</strong> Expression of Ideas — your weakest domain going in — jumped to 680–800. Geometry &amp; Trig hit 680–800. Algebra is holding strong. The fundamentals you built are real and they'll carry into August.
+    </p>
+    <p>
+      What hurt the score was two things collapsing on exam day. <strong>Standard English Conventions dropped to 490–540</strong> — that's the grammar and punctuation questions, the most rule-based, learnable questions on the entire test. Getting those wrong means leaving points on the table that, with the right preparation, should be automatic. And <strong>Information &amp; Ideas fell to 550–600</strong>, meaning inference and evidence questions — the reading comprehension core — need a proper rebuild.
+    </p>
+    <p>
+      On the Math side, <strong>Data Analysis slipped to 550–600</strong> — probability, statistics, two-way tables. These are also highly learnable with the right framework. Advanced Math is at 610–670, which is solid but has room to grow.
+    </p>
+    <p>
+      Ten weeks is enough time. The strategy is different from June though — <strong>less breadth, more depth.</strong> Four specific areas, drilled until they're automatic. Everything else you've already got.
+    </p>
+  </div>
+
+  <!-- What went well -->
+  <div class="section-label">What's already working — protect these</div>
+  <div class="wins-grid">
+    <div class="win-card">
+      <div class="win-label">RW — Strong</div>
+      <div class="win-domain">Expression of Ideas</div>
+      <div class="win-score">680–800 ↑ (was your weakest)</div>
+    </div>
+    <div class="win-card">
+      <div class="win-label">Math — Strong</div>
+      <div class="win-domain">Algebra</div>
+      <div class="win-score">680–800 · hold this</div>
+    </div>
+    <div class="win-card">
+      <div class="win-label">Math — Strong</div>
+      <div class="win-domain">Geometry &amp; Trig</div>
+      <div class="win-score">680–800 · drilling paid off</div>
+    </div>
+  </div>
+
+  <!-- Gap cards -->
+  <div class="section-label">Where the points are — your four focus areas</div>
+
+  <div class="truth-bar">
+    <strong>The key insight:</strong> these four areas together account for the entire +220 point gap. Fix them, and 1500 follows. You don't need to be perfect everywhere — you need to be excellent in these four places.
+  </div>
+
+  <div class="gap-grid">
+
+    <div class="gap-card critical">
+      <div class="gap-tag">Priority 1 · Biggest lever</div>
+      <div class="gap-domain">Standard English Conventions</div>
+      <div class="gap-score">
+        <span class="gs-current">490</span>
+        <span class="gs-arrow">→</span>
+        <span class="gs-target">680+</span>
+      </div>
+      <div class="gap-bar-track"><div class="gap-bar-fill" style="width:38%;"></div></div>
+      <div class="gap-why">
+        SEC covers punctuation (commas, semicolons, colons, dashes, apostrophes) and grammar (subject-verb agreement, modifiers, parallelism, pronoun agreement). These are <strong>the most rule-based questions on the test</strong> — no interpretation needed. Once the rules are memorised and automatic, they become the fastest points to earn. Getting from 490 to 680 here alone is worth ~40 RW points.
+      </div>
+    </div>
+
+    <div class="gap-card high">
+      <div class="gap-tag">Priority 2 · Reading core</div>
+      <div class="gap-domain">Information &amp; Ideas</div>
+      <div class="gap-score">
+        <span class="gs-current">550</span>
+        <span class="gs-arrow">→</span>
+        <span class="gs-target">650+</span>
+      </div>
+      <div class="gap-bar-track"><div class="gap-bar-fill" style="width:52%;"></div></div>
+      <div class="gap-why">
+        This covers inference questions, evidence-for-claims, words in context, main idea, and cross-text connections. The issue isn't reading ability — it's a systematic approach to each question type. Once you learn what each question is actually asking for and how to eliminate wrong answers, these get much more reliable.
+      </div>
+    </div>
+
+    <div class="gap-card medium">
+      <div class="gap-tag">Priority 3 · Math reading</div>
+      <div class="gap-domain">Problem-Solving &amp; Data Analysis</div>
+      <div class="gap-score">
+        <span class="gs-current">550</span>
+        <span class="gs-arrow">→</span>
+        <span class="gs-target">680+</span>
+      </div>
+      <div class="gap-bar-track"><div class="gap-bar-fill" style="width:50%;"></div></div>
+      <div class="gap-why">
+        Probability, two-way tables, mean/median/mode, percentage change, standard deviation, line of best fit, sampling. These questions are more about careful reading and applying formulas than deep mathematical ability. A focused 2-week module will cover all the question types that appear on the SAT.
+      </div>
+    </div>
+
+    <div class="gap-card medium">
+      <div class="gap-tag">Priority 4 · Algebra push</div>
+      <div class="gap-domain">Advanced Math</div>
+      <div class="gap-score">
+        <span class="gs-current">610</span>
+        <span class="gs-arrow">→</span>
+        <span class="gs-target">700+</span>
+      </div>
+      <div class="gap-bar-track"><div class="gap-bar-fill" style="width:65%;"></div></div>
+      <div class="gap-why">
+        Quadratics, rational equations, polynomial operations, function composition, and exponential models. You're already solid here — this is about eliminating the 2–3 questions per module that are currently slipping. A targeted drill on the specific question types you're missing will push this band up.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 10-week plan -->
+  <div class="section-label">Your 10-week plan — July 7 to August 22</div>
+  <div class="plan-grid">
+
+    <div class="plan-row">
+      <div class="plan-week">
+        <div class="pw-label">Phase 1</div>
+        <div class="pw-weeks">Weeks 1–3</div>
+        <div class="pw-dates">Jul 7 – Jul 25</div>
+      </div>
+      <div class="plan-detail">
+        <div class="pd-badge badge-red">SEC — Biggest lever</div>
+        <div class="pd-phase">Standard English Conventions deep rebuild</div>
+        <div class="pd-tasks">
+          Week 1: Punctuation rules — sentence boundaries, semicolons, colons, paired dashes, commas<br>
+          Week 2: Grammar rules — subject-verb agreement, pronoun agreement, modifiers, parallelism<br>
+          Week 3: Mixed SEC drills + timed practice — automaticity is the goal, not just understanding
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-row">
+      <div class="plan-week">
+        <div class="pw-label">Phase 2</div>
+        <div class="pw-weeks">Weeks 4–5</div>
+        <div class="pw-dates">Jul 28 – Aug 8</div>
+      </div>
+      <div class="plan-detail">
+        <div class="pd-badge badge-amber">Information &amp; Ideas rebuild</div>
+        <div class="pd-phase">Reading comprehension — systematic approach</div>
+        <div class="pd-tasks">
+          Week 4: Inference, main idea, author's purpose — reading for the argument, not the facts<br>
+          Week 5: Evidence for claims, words in context, cross-text — elimination strategies
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-row">
+      <div class="plan-week">
+        <div class="pw-label">Phase 3</div>
+        <div class="pw-weeks">Weeks 6–7</div>
+        <div class="pw-dates">Aug 4 – Aug 15</div>
+      </div>
+      <div class="plan-detail">
+        <div class="pd-badge badge-blue">Math — Data &amp; Advanced</div>
+        <div class="pd-phase">Data Analysis module + Advanced Math targeted drill</div>
+        <div class="pd-tasks">
+          Week 6: Data Analysis — probability, two-way tables, stats, sampling, scatterplots<br>
+          Week 7: Advanced Math — quadratics, rational equations, function composition, exponential models
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-row">
+      <div class="plan-week">
+        <div class="pw-label">Phase 4</div>
+        <div class="pw-weeks">Weeks 8–9</div>
+        <div class="pw-dates">Aug 10 – Aug 20</div>
+      </div>
+      <div class="plan-detail">
+        <div class="pd-badge badge-green">Full practice tests</div>
+        <div class="pd-phase">Bluebook simulation + targeted error review</div>
+        <div class="pd-tasks">
+          Week 8: Full official SAT practice test (Bluebook) under timed conditions. Error log every miss.<br>
+          Week 9: Targeted re-drill based on error log. Second practice test. Speed training.
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-row">
+      <div class="plan-week">
+        <div class="pw-label">Phase 5</div>
+        <div class="pw-weeks">Week 10</div>
+        <div class="pw-dates">Aug 18 – Aug 22</div>
+      </div>
+      <div class="plan-detail">
+        <div class="pd-badge badge-purple">Final push</div>
+        <div class="pd-phase">Light review · new cheat sheet · rest</div>
+        <div class="pd-tasks">
+          Mon–Tue: Cheat sheet review only. No new material.<br>
+          Wed: Rest. Light confidence-building read of strongest areas.<br>
+          Thu Aug 21: Early sleep. Exam kit ready.<br>
+          Fri Aug 22: Exam day. Execute.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Mindset -->
+  <div class="mindset-block">
+    <h3>What you need to carry into the next 10 weeks</h3>
+    <div class="mindset-items">
+      <div class="mi">
+        <div class="mi-title">The score dropped — but the prep worked</div>
+        <div class="mi-body">Expression of Ideas went from your worst domain to 680–800. That doesn't happen without real learning. The foundation is there.</div>
+      </div>
+      <div class="mi">
+        <div class="mi-title">SEC is learnable — it's rules, not talent</div>
+        <div class="mi-body">Unlike reading comprehension, SEC questions have fixed, memorisable rules. Once you know them, they become the fastest questions on the test.</div>
+      </div>
+      <div class="mi">
+        <div class="mi-title">Depth over breadth this time</div>
+        <div class="mi-body">June was about covering everything. August is about mastering four specific areas until the answers feel automatic, not effortful.</div>
+      </div>
+      <div class="mi">
+        <div class="mi-title">220 points in 10 weeks is real</div>
+        <div class="mi-body">That's roughly 22 additional correct answers across the whole test — fewer than 2 extra right per section module. With focused prep, that's achievable.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coming up -->
+  <div class="section-label">What we're building — coming to this portal</div>
+  <div class="coming-grid">
+    <div class="coming-card">
+      <div class="cc-num red">1</div>
+      <div>
+        <div class="cc-title">SEC Punctuation — Deep Dive</div>
+        <div class="cc-sub">Sentence boundaries, semicolons, colons, dashes, commas — every rule with worked examples and drills</div>
+      </div>
+    </div>
+    <div class="coming-card">
+      <div class="cc-num red">2</div>
+      <div>
+        <div class="cc-title">SEC Grammar — Deep Dive</div>
+        <div class="cc-sub">Subject-verb agreement, modifiers, parallelism, pronoun reference — the full grammar rule set</div>
+      </div>
+    </div>
+    <div class="coming-card">
+      <div class="cc-num amber">3</div>
+      <div>
+        <div class="cc-title">Information &amp; Ideas — Rebuild</div>
+        <div class="cc-sub">Inference, evidence, words in context, cross-text — systematic approach to each question type</div>
+      </div>
+    </div>
+    <div class="coming-card">
+      <div class="cc-num amber">4</div>
+      <div>
+        <div class="cc-title">SEC &amp; I&amp;I Targeted Drills</div>
+        <div class="cc-sub">Dedicated practice papers for each domain — timed, with instant explanations</div>
+      </div>
+    </div>
+    <div class="coming-card">
+      <div class="cc-num blue">5</div>
+      <div>
+        <div class="cc-title">Data Analysis — Full Module</div>
+        <div class="cc-sub">Probability, two-way tables, stats, sampling, scatterplots — all SAT question types covered</div>
+      </div>
+    </div>
+    <div class="coming-card">
+      <div class="cc-num blue">6</div>
+      <div>
+        <div class="cc-title">Advanced Math — Targeted Drill</div>
+        <div class="cc-sub">Quadratics, rational equations, polynomials, function composition, exponential models</div>
+      </div>
+    </div>
+    <div class="coming-card">
+      <div class="cc-num green">7</div>
+      <div>
+        <div class="cc-title">Full Mixed Practice Tests</div>
+        <div class="cc-sub">2× full 50-question papers weighted toward the four priority areas — Weeks 8–9</div>
+      </div>
+    </div>
+    <div class="coming-card">
+      <div class="cc-num green">8</div>
+      <div>
+        <div class="cc-title">August Cheat Sheet</div>
+        <div class="cc-sub">Updated one-page reference — SEC rules, trig values, Data Analysis formulas, mindset reminders</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">Rishi Wadhwani · SAT August 2026 · Built with Anthropic Claude</div>
+
+</div>
+</body>
+</html>
