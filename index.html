@@ -277,12 +277,7 @@ li strong { color: var(--ink); font-weight: 500; }
 <nav class="sidebar" role="navigation">
   <div class="sidebar-brand">
     <div class="brand-name">Rishi's SAT<br>Study Portal</div>
-    <div class="brand-sub">June 6 exam · 12-day plan</div>
-  </div>
-  <div class="sidebar-progress">
-    <div class="progress-label">Overall progress</div>
-    <div class="progress-track"><div class="progress-fill-bar" style="width:41.6%"></div></div>
-    <div class="progress-count">5 of 12 days published</div>
+    <div class="brand-sub">Target: 1500 · August 22, 2026</div>
   </div>
   <div class="sidebar-section-label">📚 English Concept Lessons</div>
 
@@ -444,7 +439,11 @@ li strong { color: var(--ink); font-weight: 500; }
   </div>
 
   
-  <div class="sidebar-section-label">📚 English Concepts Deep Dive</div>
+  <div class="sidebar-section-label" onclick="toggleLessons()" id="lessons-toggle" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding-right:12px;">
+    <span>📚 English Concepts — 27 Lessons</span>
+    <span id="lessons-chevron" style="font-size:10px; opacity:0.5; transition:transform 0.2s;">▶</span>
+  </div>
+  <div id="lessons-links" style="display:none;">
   <a class="nav-item" href="english_lessons.html" target="_blank" id="nav-eng-hub">
     <div class="nav-day-num" style="background:#1a4d8a;color:white;font-size:9px;">HUB</div>
     <div class="nav-day-info">
@@ -646,8 +645,10 @@ li strong { color: var(--ink); font-weight: 500; }
     </div>
   </a>
 
+  </div><!-- /lessons-links -->
+
 <div class="sidebar-footer">
-    Target: 1380 → 1500<br>RW gap: 630 → 750<br>Math: 750 ✓
+    Jun 6 result: 1280<br>Target: 1500 · Aug 22<br>RW: 620→750 · Math: 660→750
   </div>
 </nav>
 
@@ -3926,6 +3927,14 @@ var scores = {};
 function toggleArchive() {
   var links = document.getElementById('archive-links');
   var chevron = document.getElementById('archive-chevron');
+  var open = links.style.display === 'block';
+  links.style.display = open ? 'none' : 'block';
+  chevron.style.transform = open ? '' : 'rotate(90deg)';
+}
+
+function toggleLessons() {
+  var links = document.getElementById('lessons-links');
+  var chevron = document.getElementById('lessons-chevron');
   var open = links.style.display === 'block';
   links.style.display = open ? 'none' : 'block';
   chevron.style.transform = open ? '' : 'rotate(90deg)';
