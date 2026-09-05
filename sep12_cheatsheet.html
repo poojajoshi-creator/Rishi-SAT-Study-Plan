@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sep 12 Cheat Sheet — Rishi Wadhwani</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;--paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;--red:#c0392b;--red-light:#fdf0ee;--amber:#b7540a;--amber-light:#fdf5ec;--blue:#1a4d8a;--blue-light:#eef3fa;--green:#2d6a3f;--green-light:#eef7f1;--purple:#6b3fa0;--purple-light:#f3eefb;--gold:#7a5c00;--gold-light:#fdf8e6;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:white;font-size:13px;line-height:1.6;}
+@media print{body{background:white;color:var(--ink);} .no-print{display:none;} .section{break-inside:avoid;}}
+.print-btn{position:fixed;top:16px;right:16px;background:#e8c87a;color:#1a1a18;border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;z-index:100;}
+.back-btn{position:fixed;top:16px;left:16px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);border:none;border-radius:8px;padding:8px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;z-index:100;}
+.hero{text-align:center;padding:3rem 2rem 2rem;border-bottom:0.5px solid rgba(255,255,255,0.1);}
+.hero h1{font-family:'Instrument Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:4px;}
+.hero p{font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px;}
+.exam-badge{display:inline-block;background:#e8c87a;color:#1a1a18;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px;margin-bottom:10px;}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);}
+.section{background:var(--ink);padding:1.5rem;}
+.section.wide{grid-column:span 2;}
+.section.full{grid-column:span 3;}
+.sec-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;}
+.sec-title{font-family:'Instrument Serif',serif;font-size:1.1rem;font-weight:400;margin-bottom:10px;color:white;}
+
+/* Rule list */
+.rule-list{display:flex;flex-direction:column;gap:6px;}
+.rule-item{background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 10px;}
+.ri-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
+.ri-body{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.5;}
+.ri-body b{color:white;font-weight:500;}
+
+/* Colour codes */
+.c-red{color:#ff8888;}
+.c-amber{color:#ffcc88;}
+.c-green{color:#88ddaa;}
+.c-blue{color:#aaccff;}
+.c-purple{color:#ccaaff;}
+.c-gold{color:#e8c87a;}
+
+/* Formula grid */
+.formula-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.formula-item{background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 10px;}
+.fi-label{font-size:10px;color:rgba(255,255,255,0.35);margin-bottom:2px;}
+.fi-val{font-size:12px;color:rgba(255,255,255,0.85);font-family:'Instrument Serif',serif;line-height:1.4;}
+
+/* Trig table */
+.trig-table{width:100%;border-collapse:collapse;font-size:12px;}
+.trig-table th{background:rgba(255,255,255,0.08);padding:5px 8px;text-align:center;font-size:10px;color:rgba(255,255,255,0.5);font-weight:500;}
+.trig-table td{padding:5px 8px;text-align:center;border-top:0.5px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.75);}
+
+/* Mindset */
+.mindset-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.mindset-item{background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 10px;}
+.mi-title{font-size:11px;font-weight:500;color:rgba(255,255,255,0.75);margin-bottom:2px;}
+.mi-body{font-size:11.5px;color:rgba(255,255,255,0.5);line-height:1.5;}
+
+.footer{text-align:center;padding:1.5rem;font-size:11px;color:rgba(255,255,255,0.2);border-top:0.5px solid rgba(255,255,255,0.08);}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-btn no-print">← Portal</a>
+<button class="print-btn no-print" onclick="window.print()">🖨 Print</button>
+
+<div class="hero">
+  <div class="exam-badge">SAT · SEPTEMBER 12, 2026</div>
+  <h1>Rishi's Exam Day Cheat Sheet</h1>
+  <p>Read over breakfast. 10 minutes. Then put it away and go execute.</p>
+</div>
+
+<div class="grid">
+
+<!-- SEC PUNCTUATION -->
+<div class="section wide">
+  <div class="sec-label">SEC — Week 1</div>
+  <div class="sec-title">Punctuation Rules</div>
+  <div class="rule-list">
+    <div class="rule-item">
+      <div class="ri-label c-red">1 · Sentence Boundaries</div>
+      <div class="ri-body">Two ICs joined by comma alone = comma splice ❌. Fix with: <b>period / semicolon / comma+FANBOYS</b>. <b>"However/therefore/nevertheless" are NOT conjunctions</b> — need <b>; [adverb],</b> before the next clause.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-red">2 · Semicolons</div>
+      <div class="ri-body">Both sides must be <b>independent clauses</b>. Never semicolon before a list or a phrase. With transitional adverbs: <b>[IC]; however, [IC]</b></div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-red">3 · Colons</div>
+      <div class="ri-body">Left side = complete IC ✓. Right side = anything. <b>Never after "including," "such as," or "for example."</b> Test: can the left stand alone? Yes = colon OK.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-red">4 · Paired Dashes</div>
+      <div class="ri-body"><b>Opening dash → must close with a dash.</b> Never dash open + comma/semicolon close. Remove parenthetical → sentence must still work.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-red">5 · Commas — 4 legal uses only</div>
+      <div class="ri-body"><b>Comma+FANBOYS</b> (join 2 ICs) · <b>After intro element</b> · <b>Around non-essential info</b> (who/which, removable) · <b>In lists</b>. No comma between subject and verb. No comma before "that."</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-red">6 · Apostrophes</div>
+      <div class="ri-body"><b>it's = it is · its = possessive</b>. <b>who's = who is · whose = possessive</b>. Never apostrophe for a plain plural. Plural possessive: scientists' (after s). Singular: scientist's (before s).</div>
+    </div>
+  </div>
+</div>
+
+<!-- SEC GRAMMAR -->
+<div class="section">
+  <div class="sec-label">SEC — Week 2</div>
+  <div class="sec-title">Grammar Rules</div>
+  <div class="rule-list">
+    <div class="rule-item">
+      <div class="ri-label c-purple">1 · Subject-Verb</div>
+      <div class="ri-body">Strip phrases → match verb to real subject. <b>Neither/nor → closer subject wins</b>. Collective nouns (team, jury, committee) → <b>singular</b>. Each/every/either → singular.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-purple">2 · Verb Tense</div>
+      <div class="ri-body">Stay consistent unless a genuine time shift. Look for time signals (then/now/currently). Don't switch tense mid-list.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-purple">3 · Pronoun</div>
+      <div class="ri-body">Match antecedent in number. <b>Collective nouns → it/its</b> not they/their. Vague "this/it/they" = wrong → replace with the specific noun.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-purple">4 · Modifiers</div>
+      <div class="ri-body">Opening phrase doer = subject. <b>Possessive noun trap</b>: "the scientist's work" ≠ the scientist. Test: does the phrase logically describe the subject?</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-purple">5 · Parallelism</div>
+      <div class="ri-body">Lists: all same form (gerund / infinitive / noun). <b>Not only X but also Y</b> → both sides must be parallel. Compare like to like: results vs. those of.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-purple">6 · Conciseness</div>
+      <div class="ri-body">Shortest correct answer wins. "Reason... is because" → redundant. "Due to the fact that" → because. "In order to" → to. "End result" → result.</div>
+    </div>
+  </div>
+</div>
+
+<!-- INFO & IDEAS -->
+<div class="section">
+  <div class="sec-label">Reading &amp; Writing</div>
+  <div class="sec-title">Info &amp; Ideas</div>
+  <div class="rule-list">
+    <div class="rule-item">
+      <div class="ri-label c-amber">Inference / Main Idea</div>
+      <div class="ri-body">State author's point in your own words first. Eliminate: <b>too extreme / too far / contradicts / too vague</b>. Right answer = modest + traceable to the text.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-amber">Evidence for Claims</div>
+      <div class="ri-body">Underline the exact claim. Test each answer: does it support <b>that specific claim</b>? "Right topic, wrong claim" = most common wrong answer.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-amber">Words in Context</div>
+      <div class="ri-body">Cover the word. Predict meaning from context. <b>Never pick the common dictionary definition</b> — the SAT always tests secondary meanings. Substitute and check.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-label c-amber">Cross-Text</div>
+      <div class="ri-body">One sentence per text: "Text 1 says... Text 2 says..." Agree / disagree / qualify? Right answer = traceable to both texts.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MATH FORMULAS -->
+<div class="section">
+  <div class="sec-label">Math · Data Analysis</div>
+  <div class="sec-title">Key Formulas</div>
+  <div class="formula-grid">
+    <div class="formula-item"><div class="fi-label">Percentage change</div><div class="fi-val">(New − Old) ÷ Old × 100</div></div>
+    <div class="formula-item"><div class="fi-label">Probability</div><div class="fi-val">Favourable ÷ Total</div></div>
+    <div class="formula-item"><div class="fi-label">Mean</div><div class="fi-val">Sum ÷ Count</div></div>
+    <div class="formula-item"><div class="fi-label">Conditional P(A|B)</div><div class="fi-val">Favourable ÷ Restricted total</div></div>
+    <div class="formula-item"><div class="fi-label">Line of best fit slope</div><div class="fi-val">Rate of change per 1-unit ↑ in x</div></div>
+    <div class="formula-item"><div class="fi-label">y-intercept</div><div class="fi-val">Value of y when x = 0</div></div>
+    <div class="formula-item"><div class="fi-label">SD: larger = </div><div class="fi-val">more spread from mean</div></div>
+    <div class="formula-item"><div class="fi-label">Outliers affect</div><div class="fi-val">Mean ↑↑ · Median ↑ (slightly)</div></div>
+  </div>
+  <div style="margin-top:10px;background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 10px;">
+    <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-bottom:4px;">KEY REMINDERS</div>
+    <div style="font-size:11.5px;color:rgba(255,255,255,0.6);line-height:1.6;">Two-way table: identify denominator first. "Of those who passed" = row/col total, not grand total. Correlation ≠ causation. Non-random sample → can't generalise.</div>
+  </div>
+</div>
+
+<!-- TRIG VALUES -->
+<div class="section">
+  <div class="sec-label">Math · Geometry &amp; Trig</div>
+  <div class="sec-title">Trig Values</div>
+  <table class="trig-table">
+    <tr><th>θ</th><th>sin θ</th><th>cos θ</th><th>tan θ</th></tr>
+    <tr><td>0°</td><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>30°</td><td>1/2</td><td>√3/2</td><td>1/√3</td></tr>
+    <tr><td>45°</td><td>√2/2</td><td>√2/2</td><td>1</td></tr>
+    <tr><td>60°</td><td>√3/2</td><td>1/2</td><td>√3</td></tr>
+    <tr><td>90°</td><td>1</td><td>0</td><td>—</td></tr>
+  </table>
+  <div style="margin-top:10px;display:flex;flex-direction:column;gap:5px;">
+    <div style="background:rgba(255,255,255,0.05);border-radius:6px;padding:7px 10px;font-size:11.5px;color:rgba(255,255,255,0.65);">sin²θ + cos²θ = 1</div>
+    <div style="background:rgba(255,255,255,0.05);border-radius:6px;padding:7px 10px;font-size:11.5px;color:rgba(255,255,255,0.65);">sin θ = cos(90°−θ) · cos θ = sin(90°−θ)</div>
+    <div style="background:rgba(255,255,255,0.05);border-radius:6px;padding:7px 10px;font-size:11.5px;color:rgba(255,255,255,0.65);">Area = ½ab sin C · Arc = (θ/360)×2πr</div>
+  </div>
+</div>
+
+<!-- MATH FORMULAS 2 -->
+<div class="section">
+  <div class="sec-label">Math · Algebra &amp; Advanced</div>
+  <div class="sec-title">Key Formulas</div>
+  <div class="formula-grid">
+    <div class="formula-item"><div class="fi-label">Quadratic formula</div><div class="fi-val">x = (−b ± √(b²−4ac)) / 2a</div></div>
+    <div class="formula-item"><div class="fi-label">Vertex of parabola</div><div class="fi-val">x = −b/2a</div></div>
+    <div class="formula-item"><div class="fi-label">Difference of squares</div><div class="fi-val">a²−b² = (a+b)(a−b)</div></div>
+    <div class="formula-item"><div class="fi-label">Perfect square</div><div class="fi-val">(a±b)² = a²±2ab+b²</div></div>
+    <div class="formula-item"><div class="fi-label">Exponential growth</div><div class="fi-val">A = P(1+r)^t</div></div>
+    <div class="formula-item"><div class="fi-label">Slope</div><div class="fi-val">m = (y₂−y₁)/(x₂−x₁)</div></div>
+    <div class="formula-item"><div class="fi-label">Circle area / circ</div><div class="fi-val">πr² · 2πr</div></div>
+    <div class="formula-item"><div class="fi-label">Cylinder / cone volume</div><div class="fi-val">πr²h · ⅓πr²h</div></div>
+  </div>
+</div>
+
+<!-- MINDSET -->
+<div class="section full">
+  <div class="sec-label">Exam Day</div>
+  <div class="sec-title">Mindset Reminders</div>
+  <div class="mindset-grid">
+    <div class="mindset-item">
+      <div class="mi-title c-gold">What you've already got</div>
+      <div class="mi-body">Expression of Ideas: 680–800. Algebra: 680–800. Geometry: 680–800. These are real. Don't overthink them — bank the points fast and move on.</div>
+    </div>
+    <div class="mindset-item">
+      <div class="mi-title c-gold">On SEC questions</div>
+      <div class="mi-body">Apply the rule. Don't go by feel or how it "sounds." Two ICs need a semicolon or comma+FANBOYS. Paired dash needs a closing dash. "its" has no apostrophe.</div>
+    </div>
+    <div class="mindset-item">
+      <div class="mi-title c-gold">On reading questions</div>
+      <div class="mi-body">State the passage's point in your own words before looking at answers. Eliminate the three wrong ones — too extreme, too far, contradicts, too vague. Modest + traceable = right.</div>
+    </div>
+    <div class="mindset-item">
+      <div class="mi-title c-gold">On data questions</div>
+      <div class="mi-body">Slow down. Identify the denominator before calculating. Read exactly what the question asks. Correlation ≠ causation — eliminate those answers immediately.</div>
+    </div>
+    <div class="mindset-item">
+      <div class="mi-title c-gold">If stuck on a question</div>
+      <div class="mi-body">Best guess and move on. Every question is worth exactly 1 point. Never let one hard question cost you the time for three easy ones. Flag it and come back if time allows.</div>
+    </div>
+    <div class="mindset-item">
+      <div class="mi-title c-gold">The week paid off</div>
+      <div class="mi-body">Three full practice tests. 20+ hours of focused prep. The rules are in your head. Trust the preparation — it's already done.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /grid -->
+
+<div class="footer">Rishi Wadhwani · SAT September 12, 2026 · Target: 1500</div>
+
+</body>
+</html>

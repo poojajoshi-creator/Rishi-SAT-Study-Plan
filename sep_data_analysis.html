@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analysis — Sep 12 Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;--paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;--red:#c0392b;--red-light:#fdf0ee;--amber:#b7540a;--amber-light:#fdf5ec;--blue:#1a4d8a;--blue-light:#eef3fa;--green:#2d6a3f;--green-light:#eef7f1;--purple:#6b3fa0;--purple-light:#f3eefb;--gold:#7a5c00;--gold-light:#fdf8e6;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);}
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all .15s;}
+.lesson-nav a:hover{background:var(--blue);color:white;border-color:var(--blue);}
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-eyebrow{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(26,77,138,0.4);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;color:#aaccff;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(26,77,138,0.4);color:#aaccff;}
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+.rule-card{background:white;border:0.5px solid var(--rule);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.25rem;}
+.rule-badge{display:inline-block;background:var(--blue);color:white;font-size:11px;font-weight:600;padding:3px 12px;border-radius:20px;margin-bottom:10px;}
+.rule-name{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:8px;}
+.rule-body{font-size:13.5px;color:var(--ink-soft);line-height:1.75;margin-bottom:10px;}
+.rule-body b{color:var(--ink);font-weight:500;}
+.formula-box{background:var(--blue-light);border:0.5px solid #b5d4f4;border-radius:8px;padding:12px 16px;margin:8px 0;font-size:14px;color:var(--blue);font-family:'Instrument Serif',serif;}
+.formula-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:4px;opacity:.7;}
+.ex-row{background:var(--cream);border-radius:8px;padding:10px 14px;margin:6px 0;font-size:13.5px;color:var(--ink-soft);line-height:1.6;}
+.ex-row.right{background:var(--green-light);border-left:3px solid var(--green);}
+.ex-row.wrong{background:var(--red-light);border-left:3px solid var(--red);}
+.ex-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.ex-row.right .ex-label{color:var(--green);}
+.ex-row.wrong .ex-label{color:var(--red);}
+.trap-box{background:var(--red-light);border:0.5px solid #e8a090;border-radius:8px;padding:10px 14px;margin-top:10px;}
+.trap-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+.trap-body{font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.insight{background:var(--gold-light);border-left:3px solid #c8a000;border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.insight b{color:var(--gold);font-weight:500;}
+.practice-q{background:var(--cream);border-radius:10px;padding:1.25rem 1.5rem;margin:12px 0;}
+.q-num-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:6px;}
+.q-domain{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;margin-bottom:8px;background:var(--blue-light);color:var(--blue);}
+.q-figure{background:white;border:0.5px solid var(--rule);border-radius:8px;padding:14px;margin-bottom:12px;font-size:13px;color:var(--ink-soft);line-height:1.8;}
+.q-figure table{width:100%;border-collapse:collapse;font-size:13px;}
+.q-figure th{background:var(--cream);padding:6px 10px;text-align:left;font-weight:500;color:var(--ink);border:0.5px solid var(--rule);}
+.q-figure td{padding:6px 10px;border:0.5px solid var(--rule);color:var(--ink-soft);}
+.q-stem{font-size:14px;color:var(--ink);font-weight:500;margin-bottom:10px;line-height:1.6;}
+.q-choices{list-style:none;padding:0;}
+.q-choices li{font-size:13.5px;color:var(--ink-soft);padding:7px 12px;border-radius:6px;margin-bottom:5px;border:0.5px solid var(--rule);background:white;cursor:pointer;transition:background .12s;display:flex;gap:8px;align-items:flex-start;}
+.q-choices li:hover:not(.correct):not(.wrong){background:var(--blue-light);}
+.q-choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.q-choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.choice-ltr{font-weight:600;min-width:14px;flex-shrink:0;}
+.answer-reveal{display:none;margin-top:10px;padding:10px 14px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green);line-height:1.65;}
+.answer-reveal.show{display:block;}
+.summary-card{background:var(--ink);color:white;border-radius:14px;padding:2rem 2.5rem;margin-top:2rem;}
+.summary-card h3{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;margin-bottom:1rem;}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sg-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 12px;}
+.sg-rule{font-size:12px;font-weight:500;color:rgba(255,255,255,0.9);margin-bottom:3px;}
+.sg-pattern{font-size:11.5px;color:rgba(255,255,255,0.5);line-height:1.5;}
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0 0;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.footer-link{font-size:13px;color:var(--blue);text-decoration:none;}
+.footer-link:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="back-bar">
+  <a href="index.html">← Portal</a><span>/</span>
+  <a style="color:rgba(255,255,255,0.8);">Data Analysis — Sep 12 Prep</a>
+</div>
+<nav class="lesson-nav">
+  <a href="#why">Why Data</a>
+  <a href="#pct">Percentages</a>
+  <a href="#tables">Two-Way Tables</a>
+  <a href="#stats">Mean/Median/Mode</a>
+  <a href="#scatter">Scatterplots</a>
+  <a href="#prob">Probability</a>
+  <a href="#sampling">Sampling</a>
+  <a href="#practice">Practice — 15 Qs</a>
+</nav>
+
+<div class="hdr">
+  <div class="hdr-eyebrow"><span class="hdr-num">SAT SEP 12</span><span class="hdr-domain">Math · Problem-Solving &amp; Data Analysis</span></div>
+  <h1 class="hdr-title">Data Analysis<br><em>Full Module</em></h1>
+  <p class="hdr-tagline">550–600 → 650+. Seven question types. All the formulas. 15 targeted practice questions covering every pattern the SAT tests in this domain.</p>
+  <div class="hdr-chips">
+    <span class="chip hi">Sun Sep 6 · Hr 3</span>
+    <span class="chip">Percentages</span>
+    <span class="chip">Two-Way Tables</span>
+    <span class="chip">Mean/Median/Mode</span>
+    <span class="chip">Scatterplots</span>
+    <span class="chip">Probability</span>
+    <span class="chip">Sampling</span>
+    <span class="chip">15 Practice Questions</span>
+  </div>
+</div>
+
+<div class="main">
+
+<section class="section" id="why">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">📊</div>
+    <h2 class="section-title">Why Data Analysis is winnable</h2>
+  </div>
+  <div style="background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem 1.75rem;">
+    <p>Data Analysis dropped to 550–600 in June. Unlike Advanced Math (which requires algebraic fluency), Data Analysis is mostly about <b>reading carefully and applying straightforward formulas.</b> These are not hard concepts — they're concepts that require careful, methodical reading rather than mathematical insight.</p>
+    <p>The most common reason students lose points here: <b>they rush.</b> They misread the table, misidentify what percentage they're calculating, or confuse "probability of X given Y" with "probability of X." Slow down on these questions. 45 seconds of careful reading saves a wrong answer.</p>
+  </div>
+</section>
+
+<section class="section" id="pct">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">1</div>
+    <h2 class="section-title">Percentages &amp; Percentage Change</h2>
+  </div>
+  <div class="rule-card">
+    <div class="rule-badge">Formulas</div>
+    <div class="formula-box"><div class="formula-label">Percentage of a total</div>Part ÷ Whole × 100</div>
+    <div class="formula-box"><div class="formula-label">Percentage change</div>(New − Old) ÷ Old × 100 &nbsp;→ positive = increase, negative = decrease</div>
+    <div class="formula-box"><div class="formula-label">Finding the original value</div>If X is P% of Y, then Y = X ÷ (P/100)</div>
+    <div class="rule-body" style="margin-top:12px;">
+      <p>The SAT tests three percentage scenarios: finding what percent one number is of another, finding a percentage change between two values, and working backwards from a percentage to find the original.</p>
+    </div>
+    <div class="ex-row right">
+      <div class="ex-label">Example — Percentage Change</div>
+      A store's revenue increased from $240,000 to $312,000. Percentage change = (312,000 − 240,000) ÷ 240,000 × 100 = 72,000 ÷ 240,000 × 100 = <b>30% increase</b>
+    </div>
+    <div class="trap-box">
+      <div class="trap-label">Common trap — which is the base?</div>
+      <div class="trap-body">In percentage change, always divide by the <b>original (old)</b> value, not the new one. "A price increased from $80 to $100" → (100−80)÷80 = 25%, NOT (100−80)÷100 = 20%.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tables">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">2</div>
+    <h2 class="section-title">Two-Way Tables</h2>
+  </div>
+  <div class="rule-card">
+    <div class="rule-badge">How to read them</div>
+    <div class="rule-body">Two-way tables show the distribution of two categorical variables. Questions ask for counts, proportions, or conditional probabilities. The key: <b>always identify what the question is asking you to use as the denominator.</b></div>
+    <div class="q-figure">
+      <table>
+        <tr><th></th><th>Supports policy</th><th>Opposes policy</th><th>Total</th></tr>
+        <tr><td><b>Urban</b></td><td>340</td><td>160</td><td>500</td></tr>
+        <tr><td><b>Rural</b></td><td>120</td><td>280</td><td>400</td></tr>
+        <tr><td><b>Total</b></td><td>460</td><td>440</td><td>900</td></tr>
+      </table>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div class="ex-row right">
+        <div class="ex-label">Q: What fraction of all respondents support the policy?</div>
+        460 ÷ 900 = 51.1% &nbsp;→ denominator = total (900)
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Q: Of urban respondents, what fraction support the policy?</div>
+        340 ÷ 500 = 68% &nbsp;→ denominator = urban total (500), not grand total
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Q: Of those who support the policy, what fraction are urban?</div>
+        340 ÷ 460 = 73.9% &nbsp;→ denominator = support total (460)
+      </div>
+    </div>
+    <div class="trap-box" style="margin-top:12px;">
+      <div class="trap-label">The denominator trap — most common error</div>
+      <div class="trap-body">The SAT deliberately asks questions where using the wrong total gives a plausible-looking wrong answer. Always re-read the question: "Of all respondents" vs "of urban respondents" vs "of those who support" — each is a different denominator.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stats">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">3</div>
+    <h2 class="section-title">Mean, Median, Mode &amp; Standard Deviation</h2>
+  </div>
+  <div class="rule-card">
+    <div class="rule-badge">Formulas &amp; Rules</div>
+    <div class="formula-box"><div class="formula-label">Mean (average)</div>Sum of all values ÷ number of values</div>
+    <div class="formula-box"><div class="formula-label">Median</div>Middle value when sorted. Even count: average of middle two.</div>
+    <div class="formula-box"><div class="formula-label">Mode</div>Most frequently occurring value.</div>
+    <div style="margin-top:12px;">
+      <div class="rule-body"><b>Standard deviation</b> measures how spread out data values are from the mean. You don't need to calculate it on the SAT — just know: <b>larger SD = more spread out, smaller SD = more clustered around the mean.</b></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+      <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--blue);margin-bottom:5px;">Skewed distributions</div>
+        <div style="font-size:13px;color:var(--ink-soft);line-height:1.6;"><b>Right skew (tail right):</b> Mean &gt; Median<br><b>Left skew (tail left):</b> Mean &lt; Median<br><b>Symmetric:</b> Mean ≈ Median</div>
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--blue);margin-bottom:5px;">Effect of outliers</div>
+        <div style="font-size:13px;color:var(--ink-soft);line-height:1.6;">Outliers pull the <b>mean</b> toward them. The <b>median</b> is resistant to outliers. Adding a very large value = mean increases more than median.</div>
+      </div>
+    </div>
+    <div class="trap-box" style="margin-top:10px;">
+      <div class="trap-label">The "adding a value" trap</div>
+      <div class="trap-body">If a new value is added to a data set that equals the current mean, the mean stays the same. If the new value is above the mean, the mean increases. If below, it decreases. Always reason through this rather than guessing.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="scatter">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">4</div>
+    <h2 class="section-title">Scatterplots &amp; Line of Best Fit</h2>
+  </div>
+  <div class="rule-card">
+    <div class="rule-badge">What the SAT tests</div>
+    <div class="rule-body">Scatterplot questions ask you to read data points, interpret the line (or curve) of best fit, and understand what the slope and intercept mean in context.</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px;">
+      <div class="ex-row right">
+        <div class="ex-label">Reading the equation y = mx + b</div>
+        <b>m</b> = slope = how much y changes for each 1-unit increase in x (the rate of change)<br>
+        <b>b</b> = y-intercept = the predicted value of y when x = 0
+      </div>
+      <div class="ex-row right">
+        <div class="ex-label">Interpreting context</div>
+        If y = 2.5x + 40 models weekly sales (y) vs. advertising spend (x in $100s): slope means "each additional $100 in advertising predicts 2.5 more sales per week." Intercept = predicted sales with zero advertising.
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="background:var(--cream);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);">
+        <b style="display:block;color:var(--ink);margin-bottom:4px;">Positive correlation</b>As x increases, y increases. Line slopes up.
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);">
+        <b style="display:block;color:var(--ink);margin-bottom:4px;">Negative correlation</b>As x increases, y decreases. Line slopes down.
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);">
+        <b style="display:block;color:var(--ink);margin-bottom:4px;">Strong correlation</b>Points cluster tightly around the line.
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);">
+        <b style="display:block;color:var(--ink);margin-bottom:4px;">Weak correlation</b>Points are widely scattered around the line.
+      </div>
+    </div>
+    <div class="trap-box" style="margin-top:10px;">
+      <div class="trap-label">Correlation ≠ causation — always tested</div>
+      <div class="trap-body">A scatterplot showing a strong correlation does NOT prove that one variable causes the other. The SAT will ask "which conclusion is supported by the data?" — always eliminate any answer that says one variable <i>causes</i> the other based on correlation alone.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="prob">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">5</div>
+    <h2 class="section-title">Probability</h2>
+  </div>
+  <div class="rule-card">
+    <div class="rule-badge">Formulas</div>
+    <div class="formula-box"><div class="formula-label">Basic probability</div>P(event) = Number of favourable outcomes ÷ Total possible outcomes</div>
+    <div class="formula-box"><div class="formula-label">Conditional probability — P(A given B)</div>P(A|B) = P(A and B) ÷ P(B) &nbsp;→ on SAT: favourable ÷ restricted total</div>
+    <div class="formula-box"><div class="formula-label">Complementary probability</div>P(not A) = 1 − P(A)</div>
+    <div class="rule-body" style="margin-top:10px;">
+      <p>Most SAT probability questions involve tables or frequency counts rather than complex probability theory. The key is identifying the correct sample space (total) for the probability you're calculating.</p>
+    </div>
+    <div class="ex-row right" style="margin-top:8px;">
+      <div class="ex-label">Conditional probability example</div>
+      Using the table from the Two-Way Tables section: P(supports policy | urban) = 340 ÷ 500 = 0.68. The "given urban" restricts the sample space to 500 urban respondents, not 900 total.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sampling">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">6</div>
+    <h2 class="section-title">Sampling &amp; Study Design</h2>
+  </div>
+  <div class="rule-card">
+    <div class="rule-badge">Key concepts</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px;">
+      <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:4px;">Random sample</div>
+        <div style="font-size:13px;color:var(--ink-soft);">Every member of the population has an equal chance of being selected. Results can be generalised to the full population. If NOT random → cannot generalise.</div>
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:4px;">Sample size</div>
+        <div style="font-size:13px;color:var(--ink-soft);">Larger random samples → more reliable estimates → smaller margin of error. Doubling sample size does NOT double precision — it reduces the margin of error by a factor of √2.</div>
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:4px;">Generalising from a sample</div>
+        <div style="font-size:13px;color:var(--ink-soft);">You can only generalise results to the population the sample was drawn from. If a study sampled high school students in one city, findings cannot be generalised to "all teenagers in the country."</div>
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:4px;">Experiments vs. observational studies</div>
+        <div style="font-size:13px;color:var(--ink-soft);">Only <b>randomised controlled experiments</b> (with random assignment to treatment/control) can establish causation. Observational studies can show correlation but cannot prove cause and effect.</div>
+      </div>
+    </div>
+    <div class="trap-box">
+      <div class="trap-label">The generalisation trap — very commonly tested</div>
+      <div class="trap-body">If a study is conducted on a non-random or specific sample (e.g., "volunteers at one gym"), the SAT will ask which conclusion is supported. Eliminate any answer that generalises to a broader population not represented by the sample.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="practice">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--green-light);">✏️</div>
+    <h2 class="section-title">Practice — 15 Questions</h2>
+  </div>
+
+  <div class="practice-q" id="pq1">
+    <div class="q-num-label">Q1 — Percentage Change</div>
+    <div class="q-stem">A company's annual profit increased from $1.2 million to $1.56 million over three years. By what percentage did the profit increase?</div>
+    <ul class="q-choices" id="pq1c">
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">A</span>23.1%</li>
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">B</span>26.9%</li>
+      <li onclick="pick('pq1',this,true)"><span class="choice-ltr">C</span>30%</li>
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">D</span>36%</li>
+    </ul>
+    <div class="answer-reveal" id="pq1r"><b>Correct: C — 30%.</b> (1.56 − 1.2) ÷ 1.2 × 100 = 0.36 ÷ 1.2 × 100 = 0.3 × 100 = 30%. Note: divide by the OLD value (1.2), not the new one.</div>
+  </div>
+
+  <div class="practice-q" id="pq2">
+    <div class="q-num-label">Q2 — Two-Way Table</div>
+    <div class="q-figure">
+      <table>
+        <tr><th></th><th>Passed</th><th>Failed</th><th>Total</th></tr>
+        <tr><td><b>Attended tutoring</b></td><td>84</td><td>16</td><td>100</td></tr>
+        <tr><td><b>No tutoring</b></td><td>45</td><td>55</td><td>100</td></tr>
+        <tr><td><b>Total</b></td><td>129</td><td>71</td><td>200</td></tr>
+      </table>
+    </div>
+    <div class="q-stem">Of the students who failed the exam, what fraction did not attend tutoring?</div>
+    <ul class="q-choices" id="pq2c">
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">A</span>55/200</li>
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">B</span>55/100</li>
+      <li onclick="pick('pq2',this,true)"><span class="choice-ltr">C</span>55/71</li>
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">D</span>16/71</li>
+    </ul>
+    <div class="answer-reveal" id="pq2r"><b>Correct: C — 55/71.</b> "Of the students who failed" restricts the denominator to the 71 who failed. Of those 71, 55 had no tutoring. → 55/71. A uses the grand total (wrong). B uses the no-tutoring row total (wrong). D = 16/71 = those who attended tutoring and failed (not what was asked).</div>
+  </div>
+
+  <div class="practice-q" id="pq3">
+    <div class="q-num-label">Q3 — Mean</div>
+    <div class="q-stem">The mean score of 8 students on a test is 74. A ninth student joins the group and scores 92. What is the new mean score for all 9 students?</div>
+    <ul class="q-choices" id="pq3c">
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">A</span>76</li>
+      <li onclick="pick('pq3',this,true)"><span class="choice-ltr">B</span>76</li>
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">C</span>78</li>
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">D</span>83</li>
+    </ul>
+    <div class="answer-reveal" id="pq3r"><b>Correct: B — 76.</b> Total for 8 students = 8 × 74 = 592. Add 9th student: 592 + 92 = 684. New mean = 684 ÷ 9 = 76. Always reconstruct the total sum from the mean × count, then add the new value and divide by the new count.</div>
+  </div>
+
+  <div class="practice-q" id="pq4">
+    <div class="q-num-label">Q4 — Median &amp; Outliers</div>
+    <div class="q-stem">A data set has 7 values with a mean of 50 and a median of 48. An eighth value of 150 is added to the set. Which of the following best describes the effect on the mean and median?</div>
+    <ul class="q-choices" id="pq4c">
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">A</span>Both mean and median increase significantly.</li>
+      <li onclick="pick('pq4',this,true)"><span class="choice-ltr">B</span>The mean increases significantly; the median increases only slightly or stays similar.</li>
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">C</span>Both mean and median are unaffected by the outlier.</li>
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">D</span>The median increases significantly; the mean is unaffected.</li>
+    </ul>
+    <div class="answer-reveal" id="pq4r"><b>Correct: B.</b> Outliers (extreme values) strongly affect the mean but have little effect on the median. Adding 150 to a set where mean=50 pulls the mean up substantially. The median shifts only because a new middle position is established — it may rise slightly but not dramatically. The mean is not resistant to outliers; the median is.</div>
+  </div>
+
+  <div class="practice-q" id="pq5">
+    <div class="q-num-label">Q5 — Standard Deviation</div>
+    <div class="q-stem">Two classes both have a mean score of 70. Class A has scores ranging from 65 to 75. Class B has scores ranging from 40 to 100. Which statement is correct?</div>
+    <ul class="q-choices" id="pq5c">
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">A</span>Class A has a higher standard deviation than Class B.</li>
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">B</span>Both classes have the same standard deviation because they have the same mean.</li>
+      <li onclick="pick('pq5',this,true)"><span class="choice-ltr">C</span>Class B has a higher standard deviation than Class A.</li>
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">D</span>Standard deviation cannot be compared between two different classes.</li>
+    </ul>
+    <div class="answer-reveal" id="pq5r"><b>Correct: C.</b> Standard deviation measures spread, not average. Class B's scores range from 40 to 100 — much more spread out than Class A's 65 to 75. Therefore Class B has a higher SD. B is wrong — same mean does NOT mean same SD. The mean and SD are independent measures.</div>
+  </div>
+
+  <div class="practice-q" id="pq6">
+    <div class="q-num-label">Q6 — Scatterplot / Line of Best Fit</div>
+    <div class="q-stem">A scatterplot shows a line of best fit with the equation y = 3.2x + 18, where x is the number of hours of weekly exercise and y is a wellness score. What does the slope 3.2 represent?</div>
+    <ul class="q-choices" id="pq6c">
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">A</span>The wellness score for someone who exercises 0 hours per week.</li>
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">B</span>The total wellness score for all participants.</li>
+      <li onclick="pick('pq6',this,true)"><span class="choice-ltr">C</span>The predicted increase in wellness score for each additional hour of weekly exercise.</li>
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">D</span>The number of hours of exercise that produces the maximum wellness score.</li>
+    </ul>
+    <div class="answer-reveal" id="pq6r"><b>Correct: C.</b> The slope (3.2) = the rate of change = how much y increases for each 1-unit increase in x. Here: each additional hour of weekly exercise predicts a 3.2-point increase in wellness score. A = describes the y-intercept (18), not the slope. B and D are nonsensical interpretations.</div>
+  </div>
+
+  <div class="practice-q" id="pq7">
+    <div class="q-num-label">Q7 — Correlation vs. Causation</div>
+    <div class="q-stem">A study finds a strong positive correlation between the number of books in a child's home and the child's reading test score. Which of the following conclusions is most justified by this finding?</div>
+    <ul class="q-choices" id="pq7c">
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">A</span>Having more books in the home causes children to score higher on reading tests.</li>
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">B</span>Buying more books will always improve a child's reading test score.</li>
+      <li onclick="pick('pq7',this,true)"><span class="choice-ltr">C</span>Children in homes with more books tend to score higher on reading tests.</li>
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">D</span>Reading test scores determine how many books families purchase.</li>
+    </ul>
+    <div class="answer-reveal" id="pq7r"><b>Correct: C.</b> Correlation justifies statements about tendency ("tend to"), not causation ("causes"). C accurately reflects the correlation without claiming cause. A = uses "causes" — not supported by correlation alone. B = "always" is too strong. D = reverses the direction without evidence.</div>
+  </div>
+
+  <div class="practice-q" id="pq8">
+    <div class="q-num-label">Q8 — Probability</div>
+    <div class="q-stem">In a bag containing 5 red, 8 blue, and 7 green marbles, what is the probability of selecting a marble that is NOT red?</div>
+    <ul class="q-choices" id="pq8c">
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">A</span>5/20</li>
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">B</span>8/20</li>
+      <li onclick="pick('pq8',this,true)"><span class="choice-ltr">C</span>15/20</li>
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">D</span>13/20</li>
+    </ul>
+    <div class="answer-reveal" id="pq8r"><b>Correct: C — 15/20 (= 3/4).</b> Total marbles = 5 + 8 + 7 = 20. NOT red = 8 + 7 = 15. P(not red) = 15/20. Alternatively: P(not red) = 1 − P(red) = 1 − 5/20 = 15/20.</div>
+  </div>
+
+  <div class="practice-q" id="pq9">
+    <div class="q-num-label">Q9 — Conditional Probability</div>
+    <div class="q-figure">
+      <table>
+        <tr><th></th><th>Morning shift</th><th>Evening shift</th><th>Total</th></tr>
+        <tr><td><b>Full-time</b></td><td>60</td><td>40</td><td>100</td></tr>
+        <tr><td><b>Part-time</b></td><td>30</td><td>70</td><td>100</td></tr>
+        <tr><td><b>Total</b></td><td>90</td><td>110</td><td>200</td></tr>
+      </table>
+    </div>
+    <div class="q-stem">If an employee is selected at random from those on the evening shift, what is the probability that the employee is part-time?</div>
+    <ul class="q-choices" id="pq9c">
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">A</span>70/200</li>
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">B</span>70/100</li>
+      <li onclick="pick('pq9',this,true)"><span class="choice-ltr">C</span>70/110</li>
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">D</span>40/110</li>
+    </ul>
+    <div class="answer-reveal" id="pq9r"><b>Correct: C — 70/110.</b> "Given evening shift" restricts the sample space to 110 evening employees. Of those, 70 are part-time. → 70/110. A = uses grand total (wrong denominator). B = uses part-time row total (wrong). D = full-time evening employees ÷ evening total (wrong question).</div>
+  </div>
+
+  <div class="practice-q" id="pq10">
+    <div class="q-num-label">Q10 — Sampling / Generalisation</div>
+    <div class="q-stem">A researcher surveys 200 customers who visit a specific coffee shop on weekday mornings and finds that 85% prefer hot drinks over cold drinks. Which conclusion is best supported by this data?</div>
+    <ul class="q-choices" id="pq10c">
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">A</span>85% of all adults in the city prefer hot drinks.</li>
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">B</span>Hot drinks will always outsell cold drinks at coffee shops.</li>
+      <li onclick="pick('pq10',this,true)"><span class="choice-ltr">C</span>Among weekday morning customers at this coffee shop, the majority prefer hot drinks.</li>
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">D</span>Cold drinks should be removed from this coffee shop's menu.</li>
+    </ul>
+    <div class="answer-reveal" id="pq10r"><b>Correct: C.</b> The sample is weekday morning customers at one specific coffee shop — findings can only be generalised to that specific population. C accurately limits the conclusion to "weekday morning customers at this coffee shop." A = generalises to all city adults (not the population sampled). B = "always" is too strong and generalises to all coffee shops. D = a policy recommendation not supported by data alone.</div>
+  </div>
+
+  <div class="practice-q" id="pq11">
+    <div class="q-num-label">Q11 — Percentage of Total</div>
+    <div class="q-stem">A school has 840 students. If 35% are in Grade 9, 25% in Grade 10, and 20% in Grade 11, how many students are in Grade 12?</div>
+    <ul class="q-choices" id="pq11c">
+      <li onclick="pick('pq11',this,false)"><span class="choice-ltr">A</span>126</li>
+      <li onclick="pick('pq11',this,false)"><span class="choice-ltr">B</span>147</li>
+      <li onclick="pick('pq11',this,true)"><span class="choice-ltr">C</span>168</li>
+      <li onclick="pick('pq11',this,false)"><span class="choice-ltr">D</span>210</li>
+    </ul>
+    <div class="answer-reveal" id="pq11r"><b>Correct: C — 168.</b> Grade 12 = 100% − 35% − 25% − 20% = 20% of 840. 0.20 × 840 = 168.</div>
+  </div>
+
+  <div class="practice-q" id="pq12">
+    <div class="q-num-label">Q12 — Line of Best Fit / Prediction</div>
+    <div class="q-stem">A line of best fit for a set of data is given by y = −1.5x + 60, where x is the number of days since launch and y is the number of daily app downloads (in thousands). According to this model, approximately how many days after launch will daily downloads reach 15,000?</div>
+    <ul class="q-choices" id="pq12c">
+      <li onclick="pick('pq12',this,false)"><span class="choice-ltr">A</span>20 days</li>
+      <li onclick="pick('pq12',this,false)"><span class="choice-ltr">B</span>25 days</li>
+      <li onclick="pick('pq12',this,true)"><span class="choice-ltr">C</span>30 days</li>
+      <li onclick="pick('pq12',this,false)"><span class="choice-ltr">D</span>40 days</li>
+    </ul>
+    <div class="answer-reveal" id="pq12r"><b>Correct: C — 30 days.</b> Set y = 15 (15,000 downloads in thousands): 15 = −1.5x + 60 → 1.5x = 45 → x = 30 days.</div>
+  </div>
+
+  <div class="practice-q" id="pq13">
+    <div class="q-num-label">Q13 — Median from Frequency</div>
+    <div class="q-figure">
+      <table>
+        <tr><th>Score</th><th>Number of students</th></tr>
+        <tr><td>60</td><td>3</td></tr>
+        <tr><td>70</td><td>5</td></tr>
+        <tr><td>80</td><td>8</td></tr>
+        <tr><td>90</td><td>4</td></tr>
+      </table>
+    </div>
+    <div class="q-stem">What is the median score?</div>
+    <ul class="q-choices" id="pq13c">
+      <li onclick="pick('pq13',this,false)"><span class="choice-ltr">A</span>70</li>
+      <li onclick="pick('pq13',this,true)"><span class="choice-ltr">B</span>80</li>
+      <li onclick="pick('pq13',this,false)"><span class="choice-ltr">C</span>75</li>
+      <li onclick="pick('pq13',this,false)"><span class="choice-ltr">D</span>77.5</li>
+    </ul>
+    <div class="answer-reveal" id="pq13r"><b>Correct: B — 80.</b> Total students = 3+5+8+4 = 20. Median = average of 10th and 11th values. Running count: 60s = positions 1–3; 70s = positions 4–8; 80s = positions 9–16. The 10th and 11th values are both in the 80s group → median = 80.</div>
+  </div>
+
+  <div class="practice-q" id="pq14">
+    <div class="q-num-label">Q14 — Sampling Design</div>
+    <div class="q-stem">A researcher wants to determine the average number of hours per week that teenagers in the United States spend on social media. Which sampling method would produce the most reliable estimate?</div>
+    <ul class="q-choices" id="pq14c">
+      <li onclick="pick('pq14',this,false)"><span class="choice-ltr">A</span>Survey the first 500 teenagers who respond to an online advertisement.</li>
+      <li onclick="pick('pq14',this,false)"><span class="choice-ltr">B</span>Survey all students at one high school in California.</li>
+      <li onclick="pick('pq14',this,true)"><span class="choice-ltr">C</span>Randomly select 1,000 teenagers from across all 50 states using a national database.</li>
+      <li onclick="pick('pq14',this,false)"><span class="choice-ltr">D</span>Survey 5,000 teenagers who follow a social media awareness account.</li>
+    </ul>
+    <div class="answer-reveal" id="pq14r"><b>Correct: C.</b> For reliable generalisation to "all US teenagers," the sample must be random and representative. C uses random selection from a national database across all states — best represents the full population. A = voluntary response (biased toward those who notice ads). B = only one school in one state (not representative). D = large but biased (followers of a social media awareness account likely have different usage patterns).</div>
+  </div>
+
+  <div class="practice-q" id="pq15">
+    <div class="q-num-label">Q15 — Hard · Mixed</div>
+    <div class="q-stem">A data set of 10 values has a mean of 30 and a median of 28. If the two largest values are removed and both are equal to 50, what happens to the mean and median of the remaining 8 values?</div>
+    <ul class="q-choices" id="pq15c">
+      <li onclick="pick('pq15',this,false)"><span class="choice-ltr">A</span>Both mean and median decrease.</li>
+      <li onclick="pick('pq15',this,true)"><span class="choice-ltr">B</span>The mean decreases more than the median.</li>
+      <li onclick="pick('pq15',this,false)"><span class="choice-ltr">C</span>The mean decreases; the median increases.</li>
+      <li onclick="pick('pq15',this,false)"><span class="choice-ltr">D</span>Both mean and median stay the same.</li>
+    </ul>
+    <div class="answer-reveal" id="pq15r"><b>Correct: B.</b> Mean: original total = 10 × 30 = 300. Remove two 50s: 300 − 100 = 200. New mean = 200 ÷ 8 = 25. The mean dropped from 30 to 25. Median: removing the two largest values shifts the median position to the 4th and 5th values of 8, which were already near the centre of the original set. The median was 28 (average of 5th and 6th of 10); now it's the average of 4th and 5th of 8 — these values were likely below 28, so median decreases somewhat, but less dramatically than the mean. B correctly identifies that the mean falls more than the median when large outliers are removed.</div>
+  </div>
+
+</section>
+
+<section class="section" id="summary-section">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--blue-light);">📋</div>
+    <h2 class="section-title">Data Analysis Quick-Reference</h2>
+  </div>
+  <div class="summary-card">
+    <h3>Seven types · key rules</h3>
+    <div class="summary-grid">
+      <div class="sg-item">
+        <div class="sg-rule">Percentage change</div>
+        <div class="sg-pattern">(New − Old) ÷ Old × 100. Always divide by the OLD value.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">Two-way tables</div>
+        <div class="sg-pattern">Identify the denominator first. "Of those who X" → row or column total, not grand total.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">Mean vs Median</div>
+        <div class="sg-pattern">Outliers pull mean, not median. Reconstruct total sum = mean × count before adding/removing values.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">Standard deviation</div>
+        <div class="sg-pattern">Larger SD = more spread. Same mean ≠ same SD. You won't calculate it — just compare spread.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">Scatterplots</div>
+        <div class="sg-pattern">Slope = rate of change per 1-unit increase in x. y-intercept = value when x = 0. Correlation ≠ causation.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">Probability</div>
+        <div class="sg-pattern">P = favourable ÷ total. Conditional: restrict denominator to the "given" group.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">Sampling</div>
+        <div class="sg-pattern">Random sample → can generalise. Non-random → cannot generalise beyond the sample. Larger sample → smaller margin of error.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">Correlation vs causation</div>
+        <div class="sg-pattern">Observational studies = correlation only. Only randomised experiments can show causation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-footer">
+  <a class="footer-link" href="index.html">← Portal</a>
+  <a class="footer-link" href="sep12_cheatsheet.html">Next: Sep 12 Cheat Sheet →</a>
+</div>
+</div>
+
+<script>
+function pick(qid,el,correct){
+  var list=document.getElementById(qid+'c');
+  if(list.dataset.answered)return;
+  list.dataset.answered='1';
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var rev=document.getElementById(qid+'r');
+  if(rev)rev.classList.add('show');
+}
+</script>
+</body>
+</html>

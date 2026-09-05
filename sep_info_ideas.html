@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Info &amp; Ideas — Sep 12 Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a18;--ink-soft:#4a4a46;--ink-muted:#8a8a84;--paper:#faf9f6;--cream:#f2f0ea;--rule:#e0ddd4;--red:#c0392b;--red-light:#fdf0ee;--amber:#b7540a;--amber-light:#fdf5ec;--blue:#1a4d8a;--blue-light:#eef3fa;--green:#2d6a3f;--green-light:#eef7f1;--purple:#6b3fa0;--purple-light:#f3eefb;--gold:#7a5c00;--gold-light:#fdf8e6;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:14px;}
+.back-bar{background:var(--ink);padding:8px 2rem;display:flex;align-items:center;gap:1rem;}
+.back-bar a{color:rgba(255,255,255,0.55);font-size:12px;text-decoration:none;}
+.back-bar span{color:rgba(255,255,255,0.2);}
+.lesson-nav{background:white;border-bottom:1px solid var(--rule);padding:10px 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lesson-nav a{font-size:12px;color:var(--ink-muted);text-decoration:none;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);white-space:nowrap;transition:all .15s;}
+.lesson-nav a:hover{background:var(--amber);color:white;border-color:var(--amber);}
+.hdr{background:var(--ink);color:var(--paper);padding:3rem 3rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hdr-eyebrow{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.hdr-num{display:inline-block;background:rgba(183,84,10,0.4);padding:3px 12px;border-radius:20px;font-size:12px;margin-right:8px;color:#ffcc88;}
+.hdr-domain{color:rgba(255,255,255,0.45);}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:3rem;line-height:1.05;margin-bottom:12px;}
+.hdr-title em{font-style:italic;color:rgba(255,255,255,0.5);}
+.hdr-tagline{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.65;margin-bottom:1.5rem;}
+.hdr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+.chip.hi{background:rgba(183,84,10,0.4);color:#ffcc88;}
+.main{max-width:860px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+.section{margin-bottom:3rem;}
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:10px;border-bottom:2px solid var(--rule);}
+.section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.section-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;}
+
+/* Strategy card — main teaching unit */
+.strat-card{background:white;border:0.5px solid var(--rule);border-radius:14px;overflow:hidden;margin-bottom:1.25rem;}
+.strat-header{padding:1rem 1.5rem;border-bottom:0.5px solid var(--rule);display:flex;align-items:center;gap:12px;}
+.strat-badge{padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;}
+.strat-name{font-size:15px;font-weight:500;color:var(--ink);}
+.strat-freq{font-size:11px;color:var(--ink-muted);margin-left:auto;white-space:nowrap;}
+.strat-body{padding:1.25rem 1.5rem;}
+.strat-body p{font-size:13.5px;color:var(--ink-soft);margin-bottom:10px;line-height:1.75;}
+.strat-body p:last-child{margin-bottom:0;}
+.strat-body b{color:var(--ink);font-weight:500;}
+.method-box{background:var(--cream);border-radius:8px;padding:12px 14px;margin:10px 0;}
+.method-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:6px;}
+.method-steps{display:flex;flex-direction:column;gap:5px;}
+.method-step{font-size:13px;color:var(--ink-soft);display:flex;gap:8px;align-items:flex-start;}
+.step-n{font-weight:600;color:var(--amber);min-width:16px;}
+.trap-box{background:var(--red-light);border:0.5px solid #e8a090;border-radius:8px;padding:10px 14px;margin-top:10px;}
+.trap-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+.trap-body{font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.trap-body b{color:var(--ink);font-weight:500;}
+.insight{background:var(--gold-light);border-left:3px solid #c8a000;border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.insight b{color:var(--gold);font-weight:500;}
+.ex-row{background:var(--cream);border-radius:8px;padding:10px 14px;margin:6px 0;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.ex-row.right{background:var(--green-light);border-left:3px solid var(--green);}
+.ex-row.wrong{background:var(--red-light);border-left:3px solid var(--red);}
+.ex-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.ex-row.right .ex-label{color:var(--green);}
+.ex-row.wrong .ex-label{color:var(--red);}
+
+/* Practice */
+.practice-q{background:var(--cream);border-radius:10px;padding:1.25rem 1.5rem;margin:12px 0;}
+.q-num-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:8px;}
+.q-domain{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;margin-bottom:8px;letter-spacing:.5px;}
+.q-passage{background:white;border:0.5px solid var(--rule);border-radius:8px;padding:12px 14px;font-size:13.5px;color:var(--ink-soft);line-height:1.8;margin-bottom:12px;font-family:'Instrument Serif',serif;}
+.q-passage-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:8px;}
+.q-stem{font-size:14px;color:var(--ink);font-weight:500;margin-bottom:10px;line-height:1.6;}
+.q-choices{list-style:none;padding:0;}
+.q-choices li{font-size:13.5px;color:var(--ink-soft);padding:7px 12px;border-radius:6px;margin-bottom:5px;border:0.5px solid var(--rule);background:white;cursor:pointer;transition:background .12s;display:flex;gap:8px;align-items:flex-start;}
+.q-choices li:hover:not(.correct):not(.wrong){background:var(--amber-light);}
+.q-choices li.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.q-choices li.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);text-decoration:line-through;}
+.choice-ltr{font-weight:600;min-width:14px;flex-shrink:0;}
+.answer-reveal{display:none;margin-top:10px;padding:10px 14px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green);line-height:1.65;}
+.answer-reveal.show{display:block;}
+
+.summary-card{background:var(--ink);color:white;border-radius:14px;padding:2rem 2.5rem;margin-top:2rem;}
+.summary-card h3{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;margin-bottom:1rem;}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sg-item{background:rgba(255,255,255,0.07);border-radius:8px;padding:10px 12px;}
+.sg-rule{font-size:12px;font-weight:500;color:rgba(255,255,255,0.9);margin-bottom:3px;}
+.sg-pattern{font-size:11.5px;color:rgba(255,255,255,0.5);line-height:1.5;}
+.lesson-footer{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0 0;border-top:0.5px solid var(--rule);margin-top:2rem;}
+.footer-link{font-size:13px;color:var(--blue);text-decoration:none;}
+.footer-link:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="back-bar">
+  <a href="index.html">← Portal</a><span>/</span>
+  <a style="color:rgba(255,255,255,0.8);">Info &amp; Ideas — Sep 12 Prep</a>
+</div>
+<nav class="lesson-nav">
+  <a href="#what">What it tests</a>
+  <a href="#inference">Inference</a>
+  <a href="#evidence">Evidence</a>
+  <a href="#wic">Words in Context</a>
+  <a href="#crosstext">Cross-Text</a>
+  <a href="#elimination">Elimination</a>
+  <a href="#practice">Practice</a>
+  <a href="#summary">Summary</a>
+</nav>
+
+<div class="hdr">
+  <div class="hdr-eyebrow"><span class="hdr-num">SAT SEP 12</span><span class="hdr-domain">Reading &amp; Writing · Information &amp; Ideas</span></div>
+  <h1 class="hdr-title">Info &amp; Ideas<br><em>Strategy Lesson</em></h1>
+  <p class="hdr-tagline">550–600 → 650+. Four question types. One systematic approach for each. The goal: stop guessing, start eliminating.</p>
+  <div class="hdr-chips">
+    <span class="chip hi">Sat Sep 5 · Hr 4</span>
+    <span class="chip">Inference &amp; Main Idea</span>
+    <span class="chip">Evidence for Claims</span>
+    <span class="chip">Words in Context</span>
+    <span class="chip">Cross-Text</span>
+    <span class="chip">10 Practice Questions</span>
+  </div>
+</div>
+
+<div class="main">
+
+<section class="section" id="what">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--amber-light);">🎯</div>
+    <h2 class="section-title">What Information &amp; Ideas actually tests</h2>
+  </div>
+  <div style="background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:1rem;">
+    <p>I&amp;I is the <b>reading comprehension</b> section of RW. It's not about memorising facts — it's about understanding what a passage is arguing, what evidence supports it, what words mean in context, and how two texts relate. Your June score of 550–600 means you're getting roughly half of these wrong.</p>
+    <p>The good news: <b>I&amp;I questions have patterns.</b> Each type asks for something very specific, and once you know what that is, you can eliminate three wrong answers systematically rather than hunting for the "best" one.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
+      <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:5px;">Question Type</div>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.6;">Inference / Main Idea<br>Evidence for Claims<br>Words in Context<br>Cross-Text Connections</div>
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:5px;">Share of I&amp;I Questions</div>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.6;">~35% of I&amp;I<br>~30% of I&amp;I<br>~20% of I&amp;I<br>~15% of I&amp;I</div>
+      </div>
+    </div>
+  </div>
+  <div class="insight"><b>The key shift:</b> Stop asking "which answer seems right?" Start asking "which three answers are clearly wrong?" Every I&amp;I question has three answers that are provably wrong. Find those first.</div>
+</section>
+
+<section class="section" id="inference">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--amber-light);">1</div>
+    <h2 class="section-title">Inference &amp; Main Idea questions</h2>
+  </div>
+  <div class="strat-card">
+    <div class="strat-header">
+      <div class="strat-badge" style="background:var(--amber-light);color:var(--amber);">What it asks</div>
+      <div class="strat-name">What does the passage suggest / imply / most likely conclude?</div>
+      <div class="strat-freq">~35% of I&amp;I</div>
+    </div>
+    <div class="strat-body">
+      <p>Inference questions ask what <b>follows logically from the text</b> — not what's explicitly stated, but what a careful reader would conclude. The answer is always supportable directly from the passage.</p>
+      <div class="method-box">
+        <div class="method-label">The 3-step method</div>
+        <div class="method-steps">
+          <div class="method-step"><span class="step-n">1</span><span>Read the passage. In your own words, state what the author is arguing or what the data shows. Don't look at the answers yet.</span></div>
+          <div class="method-step"><span class="step-n">2</span><span>For each answer choice: ask "Does the passage actually say or imply this?" If yes, can you point to the specific sentence that supports it?</span></div>
+          <div class="method-step"><span class="step-n">3</span><span>Eliminate anything that goes beyond the text, contradicts the text, or requires outside knowledge. The correct answer is always a modest, supportable conclusion.</span></div>
+        </div>
+      </div>
+      <div class="trap-box">
+        <div class="trap-label">The 4 wrong answer types — eliminate these</div>
+        <div class="trap-body">
+          <b>Too strong:</b> "The text proves that X always..." — "always," "never," "proves," "definitively" = almost always wrong.<br><br>
+          <b>Too far:</b> Makes a leap the passage doesn't support — introduces ideas not mentioned in the text.<br><br>
+          <b>Contradicts the text:</b> Says the opposite of what the passage argues.<br><br>
+          <b>Only partially true:</b> True for part of the passage but misses the main point or reverses the emphasis.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="evidence">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--amber-light);">2</div>
+    <h2 class="section-title">Evidence for Claims questions</h2>
+  </div>
+  <div class="strat-card">
+    <div class="strat-header">
+      <div class="strat-badge" style="background:var(--amber-light);color:var(--amber);">What it asks</div>
+      <div class="strat-name">Which finding / quotation most directly supports the claim?</div>
+      <div class="strat-freq">~30% of I&amp;I</div>
+    </div>
+    <div class="strat-body">
+      <p>These questions give you a claim and ask which piece of evidence best supports it. The answer must <b>directly and specifically support the exact claim made</b> — not a related claim, not the general topic, but that specific claim.</p>
+      <div class="method-box">
+        <div class="method-label">The method — claim first, evidence second</div>
+        <div class="method-steps">
+          <div class="method-step"><span class="step-n">1</span><span><b>Underline the exact claim</b> you need to support. Read it carefully — every word matters. What specifically is being claimed?</span></div>
+          <div class="method-step"><span class="step-n">2</span><span>Go through each answer. Ask: "If this evidence is true, does it make the claim more likely?" Direct support = yes. Indirect = no.</span></div>
+          <div class="method-step"><span class="step-n">3</span><span>Eliminate evidence that: (a) supports a different claim, (b) is on the same topic but doesn't address the specific claim, (c) actually contradicts the claim.</span></div>
+        </div>
+      </div>
+      <p style="margin-top:10px;">There are two subtypes on the SAT:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;">
+        <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:5px;">Textual Evidence</div>
+          <div style="font-size:13px;color:var(--ink-soft);line-height:1.6;">Quotation from a passage that supports a given interpretation. Test: does the quote <i>specifically</i> address the claim? Does it actually say what the claim says?</div>
+        </div>
+        <div style="background:var(--cream);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:5px;">Data / Chart Evidence</div>
+          <div style="font-size:13px;color:var(--ink-soft);line-height:1.6;">A graph or table finding that supports a claim. Test: does the specific data point / trend mentioned actually match what the claim says? Watch for reversed direction.</div>
+        </div>
+      </div>
+      <div class="trap-box" style="margin-top:12px;">
+        <div class="trap-label">The "right topic, wrong claim" trap</div>
+        <div class="trap-body">The most common wrong answer in evidence questions is evidence that's about the same <i>topic</i> as the claim but doesn't actually support the specific <i>point</i> being made. Read the claim again. Then read the evidence. Does it specifically address that point, or just the general area?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="wic">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--amber-light);">3</div>
+    <h2 class="section-title">Words in Context</h2>
+  </div>
+  <div class="strat-card">
+    <div class="strat-header">
+      <div class="strat-badge" style="background:var(--amber-light);color:var(--amber);">What it asks</div>
+      <div class="strat-name">As used in the passage, what does the word/phrase most nearly mean?</div>
+      <div class="strat-freq">~20% of I&amp;I</div>
+    </div>
+    <div class="strat-body">
+      <p>Words in Context does NOT test whether you know the dictionary definition of a word. It tests whether you can determine what a word means <b>in this specific context</b>. The same word can mean different things in different contexts, and the SAT deliberately picks words with multiple meanings.</p>
+      <div class="method-box">
+        <div class="method-label">The substitution method — always use this</div>
+        <div class="method-steps">
+          <div class="method-step"><span class="step-n">1</span><span>Cover the word in the passage. Read the sentence. In your own words, predict what the word means based purely on the surrounding context.</span></div>
+          <div class="method-step"><span class="step-n">2</span><span>Substitute each answer choice back into the sentence. Read the full sentence with the substitute word. Does the sentence still make sense in the same way?</span></div>
+          <div class="method-step"><span class="step-n">3</span><span>Pick the answer that preserves the meaning most precisely. Not just "makes sense" — <i>precisely matches the meaning in context.</i></span></div>
+        </div>
+      </div>
+      <div class="trap-box">
+        <div class="trap-label">The "common definition" trap</div>
+        <div class="trap-body">The SAT deliberately targets words that have a common everyday meaning AND a secondary meaning. The wrong answer is always the common/obvious definition. The right answer is the meaning that fits the specific context, even if it's less familiar.<br><br>
+        Example: "The results were <b>charged</b> with significance." The wrong answer: "electrically charged." The right answer: "filled with / loaded with" — the contextual meaning.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="crosstext">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--amber-light);">4</div>
+    <h2 class="section-title">Cross-Text Connections</h2>
+  </div>
+  <div class="strat-card">
+    <div class="strat-header">
+      <div class="strat-badge" style="background:var(--amber-light);color:var(--amber);">What it asks</div>
+      <div class="strat-name">How would Author 2 respond to / what do both texts agree on?</div>
+      <div class="strat-freq">~15% of I&amp;I</div>
+    </div>
+    <div class="strat-body">
+      <p>Cross-text questions give you two short passages and ask about the relationship between them — agreement, disagreement, qualification, or how one author would respond to the other's argument.</p>
+      <div class="method-box">
+        <div class="method-label">The 2-column method</div>
+        <div class="method-steps">
+          <div class="method-step"><span class="step-n">1</span><span>After reading both passages, write a one-sentence summary of each: "Text 1 argues that... Text 2 argues that..."</span></div>
+          <div class="method-step"><span class="step-n">2</span><span>Identify the relationship: Do they agree? Disagree? Does Text 2 qualify or extend Text 1?</span></div>
+          <div class="method-step"><span class="step-n">3</span><span>Test each answer against both texts. The right answer must be supportable from BOTH passages, not just one.</span></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+        <div class="ex-row right">
+          <div class="ex-label">What the right answer looks like</div>
+          Precisely captures the relationship between the two texts. Can be traced to specific lines in both passages.
+        </div>
+        <div class="ex-row wrong">
+          <div class="ex-label">What wrong answers look like</div>
+          Supported by only one text. Makes a comparison not explicitly in either text. Exaggerates the agreement or disagreement.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="elimination">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--amber-light);">⚡</div>
+    <h2 class="section-title">Universal elimination rules — for all I&amp;I questions</h2>
+  </div>
+  <div style="background:white;border:0.5px solid var(--rule);border-radius:12px;padding:1.5rem 1.75rem;">
+    <p style="margin-bottom:12px;">These apply to every I&amp;I question type. Use them to eliminate before you even try to identify the right answer.</p>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="background:var(--red-light);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);"><b style="color:var(--red);">Eliminate: Too extreme.</b> Words like "always," "never," "completely," "proves," "all," "none" — almost always wrong. The SAT deals in nuance, not absolutes.</div>
+      <div style="background:var(--red-light);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);"><b style="color:var(--red);">Eliminate: Outside the passage.</b> If the answer introduces an idea not mentioned or implied in the text, eliminate it immediately — even if it's true in real life.</div>
+      <div style="background:var(--red-light);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);"><b style="color:var(--red);">Eliminate: Contradicts the passage.</b> If the answer says the opposite of what the passage says, eliminate it — even if it "kind of" relates to the topic.</div>
+      <div style="background:var(--red-light);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);"><b style="color:var(--red);">Eliminate: Too vague / too general.</b> If the answer is so broad it could apply to almost anything, it's wrong. Correct I&amp;I answers are specific and directly traceable to the text.</div>
+      <div style="background:var(--green-light);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);"><b style="color:var(--green);">The right answer:</b> Is modest, specific, directly supportable from the text. You can point to the exact sentence that proves it.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="practice">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--green-light);">✏️</div>
+    <h2 class="section-title">Practice — 10 Questions</h2>
+  </div>
+
+  <div class="practice-q" id="pq1">
+    <div class="q-num-label">Question 1</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Inference</div>
+    <div class="q-passage-label">Passage</div>
+    <div class="q-passage">Marine biologists have long debated whether coral reefs can adapt to rising ocean temperatures. Recent studies suggest that some coral species exhibit a phenomenon called "thermal memory," in which brief exposure to elevated temperatures triggers epigenetic changes that enhance the coral's heat tolerance in subsequent exposures. However, these studies have been conducted primarily in controlled laboratory conditions, and researchers caution that the complexity of real reef ecosystems may limit the extent to which laboratory findings translate to natural environments.</div>
+    <div class="q-stem">Which conclusion is most directly supported by the passage?</div>
+    <ul class="q-choices" id="pq1c">
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">A</span>Coral reefs will successfully adapt to all future rises in ocean temperature.</li>
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">B</span>Thermal memory is the primary mechanism by which corals resist disease in natural environments.</li>
+      <li onclick="pick('pq1',this,true)"><span class="choice-ltr">C</span>The applicability of laboratory findings on coral thermal adaptation to real reef ecosystems remains uncertain.</li>
+      <li onclick="pick('pq1',this,false)"><span class="choice-ltr">D</span>Epigenetic changes in coral are irreversible once triggered by elevated temperatures.</li>
+    </ul>
+    <div class="answer-reveal" id="pq1r"><b>Correct: C.</b> The passage explicitly states that researchers "caution that the complexity of real reef ecosystems may limit the extent to which laboratory findings translate to natural environments." C directly reflects this. A = too extreme ("will successfully adapt to all"). B = "primary mechanism... for disease" — not mentioned. D = "irreversible" — not stated anywhere.</div>
+  </div>
+
+  <div class="practice-q" id="pq2">
+    <div class="q-num-label">Question 2</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Evidence for Claims — Data</div>
+    <div class="q-passage-label">Context</div>
+    <div class="q-passage">A researcher claims that urban green spaces are associated with lower rates of reported anxiety among city residents.</div>
+    <div class="q-stem">Which finding from a hypothetical study would most directly support this claim?</div>
+    <ul class="q-choices" id="pq2c">
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">A</span>City residents who exercise regularly report lower anxiety rates than those who do not.</li>
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">B</span>Urban areas with more green space per capita have higher property values than those with less.</li>
+      <li onclick="pick('pq2',this,true)"><span class="choice-ltr">C</span>City residents living within 500 metres of a park reported anxiety rates 22% lower than those living more than 2 kilometres from any green space.</li>
+      <li onclick="pick('pq2',this,false)"><span class="choice-ltr">D</span>Residents of rural areas consistently report lower anxiety than urban residents in national surveys.</li>
+    </ul>
+    <div class="answer-reveal" id="pq2r"><b>Correct: C.</b> The claim is specifically about urban green spaces and anxiety. C directly shows that proximity to green space (a park) correlates with lower reported anxiety among city residents. A = about exercise, not green space. B = about property values, not anxiety. D = compares rural vs urban, not presence/absence of green space within cities.</div>
+  </div>
+
+  <div class="practice-q" id="pq3">
+    <div class="q-num-label">Question 3</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Words in Context</div>
+    <div class="q-passage-label">Passage excerpt</div>
+    <div class="q-passage">The economist's argument was <b>compelling</b> in its simplicity: by removing trade barriers, nations could specialise in producing goods for which they held a comparative advantage, generating efficiency gains that would theoretically benefit all trading partners.</div>
+    <div class="q-stem">As used in the passage, "compelling" most nearly means</div>
+    <ul class="q-choices" id="pq3c">
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">A</span>Forceful and aggressive</li>
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">B</span>Demanding immediate attention</li>
+      <li onclick="pick('pq3',this,true)"><span class="choice-ltr">C</span>Persuasive and convincing</li>
+      <li onclick="pick('pq3',this,false)"><span class="choice-ltr">D</span>Legally obligatory</li>
+    </ul>
+    <div class="answer-reveal" id="pq3r"><b>Correct: C.</b> In context, the argument is described as compelling "in its simplicity" — meaning it was persuasive because of how clear and straightforward it was. A = "forceful/aggressive" implies confrontation, not logical persuasion. B = "demanding immediate attention" is about urgency, not persuasiveness. D = "legally obligatory" — a common but wrong meaning of "compelling" that doesn't fit here at all.</div>
+  </div>
+
+  <div class="practice-q" id="pq4">
+    <div class="q-num-label">Question 4</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Inference — Main Idea</div>
+    <div class="q-passage-label">Passage</div>
+    <div class="q-passage">The widespread adoption of remote work during the 2020s fundamentally altered commuting patterns in major metropolitan areas. Transit agencies reported significant declines in peak-hour ridership, prompting budget shortfalls that led to service reductions on many routes. Paradoxically, these reductions disproportionately affected lower-income workers — those least likely to have the option of working remotely — who depended on public transit as their primary mode of transportation.</div>
+    <div class="q-stem">The passage primarily suggests that</div>
+    <ul class="q-choices" id="pq4c">
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">A</span>Remote work will permanently replace office-based employment in most industries.</li>
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">B</span>Transit agencies should focus exclusively on serving higher-income commuters.</li>
+      <li onclick="pick('pq4',this,true)"><span class="choice-ltr">C</span>The shift to remote work had unintended consequences that harmed transit-dependent workers.</li>
+      <li onclick="pick('pq4',this,false)"><span class="choice-ltr">D</span>Public transit funding should be increased to restore pre-pandemic service levels.</li>
+    </ul>
+    <div class="answer-reveal" id="pq4r"><b>Correct: C.</b> The passage describes a chain of consequences: remote work → lower ridership → budget shortfalls → service cuts → harm to lower-income workers who needed transit. C accurately summarises this as "unintended consequences that harmed transit-dependent workers." A = "permanently replace" — too extreme, not stated. B = contradicts the passage (the harm is TO lower-income users). D = a policy recommendation — the passage doesn't make recommendations.</div>
+  </div>
+
+  <div class="practice-q" id="pq5">
+    <div class="q-num-label">Question 5</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Words in Context</div>
+    <div class="q-passage-label">Passage excerpt</div>
+    <div class="q-passage">Despite three decades of research, the mechanism by which certain bacteria develop antibiotic resistance remains <b>elusive</b>. Scientists have proposed numerous theories, but none has achieved consensus.</div>
+    <div class="q-stem">As used in the passage, "elusive" most nearly means</div>
+    <ul class="q-choices" id="pq5c">
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">A</span>Deliberately deceptive</li>
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">B</span>Rare and precious</li>
+      <li onclick="pick('pq5',this,true)"><span class="choice-ltr">C</span>Difficult to understand or pin down</li>
+      <li onclick="pick('pq5',this,false)"><span class="choice-ltr">D</span>Recently discovered</li>
+    </ul>
+    <div class="answer-reveal" id="pq5r"><b>Correct: C.</b> The context makes clear that despite 30 years of research and many theories, no consensus has been reached — the mechanism has proven hard to understand or definitively identify. C captures this meaning. A = "deliberately deceptive" implies intent — bacteria don't deceive. B = "rare and precious" — not the meaning here. D = "recently discovered" — contradicted by "three decades of research."</div>
+  </div>
+
+  <div class="practice-q" id="pq6">
+    <div class="q-num-label">Question 6</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Evidence for Claims — Textual</div>
+    <div class="q-passage-label">Passage</div>
+    <div class="q-passage">Archaeological evidence from the Indus Valley civilisation (c. 3300–1300 BCE) suggests a remarkably egalitarian social structure. Unlike contemporaneous civilisations in Egypt and Mesopotamia, Indus Valley sites show an absence of monumental royal architecture and elaborate royal tombs. Residential areas appear relatively uniform in construction quality, suggesting that extreme disparities in wealth, while not necessarily absent, were less pronounced than in neighbouring cultures.</div>
+    <div class="q-stem">Which quotation from the passage provides the strongest evidence that social hierarchy in the Indus Valley may have been less pronounced than in other ancient civilisations?</div>
+    <ul class="q-choices" id="pq6c">
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">A</span>"Archaeological evidence from the Indus Valley civilisation (c. 3300–1300 BCE) suggests a remarkably egalitarian social structure."</li>
+      <li onclick="pick('pq6',this,true)"><span class="choice-ltr">B</span>"Unlike contemporaneous civilisations in Egypt and Mesopotamia, Indus Valley sites show an absence of monumental royal architecture and elaborate royal tombs."</li>
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">C</span>"Residential areas appear relatively uniform in construction quality."</li>
+      <li onclick="pick('pq6',this,false)"><span class="choice-ltr">D</span>"Extreme disparities in wealth, while not necessarily absent, were less pronounced than in neighbouring cultures."</li>
+    </ul>
+    <div class="answer-reveal" id="pq6r"><b>Correct: B.</b> The claim is that the hierarchy was "less pronounced than in other ancient civilisations." B directly compares Indus Valley to Egypt and Mesopotamia (other civilisations) and cites a specific absence — no monumental royal architecture — that points to less hierarchy. A = a general claim, not specific evidence. C = only about residential areas, no comparison to other civilisations. D = correct in meaning but doesn't make the explicit comparison to "other civilisations" that the question asks for.</div>
+  </div>
+
+  <div class="practice-q" id="pq7">
+    <div class="q-num-label">Question 7</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Cross-Text</div>
+    <div class="q-passage-label">Text 1</div>
+    <div class="q-passage">The introduction of invasive species into new ecosystems is almost always harmful. Non-native species typically lack natural predators in their new environments, allowing populations to grow unchecked and outcompete native species for resources. Conservation biologists broadly agree that preventing invasions is far preferable to attempting removal after establishment.</div>
+    <div class="q-passage-label" style="margin-top:8px;">Text 2</div>
+    <div class="q-passage">Recent research challenges the assumption that all introduced species are ecologically harmful. Several studies have documented cases in which non-native species filled vacant ecological niches left by extinct native species, contributing to ecosystem stability rather than disruption. Ecologists now argue for a more nuanced, case-by-case evaluation of introduced species rather than blanket condemnation.</div>
+    <div class="q-stem">How would the author of Text 2 most likely respond to the argument made in Text 1?</div>
+    <ul class="q-choices" id="pq7c">
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">A</span>By agreeing that invasive species are always harmful and supporting stricter prevention measures.</li>
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">B</span>By arguing that conservation biology is an unreliable scientific discipline.</li>
+      <li onclick="pick('pq7',this,true)"><span class="choice-ltr">C</span>By arguing that the claim that invasive species are "almost always harmful" oversimplifies a more complex ecological reality.</li>
+      <li onclick="pick('pq7',this,false)"><span class="choice-ltr">D</span>By conceding that preventing invasions is always better than removal after establishment.</li>
+    </ul>
+    <div class="answer-reveal" id="pq7r"><b>Correct: C.</b> Text 2 explicitly "challenges the assumption that all introduced species are ecologically harmful" and argues for "nuanced, case-by-case evaluation rather than blanket condemnation." C correctly identifies that Text 2 would push back against Text 1's broad claim. A = contradicts Text 2. B = Text 2 doesn't attack conservation biology. D = Text 2 doesn't address the prevention vs. removal question at all.</div>
+  </div>
+
+  <div class="practice-q" id="pq8">
+    <div class="q-num-label">Question 8</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Inference</div>
+    <div class="q-passage-label">Passage</div>
+    <div class="q-passage">When the first mass-produced automobiles became available in the early twentieth century, urban planners assumed that increased mobility would spread populations evenly across metropolitan areas, relieving congestion in city centres. Instead, automobiles enabled the growth of suburbs while simultaneously increasing traffic density in city centres, as workers drove into urban cores for employment. The congestion that planners hoped to solve instead intensified.</div>
+    <div class="q-stem">What does the passage most strongly suggest about urban planning predictions?</div>
+    <ul class="q-choices" id="pq8c">
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">A</span>Urban planners in the early twentieth century were generally incompetent.</li>
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">B</span>Automobiles had no significant effect on urban population distribution.</li>
+      <li onclick="pick('pq8',this,true)"><span class="choice-ltr">C</span>New technologies can produce outcomes that contradict planners' expectations.</li>
+      <li onclick="pick('pq8',this,false)"><span class="choice-ltr">D</span>Suburban growth was the intended outcome of automobile adoption.</li>
+    </ul>
+    <div class="answer-reveal" id="pq8r"><b>Correct: C.</b> The passage shows planners expected one outcome (even population distribution, less congestion) but got the opposite (suburban sprawl, more congestion). C captures this as "outcomes that contradict planners' expectations" — a modest, supportable inference. A = "incompetent" is too extreme a judgment; the passage doesn't say they were bad at their job. B = contradicts the passage (autos clearly affected distribution). D = suburban growth was NOT the intended outcome — it's what happened instead.</div>
+  </div>
+
+  <div class="practice-q" id="pq9">
+    <div class="q-num-label">Question 9</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Words in Context</div>
+    <div class="q-passage-label">Passage excerpt</div>
+    <div class="q-passage">The committee's findings were met with a <b>measured</b> response from industry leaders, who acknowledged the report's concerns while stopping short of committing to specific reforms.</div>
+    <div class="q-stem">As used in the passage, "measured" most nearly means</div>
+    <ul class="q-choices" id="pq9c">
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">A</span>Calculated in precise units</li>
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">B</span>Lengthy and thorough</li>
+      <li onclick="pick('pq9',this,true)"><span class="choice-ltr">C</span>Careful and restrained</li>
+      <li onclick="pick('pq9',this,false)"><span class="choice-ltr">D</span>Enthusiastic and supportive</li>
+    </ul>
+    <div class="answer-reveal" id="pq9r"><b>Correct: C.</b> The context describes a response that "acknowledged... concerns while stopping short of committing" — a careful, restrained reaction that neither fully embraced nor rejected the report. C captures this. A = the common meaning of "measured" (in units) — totally wrong in context. B = "lengthy and thorough" — not implied. D = "enthusiastic and supportive" — contradicts "stopping short of committing to reforms."</div>
+  </div>
+
+  <div class="practice-q" id="pq10">
+    <div class="q-num-label">Question 10</div>
+    <div class="q-domain" style="background:var(--amber-light);color:var(--amber);">Evidence for Claims — Hard</div>
+    <div class="q-passage-label">Context</div>
+    <div class="q-passage">A sociologist argues that increased social media use among teenagers is not the primary cause of declining mental health outcomes in that demographic, and that other factors deserve more scrutiny.</div>
+    <div class="q-stem">Which finding would most directly support the sociologist's argument?</div>
+    <ul class="q-choices" id="pq10c">
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">A</span>A study finds that teenagers who use social media for more than four hours per day report higher rates of anxiety than those who use it for less than one hour.</li>
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">B</span>A survey shows that 78% of teenagers report that social media negatively affects their self-image.</li>
+      <li onclick="pick('pq10',this,true)"><span class="choice-ltr">C</span>A longitudinal study finds that mental health outcomes among teenagers declined at comparable rates in communities with high and low social media usage.</li>
+      <li onclick="pick('pq10',this,false)"><span class="choice-ltr">D</span>Research shows that social media platforms are the most common source of news for teenagers aged 13–17.</li>
+    </ul>
+    <div class="answer-reveal" id="pq10r"><b>Correct: C.</b> The claim is that social media is NOT the primary cause — i.e., other factors matter more. C supports this by showing mental health declined equally in communities regardless of social media usage, suggesting something else is driving the decline. A = directly contradicts the claim (supports social media as a cause). B = also implicates social media (self-image). D = about news consumption, not mental health outcomes at all.</div>
+  </div>
+
+</section>
+
+<section class="section" id="summary">
+  <div class="section-hdr">
+    <div class="section-icon" style="background:var(--amber-light);">📋</div>
+    <h2 class="section-title">The I&amp;I Quick-Reference Card</h2>
+  </div>
+  <div class="summary-card">
+    <h3>Four types · one approach</h3>
+    <div class="summary-grid">
+      <div class="sg-item">
+        <div class="sg-rule">1. Inference / Main Idea</div>
+        <div class="sg-pattern">State the author's argument in your own words first. Then test each answer: is it directly supportable? Eliminate "too strong," "too far," "contradicts," "too vague."</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">2. Evidence for Claims</div>
+        <div class="sg-pattern">Underline the exact claim. Test each answer: does it specifically support THAT claim — not just the topic? "Right topic, wrong claim" is the most common wrong answer.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">3. Words in Context</div>
+        <div class="sg-pattern">Cover the word. Predict the meaning from context. Substitute each answer back in. Never pick the most common dictionary definition — the SAT always tests secondary meanings.</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-rule">4. Cross-Text</div>
+        <div class="sg-pattern">One sentence per text: "Text 1 says... Text 2 says..." Identify agree/disagree/qualify. Right answer must be traceable to BOTH texts.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-footer">
+  <a class="footer-link" href="index.html">← Portal</a>
+  <a class="footer-link" href="aug_sec_drill.html">Next: SEC Drill Paper →</a>
+</div>
+</div>
+
+<script>
+function pick(qid,el,correct){
+  var list=document.getElementById(qid+'c');
+  if(list.dataset.answered)return;
+  list.dataset.answered='1';
+  list.querySelectorAll('li').forEach(function(li){li.onclick=null;});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)list.querySelectorAll('li').forEach(function(li){if(!li.classList.contains('wrong'))li.classList.add('correct');});
+  var rev=document.getElementById(qid+'r');
+  if(rev)rev.classList.add('show');
+}
+</script>
+</body>
+</html>
